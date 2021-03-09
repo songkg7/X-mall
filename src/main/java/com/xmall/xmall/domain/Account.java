@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 
 @Entity
 @Getter
@@ -16,8 +17,15 @@ public class Account {
     @GeneratedValue
     private Long id;
 
+    // Login
+    // ----
     private String email;
 
+    private String nickname;
+
     private String password;
+    // ----
+
+    private String Location;
 
 }

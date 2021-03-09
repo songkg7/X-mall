@@ -1,4 +1,9 @@
 spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/xmall
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
   jpa:
     hibernate:
       ddl-auto: create
@@ -8,4 +13,4 @@ spring:
         format_sql: true
 logging.level:
   org.hibernate.SQL: debug
-    #  org.hibernate.type: trace
+  org.hibernate.type: trace
