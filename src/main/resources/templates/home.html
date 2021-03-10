@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <!-- 
     1. a태그
@@ -25,7 +27,7 @@
     clear:both
     -->
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="css/main.css">
@@ -164,7 +166,7 @@
     }
     .nav1_text{
         display: table-cell;
-        background-color:none;
+        /*background-color: none;*/
         text-align: right;
         
         /* 부모 div의 수직에 맞춰 중앙정렬 */
@@ -323,7 +325,7 @@
         border-radius: 50px;
         background-color: rgb(240, 240, 240);
         border-style: none;
-        background-image: url(./img/dod.png);
+        background-image: url(../static/images/dod.png);
         background-position: 10px;
         background-size: 25px;
         background-repeat:no-repeat;
@@ -485,11 +487,11 @@
             <input class="searchBar" type="text" name="search" placeholder="검색">
         </div>
         <div class="nav2_wishlist position1">
-            <button class="btn1" type="submit"><img src="../static/images/heart1.png" alt="" ></button>
+            <button class="btn1" type="submit"><img src="/images/heart1.png" alt="" ></button>
             
         </div>
         <div class="nav2_bag position2">
-            <button class="btn2" type="submit"><img src="../static/images/bag.jpg" alt="" ></button>
+            <button class="btn2" type="submit"><img src="/images/bag.jpg" alt="" ></button>
         </div>
         <!-- ******************************* -->
     </div>
@@ -732,7 +734,7 @@
 <main>
     <div class="main">
         
-        <a href="http://www.naver.com"><img src="../static/images/nikemain1.png" style="width: 100%; display: block; margin: auto;"></a>
+        <a href="http://www.naver.com"><img src="/images/nikemain1.png" style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 1</p>
         <div>
@@ -749,7 +751,7 @@
 <main>
     <div class="main">
         
-        <a href="http://www.naver.com"><img src="../static/images/nikemain2.png" style="width: 100%; display: block; margin: auto;"></a>
+        <a href="http://www.naver.com"><img src="/images/nikemain2.png" style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 2</p>
         <div>
@@ -766,7 +768,7 @@
 <main>
     <div class="main">
         
-        <a href="http://www.naver.com"><img src="../static/images/nikemain3.png" style="width: 100%; display: block; margin: auto;"></a>
+        <a href="http://www.naver.com"><img src="/images/nikemain3.png" style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 3</p>
         <div>
