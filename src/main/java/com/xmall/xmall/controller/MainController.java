@@ -7,6 +7,7 @@ import com.xmall.xmall.repository.AccountRepository;
 import com.xmall.xmall.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -34,12 +35,7 @@ public class MainController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public String loginProcess(AccountForm accountForm) {
-//
-//        accountForm.getEmail();
-//        accountForm.getPassword();
-//    }
+    // TODO: login 기능 구현하기
 
     @GetMapping("/sign-up")
     public String signUp(Model model) {
