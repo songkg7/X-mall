@@ -7,7 +7,6 @@ import com.xmall.xmall.repository.AccountRepository;
 import com.xmall.xmall.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,7 +22,6 @@ public class MainController {
 
     private final AccountService accountService;
     private final AccountRepository accountRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String home() {
@@ -47,8 +45,6 @@ public class MainController {
 
         return "redirect:/";
     }
-
-    // TODO: login 기능 구현하기
 
     @GetMapping("/login")
     public String login(Model model) {

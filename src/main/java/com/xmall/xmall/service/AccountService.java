@@ -29,8 +29,6 @@ public class AccountService {
         account.setPassword(encodePwd);
 
         accountRepository.save(account);
-
-        log.info(account.getEmail());
     }
 
     // 로그인
