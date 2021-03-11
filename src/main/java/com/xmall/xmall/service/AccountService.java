@@ -1,5 +1,6 @@
 package com.xmall.xmall.service;
 
+import com.xmall.xmall.AccountForm;
 import com.xmall.xmall.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -18,6 +19,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
 
+    // 회원가입
     public void signUp(SignUpForm signUpForm) {
 
         Account account = new Account();
@@ -31,4 +33,13 @@ public class AccountService {
         log.info(account.getEmail());
     }
 
+    // 로그인
+    public boolean login(AccountForm accountForm, Account account) {
+
+        String rawPassword = accountForm.getPassword(); // raw value
+        String encodedPassword = account.getPassword(); // encoded value
+
+        return passwordEncoder.matches(rawPassword, encodedPassword);
+
+    }
 }
