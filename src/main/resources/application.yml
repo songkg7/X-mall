@@ -1,9 +1,12 @@
 spring:
+#  DB 설정하기 전엔 아래 옵션을 비활성화하기
+#  -----
 #  datasource:
 #    url: jdbc:h2:tcp://localhost/~/xmall
 #    username: sa
 #    password:
 #    driver-class-name: org.h2.Driver
+#  -----
   jpa:
     hibernate:
       ddl-auto: create
