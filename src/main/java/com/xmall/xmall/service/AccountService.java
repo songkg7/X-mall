@@ -22,13 +22,22 @@ public class AccountService {
     // 회원가입
     public void signUp(SignUpForm signUpForm) {
 
-        Account account = new Account();
-        account.setEmail(signUpForm.getEmail());
+        Account account = Account.builder()
+                .email(signUpForm.getEmail())
+                .nickname(signUpForm.getNickname())
+                .password(passwordEncoder.encode(signUpForm.getPassword()))
+                .build();
 
-        String encodePwd = passwordEncoder.encode(signUpForm.getPassword());
-        account.setPassword(encodePwd);
+//        Account account = new Account();
+//
+//        account.setEmail(signUpForm.getEmail());
+
+//        String encodePwd = passwordEncoder.encode(signUpForm.getPassword());
+//        account.setPassword(encodePwd);
 
         accountRepository.save(account);
+
+        // TODO: email 보내기
     }
 
     // 로그인

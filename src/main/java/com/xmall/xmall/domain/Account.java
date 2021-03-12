@@ -1,9 +1,9 @@
 package com.xmall.xmall.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +13,10 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode(of = "id")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Account {
 
     @Id
@@ -21,14 +25,12 @@ public class Account {
 
     // Login
     // ----
-    @Email
-    @NotBlank
+    @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
     private String nickname;
 
-    @NotBlank
-    @Length(min = 8, max = 50)
     private String password;
     // ----
 

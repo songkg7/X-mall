@@ -9,12 +9,16 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class SignUpForm {
 
+    @NotBlank
+    @Length(min = 3, max = 20)
+    private String nickname;
+
     @Email
     @NotBlank
     private String email;
 
     @NotBlank
-    @Length(min = 4, max = 20)
+    @Length(min = 8, max = 50)
     private String password;
 
 }
