@@ -26,436 +26,499 @@
     8.clear라는 속성 :지금부터 float라는 속성을 무시해서 정상적으로 div박스를 출력
     clear:both
     -->
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="css/main.css">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-    $(document).ready(function(){
-        
-        // 네비게이션 바 디테일 카테고리
-        var nav_1 = $(".detail_category1");
-        var nav_2 = $(".detail_category2");
-        var nav_3 = $(".detail_category3");
-        var nav_4 = $(".detail_category4");
-        var nav_5 = $(".detail_category5");
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            // 네비게이션 바 디테일 카테고리
+            var nav_1 = $(".detail_category1");
+            var nav_2 = $(".detail_category2");
+            var nav_3 = $(".detail_category3");
+            var nav_4 = $(".detail_category4");
+            var nav_5 = $(".detail_category5");
 
 
-        var main = $(".main");
-        var blur = $(".background_blur");
+            var main = $(".main");
+            var blur = $(".background_blur");
 
-        nav_1.hide();
-        nav_2.hide();
-        nav_3.hide();
-        nav_4.hide();
-        nav_5.hide();
-
-        
-        $("#at1, .detail_category1, .detail_list").hover(
-            function(){nav_1.slideDown(400); blur.fadeIn();}
-            ,function(){nav_1.hide(); blur.hide()});
-
-        $("#at2, .detail_category2, .detail_list").hover(
-            function(){nav_2.slideDown(400); blur.fadeIn();}
-            ,function(){nav_2.hide(); blur.hide()});
+            nav_1.hide();
+            nav_2.hide();
+            nav_3.hide();
+            nav_4.hide();
+            nav_5.hide();
 
 
-        $("#at3, .detail_category3, .detail_list").hover(
-            function(){nav_3.slideDown(400); blur.fadeIn();}
-            ,function(){nav_3.hide(); blur.hide()});
+            $("#at1, .detail_category1, .detail_list").hover(
+                function () {
+                    nav_1.slideDown(400);
+                    blur.fadeIn();
+                }
+                , function () {
+                    nav_1.hide();
+                    blur.hide()
+                });
+
+            $("#at2, .detail_category2, .detail_list").hover(
+                function () {
+                    nav_2.slideDown(400);
+                    blur.fadeIn();
+                }
+                , function () {
+                    nav_2.hide();
+                    blur.hide()
+                });
 
 
-        $("#at4, .detail_category4, .detail_list").hover(
-            function(){nav_4.slideDown(400); blur.fadeIn();}
-            ,function(){nav_4.hide(); blur.hide()});
+            $("#at3, .detail_category3, .detail_list").hover(
+                function () {
+                    nav_3.slideDown(400);
+                    blur.fadeIn();
+                }
+                , function () {
+                    nav_3.hide();
+                    blur.hide()
+                });
 
-            
-        $("#at5, .detail_category5, .detail_list").hover(
-            function(){nav_5.slideDown(400); blur.fadeIn();}
-            ,function(){nav_5.hide(); blur.hide()});
 
-    });
-</script>    
-<style>
+            $("#at4, .detail_category4, .detail_list").hover(
+                function () {
+                    nav_4.slideDown(400);
+                    blur.fadeIn();
+                }
+                , function () {
+                    nav_4.hide();
+                    blur.hide()
+                });
 
-    /* a태그(고객센터 로그인 멤버가입) 속성 */
-    .gray_atag{ 
-        color: rgb(17, 17, 17); 
-        text-decoration: none;
-    }
 
-    /* a태그(신상품 남성 여성 아동 세일) 속성 */
-    .black_atag{
-        color: black; 
-        text-decoration: none;
-    }
+            $("#at5, .detail_category5, .detail_list").hover(
+                function () {
+                    nav_5.slideDown(400);
+                    blur.fadeIn();
+                }
+                , function () {
+                    nav_5.hide();
+                    blur.hide()
+                });
 
-    /* a태그(신상품 남성 여성 아동 세일) 속성 */
-    .white_atag{
-        color: white; 
-        text-decoration: none;
-    }
-    
-    /* .jb-font-1 {
-    font-family: "Noto Sans CJK KR";
-    }
-    .jb-bold {
-    font-weight: bold;
-    font-size: 43px;
-    margin-top: 70px;
-    margin-bottom: 0px;
-    padding: 0px;
-    } */
+        });
+    </script>
+    <style>
 
-    .jb-normal {
-        font-weight: normal;
-        font-size: 17px;
-        line-height: 1.7;
-        letter-spacing: -1px;
-    }
-    div{
-        text-align: center;
-    }
-    
-    .main .button{
-        background-color:black;
-        color: white;
-        border-radius: 30px;
-        border:none;
-        font-size: 17px;
-        font-weight: normal;
-        width: 120px;
-        padding-top: 12px;
-        padding-bottom: 8px;
-        display:block; 
-        margin:auto;
-    }
-    .main .product{
+        /* a태그(고객센터 로그인 멤버가입) 속성 */
+        .gray_atag {
+            color: rgb(17, 17, 17);
+            text-decoration: none;
+        }
+
+        /* a태그(신상품 남성 여성 아동 세일) 속성 */
+        .black_atag {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* a태그(신상품 남성 여성 아동 세일) 속성 */
+        .white_atag {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* .jb-font-1 {
+        font-family: "Noto Sans CJK KR";
+        }
+        .jb-bold {
         font-weight: bold;
         font-size: 43px;
-        margin-top: 40px;
+        margin-top: 70px;
         margin-bottom: 0px;
         padding: 0px;
-    }
-    .main .description{
-        width: 400px;
-        font-weight: normal;
-        font-size: 17px;
-        line-height: 1.7;
-        letter-spacing: -1px;
-        padding-top: 5px;
-        padding-bottom: 15px;
-        display: block;
-        margin: auto;
-    }
-    .nav1{
-        width: 100%;
-        background-color:rgb(245, 245, 245);
-        height: 37px;
-        /* 부모 div 테이블 */
-        display: table;
-    }
-    .nav1_logo{
-        width:  40px;
-        height: 40px;
-        background-color:burlywood;
-        float: left;
-        margin-left: 40px;
-    }
-    .nav1_text{
-        display: table-cell;
-        /*background-color: none;*/
-        text-align: right;
-        
-        /* 부모 div의 수직에 맞춰 중앙정렬 */
-        vertical-align: middle;
+        } */
 
-        font-size: 12px;
-        padding-right: 40px;
-        color: rgb(49, 49, 49);
-    }
-    .main{
-        overflow: auto;
-        margin-left: 40px;
-        margin-right: 40px;
-        padding-top: 200px;
-        margin-top: -200px;
-        margin-bottom: 50px;
-    }
-    body{
-        margin: 0;
-    }
+        .jb-normal {
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -1px;
+        }
 
-    .nav2{
-        position: relative;
-        width: 100%;
-        height: 70px;
-        background-color:white;
-        z-index: 1;
-        
-    }
-    .nav2_category{
-        
-        width : 450px;
-        height: 70px;
-        background-color: white;
-        display: inline-block;
-        margin:0 auto;
-        /* float:left; */
+        div {
+            text-align: center;
+        }
 
-        /* 부모테이블로 만들기 */
-        display: table;
-        /* z-index: 9; */
-        
-    }
-    .li-inline{
-        text-align: center;
-        /* ul li 간격 주기 */
-        margin-right: 0px;
+        .main .button {
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            font-size: 17px;
+            font-weight: normal;
+            width: 120px;
+            padding-top: 12px;
+            padding-bottom: 8px;
+            display: block;
+            margin: auto;
+        }
 
-        /* 자식테이블에서 수직정렬하기 */
-        display: table-cell;
-        vertical-align: middle;
-        padding: 0px;
+        .main .product {
+            font-weight: bold;
+            font-size: 43px;
+            margin-top: 40px;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
 
-    }
-    .li-inline li{
-        /* display:inline-block =>이 요소들이 전부 왼쪽으로 즉 옆으로 정렬된다. */
-        display: inline-block;
-        text-align: center;
-        
-        font-weight: 600;
-        font-size: 17px;
-        /* ul li 간격 주기 */
-        margin-right: 0px;
-        
-        
-    }
-    
-    /* *********************************** */
-    /* 네비게이션바 밑줄 */
-    .nav2_category a{
-        position: relative;
-        padding: 20px 12px;
-    }
-    .nav2_category a::after{
-        content: "";
-        position: absolute;
-        bottom:0;
-        left:50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: black;
-        
-    }
-    .nav2_category a:hover::after{
-    width:100%;
-    
-    }
-/* *********************************** */
-.footer{
-        position: relative;
-        left: 0px;
-        bottom: 0px;
-        height: 500px;
-        width: 100%;
-        color:white;
-        background: black;
+        .main .description {
+            width: 400px;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -1px;
+            padding-top: 5px;
+            padding-bottom: 15px;
+            display: block;
+            margin: auto;
+        }
 
-    }
+        .nav1 {
+            width: 100%;
+            background-color: rgb(245, 245, 245);
+            height: 37px;
+            /* 부모 div 테이블 */
+            display: table;
+        }
 
-    /*==== = = = = = =   */
-    .position{
-        position: absolute;
-        top:12px;
-        right: 220px;
-        /* z-index: 1; */
-        display: block;
-        float: left;
-    }
-    .position1{
-        position: absolute;
-        top:12px;
-        right: 90px;
-        /* z-index: 1; */
-        
-    }
-    .position2{
-        position: absolute;
-        top:12px;
-        right: 40px;
-        /* z-index: 1; */
-        
-    }
-    .btn1 img{
-        width: 100%;
-        height: auto;
-        padding-top:2px;   
-    }
-    .btn2 img{
-        width: 36px;
-        height: 36px;
-        margin-top: 0px;
-        margin-left: -5px;
-        object-fit: cover;   
-    }
-    .btn1{
-        
-        width: 40px;
-        height: 40px;
-        border: none;
-        cursor: pointer;
-        
-        background-color: white;
-    }
-    .btn2{
-        width: 38px;
-        height: 38px;
-        border: none;
-        cursor: pointer;
-        background-color: white;
-    }
-    .searchBar{
-        width: 150px;
-        font-size: 30px;
-        height: 40px;
-        border-radius: 50px;
-        background-color: rgb(240, 240, 240);
-        border-style: none;
-        background-image: url(../static/images/dod.png);
-        background-position: 10px;
-        background-size: 25px;
-        background-repeat:no-repeat;
-        padding-left: 50px;
-        position: relative; 
-        right:-70px;
-        
+        .nav1_logo {
+            width: 40px;
+            height: 40px;
+            background-color: burlywood;
+            float: left;
+            margin-left: 40px;
+        }
 
-    }
-    input::placeholder{
-        color: gray;
-        font-size: 18px;
-        font-weight: 300;
-        vertical-align:40px ;
-        padding-top: 10px;
-    }
-    /*==== = = = = = =   */
-   .detail_category1{
-    
-    position: absolute; 
-    
+        .nav1_text {
+            display: table-cell;
+            /*background-color: none;*/
+            text-align: right;
 
-       width: 100%;
-       height: 457px;
-       background-color:white;
-       z-index: 2;
-       /* display: none; */
-   }
-   .detail_category2{
-    position: absolute;
-        overflow: hidden;
-        
-        
-       width: 100%;
-       height: 457px;
-       background-color: white;
-       z-index: 2;
-       /* display: none; */
-   }
-   .detail_category3{
-    position: absolute;
-    overflow: hidden;
+            /* 부모 div의 수직에 맞춰 중앙정렬 */
+            vertical-align: middle;
 
-       width: 100%;
-       height: 457px;
-       background-color: white;
-       z-index: 2;
-       /* display: none; */
-   }
-   .detail_category4{
-    position: absolute;
-        overflow: hidden;
+            font-size: 12px;
+            padding-right: 40px;
+            color: rgb(49, 49, 49);
+        }
 
-       width: 100%;
-       height: 457px;
-       background-color: white;
-       z-index: 2;
-       /* display: none; */
-       
-   }
-   .detail_category5{
-       
-    overflow: hidden;
-      position: absolute;
-       width: 100%;
-       height: 457px;
-       background-color: white;
-       z-index: 2;
-       
-       /* display: none; */
-   }
-.background_blur{
-       position: absolute;
-       padding-top: 107px;
-       
-       width: 100%;
-       height: 100%;
-       background-color: black;
-       opacity: 70%;
-       z-index: 1;
-       display: none;
-}
-    
+        .main {
+            overflow: auto;
+            margin-left: 40px;
+            margin-right: 40px;
+            padding-top: 200px;
+            margin-top: -200px;
+            margin-bottom: 50px;
+        }
 
-    .detail_list{ 
-        position: relative;
-        vertical-align: top;
-        padding-left: 10px; 
-        text-align: left;
-        width:180px;
-        height: 450px;
-        background-color:white;
-        display:inline-block; zoom:1;
-        color: rgb(46, 46, 46);
-        font-weight: 500;
-        margin-left: -4px;
-        margin-right: -4px;
-               
-    }
+        body {
+            margin: 0;
+        }
 
-@media all and (max-width:1200px)
-{
-    .nav2_category .li-inline .atag1{
-        display: none;
-    }
-    .nav2_category .li-inline .atag2{
-        display: none;
-     } 
-    .nav2_category .li-inline .atag3{
-        display: none;
-    }
-    .nav2_category .li-inline .atag4{
-        display: none;
-    }
-    .nav2_category .li-inline .atag5{
-        display: none;
-    }
-}
-@media all and (max-width:1200px){
+        .nav2 {
+            position: relative;
+            width: 100%;
+            height: 70px;
+            background-color: white;
+            z-index: 1;
 
-} 
+        }
 
-.gray_font{
-    color: rgb(97, 97, 97);
-    font-weight: 400;
-    text-align: left;
-    font-size: 14px;
-    
-}
-</style>
+        .nav2_category {
+
+            width: 450px;
+            height: 70px;
+            background-color: white;
+            display: inline-block;
+            margin: 0 auto;
+            /* float:left; */
+
+            /* 부모테이블로 만들기 */
+            display: table;
+            /* z-index: 9; */
+
+        }
+
+        .li-inline {
+            text-align: center;
+            /* ul li 간격 주기 */
+            margin-right: 0px;
+
+            /* 자식테이블에서 수직정렬하기 */
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0px;
+
+        }
+
+        .li-inline li {
+            /* display:inline-block =>이 요소들이 전부 왼쪽으로 즉 옆으로 정렬된다. */
+            display: inline-block;
+            text-align: center;
+
+            font-weight: 600;
+            font-size: 17px;
+            /* ul li 간격 주기 */
+            margin-right: 0px;
+
+
+        }
+
+        /* *********************************** */
+        /* 네비게이션바 밑줄 */
+        .nav2_category a {
+            position: relative;
+            padding: 20px 12px;
+        }
+
+        .nav2_category a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: black;
+
+        }
+
+        .nav2_category a:hover::after {
+            width: 100%;
+
+        }
+
+        /* *********************************** */
+        .footer {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+
+        }
+
+        /*==== = = = = = =   */
+        .position {
+            position: absolute;
+            top: 12px;
+            right: 220px;
+            /* z-index: 1; */
+            display: block;
+            float: left;
+        }
+
+        .position1 {
+            position: absolute;
+            top: 12px;
+            right: 90px;
+            /* z-index: 1; */
+
+        }
+
+        .position2 {
+            position: absolute;
+            top: 12px;
+            right: 40px;
+            /* z-index: 1; */
+
+        }
+
+        .btn1 img {
+            width: 100%;
+            height: auto;
+            padding-top: 2px;
+        }
+
+        .btn2 img {
+            width: 36px;
+            height: 36px;
+            margin-top: 0px;
+            margin-left: -5px;
+            object-fit: cover;
+        }
+
+        .btn1 {
+
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+
+            background-color: white;
+        }
+
+        .btn2 {
+            width: 38px;
+            height: 38px;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        .searchBar {
+            width: 150px;
+            font-size: 30px;
+            height: 40px;
+            border-radius: 50px;
+            background-color: rgb(240, 240, 240);
+            border-style: none;
+            background-image: url(../static/images/dod.png);
+            background-position: 10px;
+            background-size: 25px;
+            background-repeat: no-repeat;
+            padding-left: 50px;
+            position: relative;
+            right: -70px;
+
+
+        }
+
+        input::placeholder {
+            color: gray;
+            font-size: 18px;
+            font-weight: 300;
+            vertical-align: 40px;
+            padding-top: 10px;
+        }
+
+        /*==== = = = = = =   */
+        .detail_category1 {
+
+            position: absolute;
+
+
+            width: 100%;
+            height: 457px;
+            background-color: white;
+            z-index: 2;
+            /* display: none; */
+        }
+
+        .detail_category2 {
+            position: absolute;
+            overflow: hidden;
+
+
+            width: 100%;
+            height: 457px;
+            background-color: white;
+            z-index: 2;
+            /* display: none; */
+        }
+
+        .detail_category3 {
+            position: absolute;
+            overflow: hidden;
+
+            width: 100%;
+            height: 457px;
+            background-color: white;
+            z-index: 2;
+            /* display: none; */
+        }
+
+        .detail_category4 {
+            position: absolute;
+            overflow: hidden;
+
+            width: 100%;
+            height: 457px;
+            background-color: white;
+            z-index: 2;
+            /* display: none; */
+
+        }
+
+        .detail_category5 {
+
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 457px;
+            background-color: white;
+            z-index: 2;
+
+            /* display: none; */
+        }
+
+        .background_blur {
+            position: absolute;
+            padding-top: 107px;
+
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 70%;
+            z-index: 1;
+            display: none;
+        }
+
+
+        .detail_list {
+            position: relative;
+            vertical-align: top;
+            padding-left: 10px;
+            text-align: left;
+            width: 180px;
+            height: 450px;
+            background-color: white;
+            display: inline-block;
+            zoom: 1;
+            color: rgb(46, 46, 46);
+            font-weight: 500;
+            margin-left: -4px;
+            margin-right: -4px;
+
+        }
+
+        @media all and (max-width: 1200px) {
+            .nav2_category .li-inline .atag1 {
+                display: none;
+            }
+
+            .nav2_category .li-inline .atag2 {
+                display: none;
+            }
+
+            .nav2_category .li-inline .atag3 {
+                display: none;
+            }
+
+            .nav2_category .li-inline .atag4 {
+                display: none;
+            }
+
+            .nav2_category .li-inline .atag5 {
+                display: none;
+            }
+        }
+
+        @media all and (max-width: 1200px) {
+
+        }
+
+        .gray_font {
+            color: rgb(97, 97, 97);
+            font-weight: 400;
+            text-align: left;
+            font-size: 14px;
+
+        }
+    </style>
 
 </head>
 <body class="jb_font-1">
@@ -464,15 +527,16 @@
     <div class="nav1">
         <div class="nav1_logo"></div>
         <div class="nav1_text">
-              <a class="gray_atag" href="http://고객센터.com" style="cursor: hand;">고객센터</a>
-            | <a class="gray_atag" href="http://멤버가입.com" th:href="@{/sign-up}" style="cursor: hand;">멤버 가입</a>
+            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand;">고객센터</a>
+            | <a class="gray_atag" href="http://멤버가입.com" th:href="@{/sign-up}"
+                 style="cursor: hand;">멤버 가입</a>
             | <a class="gray_atag" href="#" th:href="@{/login}" style="cursor: hand;">로그인</a>
         </div>
     </div>
 
     <!-- 헤더 2. 네비게이션바 -->
     <div class="nav2">
-        
+
         <!-- 중앙 카테고리 -->
         <div class="nav2_category">
             <ul class="li-inline">
@@ -487,64 +551,64 @@
             <input class="searchBar" type="text" name="search" placeholder="검색">
         </div>
         <div class="nav2_wishlist position1">
-            <button class="btn1" type="submit"><img src="/images/heart1.png" alt="" ></button>
-            
+            <button class="btn1" type="submit"><img src="/images/heart1.png" alt=""></button>
+
         </div>
         <div class="nav2_bag position2">
-            <button class="btn2" type="submit"><img src="/images/bag.jpg" alt="" ></button>
+            <button class="btn2" type="submit"><img src="/images/bag.jpg" alt=""></button>
         </div>
         <!-- ******************************* -->
     </div>
     <div class="background_blur"></div>
 
-    
-<!-- ******************************* -->
-<!-- 신상품 카테고리 -->
-<!-- ******************************* -->        
+
+    <!-- ******************************* -->
+    <!-- 신상품 카테고리 -->
+    <!-- ******************************* -->
     <div class="detail_category1">
         <div class="detail_list">
             <p>New & Featured</p>
-                <div class="gray_font">
-                    <p>신상품 전체보기</p>
-                    <p>Sale</p>
-                    <p>The BEST</p>
-                    <p>윈터웨어 컬렉션</p>
-                </div>
+            <div class="gray_font">
+                <p>신상품 전체보기</p>
+                <p>Sale</p>
+                <p>The BEST</p>
+                <p>윈터웨어 컬렉션</p>
+            </div>
         </div>
         <div class="detail_list">
             <p>New For Men</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>
-        </div>  
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
+        </div>
         <div class="detail_list">
             <p>New For Women</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
         </div>
         <div class="detail_list">
             <p>New For Kids</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>            
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
         </div>
     </div>
-<!-- ******************************* -->
-<!-- 남성 카테고리 -->
-<!-- ******************************* -->
-    
+    <!-- ******************************* -->
+    <!-- 남성 카테고리 -->
+    <!-- ******************************* -->
+
     <div class="detail_category2">
-         
+
         <div class="detail_list">
             <p>New & Featured</p>
             <div class="gray_font">
@@ -556,7 +620,7 @@
         </div>
         <div class="detail_list">
             <p>신발</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>신발 전체</p>
                 <p>러닝화</p>
                 <p>축구화</p>
@@ -564,31 +628,31 @@
                 <p>조던</p>
                 <p>농구화</p>
                 <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list">   
+            </div>
+        </div>
+        <div class="detail_list">
             <p>의류</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>의류 전체</p>
                 <p>아우터웨어</p>
                 <p>후드티</p>
                 <p>팬츠/타이츠</p>
                 <p>탑/티셔츠</p>
                 <p>양말</p>
-                </div>
+            </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>모자</p>
                 <p>가방</p>
                 <p>넥타이/헤어밴드</p>
-                </div>            
+            </div>
         </div>
     </div>
-<!-- ******************************* -->
-<!-- 여성 카테고리 -->
-<!-- ******************************* -->
+    <!-- ******************************* -->
+    <!-- 여성 카테고리 -->
+    <!-- ******************************* -->
     <!----------------------------------------->
     <div class="detail_category3">
         <div class="detail_list">
@@ -602,7 +666,7 @@
         </div>
         <div class="detail_list">
             <p>신발</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>신발 전체</p>
                 <p>러닝화</p>
                 <p>축구화</p>
@@ -610,31 +674,31 @@
                 <p>조던</p>
                 <p>농구화</p>
                 <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list">   
+            </div>
+        </div>
+        <div class="detail_list">
             <p>의류</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>의류 전체</p>
                 <p>아우터웨어</p>
                 <p>후드티</p>
                 <p>팬츠/타이츠</p>
                 <p>탑/티셔츠</p>
                 <p>양말</p>
-                </div>
+            </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>모자</p>
                 <p>가방</p>
                 <p>넥타이/헤어밴드</p>
-                </div>            
+            </div>
         </div>
     </div>
-<!-- ******************************* -->
-<!-- 아동용 카테고리 -->
-<!-- ******************************* -->
+    <!-- ******************************* -->
+    <!-- 아동용 카테고리 -->
+    <!-- ******************************* -->
     <!----------------------------------------->
     <div class="detail_category4">
         <div class="detail_list">
@@ -648,42 +712,42 @@
         </div>
         <div class="detail_list">
             <p>신발</p>
-                <div class="gray_font">
-                    <p>베이비(160mm 이하)</p>
-                    <p>리틀키즈(165-220mm 이하)</p>
-                    <p>베이비(225-250mm 이하)</p>
-                    <p>라이프스타일</p>
-                    <p>러닝</p>
-                    <p>축구</p>
-                    <p>농구</p>
-                    <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list"> 
+            <div class="gray_font">
+                <p>베이비(160mm 이하)</p>
+                <p>리틀키즈(165-220mm 이하)</p>
+                <p>베이비(225-250mm 이하)</p>
+                <p>라이프스타일</p>
+                <p>러닝</p>
+                <p>축구</p>
+                <p>농구</p>
+                <p>샌들 & 슬리퍼</p>
+            </div>
+        </div>
+        <div class="detail_list">
             <p>의류</p>
-                <div class="gray_font">
-                    <p>베이비 (0-4세)</p>
-                    <p>베이비 (0-4세)</p>
-                    <p>베이비 (0-4세)</p>
-                    <p>아우터웨어</p>
-                    <p>후드티</p>
-                    <p>팬츠</p>
-                    <p>탑/티셔츠</p>
-                    <p>스커트/드레스</p>
-                </div>
+            <div class="gray_font">
+                <p>베이비 (0-4세)</p>
+                <p>베이비 (0-4세)</p>
+                <p>베이비 (0-4세)</p>
+                <p>아우터웨어</p>
+                <p>후드티</p>
+                <p>팬츠</p>
+                <p>탑/티셔츠</p>
+                <p>스커트/드레스</p>
+            </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
-                <div class="gray_font">
-                    <p>모자</p>
-                    <p>가방</p>
-                    <p>용품</p>
-                </div>            
+            <div class="gray_font">
+                <p>모자</p>
+                <p>가방</p>
+                <p>용품</p>
+            </div>
         </div>
     </div>
-<!-- ******************************* -->
-<!-- 신상품 카테고리 -->
-<!-- ******************************* -->
+    <!-- ******************************* -->
+    <!-- 신상품 카테고리 -->
+    <!-- ******************************* -->
     <!----------------------------------------->
     <div class="detail_category5">
         <div class="detail_list">
@@ -697,7 +761,7 @@
         </div>
         <div class="detail_list">
             <p>신발</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>신발 전체</p>
                 <p>러닝화</p>
                 <p>축구화</p>
@@ -705,90 +769,92 @@
                 <p>조던</p>
                 <p>농구화</p>
                 <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list"> 
+            </div>
+        </div>
+        <div class="detail_list">
             <p>의류</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>의류 전체</p>
                 <p>아우터웨어</p>
                 <p>후드티</p>
                 <p>팬츠/타이츠</p>
                 <p>탑/티셔츠</p>
                 <p>양말</p>
-                </div>
+            </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
-                <div class="gray_font">
+            <div class="gray_font">
                 <p>모자</p>
                 <p>가방</p>
                 <p>넥타이/헤어밴드</p>
-                </div>            
+            </div>
         </div>
     </div>
-    
+
 </header>
 
 <!-- --------------------------------- -->
 <main>
     <div class="main">
-        
-        <a href="http://www.naver.com"><img src="/images/nikemain1.png" style="width: 100%; display: block; margin: auto;"></a>
+
+        <a href="http://www.naver.com" th:href="@{/item/1}"><img src="/images/nikemain1.png"
+                                                                      th:src="${itemForm.image}"
+                                                                      style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 1</p>
         <div>
             <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-            <p class="description" >상품 추천 설명 </p>
+            <p class="description">상품 추천 설명 </p>
         </div>
         <div>
             <a class="button white_atag" href="http://www.naver.com">구매하기</a>
         </div>
     </div>
 </main>
-<!-- --------------------------------- --> 
+<!-- --------------------------------- -->
 <!-- --------------------------------- -->
 <main>
     <div class="main">
-        
-        <a href="http://www.naver.com"><img src="/images/nikemain2.png" style="width: 100%; display: block; margin: auto;"></a>
+
+        <a href="http://www.naver.com"><img src="/images/nikemain2.png"
+                                            style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 2</p>
         <div>
             <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-            <p class="description" >상품 추천 설명 </p>
+            <p class="description">상품 추천 설명 </p>
         </div>
         <div>
             <a class="button white_atag" href="http://www.naver.com">구매하기</a>
         </div>
     </div>
 </main>
-<!-- --------------------------------- --> 
+<!-- --------------------------------- -->
 <!-- --------------------------------- -->
 <main>
     <div class="main">
-        
-        <a href="http://www.naver.com"><img src="/images/nikemain3.png" style="width: 100%; display: block; margin: auto;"></a>
+
+        <a href="http://www.naver.com"><img src="/images/nikemain3.png"
+                                            style="width: 100%; display: block; margin: auto;"></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
         <p class="product">상품 모델 명 3</p>
         <div>
             <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-            <p class="description" >상품 추천 설명 </p>
+            <p class="description">상품 추천 설명 </p>
         </div>
-        
+
         <div>
             <a class="button white_atag" href="http://www.naver.com">구매하기</a>
         </div>
     </div>
 </main>
-<!-- --------------------------------- --> 
+<!-- --------------------------------- -->
 
 
-<div class="footer"> 
+<div class="footer">
 
 </div>
-
-
 
 
 </body>
