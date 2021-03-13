@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -36,4 +37,14 @@ public class Account {
 
     private String Location;
 
+    // Email
+    // - token
+    private String emailCheckToken;
+    private boolean emailVerified;
+
+
+    public void generateEmailCheckToken() {
+        this.emailCheckToken = UUID.randomUUID().toString();
+        this.emailVerified = false;
+    }
 }
