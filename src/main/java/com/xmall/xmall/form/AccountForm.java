@@ -1,4 +1,4 @@
-package com.xmall.xmall;
+package com.xmall.xmall.form;
 
 import lombok.Data;
 
