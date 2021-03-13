@@ -1,6 +1,6 @@
 package com.xmall.xmall.service;
 
-import com.xmall.xmall.SignUpForm;
+import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
 import org.junit.jupiter.api.DisplayName;

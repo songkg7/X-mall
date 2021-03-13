@@ -1,7 +1,7 @@
 package com.xmall.xmall.service;
 
-import com.xmall.xmall.AccountForm;
-import com.xmall.xmall.SignUpForm;
+import com.xmall.xmall.form.AccountForm;
+import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +11,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

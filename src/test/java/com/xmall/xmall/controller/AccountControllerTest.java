@@ -54,7 +54,7 @@ class AccountControllerTest {
                 .param("password", "1234")
                 .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("/sign-up"));
+                .andExpect(view().name("sign-up"));
     }
 
     @DisplayName("회원가입 처리 - 입력값 정상")

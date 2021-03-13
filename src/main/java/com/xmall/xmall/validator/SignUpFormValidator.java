@@ -1,6 +1,6 @@
 package com.xmall.xmall.validator;
 
-import com.xmall.xmall.SignUpForm;
+import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

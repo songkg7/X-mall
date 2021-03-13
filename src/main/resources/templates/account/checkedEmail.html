@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="#" th:href="@{/}">home</a>
+checked Email!
+<h2>이메일을 확인했습니다.</h2>
+<div th:text="${error}"></div>
+<span th:text="${numberOfUser}"></span>번째 회원,
+<span th:text="${nickname}"></span>님 반갑습니다.
+</body>
+</html>

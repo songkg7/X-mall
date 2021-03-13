@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -40,11 +41,16 @@ public class Account {
     // Email
     // - token
     private String emailCheckToken;
-    private boolean emailVerified;
+
+    @Builder.Default
+    private boolean emailVerified = false;
+
+    // 가입한 날짜
+    private LocalDateTime JoinedAt;
+
 
 
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
-        this.emailVerified = false;
     }
 }
