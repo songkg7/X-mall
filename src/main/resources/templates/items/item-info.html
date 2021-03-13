@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main2</title>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!------------------------------ -->
+    <!-- header.css header.js 수입    -->
+    <!------------------------------ -->
+    <link rel="stylesheet" href="/css/header.css">
+    <script src="/js/header.js"></script>
+    <!------------------------------ -->
+    <script>
+        $(document).ready(function(){
+
+            // var windowWidth = $( window ).width();
+            
+            // if(windowWidth < 1000) {
+            // //창 가로 크기가 500 미만일 경우
+            //     $(".product_img1").addClass(".img_bigger")
+
+            // } else {
+            // //창 가로 크기가 500보다 클 경우
+            //     $(".product_img1").removeClass(".img_bigger")
+
+
+            // }
+            
+
+            
+
+
+        });
+    </script>
+    <style>
+       
+/* ============================================= */
+/* ============================================= */
+/* ============================================= */
+/* ============================================= */
+/* ============================================= */
+/* ============================================= */
+/* ============================================= */
+
+        /* *********************************** */
+        /* main 부분 css */
+        /* *********************************** */
+        /* -------------------- */
+        /* 화면 분할 1. 좌측(product_img) */
+        /* -------------------- */
+        .product_img {
+            width: 100%;
+            height: 1000px;
+            background-color: white;
+            margin-right: -500px;
+            padding-right: 500px;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        /* -------------------- */
+        /* 화면 분할 2. 우측(content) */
+        /* -------------------- */
+        .content {
+            width: 500px;
+            height: 1000px;
+            background-color: white;
+            float: right;
+        }
+        /* 우측 분할화면의 마진주기  */
+        .content_padding{
+            margin-left: 40px;
+            margin-right: 20px;
+        }
+
+        /* -------------------------------------- */
+        /* 상품사진-섬네일부분 */
+        .thumnail {
+            width: 100%;
+            height: 100%;
+            
+        }
+        /* -------------------------------------- */
+
+        .thumnail_1 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-right: 5px;
+        }
+
+        .thumnail_2 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-right: 5px;
+        }
+
+        .thumnail_3 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .thum_1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thum_2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thum_3 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+/* -------------------------------------- */
+/* 제품명 */
+        .product_name {
+            width: 60%;
+            float: left;
+            /* margin-left: 40px; */
+        }
+/* -------------------------------------- */
+/* 가격 */
+        .price {
+            background-color: white;
+            width: 40%;
+            text-align: right;
+            font-size: 17px;
+            font-weight: 700;
+            float: left;
+            margin-top: 0px
+            /* margin-right: 40px; */
+            
+        }
+/* -------------------------------------- */
+/* 상품 스타일명 */
+        .p_1 {
+            margin-top: 0px;
+            font-size: 18px;    
+        }
+/* -------------------------------------- */
+/* 상품 명 */
+        .p_2{
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 50px;
+        }
+/* -------------------------------------- */
+/* 사이즈 선택 */
+        .product_size {
+            
+            float: left;
+        }
+        .size_guide{
+            margin-top: 10px;
+            text-align: right;
+            font-weight: 300;
+            font-size: 14px;
+            color: rgb(133, 131, 131);
+            float: right;
+            
+        }
+        .size_div{
+            margin-top:20px;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+        }
+/* -------------------------------------- */
+/* 사진 선택 */
+        .product_img{
+            margin-bottom: 20px;
+        }
+
+        .product_img1 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height:unset;
+            float: left;
+            object-fit: cover;
+        }
+            
+        
+        .img_bigger {
+            width: 96%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height:unset;
+            float: left;
+            object-fit: cover;
+        }
+
+        .product_img2 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height:unset;
+            object-fit: cover;
+            
+        }
+        .product_img3 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height:unset;
+            float: left;
+            object-fit: cover;
+        }
+
+        .product_img4 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height:unset;
+            object-fit: cover;
+        }
+        /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
+        @media all and (max-width:1220px)
+        {
+            .product_img1{
+                width: 96%;
+            }
+            .product_img2{
+                width: 96%;
+            }
+            .product_img3{
+                width: 96%;
+            }
+            .product_img4{
+                width: 96%;
+            }
+        }  
+        main{
+            
+            width: 100%;
+            height: 100%;
+            /* 주는이유 : 조금 띄워져있음 */
+            margin-top: 50px;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            margin:0px;
+            height: 100%;
+            
+        }
+        
+        .main{
+            
+            width: 100%;
+            height: 100%;
+        }
+        footer {
+            
+            
+            left: 0px;
+            bottom: 0px;
+            
+            right: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+            
+        }
+        .main_margin1{
+            margin-right: 5%;
+            margin-left: 5%;
+            
+
+        }
+        .table_div{
+            clear: both;
+            /* position: relative; */
+            width: 100%;
+            height: auto;
+            background-color: white;
+        }
+        .size_table{
+            /* position: absolute; */
+            
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            height: auto;
+        }
+        .size_cell{
+            width: 18%;
+            height: 52px;
+            margin-right: 5px;
+            margin-top: 5px;
+            background-color: white;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(223, 223, 223);
+            float: left;
+            
+            vertical-align:middle;
+            text-align: center;
+            color: black;
+        }
+        .size_cell:hover{
+             border:1px solid black;
+             
+         }
+       
+        .count_div{
+            clear: both;
+            padding-top: 40px;
+            
+            width: 100%;
+            height: 60px;
+            background-color: white;
+        }
+        
+         .count_amount{
+            font-size: 20px;
+            font-weight: 20px;
+            
+            text-align:left;
+            width: 40px;
+            height: 60px;
+            line-height: 60px;
+            background-color: white;
+            float: left;
+            margin-left: 2px;
+            
+            
+         }
+         .count_product{
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            text-align: center;
+            line-height: 65px;
+            font-size: 20px;
+            color: 1;
+            border : none;
+            
+         }
+         .minus{
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            font-size: 30px;
+            
+            
+            border: none;
+                       
+         }
+         .plus{
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            font-size: 30px;
+            border: none;
+            
+         }
+         .buy_button{
+                
+             margin-top: 10px;
+             width: 100%;
+             height: 60px;
+             background-color: #000000;
+             border-radius: 50px;
+             font-size: 16px;
+             color: white;
+             border: none;
+             text-align: center;
+             line-height: 60px;
+             cursor: pointer;
+         }
+         .kart_wish_div{
+             margin-top: 10px;
+             width: 100%;
+             height: 70px;
+             background-color: white;
+         }
+         .kart_button{
+             width: 48%;
+             height: 60px;
+             background-color: white;
+             border-radius: 50px;
+             color: black;
+             border-color: rgb(0, 0, 0);
+             text-align: center;
+             line-height: 60px;
+             border :1px solid black;             ;
+             float: left;
+             font-weight: 600;
+             font-size: 16px;
+             cursor: pointer;
+         }
+         .wishList_button{
+             width: 48%;
+             height: 60px;
+             background-color: white;
+             border-radius: 50px;
+             color: black;
+             text-align: center;
+             line-height: 60px;
+             border :1px solid black;
+             float: right;
+             font-weight: 600;
+             font-size: 16px;
+             cursor: pointer;
+         }
+         .buy_button:hover{
+             background-color: black;
+             opacity: 70%;
+         }
+         .kart_button:hover{
+            border :1px solid rgba(34, 34, 34, 0.651);   
+         }
+         .wishList_button:hover{
+            border :1px solid rgba(34, 34, 34, 0.651);   
+         }
+         .buy_button a{
+            text-decoration: none;
+            color: white;
+         }
+         .detail_description_div{
+             margin-top: 10px;
+             font-weight: 300;
+             text-align: left;
+             color: rgb(77, 77, 77);
+             width: 100%;
+             height: 300px;
+             background-color: white;
+             
+         }
+
+         .detail_description_div div{
+             text-align: left;
+             margin-top: 10px;
+             
+         }
+         .detail_description_div a{
+            
+            text-decoration: none;
+            color: rgb(77,77,77);
+            font-weight: 300;
+         }
+
+
+
+        
+    </style>
+    <!-- <div class="count_amount">수량</div>
+    <div class="count_product">1</div>
+    <div class="minus">-</div>
+    <div class="plus">+</div> -->
+
+</head>
+
+<body class="jb_font-1">
+    <header>
+        <!-- 헤더 1. 로그인바 -->
+        <div class="nav1">
+            <div class="nav1_logo"></div>
+            <div class="nav1_text">
+                  <a class="gray_atag" href="http://고객센터.com" style="cursor: hand;">고객센터 &nbsp;</a>
+                | <a class="gray_atag" href="http://멤버가입.com" style="cursor: hand;">&nbsp; 멤버 가입 &nbsp;</a>
+                | <a class="gray_atag" href="http://로그인.com" style="cursor: hand;">&nbsp; 로그인</a>
+            </div>
+        </div>
+    
+        <!-- 헤더 2. 네비게이션바 -->
+        <div class="nav2">
+            
+            <!-- 중앙 카테고리 -->
+            <div class="nav2_category">
+                <ul class="li-inline">
+                    <li><a id="at1" class="atag1 black_atag" href="#">New Releases</a></li>
+                    <li><a id="at2" class="atag2 black_atag" href="#">Men</a></li>
+                    <li><a id="at3" class="atag3 black_atag" href="#">Women</a></li>
+                    <li><a id="at4" class="atag4 black_atag" href="#">Kids</a></li>
+                    <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="nav2_search position">
+                <input class="searchBar" type="text" name="search" placeholder="검색">
+            </div>
+            <div class="nav2_wishlist position1">
+                <button class="btn1" type="submit"><img src="/images/icon/heart.png" alt="" ></button>
+                
+            </div>
+            <div class="nav2_bag position2">
+                <button class="btn2" type="submit"><img src="/images/icon/shoppingbag.png" alt="" ></button>
+            </div>
+            <!-- ******************************* -->
+        </div>
+        <div class="background_blur"></div>
+    
+        
+    <!-- ******************************* -->
+    <!-- 신상품 카테고리 -->
+    <!-- ******************************* -->        
+        <div class="detail_category1">
+            <div class="detail_list">
+                <p>New & Featured</p>
+                    <div class="gray_font">
+                        <a href="#">신상품 전체보기</a>
+                        <p>Sale</p>
+                        <p>The BEST</p>
+                        <p>윈터웨어 컬렉션</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>New For Men</p>
+                    <div class="gray_font">
+                        <p>신발</p>
+                        <p>의류</p>
+                        <p>용품</p>
+                        <p>전체보기</p>
+                    </div>
+            </div>  
+            <div class="detail_list">
+                <p>New For Women</p>
+                    <div class="gray_font">
+                        <p>신발</p>
+                        <p>의류</p>
+                        <p>용품</p>
+                        <p>전체보기</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>New For Kids</p>
+                    <div class="gray_font">
+                        <p>신발</p>
+                        <p>의류</p>
+                        <p>용품</p>
+                        <p>전체보기</p>
+                    </div>            
+            </div>
+        </div>
+    <!-- ******************************* -->
+    <!-- 남성 카테고리 -->
+    <!-- ******************************* -->
+        
+        <div class="detail_category2">
+             
+            <div class="detail_list">
+                <p>New & Featured</p>
+                <div class="gray_font">
+                    <p>신상품 남성</p>
+                    <p>Sale</p>
+                    <p>The BEST</p>
+                    <p>윈터웨어 컬렉션</p>
+                </div>
+            </div>
+            <div class="detail_list">
+                <p>신발</p>
+                    <div class="gray_font">
+                    <p>신발 전체</p>
+                    <p>러닝화</p>
+                    <p>축구화</p>
+                    <p>농구화</p>
+                    <p>조던</p>
+                    <p>농구화</p>
+                    <p>샌들 & 슬리퍼</p>
+                    </div>
+            </div>  
+            <div class="detail_list">   
+                <p>의류</p>
+                    <div class="gray_font">
+                    <p>의류 전체</p>
+                    <p>아우터웨어</p>
+                    <p>후드티</p>
+                    <p>팬츠/타이츠</p>
+                    <p>탑/티셔츠</p>
+                    <p>양말</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>잡화</p>
+                    <div class="gray_font">
+                    <p>모자</p>
+                    <p>가방</p>
+                    <p>넥타이/헤어밴드</p>
+                    </div>            
+            </div>
+        </div>
+    <!-- ******************************* -->
+    <!-- 여성 카테고리 -->
+    <!-- ******************************* -->
+        <!----------------------------------------->
+        <div class="detail_category3">
+            <div class="detail_list">
+                <p>New & Featured</p>
+                <div class="gray_font">
+                    <p>신상품 여성</p>
+                    <p>Sale</p>
+                    <p>The BEST</p>
+                    <p>윈터웨어 컬렉션</p>
+                </div>
+            </div>
+            <div class="detail_list">
+                <p>신발</p>
+                    <div class="gray_font">
+                    <p>신발 전체</p>
+                    <p>러닝화</p>
+                    <p>축구화</p>
+                    <p>농구화</p>
+                    <p>조던</p>
+                    <p>농구화</p>
+                    <p>샌들 & 슬리퍼</p>
+                    </div>
+            </div>  
+            <div class="detail_list">   
+                <p>의류</p>
+                    <div class="gray_font">
+                    <p>의류 전체</p>
+                    <p>아우터웨어</p>
+                    <p>후드티</p>
+                    <p>팬츠/타이츠</p>
+                    <p>탑/티셔츠</p>
+                    <p>양말</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>잡화</p>
+                    <div class="gray_font">
+                    <p>모자</p>
+                    <p>가방</p>
+                    <p>넥타이/헤어밴드</p>
+                    </div>            
+            </div>
+        </div>
+    <!-- ******************************* -->
+    <!-- 아동용 카테고리 -->
+    <!-- ******************************* -->
+        <!----------------------------------------->
+        <div class="detail_category4">
+            <div class="detail_list">
+                <p>New & Featured</p>
+                <div class="gray_font">
+                    <p>신상품</p>
+                    <p>SALE</p>
+                    <p>The BEST</p>
+                    <p>키즈 컬렉션</p>
+                </div>
+            </div>
+            <div class="detail_list">
+                <p>신발</p>
+                    <div class="gray_font">
+                        <p>베이비(160mm 이하)</p>
+                        <p>리틀키즈(165-220mm 이하)</p>
+                        <p>베이비(225-250mm 이하)</p>
+                        <p>라이프스타일</p>
+                        <p>러닝</p>
+                        <p>축구</p>
+                        <p>농구</p>
+                        <p>샌들 & 슬리퍼</p>
+                    </div>
+            </div>  
+            <div class="detail_list"> 
+                <p>의류</p>
+                    <div class="gray_font">
+                        <p>베이비 (0-4세)</p>
+                        <p>베이비 (0-4세)</p>
+                        <p>베이비 (0-4세)</p>
+                        <p>아우터웨어</p>
+                        <p>후드티</p>
+                        <p>팬츠</p>
+                        <p>탑/티셔츠</p>
+                        <p>스커트/드레스</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>잡화</p>
+                    <div class="gray_font">
+                        <p>모자</p>
+                        <p>가방</p>
+                        <p>용품</p>
+                    </div>            
+            </div>
+        </div>
+    <!-- ******************************* -->
+    <!-- 세일 카테고리 -->
+    <!-- ******************************* -->
+        <!----------------------------------------->
+        <div class="detail_category5">
+            <div class="detail_list">
+                <p>New & Featured</p>
+                <div class="gray_font">
+                    <p>신상품</p>
+                    <p>Sale</p>
+                    <p>The BEST</p>
+                    <p>윈터웨어 컬렉션</p>
+                </div>
+            </div>
+            <div class="detail_list">
+                <p>신발</p>
+                    <div class="gray_font">
+                    <p>신발 전체</p>
+                    <p>러닝화</p>
+                    <p>축구화</p>
+                    <p>농구화</p>
+                    <p>조던</p>
+                    <p>농구화</p>
+                    <p>샌들 & 슬리퍼</p>
+                    </div>
+            </div>  
+            <div class="detail_list"> 
+                <p>의류</p>
+                    <div class="gray_font">
+                    <p>의류 전체</p>
+                    <p>아우터웨어</p>
+                    <p>후드티</p>
+                    <p>팬츠/타이츠</p>
+                    <p>탑/티셔츠</p>
+                    <p>양말</p>
+                    </div>
+            </div>
+            <div class="detail_list">
+                <p>잡화</p>
+                    <div class="gray_font">
+                    <p>모자</p>
+                    <p>가방</p>
+                    <p>넥타이/헤어밴드</p>
+                    </div>            
+            </div>
+        </div>
+        
+    </header>
+
+    <!-- --------------------------------- -->
+    <main>
+        <div class="main_margin1">
+            <!--+++++++++++++++++++++++++++++-->
+            <!-- 화면 분할 1. 좌측(product_img) -->
+            <!--+++++++++++++++++++++++++++++-->
+            <div class="product_img">
+                <img class="product_img1" src="/images/main_img/nike_detail1.png" width="100%">
+                <img class="product_img2" src="/images/main_img/nike_detail2.png" width="100%">
+                <img class="product_img3" src="/images/main_img/nike_detail3.png" width="100%">
+                <img class="product_img4" src="/images/main_img/nike_detail4.png" width="100%">
+            </div>
+            <!--+++++++++++++++++++++++++++++-->
+            <!-- 화면 분할 2. 우측(content) -->
+            <!--+++++++++++++++++++++++++++++-->
+            <div class="content">
+                <div class="content_padding">
+                    <!--======================-->
+                    <!-- 2-1-1. 모델명 -->
+                    <!--======================-->
+                    <div class="product_name">
+                        <p class="p_1">남성 하프집 후드 재킷 AS</p>
+                        <p class="p_2">나이키 스포츠웨어 헤리티지 윈드러너</p>
+                        <div class="thumnail">
+                            <div class="thumnail_1">
+                                <img class="thum_1" src="/images/main_img/vapor1.png">
+                            </div>
+                            <div class="thumnail_2">
+                                <img class="thum_2" src="/images/main_img/vapor5.png">
+                            </div>
+                            <div class="thumnail_3">
+                                <img class="thum_3" src="/images/main_img/vapor6.png">
+                            </div>
+                        </div>
+                    </div>
+                    <!--======================-->
+                    <!-- 2-1-2. 가격 -->
+                    <!--======================-->
+                    <p class="price" >129,000원</p>
+                    <!--======================-->
+                    <div style="clear: both;"></div>
+                    <!--======================-->
+                    <!-- 2-2. 사이즈선택 -->
+                    <!--======================-->
+                    <div class="size_div">
+                        <div class="product_size">
+                            <h4>사이즈 선택</h4>
+                        </div>    
+                        <div class="size_guide">
+                            <p>사이즈 가이드</p>
+                        </div>
+                        
+                    </div>
+                    <div class="table_div">
+                        <div class="size_table">
+                            <div class="size_cell"><p>85(XS)</p></div>
+                            <div class="size_cell"><p>90(S)</p></div>
+                            <div class="size_cell"><p>95(M)</p></div>
+                            <div class="size_cell"><p>100(L)</p></div>
+                            <div class="size_cell"><p>105(XL)</p></div>
+                            <div class="size_cell"><p>110(2XL)</p></div>
+                        </div>
+                    </div>
+                    <!--======================-->
+                    <!-- 3. 수량 -->
+                    <!--======================-->
+                    <form method="get">
+                        <div class="count_div">
+                            
+                            <div class="count_amount">수량</div>
+                            <input type=text class="count_product" name=amount value=1 readonly>
+                            <input type=button class="plus" value="+" onClick="javascript:this.form.amount.value++;">
+                            <input type=button class="minus" value="-" onClick="javascript:this.form.amount.value--;">
+
+
+                        </div> 
+                    
+                    <!-- <div class="count_div">
+                            
+                        <div class="count_amount">수량</div>
+                        <div class="count_product">1</div>
+                        <div class="minus">-</div>
+                        <div class="plus">+</div>
+                    </div>  -->
+                        <hr>
+                        
+                        <!--======================-->
+                        <!-- 4. 구매 -->
+                        <!--======================-->
+                        <a href="#"><input type="submit" class="buy_button" value="바로구매"></a>
+                        
+                        <div class="kart_wish_div">
+                            <a href="#"><input type="submit" class="kart_button" value="장바구니"></a>
+                            <a href="#"><input type="submit" class="wishList_button" value="위시리스트"></a>
+                        </div>
+                    </form>
+                        <hr>
+                        <div class="detail_description_div">
+                            <h4>중량감 있는 헤리티지 트랙 스타일.</h4>
+                            <p>무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너 재킷에 견고하고 전통적인 느낌을 더합니다. 
+                                오리지널 러닝 윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이 돋보입니다.</p>
+                            
+                            
+                            <p>현재 컬러 : 블랙/화이트</p>
+                            <p>스타일 : DA2493-010</p>
+                            <p><a href="#"></a>더 보기</a></p>
+                            
+                            
+                        </div>   
+                        </div>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++++-->
+            </div>
+        </div>
+    </main>
+    <!-- --------------------------------- -->
+
+
+    <div class="footer">
+
+    </div>
+
+
+
+
+</body>
+
+</html>

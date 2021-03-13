@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- 
+    1. a태그
+    <a href="이동할주소">이동하기<a> 
+    <a href="www.naver.com">이동하기<a> 
+    2. img태그
+    <img src="이미지저장주소/파일명.확장자">
+    <img src="/images/nikehome.png">
+    3. img를 클릭하면 네이버로 이동하는 방법
+    <a href="http://www.naver.com">
+        <img src=/images/nikehome.png">
+    <a>
+    4. 특정 단어 클릭시 네이버 이동
+    <a href="http://www.naver.com">네이버로이동<a>
+    5. 이미지 가운데 정렬
+    <img src=".jpg" style="width:100%; display:block; margin:auto"> 
+    6. 글자 가운데 정렬
+    <p style="text-align:center;">글자가운데정렬<p>  
+    7. div박스는 한행을 전부다 차지한다. 옆으로 나란히 놓으려면?
+        1) float: left (붕떠서 왼쪽으로 정렬해주셈)
+        2) display:inline-block(옆으로 배치해주세욤)
+    8.clear라는 속성 :지금부터 float라는 속성을 무시해서 정상적으로 div박스를 출력
+    clear:both
+    -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>main</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="css/header.css"/>
+    <script src="js/header.js"></script>
+    <style>
+        .main {
+            overflow: auto;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-top: 200px;
+            margin-top: -200px;
+            margin-bottom: 50px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .footer {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+        }
+    </style>
+</head>
+<body class="jb_font-1">
+<header>
+    <!-- 헤더 1. 로그인바 -->
+    <div class="nav1">
+        <div class="nav1_logo"></div>
+        <div class="nav1_text">
+            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
+            >고객센터 &nbsp;</a
+            >
+            |
+            <a class="gray_atag" href="http://멤버가입.com" th:href="@{/sign-up}" style="cursor: hand"
+            >&nbsp; 멤버 가입 &nbsp;</a
+            >
+            |
+            <a class="gray_atag" href="http://로그인.com" th:href="@{/login}" style="cursor: hand"
+            >&nbsp; 로그인</a
+            >
+        </div>
+    </div>
+
+    <!-- 헤더 2. 네비게이션바 -->
+    <div class="nav2">
+        <!-- 중앙 카테고리 -->
+        <div class="nav2_category">
+            <ul class="li-inline">
+                <li>
+                    <a id="at1" class="atag1 black_atag" href="#">New Releases</a>
+                </li>
+                <li><a id="at2" class="atag2 black_atag" href="#">Men</a></li>
+                <li><a id="at3" class="atag3 black_atag" href="#">Women</a></li>
+                <li><a id="at4" class="atag4 black_atag" href="#">Kids</a></li>
+                <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
+            </ul>
+        </div>
+        <div class="nav2_search position">
+            <input
+                    class="searchBar"
+                    type="text"
+                    name="search"
+                    placeholder="검색"
+            />
+        </div>
+        <div class="nav2_wishlist position1">
+            <button class="btn1" type="submit">
+                <img src="/images/icon/heart.png" alt=""/>
+            </button>
+        </div>
+        <div class="nav2_bag position2">
+            <button class="btn2" type="submit">
+                <img src="/images/icon/shoppingbag.png" alt=""/>
+            </button>
+        </div>
+        <!-- ******************************* -->
+    </div>
+    <div class="background_blur"></div>
+
+    <!-- ******************************* -->
+    <!-- 신상품 카테고리 -->
+    <!-- ******************************* -->
+    <div class="detail_category1">
+        <div class="detail_list">
+            <p>New & Featured</p>
+            <div class="gray_font">
+                <p>신상품 전체보기</p>
+                <p>Sale</p>
+                <p>The BEST</p>
+                <p>윈터웨어 컬렉션</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>New For Men</p>
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>New For Women</p>
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>New For Kids</p>
+            <div class="gray_font">
+                <p>신발</p>
+                <p>의류</p>
+                <p>용품</p>
+                <p>전체보기</p>
+            </div>
+        </div>
+    </div>
+    <!-- ******************************* -->
+    <!-- 남성 카테고리 -->
+    <!-- ******************************* -->
+
+    <div class="detail_category2">
+        <div class="detail_list">
+            <p>New & Featured</p>
+            <div class="gray_font">
+                <p>신상품 남성</p>
+                <p>Sale</p>
+                <p>The BEST</p>
+                <p>윈터웨어 컬렉션</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>신발</p>
+            <div class="gray_font">
+                <p>신발 전체</p>
+                <p>러닝화</p>
+                <p>축구화</p>
+                <p>농구화</p>
+                <p>조던</p>
+                <p>농구화</p>
+                <p>샌들 & 슬리퍼</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>의류</p>
+            <div class="gray_font">
+                <p>의류 전체</p>
+                <p>아우터웨어</p>
+                <p>후드티</p>
+                <p>팬츠/타이츠</p>
+                <p>탑/티셔츠</p>
+                <p>양말</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>잡화</p>
+            <div class="gray_font">
+                <p>모자</p>
+                <p>가방</p>
+                <p>넥타이/헤어밴드</p>
+            </div>
+        </div>
+    </div>
+    <!-- ******************************* -->
+    <!-- 여성 카테고리 -->
+    <!-- ******************************* -->
+    <!----------------------------------------->
+    <div class="detail_category3">
+        <div class="detail_list">
+            <p>New & Featured</p>
+            <div class="gray_font">
+                <p>신상품 여성</p>
+                <p>Sale</p>
+                <p>The BEST</p>
+                <p>윈터웨어 컬렉션</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>신발</p>
+            <div class="gray_font">
+                <p>신발 전체</p>
+                <p>러닝화</p>
+                <p>축구화</p>
+                <p>농구화</p>
+                <p>조던</p>
+                <p>농구화</p>
+                <p>샌들 & 슬리퍼</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>의류</p>
+            <div class="gray_font">
+                <p>의류 전체</p>
+                <p>아우터웨어</p>
+                <p>후드티</p>
+                <p>팬츠/타이츠</p>
+                <p>탑/티셔츠</p>
+                <p>양말</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>잡화</p>
+            <div class="gray_font">
+                <p>모자</p>
+                <p>가방</p>
+                <p>넥타이/헤어밴드</p>
+            </div>
+        </div>
+    </div>
+    <!-- ******************************* -->
+    <!-- 아동용 카테고리 -->
+    <!-- ******************************* -->
+    <!----------------------------------------->
+    <div class="detail_category4">
+        <div class="detail_list">
+            <p>New & Featured</p>
+            <div class="gray_font">
+                <p>신상품</p>
+                <p>SALE</p>
+                <p>The BEST</p>
+                <p>키즈 컬렉션</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>신발</p>
+            <div class="gray_font">
+                <p>베이비(160mm 이하)</p>
+                <p>리틀키즈(165-220mm 이하)</p>
+                <p>베이비(225-250mm 이하)</p>
+                <p>라이프스타일</p>
+                <p>러닝</p>
+                <p>축구</p>
+                <p>농구</p>
+                <p>샌들 & 슬리퍼</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>의류</p>
+            <div class="gray_font">
+                <p>베이비 (0-4세)</p>
+                <p>베이비 (0-4세)</p>
+                <p>베이비 (0-4세)</p>
+                <p>아우터웨어</p>
+                <p>후드티</p>
+                <p>팬츠</p>
+                <p>탑/티셔츠</p>
+                <p>스커트/드레스</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>잡화</p>
+            <div class="gray_font">
+                <p>모자</p>
+                <p>가방</p>
+                <p>용품</p>
+            </div>
+        </div>
+    </div>
+    <!-- ******************************* -->
+    <!-- 세일 카테고리 -->
+    <!-- ******************************* -->
+    <!----------------------------------------->
+    <div class="detail_category5">
+        <div class="detail_list">
+            <p>New & Featured</p>
+            <div class="gray_font">
+                <p>신상품</p>
+                <p>Sale</p>
+                <p>The BEST</p>
+                <p>윈터웨어 컬렉션</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>신발</p>
+            <div class="gray_font">
+                <p>신발 전체</p>
+                <p>러닝화</p>
+                <p>축구화</p>
+                <p>농구화</p>
+                <p>조던</p>
+                <p>농구화</p>
+                <p>샌들 & 슬리퍼</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>의류</p>
+            <div class="gray_font">
+                <p>의류 전체</p>
+                <p>아우터웨어</p>
+                <p>후드티</p>
+                <p>팬츠/타이츠</p>
+                <p>탑/티셔츠</p>
+                <p>양말</p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>잡화</p>
+            <div class="gray_font">
+                <p>모자</p>
+                <p>가방</p>
+                <p>넥타이/헤어밴드</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="http://www.naver.com" th:href="@{/items/item-info}"
+        ><img
+                src="/images/main_img/nikemain1.png"
+                style="width: 100%; display: block; margin: auto"
+                alt=""/></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 1</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="http://www.naver.com"
+        ><img
+                src="/images/main_img/nikemain2.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 2</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="http://www.naver.com"
+        ><img
+                src="/images/main_img/nikemain3.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 3</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+
+<div class="footer"></div>
+</body>
+</html>
+<!-- 
+ 
+
+
+
+
+
+                
+
+ -->
