@@ -40,83 +40,73 @@
 
 <!-- body -->
 <body class="main_font">
-    <!-- header nav body 수입경로 -->
-    <header th:replace="fragments.html :: nav-bar"></header>
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar"></header>
 
-    <!-- main body 부분1 -->
-    <main th:each="itemList : ${itemLists}">
-        <div class="main">
-            <a href="#" th:href="@{/items/item-info}"
-            ><img th:src="${itemList.getItemImage()}"
-                    src="/images/main_img/nikemain1.png"
-                    style="width: 100%; display: block; margin: auto"
-            /></a>
-            <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
-            <p class="product" th:text="${itemList.getName()}">상품 모델 명 1</p>
-            <div>
-                <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-                <p class="description" th:text="${itemList.getDescription()}">상품 추천 설명</p>
-            </div>
-            <div>
-                <a class="button white_atag" href="http://www.naver.com">구매하기</a>
-            </div>
+<!-- main body 부분1 -->
+<main th:each="itemList : ${itemLists}">
+    <div class="main">
+        <a href="#" th:href="@{/items/item-info}"
+        ><img th:src="${itemList.getItemImage()}"
+              src="/images/main_img/nikemain1.png"
+              style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product" th:text="${itemList.getName()}">상품 모델 명 1</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description" th:text="${itemList.getDescription()}">상품 추천 설명</p>
         </div>
-    </main>
-    <!-- --------------------------------- -->
-    <!-- main body 부분2 -->
-    <!-- --------------------------------- -->
-    <main>
-        <div class="main">
-            <a href="#"
-            ><img
-                    src="/images/main_img/nikemain2.png"
-                    style="width: 100%; display: block; margin: auto"
-            /></a>
-            <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
-            <p class="product">상품 모델 명 2</p>
-            <div>
-                <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-                <p class="description">상품 추천 설명</p>
-            </div>
-            <div>
-                <a class="button white_atag" href="http://www.naver.com">구매하기</a>
-            </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
         </div>
-    </main>
-    <!-- --------------------------------- -->
-    <!-- main body 부분3 -->
-    <!-- --------------------------------- -->
-    <main>
-        <div class="main">
-            <a href="http://www.naver.com"
-            ><img
-                    src="/images/main_img/nikemain3.png"
-                    style="width: 100%; display: block; margin: auto"
-            /></a>
-            <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
-            <p class="product">상품 모델 명 3</p>
-            <div>
-                <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-                <p class="description">상품 추천 설명</p>
-            </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- main body 부분2 -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="#"
+        ><img
+                src="/images/main_img/nikemain2.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 2</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- main body 부분3 -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="http://www.naver.com"
+        ><img
+                src="/images/main_img/nikemain3.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 3</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
 
-            <div>
-                <a class="button white_atag" href="http://www.naver.com">구매하기</a>
-            </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
         </div>
-    </main>
-    <!-- --------------------------------- -->
+    </div>
+</main>
+
 
 <div class="footer"></div>
 </body>
 </html>
-<!-- 
- 
-
-
-
-
-
-                
-
- -->
