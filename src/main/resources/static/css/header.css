@@ -27,12 +27,6 @@
     padding: 0px;
     } */
 
-.jb-normal {
-  font-weight: normal;
-  font-size: 17px;
-  line-height: 1.7;
-  letter-spacing: -1px;
-}
 div {
   text-align: center;
 }
@@ -129,7 +123,7 @@ div {
   display: inline-block;
   text-align: center;
 
-  font-weight: 600;
+  font-weight: 500;
   font-size: 17px;
   /* ul li 간격 주기 */
   margin-right: 0px;
@@ -182,9 +176,9 @@ div {
   padding-top: 2px;
 }
 .btn2 img {
-  width: 30px;
-  height: 30px;
-  margin-top: 0px;
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
   margin-left: -5px;
   object-fit: cover;
 }
@@ -210,7 +204,7 @@ div {
   border-radius: 50px;
   background-color: rgb(240, 240, 240);
   border-style: none;
-  background-image: url(../../../../../../../Downloads/csh_xmall/img/icon/dod.png);
+  background-image: url(../images/icon/dod.png);
   background-position: 10px;
   background-size: 25px;
   background-repeat: no-repeat;
@@ -226,6 +220,7 @@ input::placeholder {
   vertical-align: 40px;
   padding-top: 10px;
 }
+
 /*==== = = = = = =   */
 .detail_category1 {
   position: absolute;
@@ -321,10 +316,69 @@ input::placeholder {
     display: none;
   }
 }
+@media all and (max-width: 1200px) {
+  .detail_category1 .detail_list {
+    display: none;
+  }
+  .detail_category2 .detail_list {
+    display: none;
+  }
+  .detail_category3 .detail_list {
+    display: none;
+  }
+  .detail_category4 .detail_list {
+    display: none;
+  }
+  .detail_category5 .detail_list {
+    display: none;
+  }
+}
+@media all and (max-width: 1200px) {
+  .detail_category1 {
+    visibility: hidden;
+  }
+  .detail_category2 {
+    visibility: hidden;
+  }
+  .detail_category3 {
+    visibility: hidden;
+  }
+  .detail_category4 {
+    visibility: hidden;
+  }
+  .detail_category5 {
+    visibility: hidden;
+  }
+}
+@media all and (max-width: 1250px) {
+  .product_thum {
+    width: 34vw;
+    height: 40vw;
+  }
+  .product_div {
+    font-size: 1.3vw;
+  }
+}
+@media all and (max-width: 1070px) {
+  .product_thum {
+    width: 60vw;
+    height: 70vw;
+  }
+  .product_div {
+    font-size: 1.8vw;
+  }
+}
 
 .gray_font {
-  color: rgb(97, 97, 97);
-  font-weight: 400;
   text-align: left;
   font-size: 14px;
+  font-weight: 400;
+}
+.gray_font a {
+  text-decoration: none;
+  color: rgb(138, 138, 138);
+}
+.gray_font a:hover {
+  text-decoration: none;
+  color: rgb(32, 32, 32);
 }

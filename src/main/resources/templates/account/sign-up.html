@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments.html :: head"></head>
+<head th:replace="fragments-ref.html :: head"></head>
 <body class="bg-light">
-<div th:replace="fragments.html :: main-nav"></div>
+<div th:replace="fragments-ref.html :: main-nav"></div>
 
 <div class="container">
     <div class="py-5 text-center">
@@ -61,6 +61,6 @@
 
     <div class="fragments.html :: footer"></div>
 </div>
-<script th:replace="fragments.html :: form-validation"></script>
+<script th:replace="fragments-ref.html :: form-validation"></script>
 </body>
 </html>
