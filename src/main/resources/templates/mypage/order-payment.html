@@ -12,11 +12,13 @@
             text-align: center;
             font-weight: bolder;
         }
+
         .shop_customer {
             display: inline-block;
             float: left;
             width: 80%;
         }
+
         .shop_customer_sub {
             font-size: 20px;
             text-align: left;
@@ -24,6 +26,7 @@
             width: 70%;
             padding-top: 13px;
         }
+
         .shop_customer_baesong {
             font-size: 20px;
             text-align: left;
@@ -34,6 +37,7 @@
             float: left;
             width: 80%;
         }
+
         .shop_agree {
             font-size: 20px;
             text-align: left;
@@ -41,12 +45,14 @@
             width: 70%;
             padding-top: 13px;
         }
+
         .shop_address {
             font-size: 20px;
             text-align: left;
             font-weight: bolder;
             width: 47%;
         }
+
         .shop_float {
             font-size: 20px;
             text-align: left;
@@ -57,106 +63,130 @@
             padding-top: 13px;
             padding-left: 13px;
         }
+
         .shop_input {
             text-align: left;
             width: 70%;
         }
+
         .shop_input_basejuso {
             padding-bottom: 10px;
             text-align: left;
         }
+
         .barogage {
             text-align: left;
             font-weight: bolder;
         }
+
         .nav1 {
             width: 100%;
             height: 50px;
             background-color: white;
         }
+
         .nav1_img {
             width: 80px;
             height: 80px;
             display: block;
             margin-left: 40px;
         }
+
         .padding_left {
             padding-left: 270px;
             padding-right: 250px;
         }
+
         .main_line {
             border-bottom: 1px solid black;
             width: 80%;
         }
+
         .sub_line {
             border-bottom: 1px solid black;
             width: 100%;
         }
+
         .cl_memo {
             padding-right: 300px;
         }
+
         .jumun {
             display: inline-block;
             float: right;
             width: 20%;
         }
+
         .jumun_base {
             border: 2px solid black;
         }
+
         .jumun_img {
             text-align: left;
             float: left;
             padding-top: 10px;
             padding-left: 10px;
         }
+
         .jumun_DB {
             float: left;
             padding-top: 10px;
             text-align: left;
         }
+
         .jumun_text_left {
             text-align: left;
         }
+
         .sangpom_price {
             padding-top: 150px;
             text-align: left;
         }
+
         .sangpom_right {
             text-align: right;
             float: right;
         }
+
         .sangpom_left {
             padding-top: 13px;
             text-align: left;
         }
+
         .juuisahang {
             border-bottom: 2px solid black;
         }
+
         .juuisahang_sub {
             text-align: left;
             padding-top: 20px;
         }
+
         .juuisahang_pro {
             text-align: left;
             padding-top: 20px;
             padding-bottom: 20px;
         }
+
         .payment {
             display: inline-block;
             float: left;
             width: 80%;
         }
+
         .payment_img_kakao {
             width: 8%;
             display: block;
             margin: 10px;
             border: 2px;
         }
+
         .payment_img_npay {
             width: 8%;
             display: block;
             margin: 10px;
         }
+
         .payment_submit {
             width: 20%;
             display: block;
@@ -170,10 +200,12 @@
             font-size: 15px;
             border-radius: 50px;
         }
+
         .payment_submit:hover {
             background-color: black;
             opacity: 70%;
         }
+
         .send {
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
@@ -184,23 +216,21 @@
             border: 1px solid black;
             border-radius: 50px;
         }
+
         .send:hover {
             background-color: black;
             opacity: 70%;
         }
+
         .basket {
             text-align: left;
             float: left;
         }
 
     </style>
-    <script
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous"></script>
     <script>
-        function onclickRadio(e){
-            if(e.target.id != "baesong") {
+        function onclickRadio(e) {
+            if (e.target.id != "baesong") {
                 document.getElementById('con').style.display = ""; // 보여줌
                 document.getElementById('pastCon').style.display = "none"; // 보여줌
             } else {
@@ -208,7 +238,8 @@
                 document.getElementById('pastCon').style.display = ""; // 보여줌
             }
         }
-        $( document ).ready(function() {
+
+        $(document).ready(function () {
             $(':radio[name="baesong"]').change(onclickRadio);
         });
     </script>
@@ -244,7 +275,8 @@
             <div class="sub_line"></div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
-                <div class="shop_customer" style="display: inline-block; float: left; width: 80%; text-align:left;">
+                <div class="shop_customer"
+                     style="display: inline-block; float: left; width: 80%; text-align:left;">
                     배송지 정보
                 </div>
             </div>
@@ -257,7 +289,7 @@
                 </div>
             </div>
             <div class="shop_input">
-                <div style="text-align: left;" id="pastCon" >
+                <div style="text-align: left;" id="pastCon">
                     <!--DB에서 가져오는 값-->
                     <p>(우편주소) 주소오오오오오오오오오오오오오오(상세주소오오오오오오)</p>
                     <p>번호</p>
@@ -279,7 +311,7 @@
                 <div class="shop_agree">
                     배송방식
                 </div>
-                <div class="shop_input" class="cl_memo">
+                <div class="shop_input cl_memo">
                     <p>일반배송 : 배송비 2500원</p>
                     <p>배송지역 : 전국(일부 도서산간 지역 제외)</p>
                     <p>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</p>
@@ -299,7 +331,7 @@
                     <!--+++++++++++++++++++++++++++++++++++-->
                     <div class="초록네모1">
                         <dt class="jumun_img">
-                            <img src="./img/nike_shoes.jpg" >
+                            <img src="/images/nike_shoes.jpg">
                         </dt>
                         <dd class="jumun_DB">
                             <!--DB에서 가져오는 값-->
@@ -318,8 +350,8 @@
                 </div>
                 <!--+++++++++++++++++++++++++++++++++++-->
                 <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
-                        <span class="" >
-                            <span class="" >상품 금액</span>
+                        <span class="">
+                            <span class="">상품 금액</span>
                             <div class="sangpom_right">
                                 <strong>189,000 원</strong>
                             </div>
@@ -358,7 +390,8 @@
                     <div class="juuisahang"></div>
                     <!-- 주의사항 -->
                     <div class="juuisahang_sub">
-                        <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일 보관됩니다.</strong>
+                        <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+                            보관됩니다.</strong>
                     </div>
                     <!--+++++++++++++++++++++++++++++++++++-->
                     <div class="juuisahang_pro">
@@ -378,25 +411,25 @@
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
                 <a href="http://www.naver.com">
-                    <img src="./img/icon_kakaopay_100.png" class="payment_img_kakao">
-                    <a>
+                    <img src="/images/icon_kakaopay_100.png" class="payment_img_kakao">
+                </a>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
                 <a href="http://www.naver.com">
-                    <img src="./img/npay.png" class="payment_img_npay">
-                    <a>
+                    <img src="/images/npay.png" class="payment_img_npay">
+                </a>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
                 <button type="submit" class="payment_submit">
-                    <strong><a href="http://www.naver.com">신용카드</strong></a>
+                    <strong><a href="http://www.naver.com">신용카드</a></strong>
                 </button>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
                 <button type="submit" class="payment_submit">
-                    <strong><a href="http://www.naver.com">실시간계좌이체 </strong></a>
+                    <strong><a href="http://www.naver.com">실시간계좌이체 </a></strong>
                 </button>
             </div>
         </div>
@@ -419,13 +452,9 @@
 <!--+++++++++++++++++++++++++++++++++++-->
 
 
-
-
 <div class="footer">
 
 </div>
-
-
 
 
 </body>
