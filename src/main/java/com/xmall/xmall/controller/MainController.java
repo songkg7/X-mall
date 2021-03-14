@@ -17,6 +17,7 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model) {
+        // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
 
