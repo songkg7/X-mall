@@ -16,6 +16,25 @@
             //     $(".product_img1").removeClass(".img_bigger")
             // }
         });
+
+        // 수량이 1 아래로 내려가지 못하도록 해주는 함수 선언
+        function upDownAmount(upDown) {
+            let amount = $("[name=amount]").val();
+
+            if (upDown === 'up') {
+                $("[name=amount]").val(++amount);
+            }
+
+            else if (upDown === 'down') {
+                if (amount > 1) {
+                    $("[name=amount]").val(--amount);
+                }
+
+                else {
+                    return 0;
+                }
+            }
+        }
     </script>
     <style>
         /* ============================================= */
@@ -556,13 +575,13 @@
                                 type="button"
                                 class="plus"
                                 value="+"
-                                onClick="javascript:this.form.amount.value++;"
+                                onClick="upDownAmount('up');"
                         />
                         <input
                                 type="button"
                                 class="minus"
                                 value="-"
-                                onClick="javascript:this.form.amount.value--;"
+                                onClick="upDownAmount('down');"
                         />
                     </div>
 
