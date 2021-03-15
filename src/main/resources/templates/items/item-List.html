@@ -1,560 +1,292 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>main1</title>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<!------------------------------ -->
-<!-- header.css header.js 수입 -->
-<!------------------------------ -->
-<link rel="stylesheet" href="css/header.css">
-<script src="js/header.js"></script>
-
-<script>
-    // main1 자스 코딩
-    $(document).ready(function(){
-
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>main1</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!------------------------------ -->
+    <!-- header.css header.js 수입 -->
+    <!------------------------------ -->
+    <link rel="stylesheet" href="css/header.css"/>
+    <script src="js/header.js"></script>
+    <!-- regular 400 -->
+    <script>
+        // main1 자스 코딩
+        $(document).ready(function () {
             // -----------------------------------------------------
             // 1. 필터 (정렬기능)
             // -----------------------------------------------------
             // default 옵션을 클릭하면
-            $(".default_option").click(function(){
-
+            $(".default_option").click(function () {
                 //디폴트 옵션의 자식들(select옵션)의 목록이 열리고 닫힌다
                 $(this).parent().toggleClass("active");
-            })
+            });
 
             // select 옵션의 리스트중 하나를 선택하면
-            $(".select_ul li").click(function(){
+            $(".select_ul li").click(function () {
                 // select 옵션의 value를 선택하면
-                // 그 내용을 담을 변수에 담아 
+                // 그 내용을 담을 변수에 담아
                 var currentele = $(this).html();
 
                 // default 옵션의 목록에 그 내용을 담는다.
                 $(".default_option li").html(currentele);
 
-                // select 옵션의 목록 선택했던 
+                // select 옵션의 목록 선택했던
                 $(this).parents(".select_box").removeClass("active");
-            })
+            });
             // -----------------------------------------------------
+        });
+    </script>
+    <style>
+        .main_font {
+            font-family: "Noto Sans KR", sans-serif;
+        }
 
-    });
-    
-</script>
-<style>
-    
-    /* ---------------------------- */
-    /*  body CSS 영역                   */
-    /* ---------------------------- */
-    body{
-        margin: 0;
-    }
-    /* ---------------------------- */
-    /*  footer CSS 영역                   */
-    /* ---------------------------- */
-    
-    .footer{
-        position: relative;
-        left: 0px;
-        bottom: 0px;
-        height: 500px;
-        width: 100%;
-        color:white;
-        background: black;
+        /* ---------------------------- */
+        /*  body CSS 영역                   */
+        /* ---------------------------- */
+        body {
+            margin: 0;
+        }
 
-    }
-    /* ---------------------------- */
-    /*  main CSS 영역                   */
-    /* ---------------------------- */
-    .main{
-        overflow: auto;
-        margin-left: 5%;
-        margin-right: 5%;
-        background-color: white;
-        margin-bottom: 50px;
-    }
-    /* ---------------------------- */
-    /* main 추가*/
-    /* ---------------------------- */
-    .top_detail_subject{
-        width: 100%;
-        height: 100px;
-        background-color: white;
-        display: flex;
-        justify-content: space-between;
-        /* padding: 10px; */
-        
-    }
-    
-    
+        /* ---------------------------- */
+        /*  footer CSS 영역                   */
+        /* ---------------------------- */
 
-    /* ------------------------------------- */
-    /* 상딘 오른쪽 필터(기능) */
-    /* ------------------------------------- */
-    .right_List{
-        width: 100%;
-        height: 1000px;
-        background-color: white;
-    }
-    
-    .filter_text{
-        font-size: 20px;
-        font-weight: 400;
-        text-align: left;
-        margin-top: 13px;
-        padding-top: 13px;
-        padding-right: -10px;
-        margin-right: -25px;
-        width: 60px;
-        height: 34px;
-        background: white;
-        float: left;
-    }
-    .select_box{
-        float: left;
-        width: 150px;
-        margin-left: auto;
-        position: relative;
-        user-select: none;
-    }
+        .footer {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+        }
 
-    .select_box .default_option{
-        background: white;
-        position:relative;
-        cursor: pointer;
-        list-style: none;
-        padding-left: 40px;
-        
-    }
-    /* 기본옵션 크기 */
-    .select_box .default_option li{
-        
-    }
-    /* 기본설정 전 화살표  */
-    .select_box .default_option::before{
-        content: "";
-        position: absolute;
-        top:17px;
-        right: 18px;
-        width:6px;
-        height: 6px;
-        border:2px solid;
-        border-color: transparent transparent black black;
-        /* 화살표 방향 */
-        transform: rotate(-45deg);
+        /* ---------------------------- */
+        /*  main CSS 영역                   */
+        /* ---------------------------- */
+        .main {
+            overflow: auto;
+            margin-left: 5%;
+            margin-right: 5%;
+            background-color: white;
+            margin-bottom: 50px;
+        }
 
-    }
-    .select_box .select_ul{
-        position: absolute;
-        top: 45px;
-        left: 0px;
-        width: 100%;
-        background: white;
-        border-radius: 5px;
-        list-style: none;
-        padding-left: 0px;
-        display: none;
-    }
-    .select_box .select_ul li{
-        padding-left: 40px;        
-        cursor: pointer;
-    }
-    .select_box .select_ul li:hover{
-        color: lightgray;
-    }
-    .select_box .option{
-        display: flex;
-        align-items: center;;
-    }
-    
-    .select_box.active .select_ul{
-        display: block;
-    }
-    .select_box.active .default_option::before{
-        top:23px;
-        transform: rotate(-225deg);
-    }
-    /* ------------------------------------- */
-    /* 상딘 왼쪽 */
-    /* ------------------------------------- */
-    
-    .left_title{
-        padding-top: -10px;
-        text-align: left;
-        
-    }
-    .detail_title{
+        /* ---------------------------- */
+        /* main 추가*/
+        /* ---------------------------- */
+        .top_detail_subject {
+            width: 100%;
+            height: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            /* padding: 10px; */
+        }
 
-        margin-top: -10px;
-        font-size: 24px;
-        font-weight: 400px;
+        /* ------------------------------------- */
+        /* 상딘 오른쪽 필터(기능) */
+        /* ------------------------------------- */
+        .right_List {
+            width: 100%;
 
-    }
-    /* ------------------------------------- */
-    /* 하단 왼쪽 */
-    /* ------------------------------------- */
-    .left_list_title{
-        width: 200px;
-        height: 1000px;
-        background-color:white;
-        float: left;
+            background-color: white;
+        }
 
-        
-        
-    }
-    .left_list_div{
-        font-weight: 400;
-        padding-top: 0px;
-        text-align: left;
-        padding-bottom: 20px;
-        color: rgb(32, 32, 32);
-        
-    }
-    hr{
-        size: 1px;
-        width: 90%;
-        margin-left: 0px;
-        
-    }
-    /* 하단 우측 상품 */
+        .filter_text {
+            font-size: 20px;
+            font-weight: 400;
+            text-align: left;
+            margin-top: 13px;
+            padding-top: 13px;
+            padding-right: -10px;
+            margin-right: -25px;
+            width: 60px;
+            height: 34px;
+            background: white;
+            float: left;
+        }
 
-    .product_thum{
-        width: 23vw;
-        height: 26vw;
-        margin : 0 auto;
-        margin-left: 20px;
-        background-color: white;
-        float: left;
-        margin-bottom: 100px;
-    }
-    .img_div{
-        width: 100%;
-        
-        height: auto;
-    }
-    .product_div{
-        margin-top: 0%;
-        width: 100%;
-        height: auto;
-        background-color: white;
-    }
-    .prd_description{
-        background-color: white;
-        width: 60%;
-        height: 110px;
-        float: left;
-        text-align: left;
-        
-    }
-    .prd_price{
-        
-        background-color: white;
-        width: 40%;
-        height: 110px;
-        
-        float: right;
-    }
-    .prd_name{
-        text-align: left;
-        margin-left: 10px;
-        font-weight: 500;
-        
-    }
-    .prd_des{
-        
-        text-align: left;
-        margin-top: -10px;
-        margin-left: 10px;
-        font-size: 300;
-        color: rgb(105, 105, 105);
-    }
-    .prd_money{
-        
-        text-align: right;
-        margin-right: 10px;
-        font-weight: 500;
-    }
+        .select_box {
+            float: left;
+            width: 150px;
+            margin-left: auto;
+            position: relative;
+            user-select: none;
+        }
 
-    
+        .select_box .default_option {
+            background: white;
+            position: relative;
+            cursor: pointer;
+            list-style: none;
+            padding-left: 40px;
+        }
 
-    
+        /* 기본옵션 크기 */
+        .select_box .default_option li {
+        }
 
-    
-</style>
+        /* 기본설정 전 화살표  */
+        .select_box .default_option::before {
+            content: "";
+            position: absolute;
+            top: 17px;
+            right: 18px;
+            width: 6px;
+            height: 6px;
+            border: 2px solid;
+            border-color: transparent transparent black black;
+            /* 화살표 방향 */
+            transform: rotate(-45deg);
+        }
+
+        .select_box .select_ul {
+            position: absolute;
+            top: 45px;
+            left: 0px;
+            width: 100%;
+            background: white;
+            border-radius: 5px;
+            list-style: none;
+            padding-left: 0px;
+            display: none;
+        }
+
+        .select_box .select_ul li {
+            padding-left: 40px;
+            cursor: pointer;
+        }
+
+        .select_box .select_ul li:hover {
+            color: lightgray;
+        }
+
+        .select_box .option {
+            display: flex;
+            align-items: center;
+        }
+
+        .select_box.active .select_ul {
+            display: block;
+        }
+
+        .select_box.active .default_option::before {
+            top: 23px;
+            transform: rotate(-225deg);
+        }
+
+        /* ------------------------------------- */
+        /* 상딘 왼쪽 */
+        /* ------------------------------------- */
+
+        .left_title {
+            padding-top: -10px;
+            text-align: left;
+        }
+
+        .detail_title {
+            margin-top: -10px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        /* ------------------------------------- */
+        /* 하단 왼쪽 */
+        /* ------------------------------------- */
+        .left_list_title {
+            width: 200px;
+            height: 1000px;
+            background-color: white;
+            float: left;
+        }
+
+        .left_list_div {
+            font-weight: 400;
+            padding-top: 0px;
+            text-align: left;
+            padding-bottom: 20px;
+            color: rgb(32, 32, 32);
+        }
+
+        hr {
+            size: 1px;
+            width: 90%;
+            margin-left: 0px;
+        }
+
+        /* 하단 우측 상품 */
+
+        .product_thum {
+            width: 23vw;
+            height: 28vw;
+            margin: 0 auto;
+            margin-left: 20px;
+            background-color: white;
+            float: left;
+            margin-bottom: 100px;
+        }
+
+        .img_div {
+            width: 100%;
+
+            height: auto;
+        }
+
+        .product_div {
+            margin-top: 0%;
+            width: 100%;
+            height: auto;
+            background-color: white;
+            font-size: 1.1vw;
+        }
+
+        .prd_description {
+            background-color: white;
+            width: 60%;
+            height: 110px;
+            float: left;
+            text-align: left;
+        }
+
+        .prd_price {
+            background-color: white;
+            width: 40%;
+            height: 110px;
+
+            float: right;
+        }
+
+        .prd_name {
+            text-align: left;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .prd_des {
+            text-align: left;
+            margin-top: -10px;
+            margin-left: 10px;
+            font-weight: 500;
+            color: rgb(105, 105, 105);
+        }
+
+        .prd_money {
+            text-align: right;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+    </style>
 </head>
-<body class="jb_font-1">
+<body class="main_font">
 <!-- --------------------header html-------------------- -->
-<header>
-    <!-- 헤더 1. 로그인바 -->
-    <div class="nav1">
-        <div class="nav1_logo"></div>
-        <div class="nav1_text">
-              <a class="gray_atag" href="http://고객센터.com" style="cursor: hand;">고객센터 &nbsp;</a>
-            | <a class="gray_atag" href="http://멤버가입.com" style="cursor: hand;">&nbsp; 멤버 가입 &nbsp;</a>
-            | <a class="gray_atag" href="http://로그인.com" style="cursor: hand;">&nbsp; 로그인</a>
-        </div>
-    </div>
-
-    <!-- 헤더 2. 네비게이션바 -->
-    <div class="nav2">
-        
-        <!-- 중앙 카테고리 -->
-        <div class="nav2_category">
-            <ul class="li-inline">
-                <li><a id="at1" class="atag1 black_atag" href="#">New Releases</a></li>
-                <li><a id="at2" class="atag2 black_atag" href="#">Men</a></li>
-                <li><a id="at3" class="atag3 black_atag" href="#">Women</a></li>
-                <li><a id="at4" class="atag4 black_atag" href="#">Kids</a></li>
-                <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
-            </ul>
-        </div>
-        <div class="nav2_search position">
-            <input class="searchBar" type="text" name="search" placeholder="검색">
-        </div>
-        <div class="nav2_wishlist position1">
-            <button class="btn1" type="submit"><img src="./img/icon/heart.png" alt="" ></button>
-            
-        </div>
-        <div class="nav2_bag position2">
-            <button class="btn2" type="submit"><img src="./img/icon/shoppingbag.png" alt="" ></button>
-        </div>
-        <!-- ******************************* -->
-    </div>
-    <div class="background_blur"></div>
-
-    
-<!-- ******************************* -->
-<!-- 신상품 카테고리 -->
-<!-- ******************************* -->        
-    <div class="detail_category1">
-        <div class="detail_list">
-            <p>New & Featured</p>
-                <div class="gray_font">
-                    <a href="#">신상품 전체보기</a>
-                    <p>Sale</p>
-                    <p>The BEST</p>
-                    <p>윈터웨어 컬렉션</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>New For Men</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>
-        </div>  
-        <div class="detail_list">
-            <p>New For Women</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>New For Kids</p>
-                <div class="gray_font">
-                    <p>신발</p>
-                    <p>의류</p>
-                    <p>용품</p>
-                    <p>전체보기</p>
-                </div>            
-        </div>
-    </div>
-<!-- ******************************* -->
-<!-- 남성 카테고리 -->
-<!-- ******************************* -->
-    
-    <div class="detail_category2">
-         
-        <div class="detail_list">
-            <p>New & Featured</p>
-            <div class="gray_font">
-                <p>신상품 남성</p>
-                <p>Sale</p>
-                <p>The BEST</p>
-                <p>윈터웨어 컬렉션</p>
-            </div>
-        </div>
-        <div class="detail_list">
-            <p>신발</p>
-                <div class="gray_font">
-                <p>신발 전체</p>
-                <p>러닝화</p>
-                <p>축구화</p>
-                <p>농구화</p>
-                <p>조던</p>
-                <p>농구화</p>
-                <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list">   
-            <p>의류</p>
-                <div class="gray_font">
-                <p>의류 전체</p>
-                <p>아우터웨어</p>
-                <p>후드티</p>
-                <p>팬츠/타이츠</p>
-                <p>탑/티셔츠</p>
-                <p>양말</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>잡화</p>
-                <div class="gray_font">
-                <p>모자</p>
-                <p>가방</p>
-                <p>넥타이/헤어밴드</p>
-                </div>            
-        </div>
-    </div>
-<!-- ******************************* -->
-<!-- 여성 카테고리 -->
-<!-- ******************************* -->
-    <!----------------------------------------->
-    <div class="detail_category3">
-        <div class="detail_list">
-            <p>New & Featured</p>
-            <div class="gray_font">
-                <p>신상품 여성</p>
-                <p>Sale</p>
-                <p>The BEST</p>
-                <p>윈터웨어 컬렉션</p>
-            </div>
-        </div>
-        <div class="detail_list">
-            <p>신발</p>
-                <div class="gray_font">
-                <p>신발 전체</p>
-                <p>러닝화</p>
-                <p>축구화</p>
-                <p>농구화</p>
-                <p>조던</p>
-                <p>농구화</p>
-                <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list">   
-            <p>의류</p>
-                <div class="gray_font">
-                <p>의류 전체</p>
-                <p>아우터웨어</p>
-                <p>후드티</p>
-                <p>팬츠/타이츠</p>
-                <p>탑/티셔츠</p>
-                <p>양말</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>잡화</p>
-                <div class="gray_font">
-                <p>모자</p>
-                <p>가방</p>
-                <p>넥타이/헤어밴드</p>
-                </div>            
-        </div>
-    </div>
-<!-- ******************************* -->
-<!-- 아동용 카테고리 -->
-<!-- ******************************* -->
-    <!----------------------------------------->
-    <div class="detail_category4">
-        <div class="detail_list">
-            <p>New & Featured</p>
-            <div class="gray_font">
-                <p>신상품</p>
-                <p>SALE</p>
-                <p>The BEST</p>
-                <p>키즈 컬렉션</p>
-            </div>
-        </div>
-        <div class="detail_list">
-            <p>신발</p>
-                <div class="gray_font">
-                    <p>베이비(160mm 이하)</p>
-                    <p>리틀키즈(165-220mm 이하)</p>
-                    <p>베이비(225-250mm 이하)</p>
-                    <p>라이프스타일</p>
-                    <p>러닝</p>
-                    <p>축구</p>
-                    <p>농구</p>
-                    <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list"> 
-            <p>의류</p>
-                <div class="gray_font">
-                    <p>베이비 (0-4세)</p>
-                    <p>베이비 (0-4세)</p>
-                    <p>베이비 (0-4세)</p>
-                    <p>아우터웨어</p>
-                    <p>후드티</p>
-                    <p>팬츠</p>
-                    <p>탑/티셔츠</p>
-                    <p>스커트/드레스</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>잡화</p>
-                <div class="gray_font">
-                    <p>모자</p>
-                    <p>가방</p>
-                    <p>용품</p>
-                </div>            
-        </div>
-    </div>
-<!-- ******************************* -->
-<!-- 세일 카테고리 -->
-<!-- ******************************* -->
-    <!----------------------------------------->
-    <div class="detail_category5">
-        <div class="detail_list">
-            <p>New & Featured</p>
-            <div class="gray_font">
-                <p>신상품</p>
-                <p>Sale</p>
-                <p>The BEST</p>
-                <p>윈터웨어 컬렉션</p>
-            </div>
-        </div>
-        <div class="detail_list">
-            <p>신발</p>
-                <div class="gray_font">
-                <p>신발 전체</p>
-                <p>러닝화</p>
-                <p>축구화</p>
-                <p>농구화</p>
-                <p>조던</p>
-                <p>농구화</p>
-                <p>샌들 & 슬리퍼</p>
-                </div>
-        </div>  
-        <div class="detail_list"> 
-            <p>의류</p>
-                <div class="gray_font">
-                <p>의류 전체</p>
-                <p>아우터웨어</p>
-                <p>후드티</p>
-                <p>팬츠/타이츠</p>
-                <p>탑/티셔츠</p>
-                <p>양말</p>
-                </div>
-        </div>
-        <div class="detail_list">
-            <p>잡화</p>
-                <div class="gray_font">
-                <p>모자</p>
-                <p>가방</p>
-                <p>넥타이/헤어밴드</p>
-                </div>            
-        </div>
-    </div>
-    
+<header th:replace="fragments.html :: nav-bar">
 </header>
 <!-- --------------------header html-------------------- -->
 
@@ -562,7 +294,6 @@
 
 <main>
     <div class="main">
-
         <!-- ---------------------- -->
         <!-- ------top 상단 메인----- -->
         <!-- ---------------------- -->
@@ -574,13 +305,13 @@
             </div>
             <!-- 오른쪽-->
             <div>
-                
-                <div class="filter_text"><img src="img/icon/filter.png" width="30px" height="30px"></div>
+                <div class="filter_text">
+                    <img src="img/icon/filter.png" width="30px" height="30px"/>
+                </div>
                 <div class="select_box">
                     <!-- 첫번쨰 목록 -->
                     <!-- default option을 줄거다 -->
                     <ul class="default_option">
-                        
                         <!-- option.1 신상품순 -->
                         <li>
                             <div class="option new">
@@ -621,7 +352,7 @@
             <div class="left_list_title">
                 <div class="left_list_div">
                     <strong>의류 전체</strong>
-                
+
                     <p>아우터웨어</p>
                     <p>후드티</p>
                     <p>팬츠</p>
@@ -629,12 +360,12 @@
                     <p>속옷</p>
                     <p>탑&티셔츠</p>
                     <p>스커트&드레스</p>
-                    <hr></hr>
+                    <hr/>
                 </div>
-                
+
                 <div class="left_list_div">
                     <strong>스포츠</strong>
-                
+
                     <p>아우터웨어</p>
                     <p>후드티</p>
                     <p>팬츠</p>
@@ -643,34 +374,35 @@
                     <p>탑&티셔츠</p>
                     <p>스커트&드레스</p>
                 </div>
-                <hr></hr>
+                <hr/>
             </div>
-        </div>    
-        <div>
+
             <!-- ---------------------- -->
             <!-- ------하단 우측측 메인----- -->
             <!-- ---------------------- -->
             <div class="right_List">
-                
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <!-- 1번 상품 -->
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <div class="product_thum">
                     <div class="img_div">
-                        <img src="./img/main_img/nike_detail1.png" width="100%" height="auto" 
-                        overflow="hidden" >
+                        <img
+                                src="./img/main_img/nike_detail1.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
                     </div>
-                    
+
                     <div class="product_div">
                         <div class="prd_description">
                             <div class="prd_name">
                                 <p>스포츠웨어 아이콘 클래쉬 메쉬 AOP</p>
                             </div>
                             <div class="prd_des">
-                                <p style="margin-bottom: -10px;">남성 반팔 티셔츠 AS</p>
-                                <p style="margin-bottom: -10px;">1컬러</p>
+                                <p style="margin-bottom: -10px">남성 반팔 티셔츠 AS</p>
+                                <p style="margin-bottom: -10px">1컬러</p>
                             </div>
-                            
                         </div>
                         <div class="prd_price">
                             <div class="prd_money">
@@ -678,28 +410,33 @@
                             </div>
                         </div>
                     </div>
-                    
-<!-- 나이키 에어맥스 90 EOI (여성 신발 라이프스타일)1컬러 159,000원 -->
+
+                    <!-- 나이키 에어맥스 90 EOI (여성 신발 라이프스타일)1컬러 159,000원 -->
                 </div>
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <!-- 2번 상품 -->
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <div class="product_thum">
                     <div class="img_div">
-                        <img src="./img/main_img/nike_w_s_eoi.png" width="100%" height="auto" 
-                        overflow="hidden" >
+                        <img
+                                src="./img/main_img/nike_w_s_eoi.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
                     </div>
-                    
+
                     <div class="product_div">
                         <div class="prd_description">
                             <div class="prd_name">
                                 <p>나이키 에어맥스 90 EOI</p>
                             </div>
                             <div class="prd_des">
-                                <p style="margin-bottom: -10px;">여성 신발 라이프스타일</p>
-                                <p style="margin-bottom: -10px;">1컬러</p>
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
                             </div>
-                            
                         </div>
                         <div class="prd_price">
                             <div class="prd_money">
@@ -714,20 +451,25 @@
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <div class="product_thum">
                     <div class="img_div">
-                        <img src="./img/main_img/nike_w_s_vday.png" width="100%" height="auto" 
-                        overflow="hidden" >
+                        <img
+                                src="./img/main_img/nike_w_s_vday.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
                     </div>
-                    
+
                     <div class="product_div">
                         <div class="prd_description">
                             <div class="prd_name">
                                 <p>나이키 에어맥스 베로나 VDAY</p>
                             </div>
                             <div class="prd_des">
-                                <p style="margin-bottom: -10px;">여성 신발 라이프스타일</p>
-                                <p style="margin-bottom: -10px;">1컬러</p>
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
                             </div>
-                            
                         </div>
                         <div class="prd_price">
                             <div class="prd_money">
@@ -742,20 +484,25 @@
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <div class="product_thum">
                     <div class="img_div">
-                        <img src="./img/main_img/nike_m_t_nit.png" width="100%" height="auto" 
-                        overflow="hidden" >
+                        <img
+                                src="./img/main_img/nike_m_t_nit.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
                     </div>
-                    
+
                     <div class="product_div">
                         <div class="prd_description">
                             <div class="prd_name">
-                                <p>나이키 스포츠웨어 프리미엄 에센셜 니트</p>
+                                <p>
+                                    나이키 스포츠웨어 프리미엄 에센셜 니트
+                                </p>
                             </div>
                             <div class="prd_des">
-                                <p style="margin-bottom: -10px;">남성 반팔 티셔츠 AS</p>
-                                <p style="margin-bottom: -10px;">1컬러</p>
+                                <p style="margin-bottom: -10px">남성 반팔 티셔츠 AS</p>
+                                <p style="margin-bottom: -10px">1컬러</p>
                             </div>
-                            
                         </div>
                         <div class="prd_price">
                             <div class="prd_money">
@@ -770,20 +517,25 @@
                 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
                 <div class="product_thum">
                     <div class="img_div">
-                        <img src="./img/main_img/nike_w_s_react.png" width="100%" height="auto" 
-                        overflow="hidden" >
+                        <img
+                                src="./img/main_img/nike_w_s_react.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
                     </div>
-                    
+
                     <div class="product_div">
                         <div class="prd_description">
                             <div class="prd_name">
                                 <p>나이키 에어맥스 270 리액트</p>
                             </div>
                             <div class="prd_des">
-                                <p style="margin-bottom: -10px;">여성 신발 라이프스타일</p>
-                                <p style="margin-bottom: -10px;">1컬러</p>
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
                             </div>
-                            
                         </div>
                         <div class="prd_price">
                             <div class="prd_money">
@@ -792,22 +544,113 @@
                         </div>
                     </div>
                 </div>
-                
+                <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <!-- 5번 상품 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <div class="product_thum">
+                    <div class="img_div">
+                        <img
+                                src="./img/main_img/nike_w_s_react.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
+                    </div>
+
+                    <div class="product_div">
+                        <div class="prd_description">
+                            <div class="prd_name">
+                                <p>나이키 에어맥스 270 리액트</p>
+                            </div>
+                            <div class="prd_des">
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
+                            </div>
+                        </div>
+                        <div class="prd_price">
+                            <div class="prd_money">
+                                <p>179,000 원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <!-- 5번 상품 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <div class="product_thum">
+                    <div class="img_div">
+                        <img
+                                src="./img/main_img/nike_w_s_react.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
+                    </div>
+
+                    <div class="product_div">
+                        <div class="prd_description">
+                            <div class="prd_name">
+                                <p>나이키 에어맥스 270 리액트</p>
+                            </div>
+                            <div class="prd_des">
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
+                            </div>
+                        </div>
+                        <div class="prd_price">
+                            <div class="prd_money">
+                                <p>179,000 원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <!-- 5번 상품 -->
+                <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
+                <div class="product_thum">
+                    <div class="img_div">
+                        <img
+                                src="./img/main_img/nike_w_s_react.png"
+                                width="100%"
+                                height="auto"
+                                overflow="hidden"
+                        />
+                    </div>
+
+                    <div class="product_div">
+                        <div class="prd_description">
+                            <div class="prd_name">
+                                <p>나이키 에어맥스 270 리액트</p>
+                            </div>
+                            <div class="prd_des">
+                                <p style="margin-bottom: -10px">
+                                    여성 신발 라이프스타일
+                                </p>
+                                <p style="margin-bottom: -10px">1컬러</p>
+                            </div>
+                        </div>
+                        <div class="prd_price">
+                            <div class="prd_money">
+                                <p>179,000 원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </main>
 
-
-
 <!-- --------------------footer-------------------- -->
-<div class="footer"> 
-
-</div>
+<div class="footer"></div>
 <!-- --------------------footer-------------------- -->
-
-
-
 </body>
 </html>
 <!--  -->
@@ -821,13 +664,13 @@
     margin-bottom: 50px;
 } -->
 <!-- <div class="main">
-        
+
     <a href="http://www.naver.com"><img src="./img/nikemain2.png" style="width: 100%; display: block; margin: auto;"></a>
     <p class="product">나이키 에어 베이퍼 맥스 EVO</p>
-    
+
     <div>
         <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p>
-        
+
     </div>
     <div>
         <a class="button white_atag" href="http://www.naver.com">구매하기</a>

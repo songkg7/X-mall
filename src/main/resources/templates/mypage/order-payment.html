@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <style>
+        .shop_order {
+            font-size: 28px;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .shop_customer {
+            display: inline-block;
+            float: left;
+            width: 80%;
+        }
+
+        .shop_customer_sub {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 70%;
+            padding-top: 13px;
+        }
+
+        .shop_customer_baesong {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 70%;
+            padding-top: 13px;
+            display: inline-block;
+            float: left;
+            width: 80%;
+        }
+
+        .shop_agree {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 70%;
+            padding-top: 13px;
+        }
+
+        .shop_address {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 47%;
+        }
+
+        .shop_float {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 95.5%;
+            background-color: lightgray;
+            padding-bottom: 13px;
+            padding-top: 13px;
+            padding-left: 13px;
+        }
+
+        .shop_input {
+            text-align: left;
+            width: 70%;
+        }
+
+        .shop_input_basejuso {
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .barogage {
+            text-align: left;
+            font-weight: bolder;
+        }
+
+        .nav1 {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+        }
+
+        .nav1_img {
+            width: 80px;
+            height: 80px;
+            display: block;
+            margin-left: 40px;
+        }
+
+        .padding_left {
+            padding-left: 270px;
+            padding-right: 250px;
+        }
+
+        .main_line {
+            border-bottom: 1px solid black;
+            width: 80%;
+        }
+
+        .sub_line {
+            border-bottom: 1px solid black;
+            width: 100%;
+        }
+
+        .cl_memo {
+            padding-right: 300px;
+        }
+
+        .jumun {
+            display: inline-block;
+            float: right;
+            width: 20%;
+        }
+
+        .jumun_base {
+            border: 2px solid black;
+        }
+
+        .jumun_img {
+            text-align: left;
+            float: left;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .jumun_DB {
+            float: left;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+        .jumun_text_left {
+            text-align: left;
+        }
+
+        .sangpom_price {
+            padding-top: 150px;
+            text-align: left;
+        }
+
+        .sangpom_right {
+            text-align: right;
+            float: right;
+        }
+
+        .sangpom_left {
+            padding-top: 13px;
+            text-align: left;
+        }
+
+        .juuisahang {
+            border-bottom: 2px solid black;
+        }
+
+        .juuisahang_sub {
+            text-align: left;
+            padding-top: 20px;
+        }
+
+        .juuisahang_pro {
+            text-align: left;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .payment {
+            display: inline-block;
+            float: left;
+            width: 80%;
+        }
+
+        .payment_img_kakao {
+            width: 8%;
+            display: block;
+            margin: 10px;
+            border: 2px;
+        }
+
+        .payment_img_npay {
+            width: 8%;
+            display: block;
+            margin: 10px;
+        }
+
+        .payment_submit {
+            width: 20%;
+            display: block;
+            margin: 0px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0);
+            height: 48px;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+
+        .payment_submit:hover {
+            background-color: black;
+            opacity: 70%;
+        }
+
+        .send {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0);
+            width: 100%;
+            height: 48px;
+            font-size: 15px;
+            padding: 16px 50px;
+            border: 1px solid black;
+            border-radius: 50px;
+        }
+
+        .send:hover {
+            background-color: black;
+            opacity: 70%;
+        }
+
+        .basket {
+            text-align: left;
+            float: left;
+        }
+
+    </style>
+    <script>
+        function onclickRadio(e) {
+            if (e.target.id != "baesong") {
+                document.getElementById('con').style.display = ""; // 보여줌
+                document.getElementById('pastCon').style.display = "none"; // 보여줌
+            } else {
+                document.getElementById('con').style.display = "none"; // 숨김
+                document.getElementById('pastCon').style.display = ""; // 보여줌
+            }
+        }
+
+        $(document).ready(function () {
+            $(':radio[name="baesong"]').change(onclickRadio);
+        });
+    </script>
+</head>
+
+<body class="main_font">
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar">
+</header>
+
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<main>
+    <div class="padding_left">
+        <div class="shop_order">
+            주문 결제
+        </div>
+        <!--+++++++++++++가운데 줄++++++++++++++++++++++-->
+        <div class="main_line"></div>
+        <!--+++++++++++++++++++++++++++++++++++-->
+        <div class="shop_customer">
+            <div class="shop_customer_sub">
+                주문고객
+            </div>
+            <!--DB에서 가져오는 값-->
+            <div class="shop_input">
+                <p>이름</p>
+                <p>번호</p>
+                <p>이메일</p>
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="sub_line"></div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <div class="shop_customer"
+                     style="display: inline-block; float: left; width: 80%; text-align:left;">
+                    배송지 정보
+                </div>
+            </div>
+            <input type="radio" name="baesong" id="baesong" checked="checked">기존 배송지
+            <input type="radio" name="baesong" id="baesong_new">신규 배송지
+            <div>
+                <div style="text-align: left; display:none;" id="con">
+                    <p>(우편주소)주소 : <input type="text" size="10%"> <input type="text" size="60%"></p>
+                    <p>번호 : <input type="text" size="10%"></p>
+                </div>
+            </div>
+            <div class="shop_input">
+                <div style="text-align: left;" id="pastCon">
+                    <!--DB에서 가져오는 값-->
+                    <p>(우편주소) 주소오오오오오오오오오오오오오오(상세주소오오오오오오)</p>
+                    <p>번호</p>
+                </div>
+                <div class="shop_input_basejuso">
+                    <input type="checkbox" name="juso" value="">기본 주소 사용
+                </div>
+                <select name="memo" style="padding-right:300px;">
+                    <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
+                    <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
+                    <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+                    <option value="직접입력">직접입력</option>
+                </select>
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="sub_line"></div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <div class="shop_agree">
+                    배송방식
+                </div>
+                <div class="shop_input cl_memo">
+                    <p>일반배송 : 배송비 2500원</p>
+                    <p>배송지역 : 전국(일부 도서산간 지역 제외)</p>
+                    <p>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="jumun">
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="jumun_base">
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div class="shop_float">
+                    주문내역
+                </div>
+                <div class="빨간네모2">
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="초록네모1">
+                        <dt class="jumun_img">
+                            <img src="/images/nike_shoes.jpg">
+                        </dt>
+                        <dd class="jumun_DB">
+                            <!--DB에서 가져오는 값-->
+                            <div class="jumun_text_left">신발명</div>
+                            <div class="jumun_text_left">스타일 코드</div>
+                            <div class="jumun_text_left">사이즈 : 250</div>
+                            <div class="jumun_text_left">수량 : 1개</div>
+                            <!-- 가격은 DB에서 가져오는 값입니다.-->
+                            <div class="jumun_text_left">가격</div>
+                        </dd>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="초록네모2">
+
+                    </div>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
+                        <span class="">
+                            <span class="">상품 금액</span>
+                            <div class="sangpom_right">
+                                <strong>189,000 원</strong>
+                            </div>
+                        </span>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="sangpom_left">
+                        <span class="">배송비</span>
+                        <span class="sangpom_right">
+                                <strong>2500 원</strong>
+                            </span>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="sangpom_left">
+                        <span class="label">상품 할인 금액</span>
+                        <div class="sangpom_right">
+                            <strong>0 원</strong>
+                        </div>
+                    </div>
+                    <div class="sangpom_left">
+                        <span class="">주문 할인 금액</span>
+                        <div class="sangpom_right">
+                            <strong>
+                                0 원
+                            </strong>
+                        </div>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="sangpom_left">
+                            <span class="">
+                                총 결제 예정 금액
+                            </span>
+                        <div class="sangpom_right">
+                            <strong>191,500 원</strong>
+                        </div>
+                    </div>
+                    <div class="juuisahang"></div>
+                    <!-- 주의사항 -->
+                    <div class="juuisahang_sub">
+                        <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+                            보관됩니다.</strong>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="juuisahang_pro">
+                        <strong>●프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+        <!--+++++++++++++++++++++++++++++++++++-->
+        <div class="payment">
+            <div class="shop_customer_sub">
+                결제 수단 선택
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <a href="http://www.naver.com">
+                    <img src="/images/icon_kakaopay_100.png" class="payment_img_kakao">
+                </a>
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <a href="http://www.naver.com">
+                    <img src="/images/npay.png" class="payment_img_npay">
+                </a>
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <button type="submit" class="payment_submit">
+                    <strong><a href="http://www.naver.com">신용카드</a></strong>
+                </button>
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <button type="submit" class="payment_submit">
+                    <strong><a href="http://www.naver.com">실시간계좌이체 </a></strong>
+                </button>
+            </div>
+        </div>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div class="basket">
+            <li><a href="http://www.naver.com">장바구니 바로가기</a></li>
+        </div>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div>
+            <button type="submit" class="send">
+                <a href="http://www.naver.com">주문 완료</a>
+            </button>
+        </div>
+
+    </div>
+
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+
+<div class="footer">
+
+</div>
+
+
+</body>
+</html>
