@@ -34,7 +34,7 @@ public class AccountController {
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute(new SignUpForm());
-        return "account/sign-up";
+        return "sign-up-ref";
     }
 
     @PostMapping("/sign-up")
@@ -42,7 +42,7 @@ public class AccountController {
     public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute(signUpForm);
-            return "account/sign-up";
+            return "sign-up-ref";
         }
 
 
@@ -86,7 +86,7 @@ public class AccountController {
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute(new AccountForm());
-        return "account/login";
+        return "sign-up";
     }
 
     // FIXME: refactoring
@@ -96,13 +96,13 @@ public class AccountController {
         Account findAccount = accountRepository.findByEmail(accountForm.getEmail());
 
         if (findAccount == null) {
-            return "account/login";
+            return "sign-up";
         }
 
         boolean loginConfirm = accountService.login(accountForm, findAccount);
 
         if (!loginConfirm) {
-            return "account/login";
+            return "sign-up";
         }
 
         return "redirect:/";
