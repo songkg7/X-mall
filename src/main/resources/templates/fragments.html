@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<!-- 화면 전체 헤더의 nav head부분 -->
 <head th:fragment="fragment-header-navbar">
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous"/>
+    <!--  header css  -->
     <style>
         body{
             font-family: "Noto Sans KR", sans-serif;
@@ -463,6 +465,7 @@
         }
 
     </style>
+    <!-- nav 바 제이쿼리 -->
     <script>
         $(document).ready(function () {
             // 네비게이션 바 디테일 카테고리
@@ -594,7 +597,7 @@
           crossorigin="anonymous"/>
 </head>
 
-
+<!-- 화면 전체에 적용할 header의 nav바 body 부분 -->
 <header th:fragment="nav-bar">
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
@@ -879,4 +882,134 @@
         </div>
     </div>
 </header>
+
+
+<!-- 화면 전체에 적용할 footer의 css 부-->
+<head th:fragment="fragment-footer-css">
+    <style>
+    .footer {
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    height: 500px;
+    width: 100%;
+    color: white;
+    background: black;
+    padding-top: 50px;
+    }
+    .footer_navi1 {
+    padding-bottom: 300px;
+    width: 1000px;
+    border-color: #999999;
+
+    font-size: 14px;
+    margin: 0 auto;
+
+    }
+
+    .footer_navi1 a {
+    color: rgb(158, 154, 154);
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    margin-top: 8px;
+    horiz-align: center;
+    }
+
+    .footer_menu_1 {
+    text-align: left;
+    width: 300px;
+    float: left;
+    }
+
+    .footer_menu_1 a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 14px;
+    }
+    .footer_menu_2 {
+        color: #e5e5e5;
+    text-align: left;
+    width: 300px;
+    float: left;
+    }
+    .footer_menu_2 a{
+    color : rgba(194, 194, 194,0.5);
+    }
+
+
+    .footer_menu_3 {
+
+        color: #e5e5e5;
+    text-align: left;
+    width: 300px;
+    float: left;
+    }
+    .footer_menu_3 a{
+         color : rgba(194, 194, 194,0.5);
+     }
+    .footer_menu_4 {
+        color: #e5e5e5;
+        text-align: left;
+        width: 100px;
+        float: left;
+    }
+    .footer_menu_4 a{
+        color : rgba(194, 194, 194,0.5);
+    }
+
+    .footer_navi2 {
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    border-top: 1px solid rgba(194, 194, 194,0.5);
+    border-bottom: 1px solid rgba(194, 194, 194,0.5);
+    font-size: 10px;
+    text-align: left;
+    }
+    </style>
+</head>
+
+
+<!-- 화면 전체에 적용할 footer의 body 부분 -->
+<footer th:fragment="footer-body">
+
+        <div class="footer">
+            <div class="footer_navi1">
+                <div class="footer_menu_1">
+                    <p><a href="">로그인</a></p>
+                    <p><a href="">회원가입</a></p>
+                </div>
+                <div class="footer_menu_2">
+                    <p>고객센터</p>
+                    <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
+                    <a href="http://127.0.0.1:5500/delivery.html">배송</a>
+                    <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
+                    <a href="http://127.0.0.1:5500/loginservice.html"
+                    >회원혜택/서비스</a
+                    >
+                    <a href="http://127.0.0.1:5500/asview.html">A/S</a>
+                    <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
+                    <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
+                </div>
+                <div class="footer_menu_3">
+                    <p>ABOUT PROJECT</p>
+                    <a href="">프로젝트에 관하여</a>
+                </div>
+                <div class="footer_menu_4">
+                    <p>SOCIAL</p>
+                    <a href="">Facebook</a>
+                    <a href="">Instagram</a>
+                    <a href="">Twitter</a>
+                </div>
+            </div>
+            <div class="footer_navi2">
+                <p>대한민국</p>
+            </div>
+        </div>
+
+</footer>
+
+
 </html>

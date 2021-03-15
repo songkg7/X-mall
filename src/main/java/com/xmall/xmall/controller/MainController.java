@@ -26,17 +26,17 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/")
-    public String home(@CurrentAccount Account account, Model model) {
-        if (account != null) {
-            model.addAttribute(account);
-        }
-
-        // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
-        List<Item> itemLists = itemRepository.findAll();
-        model.addAttribute("itemLists", itemLists);
-
-        return "main";
-    }
+//    @GetMapping("/")
+//    public String home(@CurrentAccount Account account, Model model) {
+//        if (account != null) {
+//            model.addAttribute(account);
+//        }
+//
+//        // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
+//        List<Item> itemLists = itemRepository.findAll();
+//        model.addAttribute("itemLists", itemLists);
+//
+//        return "main";
+//    }
 
 }

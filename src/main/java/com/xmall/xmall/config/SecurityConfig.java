@@ -21,11 +21,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // NOTE: 로그인 기능 전엔 모든 접속 허용.
                 .mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated();
+
+        // login
+        http.formLogin()
+                .loginPage("/login").permitAll();
+
+        // logout
+        http.logout()
+                .logoutSuccessUrl("/");
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
+                .mvcMatchers("/node_modules/**")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 }

@@ -84,9 +84,8 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute(new AccountForm());
-        return "sign-up";
+    public String login() {
+        return "account/login";
     }
 
     // FIXME: refactoring
@@ -96,13 +95,13 @@ public class AccountController {
         Account findAccount = accountRepository.findByEmail(accountForm.getEmail());
 
         if (findAccount == null) {
-            return "sign-up";
+            return "account/login";
         }
 
         boolean loginConfirm = accountService.login(accountForm, findAccount);
 
         if (!loginConfirm) {
-            return "sign-up";
+            return "account/login";
         }
 
         return "redirect:/";
