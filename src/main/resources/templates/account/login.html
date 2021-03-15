@@ -1,37 +1,15 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
-    <!-- 
-    1. a태그
-    <a href="이동할주소">이동하기<a> 
-    <a href="www.naver.com">이동하기<a> 
-    2. img태그
-    <img src="이미지저장주소/파일명.확장자">
-    <img src="./img/nikehome.png">
-    3. img를 클릭하면 네이버로 이동하는 방법
-    <a href="http://www.naver.com">
-        <img src=./img/nikehome.png">    
-    <a>
-    4. 특정 단어 클릭시 네이버 이동
-    <a href="http://www.naver.com">네이버로이동<a>
-    5. 이미지 가운데 정렬
-    <img src=".jpg" style="width:100%; display:block; margin:auto"> 
-    6. 글자 가운데 정렬
-    <p style="text-align:center;">글자가운데정렬<p>  
-    7. div박스는 한행을 전부다 차지한다. 옆으로 나란히 놓으려면?
-        1) float: left (붕떠서 왼쪽으로 정렬해주셈)
-        2) display:inline-block(옆으로 배치해주세욤)
-    8.clear라는 속성 :지금부터 float라는 속성을 무시해서 정상적으로 div박스를 출력
-    clear:both
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
 
-    -->
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <title>Login</title>
     <!--    <link rel="stylesheet" href="../../../../../../../../Desktop/layout/css/main.css" />-->
-    <link rel="stylesheet" href="/css/khs/main.css"/>
-    <link rel="stylesheet" href="/css/khs/footer.css"/>
+    <!-- <link rel="stylesheet" href="/css/khs/main.css"/>-->
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
@@ -42,7 +20,10 @@
     />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="/css/khs/footer.css"/>
     <script src="/js/login.js"></script>
+    <!--  main js  -->
+    <!-- main css -->
     <style>
         .login_blank {
             padding: 0px 0px 50px 0px;
@@ -63,7 +44,7 @@
             width: 400px;
             height: 40px;
             padding: 5px;
-            border-color: red;
+            border-color: #ff0000;
             margin-top: 30px;
         }
 
@@ -152,7 +133,7 @@
             color: white;
         }
     </style>
-
+    <!--  main jquery  -->
     <script>
         $(document).ready(function () {
             $("#login_btn").click(function () {
@@ -281,46 +262,13 @@
         });
     </script>
 </head>
-<body class="jb_font-1">
+<body class="main_font">
 <!--+++++++++++++++++++++++++++++++++++-->
-<!-- main 부분 -->
+<!-- header 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
-<header>
-    <!-- 헤더 1. 로그인바 -->
-    <div class="nav1">
-        <div class="nav1_logo"></div>
-        <div class="nav1_text">
-            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
-            >고객센터 &nbsp;</a
-            >
-            |
-            <a class="gray_atag" href="http://멤버가입.com" style="cursor: hand"
-            >&nbsp; 멤버 가입 &nbsp;</a
-            >
-            |
-            <a class="gray_atag" href="http://로그인.com" style="cursor: hand"
-            >&nbsp; 로그인</a
-            >
-        </div>
-    </div>
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar"></header>
 
-    <!-- 헤더 2. 네비게이션바 -->
-    <div class="nav2">
-        <!-- 중앙 카테고리 -->
-        <div class="nav2_category">
-            <ul class="li-inline">
-                <li><a class="black_atag" href="#">New Releases</a></li>
-                <li><a class="black_atag" href="#">Men</a></li>
-                <li><a class="black_atag" href="#">Women</a></li>
-                <li><a class="black_atag" href="#">Kids</a></li>
-                <li><a class="black_atag" href="#">Sale</a></li>
-            </ul>
-        </div>
-        <div class="nav2_search"></div>
-        <div class="nav2_wishlist"></div>
-        <div class="nav2_bag"></div>
-    </div>
-</header>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -361,7 +309,7 @@
                 <span class="login_need2" id="login_need2"
                 >필수 입력 항목입니다.</span
                 >
-                <span class="login_check2" id="login_check2">영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)</span>
+                <span class="login_check2" id="login_check2">영문 대 소문+숫자+특수문자 8~16자리(괄호(), 사용불가)</span>
                 <div class="infor_text">
                     <input
                             type="password"

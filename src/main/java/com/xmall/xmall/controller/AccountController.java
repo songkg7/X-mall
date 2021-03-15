@@ -108,8 +108,5 @@ public class AccountController {
         return "redirect:/";
 
     }
-    @GetMapping("/loginpage")
-    public String loginPage() {
-        return "account/loginpage";
-    }
+
 }
