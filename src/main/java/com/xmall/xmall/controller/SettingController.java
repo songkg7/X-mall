@@ -10,4 +10,3 @@ public class SettingController {
     public String orderPayment() {return "mypage/order-payment";}
 
 }
- 
