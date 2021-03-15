@@ -106,7 +106,6 @@
 
         .nav1_text {
             display: table-cell;
-            background-color: none;
             text-align: right;
 
             /* 부모 div의 수직에 맞춰 중앙정렬 */
@@ -207,16 +206,16 @@
         }
 
         .btn1 img {
-            width: 100%;
-            height: auto;
-            padding-top: 2px;
+            width: 25px;
+            height: 25px;
+            padding-top: 8px;
         }
 
         .btn2 img {
-            width: 27px;
-            height: 27px;
-            margin-top: 1px;
-            margin-left: -5px;
+            width: 25px;
+            height: 25px;
+            margin-top: 6px;
+
             object-fit: cover;
         }
 
@@ -225,40 +224,55 @@
             height: 40px;
             border: none;
             cursor: pointer;
-
+            border-radius: 50%;
             background-color: white;
+            margin-top: 1px;
+        }
+        .btn1:hover{
+            background-color: rgb(220, 220, 220);
         }
 
         .btn2 {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border: none;
             cursor: pointer;
             background-color: white;
-        }
+            border-radius: 50%;
 
+        }
+        .btn2:hover{
+            background-color: rgb(220, 220, 220);
+        }
         .searchBar {
-            width: 150px;
-            font-size: 30px;
+            width: 110px;
+            font-size: 16px;
             height: 40px;
             border-radius: 50px;
             background-color: rgb(240, 240, 240);
             border-style: none;
             background-image: url(../images/icon/dod.png);
+            /*background-position: 10px;*/
+            background-size: 36px;
             background-position: 10px;
-            background-size: 25px;
             background-repeat: no-repeat;
             padding-left: 50px;
             position: relative;
             right: -70px;
         }
+        .searchBar:hover {
+            background-color: rgb(220, 220, 220);
+        }
 
         input::placeholder {
             color: gray;
-            font-size: 18px;
-            font-weight: 300;
-            vertical-align: 40px;
-            padding-top: 10px;
+            font-size: 16px;
+            font-weight: lighter;
+
+            height: auto; /* 높이 초기화 */
+            line-height: normal; /* line-height 초기화 */
+            /*padding: .8em .5em;*/
+            vertical-align: top;
         }
 
         /*==== = = = = = =   */
@@ -623,14 +637,14 @@
             />
         </div>
         <div class="nav2_wishlist position1">
-            <button class="btn1" type="submit">
+            <div class="btn1">
                 <img src="/images/icon/heart.png" alt=""/>
-            </button>
+            </div>
         </div>
         <div class="nav2_bag position2">
-            <button class="btn2" type="submit">
+            <div class="btn2">
                 <img src="/images/icon/shoppingbag.png" alt=""/>
-            </button>
+            </div>
         </div>
         <!-- ******************************* -->
     </div>
