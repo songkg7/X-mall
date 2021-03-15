@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .mvcMatchers("/items/**").permitAll()
 //                .mvcMatchers("/mypage/**").permitAll()
 //                .mvcMatchers("/favicon.ico/**").permitAll()
+                // NOTE: 로그인 기능 전엔 모든 접속 허용.
                 .mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }
