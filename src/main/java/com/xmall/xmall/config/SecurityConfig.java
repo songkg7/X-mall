@@ -14,21 +14,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
-                .mvcMatchers("/items/**").permitAll()
-                .mvcMatchers("/mypage/**").permitAll()
-                .mvcMatchers("/favicon.ico/**").permitAll()
+//                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
+//                .mvcMatchers("/items/**").permitAll()
+//                .mvcMatchers("/mypage/**").permitAll()
+//                .mvcMatchers("/favicon.ico/**").permitAll()
                 // NOTE: 로그인 기능 전엔 모든 접속 허용.
-//                .mvcMatchers("/**").permitAll()
+                .mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated();
 
         // login
-        http.formLogin()
-                .loginPage("/login").permitAll();
-
-        // logout
-        http.logout()
-                .logoutSuccessUrl("/");
+//        http.formLogin()
+//                .loginPage("/login").permitAll();
+//
+//        // logout
+//        http.logout()
+//                .logoutSuccessUrl("/");
     }
 
     @Override

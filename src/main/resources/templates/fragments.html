@@ -19,10 +19,11 @@
           crossorigin="anonymous"/>
     <!--  header css  -->
     <style>
-        body{
+        body {
             font-family: "Noto Sans KR", sans-serif;
             margin: 0;
         }
+
         /* a태그(고객센터 로그인 멤버가입) 속성 */
         .gray_atag {
             color: rgb(17, 17, 17);
@@ -230,7 +231,8 @@
             background-color: white;
             margin-top: 1px;
         }
-        .btn1:hover{
+
+        .btn1:hover {
             background-color: rgb(220, 220, 220);
         }
 
@@ -243,9 +245,11 @@
             border-radius: 50%;
 
         }
-        .btn2:hover{
+
+        .btn2:hover {
             background-color: rgb(220, 220, 220);
         }
+
         .searchBar {
             width: 110px;
             font-size: 16px;
@@ -253,6 +257,7 @@
             border-radius: 50px;
             background-color: rgb(240, 240, 240);
             border-style: none;
+            /*FIXME: url 을 대체하여 직접 삽입하는게 좋을듯 */
             background-image: url(../images/icon/dod.png);
             /*background-position: 10px;*/
             background-size: 36px;
@@ -262,6 +267,7 @@
             position: relative;
             right: -70px;
         }
+
         .searchBar:hover {
             background-color: rgb(220, 220, 220);
         }
@@ -885,129 +891,133 @@
 
 
 <!-- 화면 전체에 적용할 footer의 css 부-->
-<head th:fragment="fragment-footer-css">
+<div th:fragment="fragment-footer-css">
     <style>
-    .footer {
-    position: relative;
-    left: 0px;
-    bottom: 0px;
-    height: 500px;
-    width: 100%;
-    color: white;
-    background: black;
-    padding-top: 50px;
-    }
-    .footer_navi1 {
-    padding-bottom: 300px;
-    width: 1000px;
-    border-color: #999999;
+        .footer {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+            padding-top: 50px;
+        }
 
-    font-size: 14px;
-    margin: 0 auto;
+        .footer_navi1 {
+            padding-bottom: 300px;
+            width: 1000px;
+            border-color: #999999;
 
-    }
+            font-size: 14px;
+            margin: 0 auto;
 
-    .footer_navi1 a {
-    color: rgb(158, 154, 154);
-    text-decoration: none;
-    font-size: 12px;
-    display: block;
-    margin-top: 8px;
-    horiz-align: center;
-    }
+        }
 
-    .footer_menu_1 {
-    text-align: left;
-    width: 300px;
-    float: left;
-    }
+        .footer_navi1 a {
+            color: rgb(158, 154, 154);
+            text-decoration: none;
+            font-size: 12px;
+            display: block;
+            margin-top: 8px;
+            horiz-align: center;
+        }
 
-    .footer_menu_1 a {
-    color: #e5e5e5;
-    text-decoration: none;
-    font-size: 14px;
-    }
-    .footer_menu_2 {
-        color: #e5e5e5;
-    text-align: left;
-    width: 300px;
-    float: left;
-    }
-    .footer_menu_2 a{
-    color : rgba(194, 194, 194,0.5);
-    }
+        .footer_menu_1 {
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
+
+        .footer_menu_1 a {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer_menu_2 {
+            color: #e5e5e5;
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
+
+        .footer_menu_2 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
 
 
-    .footer_menu_3 {
+        .footer_menu_3 {
 
-        color: #e5e5e5;
-    text-align: left;
-    width: 300px;
-    float: left;
-    }
-    .footer_menu_3 a{
-         color : rgba(194, 194, 194,0.5);
-     }
-    .footer_menu_4 {
-        color: #e5e5e5;
-        text-align: left;
-        width: 100px;
-        float: left;
-    }
-    .footer_menu_4 a{
-        color : rgba(194, 194, 194,0.5);
-    }
+            color: #e5e5e5;
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
 
-    .footer_navi2 {
+        .footer_menu_3 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
 
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    border-top: 1px solid rgba(194, 194, 194,0.5);
-    border-bottom: 1px solid rgba(194, 194, 194,0.5);
-    font-size: 10px;
-    text-align: left;
-    }
+        .footer_menu_4 {
+            color: #e5e5e5;
+            text-align: left;
+            width: 100px;
+            float: left;
+        }
+
+        .footer_menu_4 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
+
+        .footer_navi2 {
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            border-top: 1px solid rgba(194, 194, 194, 0.5);
+            border-bottom: 1px solid rgba(194, 194, 194, 0.5);
+            font-size: 10px;
+            text-align: left;
+        }
     </style>
-</head>
+</div>
 
 
 <!-- 화면 전체에 적용할 footer의 body 부분 -->
 <footer th:fragment="footer-body">
 
-        <div class="footer">
-            <div class="footer_navi1">
-                <div class="footer_menu_1">
-                    <p><a href="">로그인</a></p>
-                    <p><a href="">회원가입</a></p>
-                </div>
-                <div class="footer_menu_2">
-                    <p>고객센터</p>
-                    <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
-                    <a href="http://127.0.0.1:5500/delivery.html">배송</a>
-                    <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
-                    <a href="http://127.0.0.1:5500/loginservice.html"
-                    >회원혜택/서비스</a
-                    >
-                    <a href="http://127.0.0.1:5500/asview.html">A/S</a>
-                    <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
-                    <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
-                </div>
-                <div class="footer_menu_3">
-                    <p>ABOUT PROJECT</p>
-                    <a href="">프로젝트에 관하여</a>
-                </div>
-                <div class="footer_menu_4">
-                    <p>SOCIAL</p>
-                    <a href="">Facebook</a>
-                    <a href="">Instagram</a>
-                    <a href="">Twitter</a>
-                </div>
+    <div class="footer">
+        <div class="footer_navi1">
+            <div class="footer_menu_1">
+                <p><a href="">로그인</a></p>
+                <p><a href="">회원가입</a></p>
             </div>
-            <div class="footer_navi2">
-                <p>대한민국</p>
+            <div class="footer_menu_2">
+                <p>고객센터</p>
+                <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
+                <a href="http://127.0.0.1:5500/delivery.html">배송</a>
+                <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
+                <a href="http://127.0.0.1:5500/loginservice.html">회원혜택/서비스</a>
+                <a href="http://127.0.0.1:5500/asview.html">A/S</a>
+                <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
+                <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
+            </div>
+            <div class="footer_menu_3">
+                <p>ABOUT PROJECT</p>
+                <a href="">프로젝트에 관하여</a>
+            </div>
+            <div class="footer_menu_4">
+                <p>SOCIAL</p>
+                <a href="">Facebook</a>
+                <a href="">Instagram</a>
+                <a href="">Twitter</a>
             </div>
         </div>
+        <div class="footer_navi2">
+            <p>대한민국</p>
+        </div>
+    </div>
 
 </footer>
 
