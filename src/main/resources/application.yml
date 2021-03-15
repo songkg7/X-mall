@@ -7,8 +7,13 @@ spring:
 #    password:
 #    driver-class-name: org.h2.Driver
 #  -----
+<<<<<<< HEAD
 #  thymeleaf:
 #    cache: false
+=======
+  thymeleaf:
+    cache: false
+>>>>>>> c92e59675b6e4840f3a5bc1b16df28fdfbc6abb6
   profiles:
     active: local
   jpa:
