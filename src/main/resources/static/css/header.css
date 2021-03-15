@@ -16,52 +16,6 @@
   text-decoration: none;
 }
 
-/* .jb-font-1 {
-    font-family: "Noto Sans CJK KR";
-    }
-    .jb-bold {
-    font-weight: bold;
-    font-size: 43px;
-    margin-top: 70px;
-    margin-bottom: 0px;
-    padding: 0px;
-    } */
-
-div {
-  text-align: center;
-}
-
-.main .button {
-  background-color: black;
-  color: white;
-  border-radius: 30px;
-  border: none;
-  font-size: 17px;
-  font-weight: normal;
-  width: 120px;
-  padding-top: 12px;
-  padding-bottom: 8px;
-  display: block;
-  margin: auto;
-}
-.main .product {
-  font-weight: bold;
-  font-size: 43px;
-  margin-top: 40px;
-  margin-bottom: 0px;
-  padding: 0px;
-}
-.main .description {
-  width: 400px;
-  font-weight: normal;
-  font-size: 17px;
-  line-height: 1.7;
-  letter-spacing: -1px;
-  padding-top: 5px;
-  padding-bottom: 15px;
-  display: block;
-  margin: auto;
-}
 .nav1 {
   width: 100%;
   background-color: rgb(245, 245, 245);
@@ -78,7 +32,7 @@ div {
 }
 .nav1_text {
   display: table-cell;
-  background-color: none;
+
   text-align: right;
 
   /* 부모 div의 수직에 맞춰 중앙정렬 */

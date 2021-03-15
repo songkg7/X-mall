@@ -9,10 +9,43 @@
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
     <!-- main css 부분 -->
     <style>
-        .main_font {
-            font-family: "Noto Sans KR", sans-serif;
+
+
+        div {
+            text-align: center;
         }
 
+        .main .button {
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            font-size: 17px;
+            font-weight: normal;
+            width: 120px;
+            padding-top: 12px;
+            padding-bottom: 8px;
+            display: block;
+            margin: auto;
+        }
+        .main .product {
+            font-weight: bold;
+            font-size: 43px;
+            margin-top: 40px;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+        .main .description {
+            width: 400px;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -1px;
+            padding-top: 5px;
+            padding-bottom: 15px;
+            display: block;
+            margin: auto;
+        }
         .main {
             overflow: auto;
             margin-left: 5%;
@@ -39,8 +72,8 @@
 </head>
 
 <!-- body -->
-<body class="main_font">
 <!-- header nav body 수입경로 -->
+<body>
 <header th:replace="fragments.html :: nav-bar"></header>
 
 <!-- main body 부분1 -->
