@@ -19,7 +19,6 @@ public class ItemService {
         item.setPrice(itemForm.getPrice());
         item.setStockQuantity(itemForm.getStockQuantity());
         item.setDescription(itemForm.getDescription());
-        item.setItemImage(itemForm.getItemImage());
 
         Item newItem = itemRepository.save(item);
 

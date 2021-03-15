@@ -18,6 +18,6 @@ public class ItemForm {
 
     private String description;
 
-    private String itemImage;
+//    private String itemImage;
 
 }
