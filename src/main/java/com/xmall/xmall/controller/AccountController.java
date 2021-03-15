@@ -45,6 +45,7 @@ public class AccountController {
             return "account/sign-up";
         }
 
+
 //        signUpFormValidator.validate(signUpForm, errors);
 //        if (errors.hasErrors()) {
 //            model.addAttribute(signUpForm);
@@ -106,5 +107,9 @@ public class AccountController {
 
         return "redirect:/";
 
+    }
+    @GetMapping("/loginpage")
+    public String loginPage() {
+        return "account/loginpage";
     }
 }
