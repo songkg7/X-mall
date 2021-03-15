@@ -10,16 +10,12 @@
     <title>Login</title>
 
 
-
     <link rel="stylesheet" href="/css/khs/footer.css"/>
     <script src="/js/login.js"></script>
     <!--  main js  -->
     <!-- main css -->
     <style>
-        body{
-            font-family: "Noto Sans KR", sans-serif;
-            margin: 0px;
-        }
+
 
         .login_blank {
             padding: 0px 0px 50px 0px;
@@ -40,10 +36,17 @@
             width: 400px;
             height: 40px;
             padding: 5px;
-            border-color: #ff0000;
+            border-color: black;
             margin-top: 30px;
+            border-width: 1px;
+            font-size : 14px;
         }
-
+        input::-webkit-input-placeholder { font-size: 90%; }
+        input::-moz-placeholder { font-size: 90%; }
+        input:-ms-input-placeholder { font-size: 90%; }
+        input:-moz-placeholder { font-size: 90%; }
+        input::placeholder { font-size: 90%; }
+        input:focus { outline: none; }
         .e_young {
             font-size: 14px;
             margin-top: 40px;
@@ -54,11 +57,13 @@
             height: 110px;
             padding: 15px 8px;
             border: 1px solid #d1d1d1;
-            margin-left: 40%;
-            margin-right: 40%;
+            margin-left: 39%;
+            margin-right: 39%;
             font-size: 12px;
         }
-
+        .scroll_box::placeholder{
+            font-size : 18px;
+        }
         .e_yooung_check {
             font-size: 13px;
         }
@@ -164,9 +169,11 @@
                     login_need1.hide();
                 }
                 if (checkID($("#uid").val()) == false) {
+                    $(".uid").css("border-color","red");
                     login_check1.show();
                 } else {
                     login_check1.hide();
+                    $(".uid").css("border","1px solid black");
                 }
             });
             $("#pwd").keyup(function () {
@@ -174,9 +181,11 @@
                     login_need2.hide();
                 }
                 if (checkPwd($("#pwd").val()) == false) {
+                    $(".pwd").css("border-color","red");
                     login_check2.show();
                 } else {
                     login_check2.hide();
+                    $(".pwd").css("border","1px solid black");
                 }
             });
             $("#pwd2").keyup(function () {
@@ -184,9 +193,11 @@
                     login_need3.hide();
                 }
                 if ($("#pwd").val() != $("#pwd2").val()) {
+                    $(".pwd2").css("border-color","red");
                     login_check3.show();
                 } else {
                     login_check3.hide();
+                    $(".pwd2").css("border","1px solid black");
                 }
             });
             $("#name").keyup(function () {
@@ -194,9 +205,11 @@
                     login_need4.hide();
                 }
                 if (checkName($("#name").val()) == false) {
+                    $(".name").css("border-color","red");
                     login_check4.show();
                 } else {
                     login_check4.hide();
+                    $(".name").css("border","1px solid black");
                 }
             });
             $("#phone").keyup(function () {
@@ -204,9 +217,11 @@
                     login_need5.hide();
                 }
                 if (checkPhone($("#phone").val()) == false) {
+                    $(".phone").css("border-color","red");
                     login_check5.show();
                 } else {
                     login_check5.hide();
+                    $(".phone").css("border","1px solid black");
                 }
             });
 
@@ -305,7 +320,7 @@
                 <span class="login_need2" id="login_need2"
                 >필수 입력 항목입니다.</span
                 >
-<!--                TODO: <> 사용하고 싶으면 규칙에 맞춰서 삽입할 것 -->
+                <!--                TODO: <> 사용하고 싶으면 규칙에 맞춰서 삽입할 것 -->
                 <span class="login_check2" id="login_check2">영문 대 소문+숫자+특수문자 8~16자리(괄호(), &lt;&gt; 사용불가)</span>
                 <div class="infor_text">
                     <input
