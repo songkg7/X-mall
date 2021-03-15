@@ -14,10 +14,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
-                .mvcMatchers("/items/**").permitAll()
-                .mvcMatchers("/mypage/**").permitAll()
-                .mvcMatchers("/favicon.ico/**").permitAll()
+//                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
+//                .mvcMatchers("/items/**").permitAll()
+//                .mvcMatchers("/mypage/**").permitAll()
+//                .mvcMatchers("/favicon.ico/**").permitAll()
+                .mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }
 
