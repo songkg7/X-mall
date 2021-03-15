@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <title>Login</title>
+
+
+    <link rel="stylesheet" href="/css/khs/footer.css"/>
+<!--    <script src="/js/login.js"></script>-->
+    <!--  main js  -->
+    <!-- main css -->
+    <style>
+
+        .login_blank {
+            padding: 0px 0px 50px 0px;
+        }
+
+        .login_mainform p {
+            text-align: center;
+            font-size: 15px;
+            color: #999999;
+            padding-bottom: 30px;
+        }
+
+        .loginform {
+            padding-bottom: 30px;
+        }
+
+        .infor_text input {
+            width: 400px;
+            height: 40px;
+            padding: 5px;
+            border-color: black;
+            margin-top: 30px;
+            border-width: 1px;
+            font-size: 14px;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 90%;
+        }
+
+        input::-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input:-ms-input-placeholder {
+            font-size: 90%;
+        }
+
+        input:-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input::placeholder {
+            font-size: 90%;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .e_young {
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        .scroll_box {
+            overflow-y: scroll;
+            height: 110px;
+            padding: 15px 8px;
+            border: 1px solid #d1d1d1;
+            margin-left: 39%;
+            margin-right: 39%;
+            font-size: 12px;
+        }
+
+        .scroll_box::placeholder {
+            font-size: 18px;
+        }
+
+        .e_yooung_check {
+            font-size: 13px;
+        }
+
+        .button_log {
+            margin-top: 40px;
+            padding: 25px;
+        }
+
+        .login_btn {
+            width: 400px;
+            height: 50px;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login_need1,
+        .login_need2,
+        .login_need3,
+        .login_need4,
+        .login_need5,
+        .login_check1,
+        .login_check2,
+        .login_check3,
+        .login_check4,
+        .login_check5 {
+            padding-left: 0px;
+            font-size: 8px;
+            color: red;
+        }
+
+        .gray {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+        }
+
+        .login_display {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+        }
+
+        .e_young_box {
+            background-color: white;
+            margin: 10% 20% 0px 34%;
+            width: 600px;
+            height: 85px;
+            opacity: 1;
+            border-radius: 10px;
+        }
+
+        .e_young_write {
+            padding: 10px 0px 0px 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .e_young_btn1 {
+            margin: 11px -5px 3% 80%;
+            background-color: black;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- header 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar"></header>
+
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<main>
+    <div class="login_blank"></div>
+    <div class="loginform">
+        <div class="login_mainform">
+            <h2>Login</h2>
+            <p>
+                멤버가 되어 쇼핑몰이 제공하는<br/>
+                최고의 제품과 혜택을 만나보세요.
+            </p>
+        </div>
+<!--        FIXME: th action 문제있음 -->
+        <form action="#" method="post" novalidate>
+            <div class="form-group">
+                <label for="username">이메일 또는 닉네임</label>
+                <input id="username" type="text" name="username" class="form-control"
+                       placeholder="your@email.com" aria-describedby="emailHelp" required>
+                <small id="emailHelp" class="form-text text-muted">
+                    가입할 때 사용한 이메일 또는 닉네임을 입력하세요.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="password">패스워드</label>
+                <input id="password" type="password" name="password" class="form-control"
+                       aria-describedby="passwordHelp" required>
+                <small id="passwordHelp" class="form-text text-muted">
+                    패스워드가 기억나지 않는다면, <a href="#" th:href="@{/email-login}">패스워드 없이 로그인하기</a>
+                </small>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-success btn-block" type="submit"
+                        aria-describedby="submitHelp">로그인</button>
+                <small id="submitHelp" class="form-text text-muted">
+                    X-mall에 처음 오신거라면 <a href="#" th:href="@{/signup}">계정을 먼저 만드세요.</a>
+                </small>
+            </div>
+        </form>
+    </div>
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+<div class="footer">
+    <div class="footer">
+        <div class="footer_navi1">
+            <div class="footer_menu_1">
+                <p><a href="">로그인</a></p>
+                <p><a href="">회원가입</a></p>
+            </div>
+            <div class="footer_menu_2">
+                <p>고객센터</p>
+                <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
+                <a href="http://127.0.0.1:5500/delivery.html">배송</a>
+                <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
+                <a href="http://127.0.0.1:5500/loginservice.html"
+                >회원혜택/서비스</a
+                >
+                <a href="http://127.0.0.1:5500/asview.html">A/S</a>
+                <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
+                <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
+            </div>
+            <div class="footer_menu_3">
+                <p>ABOUT PROJECT</p>
+                <a href="">프로젝트에 관하여</a>
+            </div>
+        </div>
+        <div class="footer_navi2">
+            <p>대한민국</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
