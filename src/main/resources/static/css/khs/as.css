@@ -1,0 +1,110 @@
+.all_Form {
+  display: grid;
+  grid-template-columns: 18% 200px 800px 200px 18%;
+}
+.blank {
+  height: 800px;
+}
+.as_form a {
+  color: black;
+  text-decoration: none;
+}
+
+.as_form {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 50px 50px;
+}
+
+.as_form h2 {
+  display: block;
+  margin-bottom: 50px;
+  height: 50px;
+  border-bottom: 1px solid black;
+}
+
+.as_form h4 {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+.as_form a {
+  display: block;
+  margin-bottom: 35px;
+  height: 40px;
+  border-bottom: 1px solid rgb(212, 210, 210);
+}
+
+.as_menuform a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.as_menuform .listyle strong {
+  margin: 40px 0px 0px 0px;
+  display: block;
+  font-size: 15px;
+}
+
+.as_menuform .listyle ul li a {
+  margin-top: 20px;
+  display: block;
+}
+
+.as_menuform {
+  border: 1px solid #e5e5e5;
+  padding: 0px 0px 0px 5px;
+}
+
+.listyle {
+  text-decoration: none;
+  list-style: none;
+  text-align: left;
+}
+
+.listyle li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.listyle ul {
+  -webkit-padding-start: 0px;
+}
+.imgcenter {
+  border: 1px solid #e5e5e5;
+  height: 100%;
+}
+
+.testform {
+  margin-block: 50px;
+}
+
+.chatmoon {
+  text-decoration: none;
+  color: black;
+}
+
+.as_menu a {
+  color: black;
+  text-decoration: none;
+}
+
+.gongji {
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+
+.navi1 {
+  float: left;
+  margin: 15px 0px 50px 350px;
+}
+.navi2 {
+  margin: 15px 350px 50px 0px;
+  text-align: right;
+}
+
+.navi1 a {
+  color: black;
+  text-decoration: none;
+}
