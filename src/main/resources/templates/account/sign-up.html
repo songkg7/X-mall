@@ -164,40 +164,40 @@
             login_check4.hide();
             login_check5.hide();
 
-            $("#uid").keyup(function () {
-                if ($("#uid").val().split(" ").join("") != "") {
+            $("#nickname").keyup(function () {
+                if ($("#nickname").val().split(" ").join("") != "") {
                     login_need1.hide();
                 }
-                if (checkID($("#uid").val()) == false) {
-                    $(".uid").css("border-color","red");
+                if (checkID($("#nickname").val()) == false) {
+                    $(".nickname").css("border-color","red");
                     login_check1.show();
                 } else {
                     login_check1.hide();
-                    $(".uid").css("border","1px solid black");
+                    $(".nickname").css("border","1px solid black");
                 }
             });
-            $("#pwd").keyup(function () {
-                if ($("#pwd").val().split(" ").join("") != "") {
+            $("#password").keyup(function () {
+                if ($("#password").val().split(" ").join("") != "") {
                     login_need2.hide();
                 }
-                if (checkPwd($("#pwd").val()) == false) {
-                    $(".pwd").css("border-color","red");
+                if (checkPwd($("#password").val()) == false) {
+                    $(".password").css("border-color","red");
                     login_check2.show();
                 } else {
                     login_check2.hide();
-                    $(".pwd").css("border","1px solid black");
+                    $(".password").css("border","1px solid black");
                 }
             });
-            $("#pwd2").keyup(function () {
-                if ($("#pwd2").val().split(" ").join("") != "") {
+            $("#password2").keyup(function () {
+                if ($("#password2").val().split(" ").join("") != "") {
                     login_need3.hide();
                 }
-                if ($("#pwd").val() != $("#pwd2").val()) {
-                    $(".pwd2").css("border-color","red");
+                if ($("#password").val() != $("#password2").val()) {
+                    $(".password2").css("border-color","red");
                     login_check3.show();
                 } else {
                     login_check3.hide();
-                    $(".pwd2").css("border","1px solid black");
+                    $(".password2").css("border","1px solid black");
                 }
             });
             $("#name").keyup(function () {
@@ -226,24 +226,24 @@
             });
 
             function checkform() {
-                var uid = $("#uid").val();
+                var uid = $("#nickname").val();
                 if (uid.split(" ").join("") == "") {
                     login_need1.show();
-                    $("#uid").val("");
+                    $("#nickname").val("");
                 } else if (uid.split(" ").join("") != "") {
                     login_need1.hide();
                 }
-                var pwd = $("#pwd").val();
+                var pwd = $("#password").val();
                 if (pwd.split(" ").join("") == "") {
                     login_need2.show();
-                    $("#pwd").val("");
+                    $("#password").val("");
                 } else if (pwd.split(" ").join("") != "") {
                     login_need2.hide();
                 }
-                var pwd2 = $("#pwd2").val();
+                var pwd2 = $("#password2").val();
                 if (pwd2.split(" ").join("") == "") {
                     login_need3.show();
-                    $("#pwd2").val("");
+                    $("#password2").val("");
                 } else if (pwd2.split(" ").join("") != "") {
                     login_need3.hide();
                 }
@@ -293,14 +293,17 @@
                 최고의 제품과 혜택을 만나보세요.
             </p>
         </div>
-        <form name="login_all_form" method="POST">
+        <form name="login_all_form" action="#"
+              th:action="@{/sign-up}" th:object="${signUpForm}" method="post" novalidate>
             <div class="info_blank">
                 <div class="infor_text">
                     <input
                             type="text"
-                            class="uid"
-                            id="uid"
+                            class="nickname"
+                            id="nickname"
+                            th:field="*{nickname}"
                             placeholder="사용하실 ID를 입력해주세요"
+                            required
                     />
                 </div>
                 <span class="login_need1" id="login_need1"
@@ -309,14 +312,29 @@
                 <span class="login_check1" id="login_check1"
                 >영어 대문자 소문자, _@ 5~14자리</span
                 >
+
+                <div class="infor_text">
+                    <input
+                            type="text"
+                            class="email"
+                            id="email"
+                            th:field="*{email}"
+                            placeholder="사용하실 Email을 입력해주세요"
+                            required
+                    />
+                </div>
+
                 <div class="infor_text">
                     <input
                             type="password"
-                            class="pwd"
-                            id="pwd"
-                            placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"
+                            class="password"
+                            id="password"
+                            th:field="*{password}"
+                            placeholder="영문 대 소문+숫자 8~16자리"
                     />
                 </div>
+<!--                placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"-->
+
                 <span class="login_need2" id="login_need2"
                 >필수 입력 항목입니다.</span
                 >
@@ -325,8 +343,8 @@
                 <div class="infor_text">
                     <input
                             type="password"
-                            class="pwd2"
-                            id="pwd2"
+                            class="password2"
+                            id="password2"
                             placeholder="패스워드를 다시 입력해 주세요"
                     />
                 </div>
