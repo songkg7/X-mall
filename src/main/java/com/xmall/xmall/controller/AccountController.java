@@ -34,7 +34,7 @@ public class AccountController {
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute(new SignUpForm());
-        return "sign-up-ref";
+        return "account/sign-up";
     }
 
     @PostMapping("/sign-up")
@@ -42,7 +42,7 @@ public class AccountController {
     public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute(signUpForm);
-            return "sign-up-ref";
+            return "account/sign-up";
         }
 
 
