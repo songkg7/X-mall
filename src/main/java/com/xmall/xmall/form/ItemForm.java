@@ -11,6 +11,8 @@ public class ItemForm {
     @NotBlank
     private String name;
 
+    private String subTitle;
+
     @NotNull
     private int price;
 
@@ -18,6 +20,8 @@ public class ItemForm {
 
     private String description;
 
-    private String itemImage;
+
+
+//    private String itemImage;
 
 }

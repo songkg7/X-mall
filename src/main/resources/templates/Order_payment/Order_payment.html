@@ -2,26 +2,26 @@
 <html lang="kor">
 <head>
     <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-    <!-- 
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <!--
     1. a태그
-    <a href="이동할주소">이동하기<a> 
-    <a href="www.naver.com">이동하기<a> 
+    <a href="이동할주소">이동하기<a>
+    <a href="www.naver.com">이동하기<a>
     2. img태그
     <img src="이미지저장주소/파일명.확장자">
     <img src="./img/nikehome.png">
     3. img를 클릭하면 네이버로 이동하는 방법
     <a href="http://www.naver.com">
-        <img src=./img/nikehome.png">    
+        <img src=./img/nikehome.png">
     <a>
     4. 특정 단어 클릭시 네이버 이동
     <a href="http://www.naver.com">네이버로이동<a>
     5. 이미지 가운데 정렬
-    <img src=".jpg" style="width:100%; display:block; margin:auto"> 
+    <img src=".jpg" style="width:100%; display:block; margin:auto">
     6. 글자 가운데 정렬
-    <p style="text-align:center;">글자가운데정렬<p>  
+    <p style="text-align:center;">글자가운데정렬<p>
     7. div박스는 한행을 전부다 차지한다. 옆으로 나란히 놓으려면?
         1) float: left (붕떠서 왼쪽으로 정렬해주셈)
         2) display:inline-block(옆으로 배치해주세욤)
@@ -32,24 +32,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>order_payment</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/Order_payment.css">
+    <link rel="stylesheet" href="css/LJH/Order_payment.css">
     <style>
     </style>
     <script>
-    function onclickRadio(e){        
-        if(e.target.id != "delivery") {
-          document.getElementById('con').style.display = ""; // 보여줌
-          document.getElementById('pastCon').style.display = "none"; // 보여줌
-         } else {
-          document.getElementById('con').style.display = "none"; // 숨김
-          document.getElementById('pastCon').style.display = ""; // 보여줌
-         }
-    }
-        $( document ).ready(function() {
-            $(':radio[name="delivery"]').change(onclickRadio);
-    });
+        $(document).ready(function(){
+            // 라디오버튼 클릭시 이벤트 발생
+            $("input:radio[name=delivery]").click(function(){
+
+                if($("input[name=delivery]:checked").val() == "1"){
+                    $("input:text[name=address_input]").prop("disabled",false);
+                    // radio 버튼의 value 값이 1이라면 활성화
+
+                }else if($("input[name=delivery]:checked").val() == "0"){
+                    $("input:text[name=address_input]").prop("disabled",true);
+                    // radio 버튼의 value 값이 0이라면 비활성화
+                }
+            });
+        });
+        $(document).ready(function(){
+            // 라디오버튼 클릭시 이벤트 발생
+            $("input:radio[name=delivery]").click(function(){
+
+                if($("input[name=delivery]:checked").val() == "0"){
+                    $("input:text[name=pastAddress_input]").prop("disabled",false);
+                    // radio 버튼의 value 값이 1이라면 활성화
+
+                }else if($("input[name=delivery]:checked").val() == "1"){
+                    $("input:text[name=pastAddress_input]").prop("disabled",true);
+                    // radio 버튼의 value 값이 0이라면 비활성화
+                }
+            });
+        });
+        $(function(){
+            //직접입력 인풋박스 기존에는 숨어있다가
+            $("#selboxDirect").hide();
+            $("#memo").change(function() {
+                //직접입력을 누를 때 나타남
+                if($("#memo").val() == "직접입력") {
+                    $("#selboxDirect").show();
+                }  else {
+                    $("#selboxDirect").hide();
+                }
+            })
+        });
     </script>
 </head>
 <body class="jb_font-1">
@@ -57,223 +85,212 @@
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
-    <header>
-        <!-- 헤더 1. 로그인바 -->
-        <div class="nav1">
-       
-            <a href="http://www.naver.com">
-                <img src="./img/nike.png" class="nav1_img">  
-            <a>
-        </div>
-    </header>
+<header>
+    <!-- 헤더 1. 로그인바 -->
+    <div class="nav1">
+    </div>
+</header>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
-    <main>
-        <div class="padding_left">
-            <div class="shop_order">
-                        주문 결제
+<main>
+    <div class="padding_left">
+        <div class="shop_order">
+            주문 결제
+        </div>
+        <!--+++++++++++++가운데 줄++++++++++++++++++++++-->
+        <div class="main_line"></div>
+        <!--+++++++++++++++++++++++++++++++++++-->
+        <div class="shop_customer">
+            <div class="shop_customer_sub">
+                주문고객
             </div>
-            <!--+++++++++++++가운데 줄++++++++++++++++++++++-->
-            <div class="main_line"></div>
+            <!--DB에서 가져오는 값-->
+            <div class="shop_input">
+                <p>이름</p>
+                <p>번호</p>
+                <p>이메일</p>
+            </div>
             <!--+++++++++++++++++++++++++++++++++++-->
-            <div class="shop_customer">
-                <div class="shop_customer_sub">
-                    주문고객
-                </div>
-                <!--DB에서 가져오는 값-->
-                <div class="shop_input">
-                    <p>이름</p>
-                    <p>번호</p>
-                    <p>이메일</p>
-                </div>
-                <!--+++++++++++++++++++++++++++++++++++-->
-                <div class="sub_line"></div>
-                <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="sub_line"></div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="shop_customer_sub_delivery">
+                배송지 정보
+            </div>
+            <div style="text-align: left;">
+                <input type="radio" name="delivery" id="delivery" value="1" checked="checked">기존 배송지
+            </div>
+            <!-- 기존 배송지 -->
             <div>
-                <div class="shop_customer_sub_delivery">
-                    배송지 정보
+                <div style="text-align: left; " id="address" >
+                    <p>(우편주소)주소 : <input type="text" size="10%" name="address_input"> <input type="text" size="60%"  name="address_input"></p>
+                    <p>상세주소 : <input type="text" size="100%"  name="address_input"></p>
+                    <p>번호 : <input type="text" size="20%"  name="address_input"></p>
                 </div>
             </div>
-            <input type="radio" name="delivery" id="delivery" checked="checked">기존 배송지
-            <input type="radio" name="delivery" id="delivery_new">신규 배송지
-            <div>
-                <div style="text-align: left; display:none;" id="con">
-                    <p>(우편주소)주소 : <input type="text" size="10%"> <input type="text" size="60%"></p>
-                    <p>번호 : <input type="text" size="10%"></p>
+            <!-- 신규 배송지 -->
+            <div class="shop_input ">
+                <input type="radio" name="delivery" id="delivery_new" value="0"  >신규 배송지
+                <div style="text-align: left;" id="pastAddress" >
+                    <p>(우편주소)주소 : <input type="text" size="10%"  name="pastAddress_input"> <input type="text" size="60%"  name="pastAddress_input"></p>
+                    <p>상세주소 : <input type="text" size="15%"  name="pastAddress_input"></p>
+                    <p>번호 : <input type="text" size="20%"  name="pastAddress_input"></p>
                 </div>
-            </div>
-                <div class="shop_input">
-                    <div style="text-align: left;" id="pastCon" >
-                        <!--DB에서 가져오는 값-->
-                        <p>(우편주소) 주소오오오오오오오오오오오오오오(상세주소오오오오오오)</p>
-                        <p>번호</p>
-                    </div>
-                    <div class="shop_input_baseaddress">
-                        <input type="checkbox" name="address" value="">기본 주소 사용
-                    </div>
-                    <select name="memo" style="padding-right:300px;">
-                            <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
-                            <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
-                            <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
-                            <option value="직접입력">직접입력</option>
+                <div class="shop_input_baseaddress">
+                    <input type="checkbox" name="address" value="">기본 주소 사용
+                </div>
+                <div style="text-align: left; padding-bottom: 50px;">
+                    <select name="memo" id="memo" style="padding-right:300px;" >
+                        <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
+                        <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
+                        <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+                        <option value="직접입력">직접입력</option>
                     </select>
-                </div>
-                <!--+++++++++++++++++++++++++++++++++++-->
-                <div class="sub_line"></div>
-                <!--+++++++++++++++++++++++++++++++++++-->
-                <div>
-                    <div class="shop_agree">
-                        배송방식
-                    </div>
-                    <div class="shop_input" class="cl_memo">
-                        <p>일반배송 : 배송비 2500원</p>
-                        <p>배송지역 : 전국(일부 도서산간 지역 제외)</p>
-                        <p>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</p>
+                    <div style="padding-top: 20px; text-align: left;">
+                        <input type="text" id="selboxDirect" name="selboxDirect"  size="100px" style="padding-bottom:100px"/>
                     </div>
                 </div>
             </div>
-             
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="sub_line"></div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <div class="shop_agree">
+                    배송방식
+                </div>
+                <div class="shop_input" class="cl_memo">
+                    <p>일반배송 : 배송비 2500원</p>
+                    <p>배송지역 : 전국(일부 도서산간 지역 제외)</p>
+                    <p>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</p>
+                </div>
+            </div>
+        </div>
 
-            <div class="order_list">
+
+        <div class="order_list">
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="order_list_base">
                 <!--+++++++++++++++++++++++++++++++++++-->
-                <div class="order_list_base">
+                <div class="shop_float">
+                    주문내역
+                </div>
+                <div class="빨간네모2">
                     <!--+++++++++++++++++++++++++++++++++++-->
-                    <div class="shop_float">
-                        주문내역
-                    </div>
-                    <div class="빨간네모2">
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="초록네모1">
-                            <dt class="order_list_img">
-                            <img src="./img/nike_shoes.jpg" >
-                            </dt>   
-                            <dd class="order_list_DB">
-                                <!--DB에서 가져오는 값-->
-                                <div class="order_list_text_left">신발명</div>
-                                <div class="order_list_text_left">스타일 코드</div>
-                                <div class="order_list_text_left">사이즈 : 250</div>
-                                <div class="order_list_text_left">수량 : 1개</div>
-                                <!-- 가격은 DB에서 가져오는 값입니다.-->
-                                <div class="order_list_text_left">가격</div>
-                            </dd>
-                        </div>
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="초록네모2">
-                            
-                        </div>
+                    <div class="초록네모1">
+                        <dt class="order_list_img">
+                            <img src="img/nike_shoes.jpg">
+                        </dt>
+                        <dd class="order_list_DB">
+                            <!--DB에서 가져오는 값-->
+                            <div class="order_list_text_left">신발명</div>
+                            <div class="order_list_text_left">스타일 코드</div>
+                            <div class="order_list_text_left">사이즈 : 250</div>
+                            <div class="order_list_text_left">수량 : 1개</div>
+                            <!-- 가격은 DB에서 가져오는 값입니다.-->
+                            <div class="order_list_text_left">가격</div>
+                        </dd>
                     </div>
                     <!--+++++++++++++++++++++++++++++++++++-->
-                    <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
-                        <span class="" >
-                            <span class="" >상품 금액</span>
+                    <div class="초록네모2">
+
+                    </div>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
+                        <span class="">
+                            <span class="">상품 금액</span>
                             <div class="goods_right">
                                 <strong>189,000 원</strong>
                             </div>
                         </span>
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="goods_left">
-                            <span class="">배송비</span>
-                            <span class="goods_right">
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="goods_left">
+                        <span class="">배송비</span>
+                        <span class="goods_right">
                                 <strong>2500 원</strong>
                             </span>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="goods_left">
+                        <span class="">상품 할인 금액</span>
+                        <div class="goods_right">
+                            <strong>0 원</strong>
                         </div>
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="goods_left">
-                            <span class="">상품 할인 금액</span>
-                            <div class="goods_right">
-                                    <strong>0 원</strong>
-                            </div>
+                    </div>
+                    <div class="goods_left">
+                        <span class="">주문 할인 금액</span>
+                        <div class="goods_right">
+                            <strong>
+                                0 원
+                            </strong>
                         </div>
-                        <div class="goods_left">
-                            <span class="">주문 할인 금액</span>
-                            <div class="goods_right">
-                                <strong>
-                                    0 원
-                                </strong>
-                            </div>
-                        </div>
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="goods_left">
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="goods_left">
                             <span class="">
                                 총 결제 예정 금액
                             </span>
-                            <div class="goods_right">
-                                <strong>191,500 원</strong>
-                            </div>
+                        <div class="goods_right">
+                            <strong>191,500 원</strong>
                         </div>
-                        <div class="Precautions"></div>
-                        <!-- 주의사항 -->
-                        <div class="precautions_sub">
-                            <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일 보관됩니다.</strong>
-                        </div>
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="precautions_pro">
-                            <strong>●프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</strong>
-                        </div>
-                    </div>               
+                    </div>
+                    <div class="Precautions"></div>
+                    <!-- 주의사항 -->
+                    <div class="precautions_sub">
+                        <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+                            보관됩니다.</strong>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="precautions_pro">
+                        <strong>●프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</strong>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-                       
-                        <!--+++++++++++++++++++++++++++++++++++-->
-                        <div class="payment">
-                            <div class="shop_customer_sub">
-                                결제 수단 선택
-                            </div>
-                            <!--+++++++++++++++++++++++++++++++++++-->
-                            <div>
-                                <a href="http://www.naver.com">
-                                    <img src="./img/icon_kakaopay_100.png" class="payment_img_kakao">    
-                                <a>
-                            </div>
-                            <!--+++++++++++++++++++++++++++++++++++-->
-                            <div>
-                                <a href="http://www.naver.com">
-                                    <img src="./img/npay.png" class="payment_img_npay">    
-                                <a>
-                            </div>
-                            <!--+++++++++++++++++++++++++++++++++++-->
-                            <div>
-                                 <button type="submit" class="payment_submit">
-                                    <strong><a href="http://www.naver.com">신용카드</strong></a>
-                                </button>
-                            </div>
-                            <!--+++++++++++++++++++++++++++++++++++-->
-                            <div>
-                                 <button type="submit" class="payment_submit">
-                                    <strong><a href="http://www.naver.com">실시간계좌이체 </strong></a>
-                                </button>
-                            </div>
-                        </div>
-            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-            <div class="basket">
-                <li><a href="http://www.naver.com">장바구니 바로가기</a></li>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+        <!--+++++++++++++++++++++++++++++++++++-->
+        <div class="payment">
+            <div class="shop_customer_sub">
+                결제 수단 선택
             </div>
-            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+            <!--+++++++++++++++++++++++++++++++++++-->
             <div>
-                <button type="submit" class="send">
-                    <a href="http://www.naver.com">주문 완료</a>
+                <button type="submit" class="payment_submit">
+                    <strong><a href="http://www.naver.com">신용카드</a></strong>
                 </button>
             </div>
-            
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div>
+                <button type="submit" class="payment_submit">
+                    <strong><a href="http://www.naver.com">실시간계좌이체 </a></strong>
+                </button>
+            </div>
         </div>
-                    
-    </main>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div class="basket">
+            <li><a href="http://www.naver.com">장바구니 바로가기</a></li>
+        </div>
+        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <div>
+            <button type="submit" class="send">
+                <a href="http://www.naver.com">주문 완료</a>
+            </button>
+        </div>
+
+    </div>
+
+</main>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- footer 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
 
 
-
-
-<div class="footer"> 
+<div class="footer">
 
 </div>
 
-    
-    
-    
+
 </body>
 </html>

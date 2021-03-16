@@ -1,28 +1,22 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
 
-    <title>Login</title>
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-    />
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
-    />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="/css/khs/footer.css"/>
+    <title>Sign-Up</title>
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+    <!--    <link rel="stylesheet" href="/css/khs/footer.css"/>-->
     <script src="/js/login.js"></script>
     <!--  main js  -->
     <!-- main css -->
     <style>
+
+
         .login_blank {
             padding: 0px 0px 50px 0px;
         }
@@ -42,8 +36,34 @@
             width: 400px;
             height: 40px;
             padding: 5px;
-            border-color: #ff0000;
+            border-color: black;
             margin-top: 30px;
+            border-width: 1px;
+            font-size: 14px;
+        }
+
+        input::-webkit-input-placeholder {
+            font-size: 90%;
+        }
+
+        input::-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input:-ms-input-placeholder {
+            font-size: 90%;
+        }
+
+        input:-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input::placeholder {
+            font-size: 90%;
+        }
+
+        input:focus {
+            outline: none;
         }
 
         .e_young {
@@ -56,9 +76,15 @@
             height: 110px;
             padding: 15px 8px;
             border: 1px solid #d1d1d1;
-            margin-left: 40%;
-            margin-right: 40%;
+            /*margin-left: 39%;*/
+            /*margin-right: 39%;*/
+            width: 390px;
+            margin: 0 auto;
             font-size: 12px;
+        }
+
+        .scroll_box::placeholder {
+            font-size: 18px;
         }
 
         .e_yooung_check {
@@ -75,8 +101,13 @@
             height: 50px;
             background-color: black;
             color: white;
+            border-width: 0;
             font-size: 16px;
             cursor: pointer;
+        }
+
+        .login_btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         .login_need1,
@@ -84,11 +115,13 @@
         .login_need3,
         .login_need4,
         .login_need5,
+        .login_need6,
         .login_check1,
         .login_check2,
         .login_check3,
         .login_check4,
-        .login_check5 {
+        .login_check5,
+        .login_check6 {
             padding-left: 0px;
             font-size: 8px;
             color: red;
@@ -106,27 +139,36 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
-            position: fixed;
+            position: absolute;
+            z-index: 9;
             top: 0;
+
         }
 
         .e_young_box {
             background-color: white;
-            margin: 10% 20% 0px 34%;
+            margin-top: 300px;
+            margin-right: 30%;
+            margin-left: 30%;
+
             width: 600px;
-            height: 85px;
+            height: 200px;
             opacity: 1;
             border-radius: 10px;
         }
 
         .e_young_write {
-            padding: 10px 0px 0px 10px;
-            text-align: left;
+            margin-top : 50px;
+            text-align: center;
             font-size: 14px;
+            margin-bottom: 50px;
         }
 
         .e_young_btn1 {
-            margin: 11px -5px 3% 80%;
+            width: 100px;
+            height: 40px;
+            border: none;
+            margin: 0 auto;
             background-color: black;
             color: white;
         }
@@ -134,61 +176,87 @@
     <!--  main jquery  -->
     <script>
         $(document).ready(function () {
-            $("#login_btn").click(function () {
-                checkform();
-            });
-            $(".gray").hide();
+
+            // $("#login_btn").click(function () {
+            //     checkform();
+            // });
 
             var login_need1 = $("#login_need1");
             var login_need2 = $("#login_need2");
             var login_need3 = $("#login_need3");
             var login_need4 = $("#login_need4");
             var login_need5 = $("#login_need5");
+            var login_need6 = $("#login_need6");
             var login_check1 = $("#login_check1");
             var login_check2 = $("#login_check2");
             var login_check3 = $("#login_check3");
             var login_check4 = $("#login_check4");
             var login_check5 = $("#login_check5");
+            var login_check6 = $("#login_check6");
+
+            $(".gray").hide();
 
             login_need1.hide();
             login_need2.hide();
             login_need3.hide();
             login_need4.hide();
             login_need5.hide();
+            login_need6.hide();
             login_check1.hide();
             login_check2.hide();
             login_check3.hide();
             login_check4.hide();
             login_check5.hide();
+            login_check6.hide();
 
-            $("#uid").keyup(function () {
-                if ($("#uid").val().split(" ").join("") != "") {
+            $("#nickname").keyup(function () {
+                if ($("#nickname").val().split(" ").join("") != "") {
                     login_need1.hide();
                 }
-                if (checkID($("#uid").val()) == false) {
+                if (checkID($("#nickname").val()) == false) {
+                    $(".nickname").css("border-color", "red");
                     login_check1.show();
                 } else {
                     login_check1.hide();
+                    $(".nickname").css("border", "1px solid black");
                 }
             });
-            $("#pwd").keyup(function () {
-                if ($("#pwd").val().split(" ").join("") != "") {
+
+            $("#email").keyup(function () {
+                if ($("#email").val().split(" ").join("") != "") {
+                    login_need6.hide();
+                }
+                if (checkEmail($("#email").val()) == false) {
+                    $(".email").css("border-color", "red");
+                    login_check6.show();
+                } else {
+                    login_check6.hide();
+                    $(".email").css("border", "1px solid black");
+                }
+            });
+
+            $("#password").keyup(function () {
+                if ($("#password").val().split(" ").join("") != "") {
                     login_need2.hide();
                 }
-                if (checkPwd($("#pwd").val()) == false) {
+                if (checkPwd($("#password").val()) == false) {
+                    $(".password").css("border-color", "red");
                     login_check2.show();
                 } else {
                     login_check2.hide();
+                    $(".password").css("border", "1px solid black");
                 }
             });
-            $("#pwd2").keyup(function () {
-                if ($("#pwd2").val().split(" ").join("") != "") {
+            $("#password2").keyup(function () {
+                if ($("#password2").val().split(" ").join("") != "") {
                     login_need3.hide();
                 }
-                if ($("#pwd").val() != $("#pwd2").val()) {
+                if ($("#password").val() != $("#password2").val()) {
+                    $(".password2").css("border-color", "red");
                     login_check3.show();
                 } else {
                     login_check3.hide();
+                    $(".password2").css("border", "1px solid black");
                 }
             });
             $("#name").keyup(function () {
@@ -196,9 +264,11 @@
                     login_need4.hide();
                 }
                 if (checkName($("#name").val()) == false) {
+                    $(".name").css("border-color", "red");
                     login_check4.show();
                 } else {
                     login_check4.hide();
+                    $(".name").css("border", "1px solid black");
                 }
             });
             $("#phone").keyup(function () {
@@ -206,61 +276,156 @@
                     login_need5.hide();
                 }
                 if (checkPhone($("#phone").val()) == false) {
+                    $(".phone").css("border-color", "red");
                     login_check5.show();
                 } else {
                     login_check5.hide();
+                    $(".phone").css("border", "1px solid black");
                 }
             });
-
-            function checkform() {
-                var uid = $("#uid").val();
-                if (uid.split(" ").join("") == "") {
-                    login_need1.show();
-                    $("#uid").val("");
-                } else if (uid.split(" ").join("") != "") {
-                    login_need1.hide();
-                }
-                var pwd = $("#pwd").val();
-                if (pwd.split(" ").join("") == "") {
-                    login_need2.show();
-                    $("#pwd").val("");
-                } else if (pwd.split(" ").join("") != "") {
-                    login_need2.hide();
-                }
-                var pwd2 = $("#pwd2").val();
-                if (pwd2.split(" ").join("") == "") {
-                    login_need3.show();
-                    $("#pwd2").val("");
-                } else if (pwd2.split(" ").join("") != "") {
-                    login_need3.hide();
-                }
-                var name = $("#name").val();
-                if (name.split(" ").join("") == "") {
-                    login_need4.show();
-                    $("#name").val("");
-                } else if (name.split(" ").join("") != "") {
-                    login_need4.hide();
-                }
-                var phone = $("#phone").val();
-                if (phone.split(" ").join("") == "") {
-                    login_need5.show();
-                    $("#phone").val("");
-                } else if (phone.split(" ").join("") != "") {
-                    login_need5.hide();
-                }
-
-                if ($(".e_young_check").prop("checked") == false) {
-                    $(".gray").show();
-                }
-            }
 
             $("#e_young_btn1").click(function () {
                 $(".gray").hide();
             });
         });
+
+        function checkForm() {
+            var login_need1 = $("#login_need1");
+            var login_need2 = $("#login_need2");
+            var login_need3 = $("#login_need3");
+            var login_need4 = $("#login_need4");
+            var login_need5 = $("#login_need5");
+            var login_need6 = $("#login_need6");
+            var login_check1 = $("#login_check1");
+            var login_check2 = $("#login_check2");
+            var login_check3 = $("#login_check3");
+            var login_check4 = $("#login_check4");
+            var login_check5 = $("#login_check5");
+            var login_check6 = $("#login_check6");
+
+            var uid = $(".nickname").val();
+            if (uid.split(" ").join("") === "") {
+                $(".nickname").css("border-color", "red");
+                login_need1.show();
+                $(".nickname").val("");
+                $(".nickname").focus();
+                return;
+            } else if (uid.split(" ").join("") !== "") {
+                if (checkID($(".nickname").val()) === false) {
+                    $(".nickname").css("border-color", "red");
+                    login_check1.show();
+                    $(".nickname").focus();
+                    return;
+                } else {
+                    login_check1.hide();
+                    $(".nickname").css("border", "1px solid black");
+                }
+            }
+
+            var email = $(".email").val();
+            if (email.split(" ").join("") === "") {
+                $(".email").css("border-color", "red");
+                login_need6.show();
+                $(".email").val("");
+                $(".email").focus();
+                return;
+            } else if (email.split(" ").join("") !== "") {
+                if (checkEmail($(".email").val()) === false) {
+                    $(".email").css("border-color", "red");
+                    login_check6.show();
+                    $(".email").focus();
+                    return;
+                } else {
+                    login_check6.hide();
+                    $(".email").css("border", "1px solid black");
+                }
+            }
+
+            var pwd = $(".password").val();
+            if (pwd.split(" ").join("") === "") {
+                $(".password").css("border-color", "red");
+                login_need2.show();
+                $(".password").val("");
+                $(".password").focus();
+                return;
+            } else if (pwd.split(" ").join("") !== "") {
+                if (checkPwd($(".password").val()) === false) {
+                    $(".password").css("border-color", "red");
+                    login_check2.show();
+                    $(".password").focus();
+                    return;
+                } else {
+                    login_check2.hide();
+                    $(".password").css("border", "1px solid black");
+                }
+            }
+
+            var pwd2 = $(".password2").val();
+            if (pwd2.split(" ").join("") === "") {
+                $(".password2").css("border-color", "red");
+                login_need3.show();
+                $(".password2").val("");
+                $(".password2").focus();
+                return;
+            } else if (pwd2.split(" ").join("") !== "") {
+                if ($(".password").val() !== $(".password2").val()) {
+                    $(".password2").css("border-color", "red");
+                    login_check3.show();
+                    $(".password2").focus();
+                    return;
+                } else {
+                    login_check3.hide();
+                    $(".password2").css("border", "1px solid black");
+                }
+            }
+
+            var name = $(".name").val();
+            if (name.split(" ").join("") === "") {
+                $(".name").css("border-color", "red");
+                login_need4.show();
+                $(".name").val("");
+                $(".name").focus();
+                return;
+            } else if (name.split(" ").join("") !== "") {
+                if (checkName($(".name").val()) === false) {
+                    $(".name").css("border-color", "red");
+                    login_check4.show();
+                    $(".name").focus();
+                    return;
+                } else {
+                    login_check4.hide();
+                    $(".name").css("border", "1px solid black");
+                }
+            }
+
+            var phone = $(".phone").val();
+            if (phone.split(" ").join("") === "") {
+                $(".phone").css("border-color", "red");
+                login_need5.show();
+                $(".phone").val("");
+                $(".phone").focus();
+                return;
+            } else if (phone.split(" ").join("") !== "") {
+                if (checkPhone($(".phone").val()) === false) {
+                    $(".phone").css("border-color", "red");
+                    login_check5.show();
+                    $(".phone").focus();
+                    return;
+                } else {
+                    login_check5.hide();
+                    $(".phone").css("border", "1px solid black");
+                }
+            }
+
+            if ($(".e_young_check").prop("checked") === false) {
+                $(".gray").show();
+            } else {
+                document.login_all_form.submit();
+            }
+        }
     </script>
 </head>
-<body class="main_font">
+<body>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- header 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -280,15 +445,27 @@
                 최고의 제품과 혜택을 만나보세요.
             </p>
         </div>
-        <form name="login_all_form" method="POST">
+        <form name="login_all_form" action="#" th:action="@{/sign-up}" th:object="${signUpForm}"
+              method="post" novalidate>
+            <!--            <input-->
+            <!--                    type="hidden"-->
+            <!--                    th:name="${_csrf.parameterName}"-->
+            <!--                    th:value="${_csrf.token}" />-->
             <div class="info_blank">
                 <div class="infor_text">
                     <input
                             type="text"
-                            class="uid"
-                            id="uid"
+                            class="nickname"
+                            id="nickname"
+                            th:field="*{nickname}"
                             placeholder="사용하실 ID를 입력해주세요"
+                            required
                     />
+                    <div>
+                        <small class="form-text text-danger"
+                               th:if="${#fields.hasErrors('nickname')}"
+                               th:errors="*{nickname}">Nickname Error</small>
+                    </div>
                 </div>
                 <span class="login_need1" id="login_need1"
                 >필수 입력 항목입니다.</span
@@ -296,24 +473,49 @@
                 <span class="login_check1" id="login_check1"
                 >영어 대문자 소문자, _@ 5~14자리</span
                 >
+
+                <div class="infor_text">
+                    <input
+                            type="text"
+                            class="email"
+                            id="email"
+                            th:field="*{email}"
+                            placeholder="사용하실 Email을 입력해주세요"
+                            required
+                    />
+                    <div>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}">Email Error</small>
+                    </div>
+                </div>
+                <span class="login_need6" id="login_need6"
+                >필수 입력 항목입니다.</span
+                >
+                <span class="login_check6" id="login_check6"
+                >hello@example.com 같은 Email 형식입니다.</span
+                >
+
                 <div class="infor_text">
                     <input
                             type="password"
-                            class="pwd"
-                            id="pwd"
-                            placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"
+                            class="password"
+                            id="password"
+                            th:field="*{password}"
+                            placeholder="영문 대 소문+숫자 8~16자리"
                     />
                 </div>
+                <!--                placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"-->
+
                 <span class="login_need2" id="login_need2"
                 >필수 입력 항목입니다.</span
                 >
-<!--                TODO: <> 사용하고 싶으면 규칙에 맞춰서 삽입할 것 -->
+                <!--                TODO: <> 사용하고 싶으면 규칙에 맞춰서 삽입할 것 -->
                 <span class="login_check2" id="login_check2">영문 대 소문+숫자+특수문자 8~16자리(괄호(), &lt;&gt; 사용불가)</span>
                 <div class="infor_text">
                     <input
                             type="password"
-                            class="pwd2"
-                            id="pwd2"
+                            class="password2"
+                            id="password2"
                             placeholder="패스워드를 다시 입력해 주세요"
                     />
                 </div>
@@ -328,6 +530,7 @@
                             type="text"
                             class="name"
                             id="name"
+                            th:field="*{name}"
                             placeholder="이름을 입력해 주세요."
                     />
                 </div>
@@ -342,6 +545,7 @@
                             type="text"
                             class="phone"
                             id="phone"
+                            th:field="*{phone}"
                             placeholder="휴대폰번호 '-'표 없이 입력해 주세요."
                     />
                 </div>
@@ -349,7 +553,7 @@
                 >필수 입력 항목입니다.</span
                 >
                 <span class="login_check5" id="login_check5"
-                >숫자만 입력 가능합니다.</span
+                >01012341234 형식으로 숫자만 입력 가능합니다.</span
                 >
             </div>
             <div class="e_young">
@@ -430,9 +634,8 @@
                 /><span class="e_yooung_check">[필수] 약관에 동의 합니다.</span>
             </div>
             <div class="button_log">
-                <button type="button" class="login_btn" id="login_btn">
-                    <b>회원가입하기</b>
-                </button>
+                <input type="button" class="login_btn" id="login_btn" value="회원가입하기" onclick="checkForm();">
+
             </div>
         </form>
     </div>
@@ -440,36 +643,9 @@
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- footer 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 
-<div class="footer">
-    <div class="footer">
-        <div class="footer_navi1">
-            <div class="footer_menu_1">
-                <p><a href="">로그인</a></p>
-                <p><a href="">회원가입</a></p>
-            </div>
-            <div class="footer_menu_2">
-                <p>고객센터</p>
-                <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
-                <a href="http://127.0.0.1:5500/delivery.html">배송</a>
-                <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
-                <a href="http://127.0.0.1:5500/loginservice.html"
-                >회원혜택/서비스</a
-                >
-                <a href="http://127.0.0.1:5500/asview.html">A/S</a>
-                <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
-                <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
-            </div>
-            <div class="footer_menu_3">
-                <p>ABOUT PROJECT</p>
-                <a href="">프로젝트에 관하여</a>
-            </div>
-        </div>
-        <div class="footer_navi2">
-            <p>대한민국</p>
-        </div>
-    </div>
-</div>
 
 <div class="gray">
     <div

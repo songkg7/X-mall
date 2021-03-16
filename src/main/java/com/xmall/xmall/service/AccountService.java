@@ -1,6 +1,6 @@
 package com.xmall.xmall.service;
 
-import com.xmall.xmall.form.AccountForm;
+import com.xmall.xmall.account.UserAccount;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -8,22 +8,50 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Slf4j
-public class AccountService {
+public class AccountService implements UserDetailsService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender javaMailSender;
 
+    // NOTE: 초기화
+    // Account 가 한명도 없다면, 아래 코드가 실행된다.
+    @PostConstruct
+    public void init() {
+
+        if (accountRepository.count() == 0) {
+            Account account = Account.builder()
+                    .email("admin@example.com")
+                    .nickname("admin")
+                    .password(passwordEncoder.encode("12345678"))
+                    .name("관리자")
+                    .phone("01011111111")
+                    .build();
+
+            accountRepository.save(account);
+        }
+
+    }
+
     // 회원가입
-    public void signUp(SignUpForm signUpForm) {
+    public Account signUp(SignUpForm signUpForm) {
 
         // lombok builder 를 사용해서 값을 설정해주기
         // - 아래 주석처리된 코드와 똑같이 동작한다.
@@ -31,6 +59,8 @@ public class AccountService {
                 .email(signUpForm.getEmail())
                 .nickname(signUpForm.getNickname())
                 .password(passwordEncoder.encode(signUpForm.getPassword()))
+                .name(signUpForm.getName())
+                .phone(signUpForm.getPhone())
                 .build();
 
         // getter, setter 를 사용하는 전통적인 방법
@@ -62,17 +92,49 @@ public class AccountService {
         // 메일 보내기
         javaMailSender.send(mailMessage);
 
+        return newAccount;
+
     }
 
     // 로그인
     // TODO: Security 처리하기
     // - 아직은 겉으로만 로그인일 뿐 실제 로그인 처리가 아니다.
-    public boolean login(AccountForm accountForm, Account account) {
+//    public boolean login(AccountForm accountForm, Account account) {
+//
+//        String rawPassword = accountForm.getPassword(); // raw value
+//        String encodedPassword = account.getPassword(); // encoded value
+//
+//        return passwordEncoder.matches(rawPassword, encodedPassword);
+//
+//    }
 
-        String rawPassword = accountForm.getPassword(); // raw value
-        String encodedPassword = account.getPassword(); // encoded value
+    // Security Login
+    public void login(Account account) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                new UserAccount(account),
+                account.getPassword(),
+                List.of(new SimpleGrantedAuthority("ROLE_USER")));
+        SecurityContextHolder.getContext().setAuthentication(token);
+    }
 
-        return passwordEncoder.matches(rawPassword, encodedPassword);
+    @Override
+    public UserDetails loadUserByUsername(String emailOrNickname) throws UsernameNotFoundException {
+        Account account = accountRepository.findByEmail(emailOrNickname);
+        String authority = "ROLE_USER";
+
+        if (account == null) {
+            account = accountRepository.findByNickname(emailOrNickname);
+        }
+
+        if (account == null) {
+            throw new UsernameNotFoundException(emailOrNickname);
+        }
+
+        if (account.getEmail().equals("admin@example.com")) {
+            authority = "ROLE_ADMIN";
+        }
+
+        return new UserAccount(account, authority);
 
     }
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 public class SignUpForm {
 
     @NotBlank
-    @Length(min = 3, max = 20)
+    @Length(min = 5, max = 14)
     private String nickname;
 
     @Email
@@ -18,7 +18,13 @@ public class SignUpForm {
     private String email;
 
     @NotBlank
-    @Length(min = 8, max = 50)
+    @Length(min = 8, max = 16)
     private String password;
+
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String phone;
 
 }

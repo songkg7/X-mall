@@ -1,6 +1,5 @@
 package com.xmall.xmall.controller;
 
-import com.xmall.xmall.form.AccountForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 
@@ -41,18 +41,22 @@ public class AccountController {
     // 여러 값을 받아올 때는 @ModelAttribute 가 필요하지만 생략이 가능하다.
     public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
         if (errors.hasErrors()) {
+            // 로그인 실패시 화면에 에러 정보를 같이 담아서 보내주기
             model.addAttribute(signUpForm);
             return "account/sign-up";
         }
 
-
 //        signUpFormValidator.validate(signUpForm, errors);
-//        if (errors.hasErrors()) {
-//            model.addAttribute(signUpForm);
-//            return "/sign-up";
-//        }
+        if (errors.hasErrors()) {
+            model.addAttribute(signUpForm);
+            return "account/sign-up";
+        }
 
-        accountService.signUp(signUpForm);
+        // 회원가입한 유저 정보 가져오기
+        Account account = accountService.signUp(signUpForm);
+
+        // 회원가입 후 바로 로그인 처리
+        accountService.login(account);
 
         return "redirect:/";
     }
@@ -80,32 +84,6 @@ public class AccountController {
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
         return "account/checkedEmail";
-
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute(new AccountForm());
-        return "sign-up";
-    }
-
-    // FIXME: refactoring
-    @PostMapping("/login")
-    public String loginProcess(@Valid AccountForm accountForm, Model model, Errors errors) {
-
-        Account findAccount = accountRepository.findByEmail(accountForm.getEmail());
-
-        if (findAccount == null) {
-            return "sign-up";
-        }
-
-        boolean loginConfirm = accountService.login(accountForm, findAccount);
-
-        if (!loginConfirm) {
-            return "sign-up";
-        }
-
-        return "redirect:/";
 
     }
 

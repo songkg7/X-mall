@@ -3,6 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
+<!-- 화면 전체 헤더의 nav head부분 -->
 <head th:fragment="fragment-header-navbar">
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -16,7 +17,13 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
           crossorigin="anonymous"/>
+    <!--  header css  -->
     <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            margin: 0;
+        }
+
         /* a태그(고객센터 로그인 멤버가입) 속성 */
         .gray_atag {
             color: rgb(17, 17, 17);
@@ -95,14 +102,21 @@
         .nav1_logo {
             width: 40px;
             height: 40px;
-            background-color: burlywood;
+
             float: left;
             margin-left: 25%;
+            cursor: pointer;
+        }
+        .nav1_logo a img {
+            margin-top: 5px;
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+
         }
 
         .nav1_text {
             display: table-cell;
-            background-color: none;
             text-align: right;
 
             /* 부모 div의 수직에 맞춰 중앙정렬 */
@@ -203,16 +217,16 @@
         }
 
         .btn1 img {
-            width: 100%;
-            height: auto;
-            padding-top: 2px;
+            width: 25px;
+            height: 25px;
+            padding-top: 8px;
         }
 
         .btn2 img {
-            width: 27px;
-            height: 27px;
-            margin-top: 1px;
-            margin-left: -5px;
+            width: 25px;
+            height: 25px;
+            margin-top: 6px;
+
             object-fit: cover;
         }
 
@@ -221,40 +235,62 @@
             height: 40px;
             border: none;
             cursor: pointer;
-
+            border-radius: 50%;
             background-color: white;
+            margin-top: 1px;
+        }
+
+        .btn1:hover {
+            background-color: rgb(220, 220, 220);
         }
 
         .btn2 {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border: none;
             cursor: pointer;
             background-color: white;
+            border-radius: 50%;
+
+        }
+
+        .btn2:hover {
+            background-color: rgb(220, 220, 220);
         }
 
         .searchBar {
-            width: 150px;
-            font-size: 30px;
+            width: 110px;
+            font-size: 16px;
             height: 40px;
             border-radius: 50px;
             background-color: rgb(240, 240, 240);
             border-style: none;
+            /*FIXME: url 을 대체하여 직접 삽입하는게 좋을듯 */
             background-image: url(../images/icon/dod.png);
+            /*background-position: 10px;*/
+            background-size: 36px;
             background-position: 10px;
-            background-size: 25px;
             background-repeat: no-repeat;
             padding-left: 50px;
             position: relative;
             right: -70px;
         }
 
+        .searchBar:hover {
+            background-color: rgb(220, 220, 220);
+        }
+        input:focus{
+            outline: none;
+        }
         input::placeholder {
             color: gray;
-            font-size: 18px;
-            font-weight: 300;
-            vertical-align: 40px;
-            padding-top: 10px;
+            font-size: 16px;
+            font-weight: lighter;
+
+            height: auto; /* 높이 초기화 */
+            line-height: normal; /* line-height 초기화 */
+            /*padding: .8em .5em;*/
+            vertical-align: top;
         }
 
         /*==== = = = = = =   */
@@ -445,6 +481,7 @@
         }
 
     </style>
+    <!-- nav 바 제이쿼리 -->
     <script>
         $(document).ready(function () {
             // 네비게이션 바 디테일 카테고리
@@ -576,23 +613,47 @@
           crossorigin="anonymous"/>
 </head>
 
-
+<!-- 화면 전체에 적용할 header의 nav바s body 부분 -->
 <header th:fragment="nav-bar">
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
-        <div class="nav1_logo"></div>
+        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
         <div class="nav1_text">
-            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
-            >고객센터 &nbsp;</a
+
+            <span sec:authorize="hasRole('ROLE_ADMIN')">관리자 권한으로 페이지를 실행 중</span>
+            <span sec:authorize="isAuthenticated()" >
+                <span sec:authentication="name">Username</span>
+                님 |
+            </span>
+            <span>
+
+            <a class="gray_atag" href="#" th:href="@{/customer_service}" style="cursor: hand"
+            >&nbsp; 고객센터 &nbsp;</a
             >
+            </span>
+            <span sec:authorize="!isAuthenticated()">
             |
             <a class="gray_atag" href="#" th:href="@{/sign-up}" style="cursor: hand"
             >&nbsp; 멤버 가입 &nbsp;</a
             >
+            </span>
+            <span sec:authorize="!isAuthenticated()">
             |
             <a class="gray_atag" href="#" th:href="@{/login}" style="cursor: hand"
             >&nbsp; 로그인</a
             >
+            </span>
+            <span sec:authorize="isAuthenticated()">
+            |
+            <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand"
+            >&nbsp; 로그아웃</a
+            >
+            </span><span sec:authorize="hasRole('ROLE_ADMIN')">
+            |
+            <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand"
+            >&nbsp; 상품 등록</a
+            >
+            </span>
         </div>
     </div>
 
@@ -619,14 +680,14 @@
             />
         </div>
         <div class="nav2_wishlist position1">
-            <button class="btn1" type="submit">
+            <div class="btn1">
                 <img src="/images/icon/heart.png" alt=""/>
-            </button>
+            </div>
         </div>
         <div class="nav2_bag position2">
-            <button class="btn2" type="submit">
+            <div class="btn2">
                 <img src="/images/icon/shoppingbag.png" alt=""/>
-            </button>
+            </div>
         </div>
         <!-- ******************************* -->
     </div>
@@ -861,4 +922,138 @@
         </div>
     </div>
 </header>
+
+
+<!-- 화면 전체에 적용할 footer의 css 부-->
+<div th:fragment="fragment-footer-css">
+    <style>
+        .footer {
+            position: relative;
+            left: 0px;
+            bottom: 0px;
+            height: 500px;
+            width: 100%;
+            color: white;
+            background: black;
+            padding-top: 50px;
+        }
+
+        .footer_navi1 {
+            padding-bottom: 300px;
+            width: 1000px;
+            border-color: #999999;
+
+            font-size: 14px;
+            margin: 0 auto;
+
+        }
+
+        .footer_navi1 a {
+            color: rgb(158, 154, 154);
+            text-decoration: none;
+            font-size: 12px;
+            display: block;
+            margin-top: 8px;
+            horiz-align: center;
+        }
+
+        .footer_menu_1 {
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
+
+        .footer_menu_1 a {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer_menu_2 {
+            color: #e5e5e5;
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
+
+        .footer_menu_2 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
+
+
+        .footer_menu_3 {
+
+            color: #e5e5e5;
+            text-align: left;
+            width: 300px;
+            float: left;
+        }
+
+        .footer_menu_3 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
+
+        .footer_menu_4 {
+            color: #e5e5e5;
+            text-align: left;
+            width: 100px;
+            float: left;
+        }
+
+        .footer_menu_4 a {
+            color: rgba(194, 194, 194, 0.5);
+        }
+
+        .footer_navi2 {
+
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            border-top: 1px solid rgba(194, 194, 194, 0.5);
+            border-bottom: 1px solid rgba(194, 194, 194, 0.5);
+            font-size: 10px;
+            text-align: left;
+        }
+    </style>
+</div>
+
+
+<!-- 화면 전체에 적용할 footer의 body 부분 -->
+<footer th:fragment="footer-body">
+
+    <div class="footer">
+        <div class="footer_navi1">
+            <div class="footer_menu_1">
+                <p><a href="">로그인</a></p>
+                <p><a href="">회원가입</a></p>
+            </div>
+            <div class="footer_menu_2">
+                <p>고객센터</p>
+                <a href="cus_center_order_file">주문/결제</a>
+                <a href="cus_center_delivery">배송</a>
+                <a href="cus_center_notice">공지사항</a>
+                <a href="cus_center_member_service">회원혜택/서비스</a>
+                <a href="cus_center_asview">A/S</a>
+                <a href="cus_center_cancel_refund">취소/반품</a>
+                <a href="cus_center_member_info">회원정보</a>
+            </div>
+            <div class="footer_menu_3">
+                <p>ABOUT PROJECT</p>
+                <a href="">프로젝트에 관하여</a>
+            </div>
+            <div class="footer_menu_4">
+                <p>SOCIAL</p>
+                <a href="">Facebook</a>
+                <a href="">Instagram</a>
+                <a href="">Twitter</a>
+            </div>
+        </div>
+        <div class="footer_navi2">
+            <p>대한민국</p>
+        </div>
+    </div>
+
+</footer>
+
+
 </html>

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -16,10 +18,12 @@ public class ItemService {
     public Long create(ItemForm itemForm) {
         Item item = new Item();
         item.setName(itemForm.getName());
+        item.setSubTitle(itemForm.getSubTitle());
         item.setPrice(itemForm.getPrice());
         item.setStockQuantity(itemForm.getStockQuantity());
         item.setDescription(itemForm.getDescription());
-        item.setItemImage(itemForm.getItemImage());
+
+        item.setCreateAt(LocalDateTime.now());
 
         Item newItem = itemRepository.save(item);
 
