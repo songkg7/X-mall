@@ -609,9 +609,16 @@
     <div class="nav1">
         <div class="nav1_logo"></div>
         <div class="nav1_text">
-            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
-            >고객센터 &nbsp;</a
+            <span sec:authorize="isAuthenticated()" >
+                <span sec:authentication="name">Username</span>
+                님 |
+            </span>
+            <span>
+
+            <a class="gray_atag" href="#" th:href="@{/customer_service}" style="cursor: hand"
+            >&nbsp; 고객센터 &nbsp;</a
             >
+            </span>
             <span sec:authorize="!isAuthenticated()">
             |
             <a class="gray_atag" href="#" th:href="@{/sign-up}" style="cursor: hand"
