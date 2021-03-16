@@ -41,7 +41,7 @@ class AccountControllerTest {
         mockMvc.perform(get("/sign-up"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("sign-up"))
+                .andExpect(view().name("account/sign-up"))
                 .andExpect(model().attributeExists("signUpForm"));
     }
 
@@ -54,7 +54,7 @@ class AccountControllerTest {
                 .param("password", "1234")
                 .with(csrf()))
                 .andExpect(status().isOk())
-                .andExpect(view().name("sign-up"));
+                .andExpect(view().name("account/sign-up"));
     }
 
     @DisplayName("회원가입 처리 - 입력값 정상")

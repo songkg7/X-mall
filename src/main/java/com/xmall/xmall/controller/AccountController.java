@@ -1,6 +1,5 @@
 package com.xmall.xmall.controller;
 
-import com.xmall.xmall.form.AccountForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
