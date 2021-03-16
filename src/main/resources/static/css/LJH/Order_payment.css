@@ -1,189 +1,189 @@
 .shop_order {
-  font-size: 28px;
-  text-align: center;
-  font-weight: bolder;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bolder;
 }
 .shop_customer {
-  display: inline-block;
-  float: left;
-  width: 80%;
+    display: inline-block;
+    float: left;
+    width: 80%;
 }
 .shop_customer_sub {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 70%;
-  padding-top: 13px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 70%;
+    padding-top: 13px;
 }
 .shop_customer_sub_delivery {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 80%;
-  display: inline-block;
-  float: left;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 80%;
+    display: inline-block;
+    float: left;
 }
 .shop_customer_baesong {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 70%;
-  padding-top: 13px;
-  display: inline-block;
-  float: left;
-  width: 80%;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 70%;
+    padding-top: 13px;
+    display: inline-block;
+    float: left;
+    width: 80%;
 }
 .shop_agree {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 70%;
-  padding-top: 13px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 70%;
+    padding-top: 13px;
 }
 .shop_address {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 47%;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 47%;
 }
 .shop_float {
-  font-size: 20px;
-  text-align: left;
-  font-weight: bolder;
-  width: 95.5%;
-  background-color: lightgray;
-  padding-bottom: 13px;
-  padding-top: 13px;
-  padding-left: 13px;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bolder;
+    width: 95.5%;
+    background-color: lightgray;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    padding-left: 13px;
 }
 .shop_input {
-  text-align: left;
-  width: 70%;
+    text-align: left;
+    width: 70%;
 }
 .shop_input_baseaddress {
-  padding-bottom: 10px;
-  text-align: left;
+    padding-bottom: 10px;
+    text-align: left;
 }
 .barogage {
-  text-align: left;
-  font-weight: bolder;
+    text-align: left;
+    font-weight: bolder;
 }
 .nav1 {
-  width: 100%;
-  height: 50px;
-  background-color: white;
+    width: 100%;
+    height: 50px;
+    background-color: white;
 }
 .nav1_img {
-  width: 8%;
-  height: 10%;
-  display: block;
-  margin-left: 40px;
+    width: 8%;
+    height: 10%;
+    display: block;
+    margin-left: 40px;
 }
 .padding_left {
-  padding-left: 270px;
-  padding-right: 250px;
+    padding-left: 270px;
+    padding-right: 250px;
 }
 .main_line {
-  border-bottom: 1px solid black;
-  width: 80%;
+    border-bottom: 1px solid black;
+    width: 80%;
 }
 .sub_line {
-  border-bottom: 1px solid black;
-  width: 100%;
+    border-bottom: 1px solid black;
+    width: 100%;
 }
 .cl_memo {
-  padding-right: 300px;
+    padding-right: 300px;
 }
 .order_list {
-  display: inline-block;
-  float: right;
-  width: 20%;
+    display: inline-block;
+    float: right;
+    width: 20%;
 }
 .order_list_base {
-  border: 2px solid black;
+    border: 2px solid black;
 }
 .order_list_img {
-  text-align: left;
-  float: left;
-  padding-top: 10px;
-  padding-left: 10px;
+    text-align: left;
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 .order_list_DB {
-  float: left;
-  padding-top: 10px;
-  text-align: left;
+    float: left;
+    padding-top: 10px;
+    text-align: left;
 }
 .order_list_text_left {
-  text-align: left;
+    text-align: left;
 }
 .goods_right {
-  text-align: right;
-  float: right;
+    text-align: right;
+    float: right;
 }
 .goods_left {
-  padding-top: 13px;
-  text-align: left;
+    padding-top: 13px;
+    text-align: left;
 }
 .precautions {
-  border-bottom: 2px solid black;
+    border-bottom: 2px solid black;
 }
 .precautions_sub {
-  text-align: left;
-  padding-top: 20px;
+    text-align: left;
+    padding-top: 20px;
 }
 .precautions_pro {
-  text-align: left;
-  padding-top: 20px;
-  padding-bottom: 20px;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .payment {
-  display: inline-block;
-  float: left;
-  width: 80%;
+    display: inline-block;
+    float: left;
+    width: 80%;
 }
 .payment_img_kakao {
-  width: 8%;
-  display: block;
-  margin: 10px;
-  border: 2px;
+    width: 8%;
+    display: block;
+    margin: 10px;
+    border: 2px;
 }
 .payment_img_npay {
-  width: 8%;
-  display: block;
-  margin: 10px;
+    width: 8%;
+    display: block;
+    margin: 10px;
 }
 .payment_submit {
-  width: 20%;
-  display: block;
-  margin: 0px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid black;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-  height: 48px;
-  font-size: 15px;
-  border-radius: 50px;
+    width: 20%;
+    display: block;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    height: 48px;
+    font-size: 15px;
+    border-radius: 50px;
 }
 .payment_submit:hover {
-  background-color: black;
-  opacity: 70%;
+    background-color: black;
+    opacity: 70%;
 }
 .send {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-  width: 100%;
-  height: 48px;
-  font-size: 15px;
-  padding: 16px 50px;
-  border: 1px solid black;
-  border-radius: 50px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+    padding: 16px 50px;
+    border: 1px solid black;
+    border-radius: 50px;
 }
 .send:hover {
-  background-color: black;
-  opacity: 70%;
+    background-color: black;
+    opacity: 70%;
 }
 .basket {
-  text-align: left;
-  float: left;
+    text-align: left;
+    float: left;
 }
