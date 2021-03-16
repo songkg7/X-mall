@@ -2,39 +2,714 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<head th:replace="fragments/header :: header"/>-->
 <head>
+
     <div th:replace="fragments :: fragment-header-navbar"></div>
     <title>createItemForm</title>
+    <style>
+
+            /* ============================================= */
+            /* ============================================= */
+            /* ============================================= */
+            /* ============================================= */
+            /* ============================================= */
+            /* ============================================= */
+            /* ============================================= */
+
+
+            /* *********************************** */
+            /* main 부분 css */
+            /* *********************************** */
+            /* -------------------- */
+            /* 화면 분할 1. 좌측(product_img) */
+            /* -------------------- */
+        .product_img {
+            width: 100%;
+            height: 1000px;
+            background-color: white;
+            margin-right: -500px;
+            padding-right: 500px;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        /* -------------------- */
+        /* 화면 분할 2. 우측(content) */
+        /* -------------------- */
+        .content {
+            width: 500px;
+            height: 1000px;
+            background-color: white;
+            float: right;
+        }
+
+        /* 우측 분할화면의 마진주기  */
+        .content_padding {
+            margin-left: 40px;
+            margin-right: 20px;
+        }
+
+        /* -------------------------------------- */
+        /* 상품사진-섬네일부분 */
+        .thumnail {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* -------------------------------------- */
+
+        .thumnail_1 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-right: 5px;
+        }
+
+        .thumnail_2 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-right: 5px;
+        }
+
+        .thumnail_3 {
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            float: left;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .thum_1 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thum_2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thum_3 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* -------------------------------------- */
+        /* 제품명 */
+        .product_name {
+            width: 60%;
+            text-align: left;
+            float: left;
+            /* margin-left: 40px; */
+        }
+        .product_name input{
+            width: 100%;
+            margin-left: 0;
+
+        }
+
+        /* -------------------------------------- */
+        /* 가격 */
+        .price {
+
+
+            width: 40%;
+            height: 40px;
+            text-align: right;
+            font-size: 18px;
+            font-weight: 700;
+            float: left;
+            margin-top: 0px;
+            margin-right: 0px;
+            /* margin-right: 40px; */
+
+        }
+        .price input{
+            width: 90%;
+            height: 90%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: deeppink;
+
+        }
+        /* -------------------------------------- */
+        /* 상품 스타일명 */
+        .p_1 {
+            margin-top: 0px;
+            font-size: 18px;
+
+            width: 100%;
+            height: 40px;
+        }
+        .p_1 input {
+            width: 90%;
+            height: 90%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: deeppink;
+        }
+
+        /* -------------------------------------- */
+        /* 상품 명 */
+        .p_2 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 50px;
+
+            width: 100%;
+            height: 40px;
+
+        }
+        .p_2 input{
+            width: 90%;
+            height: 90%;
+            font-size: 18px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: deeppink;
+        }
+
+        /* -------------------------------------- */
+        /* 사이즈 선택 */
+        .product_size {
+            float: left;
+        }
+
+        .size_guide {
+            margin-top: 10px;
+            text-align: right;
+            font-weight: 300;
+            font-size: 14px;
+            color: rgb(133, 131, 131);
+            float: right;
+        }
+
+        .size_div {
+            margin-top: 20px;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+        }
+
+        /* -------------------------------------- */
+        /* 사진 선택 */
+        .product_img {
+            margin-bottom: 20px;
+        }
+
+        .product_img1 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height: unset;
+            float: left;
+            object-fit: cover;
+        }
+
+        .img_bigger {
+            width: 96%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height: unset;
+            float: left;
+            object-fit: cover;
+        }
+
+        .product_img2 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height: unset;
+            object-fit: cover;
+        }
+
+        .product_img3 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height: unset;
+            float: left;
+            object-fit: cover;
+        }
+
+        .product_img4 {
+            width: 48%;
+            margin-right: 12px;
+            margin-bottom: 8px;
+            height: unset;
+            object-fit: cover;
+        }
+
+        /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
+        @media all and (max-width: 1220px) {
+            .product_img1 {
+                width: 96%;
+            }
+
+            .product_img2 {
+                width: 96%;
+            }
+
+            .product_img3 {
+                width: 96%;
+            }
+
+            .product_img4 {
+                width: 96%;
+            }
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .main {
+
+            padding-top: 100px;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-bottom: 50px;
+        }
+
+
+        .table_div {
+            clear: both;
+            /* position: relative; */
+            width: 100%;
+            height: auto;
+            background-color: white;
+        }
+
+        .size_table {
+            /* position: absolute; */
+
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            height: auto;
+        }
+
+        .size_cell {
+            width: 18%;
+            height: 52px;
+            margin-right: 5px;
+            margin-top: 5px;
+            background-color: white;
+            border-radius: 5px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: rgb(223, 223, 223);
+            float: left;
+            line-height: 20px;
+            vertical-align: middle;
+            text-align: center;
+            color: black;
+        }
+
+        .size_cell:hover {
+            border: 1px solid black;
+        }
+
+        .count_div {
+            clear: both;
+            padding-top: 40px;
+
+            width: 100%;
+            height: 60px;
+            background-color: white;
+        }
+        .count_div input {
+            width: 90%;
+            hieght:90%;
+            border-width: 2px;
+            border-style: solid;
+            border-color: deeppink;
+            float: left;
+        }
+
+        .count_amount {
+            font-size: 20px;
+            font-weight: 200;
+
+            text-align: left;
+            width: 40px;
+            height: 60px;
+            line-height: 60px;
+            background-color: white;
+            float: left;
+            margin-left: 2px;
+        }
+        .minus:focus{
+            outline: none;
+        }
+        .plus:focus{
+            outline: none;
+        }
+
+
+        .count_amount {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            line-height: 65px;
+            font-size: 20px;
+            color: black;
+            border: none;
+        }
+
+        .minus {
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            font-size: 40px;
+            color : lightgray;
+            font-weight: 100;
+            border: none;
+
+
+        }
+
+        .plus {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            float: left;
+            font-size: 30px;
+            margin-top: 3px;
+            font-weight: 100;
+            border: none;
+        }
+
+        .buy_button {
+            margin-top: 10px;
+            width: 100%;
+            height: 60px;
+            background-color: #000000;
+            border-radius: 50px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+        }
+
+        .kart_wish_div {
+            margin-top: 10px;
+            width: 100%;
+            height: 70px;
+            background-color: white;
+        }
+
+        .kart_button {
+            width: 48%;
+            height: 60px;
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+            border-color: rgb(0, 0, 0);
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid black;
+            float: left;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .wishList_button {
+            width: 48%;
+            height: 60px;
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid black;
+            float: right;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .buy_button:hover {
+            background-color: black;
+            opacity: 70%;
+        }
+
+        .kart_button:hover {
+            border: 1px solid rgba(34, 34, 34, 0.651);
+        }
+
+        .wishList_button:hover {
+            border: 1px solid rgba(34, 34, 34, 0.651);
+        }
+
+        .buy_button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .detail_description_div {
+            margin-top: 10px;
+            font-weight: 300;
+            text-align: left;
+            color: rgb(77, 77, 77);
+            width: 100%;
+            height: 300px;
+            background-color: white;
+        }
+
+        .detail_description_div div {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .detail_description_div textarea{
+
+            width: 100%;
+            height: 200px;
+            border-width: 2px;
+            border-style: solid;
+            border-color: deeppink;
+        }
+
+        .detail_description_div a {
+            text-decoration: none;
+            color: rgb(77, 77, 77);
+            font-weight: 300;
+        }
+.create_item{
+    width: 100%;
+    height: 60px;
+}
+.create_item p{
+    font-size: 36px;
+}
+.count_product{
+    width: 100px;
+    height: 100px;
+    float:left;
+}
+.count_product input {
+    width: 100%;
+    height: 40px;
+}
+.btn-primary {
+
+    margin-top: 10px;
+    width: 100%;
+    height: 60px;
+    background-color: deeppink;
+    border-radius: 50px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.legistration{
+    margin-top: 50px;
+}
+
+    </style>
 </head>
 <body>
-<div class="container">
-    <div th:replace="fragments :: nav-bar"></div>
-    <form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+    <div class="container">
+        <div th:replace="fragments :: nav-bar"></div>
+    </div>
+    <div class="create_item">
+        <p>상품 등록</p>
+    </div>
+    <main>
+    <!------------------->
+        <div class="main">
+            <!--------------------- form 태그 선언 --------------------->
+            <form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+            <!-------------------------------------------------------->
+            <div class="product_img">
+                <img
+                        class="product_img1"
+                        src="../images/icon/photo1.png"
+
+                />
+                <img
+                        class="product_img2"
+                        src="../images/icon/photo1.png"
+
+                />
+                <img
+                        class="product_img3"
+                        src="../images/icon/photo1.png"
+
+                />
+                <img
+                        class="product_img4"
+                        src="../images/icon/photo1.png"
+
+                />
+            </div>
+            <!--+++++++++++++++++++++++++++++-->
+            <!-- 화면 분할 2. 우측(content) -->
+            <!--+++++++++++++++++++++++++++++-->
+            <div class="content">
+                <div class="content_padding">
+                    <!--======================-->
+                    <!-- 2-1-1. 모델명 -->
+                    <!--======================-->
+                    <div class="product_name">
+                        <!-- 1. 제품 카테고리 설정-->
+
+                       <p class="p_1">
+
+                           <input type="text" th:field="*{subTitle}"
+                               placeholder="카테고리를 입력하세요">
+                       </p>
+                        <!-- 2. 제품명 설정-->
+
+                        <p class="p_2">
+
+                            <input type="text" th:field="*{name}" placeholder="제품명을 입력하세요">
+                        </p>
+                        <div class="thumnail">
+                            <div class="thumnail_1">
+                                <img class="thum_1" src="/images/main_img/vapor1.png"/>
+                            </div>
+                            <div class="thumnail_2">
+                                <img class="thum_2" src="/images/main_img/vapor5.png"/>
+                            </div>
+                            <div class="thumnail_3">
+                                <img class="thum_3" src="/images/main_img/vapor6.png"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--======================-->
+                    <!-- 2-1-2. 가격 -->
+                    <!--======================-->
+                    <!-- 3. 가격 설정 -->
+                    <p class="price">
+
+                        <input type="number" th:field="*{price}" class="price" placeholder="가격을 입력하세요">
+                    </p>
+                    <!--======================-->
+                    <div style="clear: both"></div>
+                    <!--======================-->
+                    <!-- 2-2. 사이즈선택 -->
+                    <!--======================-->
+                    <div class="size_div">
+                        <div class="product_size">
+                            <h4>사이즈 선택</h4>
+                        </div>
+                        <div class="size_guide">
+                            <p>사이즈 가이드</p>
+                        </div>
+                    </div>
+                    <div class="table_div">
+                        <!--                    TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
+                        <div class="size_table">
+                            <div class="size_cell"><p>85(XS)</p></div>
+                            <div class="size_cell"><p>90(S)</p></div>
+                            <div class="size_cell"><p>95(M)</p></div>
+                            <div class="size_cell"><p>100(L)</p></div>
+                            <div class="size_cell"><p>105(XL)</p></div>
+                            <div class="size_cell"><p>110(2XL)</p></div>
+                        </div>
+                    </div>
+                    <!--======================-->
+                    <!-- 3. 수량 -->
+                    <!--======================-->
+<!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
+                    <div class="count_div">
+                        <div class="count_amount">수량</div>
+                        <div class="count_product">
+                            <input type="number" th:field="*{stockQuantity}"
+                                    placeholder="재고수량을 입력하세요">
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail_description_div">
+                        <p>제품 상세설명</p>
+                        <textarea th:field="*{description}"
+                                  placeholder="하단에 표시될 제품 설명을 입력하세요">
+                        </textarea>
+                        <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
+<!--                        <p th:text="${item.getDescription()}">-->
+<!--                            무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너-->
+<!--                            재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝-->
+<!--                            윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이-->
+<!--                            돋보입니다.-->
+<!--                        </p>-->
+
+
+                        <button type="submit" class="btn btn-primary">상품 등록</button>
+                    </div>
+                    <div class="legistration">
+                    <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
+                    <!--+++++++++++++++++++++++++++++++++++++-->
+                    </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+<!--    <footer th:replace="fragments.html :: footer-body">-->
+<!--    </footer>-->
+</body>
+</html>
+<!--
+*
+<form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+
+        *
         <div class="form-group">
-            <label th:for="name">제품명</label>
+            *
+            <p th:for="name">제품명</p>
             <input type="text" th:field="*{name}" class="form-control"
-                   placeholder="제품명을 입력하세요"></div><div class="form-group">
-            <label th:for="subTitle">상품 카테고리</label>
-            <input type="text" th:field="*{subTitle}" class="form-control"
-                   placeholder="카테고리를 입력하세요"></div>
+                   placeholder="제품명을 입력하세요">
+        </div>
         <div class="form-group">
-            <label th:for="price">가격</label>
+            <p th:for="subTitle">상품 카테고리</p>
+            <input type="text" th:field="*{subTitle}" class="form-control"
+                   placeholder="카테고리를 입력하세요">
+        </div>
+        <div class="form-group">
+            <p th:for="price">가격</p>
             <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요">
         </div>
         <div class="form-group">
-            <label th:for="stockQuantity">재고수량</label>
+            <p th:for="stockQuantity">재고수량</p>
             <input type="number" th:field="*{stockQuantity}" class="form-control"
                    placeholder="재고수량을 입력하세요">
         </div>
         <div class="form-group">
-            <label th:for="description">제품 상세설명</label>
+            <p th:for="description">제품 상세설명</p>
             <textarea th:field="*{description}" class="form-control"
-                      placeholder="하단에 표시될 제품 설명을 입력하세요"></textarea>
+                      placeholder="하단에 표시될 제품 설명을 입력하세요">
+            </textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <div>
-            <span>현재 등록되어 있는 상품의 수</span><span th:text="${totalCount} + 개"></span>
+            <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
         </div>
     </form>
-</div>
-</body>
-</html>
+
+
+-->
