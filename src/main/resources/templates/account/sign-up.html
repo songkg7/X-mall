@@ -57,8 +57,10 @@
             height: 110px;
             padding: 15px 8px;
             border: 1px solid #d1d1d1;
-            margin-left: 39%;
-            margin-right: 39%;
+            /*margin-left: 39%;*/
+            /*margin-right: 39%;*/
+            width: 390px;
+            margin:0 auto;
             font-size: 12px;
         }
         .scroll_box::placeholder{
@@ -78,8 +80,12 @@
             height: 50px;
             background-color: black;
             color: white;
+            border-width: 0;
             font-size: 16px;
             cursor: pointer;
+        }
+        .login_btn:hover {
+            background-color: rgba(0,0,0,0.8) ;
         }
 
         .login_need1,
@@ -87,11 +93,13 @@
         .login_need3,
         .login_need4,
         .login_need5,
+        .login_need6,
         .login_check1,
         .login_check2,
         .login_check3,
         .login_check4,
-        .login_check5 {
+        .login_check5,
+        .login_check6 {
             padding-left: 0px;
             font-size: 8px;
             color: red;
@@ -147,22 +155,26 @@
             var login_need3 = $("#login_need3");
             var login_need4 = $("#login_need4");
             var login_need5 = $("#login_need5");
+            var login_need6 = $("#login_need6");
             var login_check1 = $("#login_check1");
             var login_check2 = $("#login_check2");
             var login_check3 = $("#login_check3");
             var login_check4 = $("#login_check4");
             var login_check5 = $("#login_check5");
+            var login_check6 = $("#login_check6");
 
             login_need1.hide();
             login_need2.hide();
             login_need3.hide();
             login_need4.hide();
             login_need5.hide();
+            login_need6.hide();
             login_check1.hide();
             login_check2.hide();
             login_check3.hide();
             login_check4.hide();
             login_check5.hide();
+            login_check6.hide();
 
             $("#nickname").keyup(function () {
                 if ($("#nickname").val().split(" ").join("") != "") {
@@ -176,6 +188,20 @@
                     $(".nickname").css("border","1px solid black");
                 }
             });
+
+            $("#email").keyup(function () {
+                if ($("#email").val().split(" ").join("") != "") {
+                    login_need6.hide();
+                }
+                if (checkEmail($("#email").val()) == false) {
+                    $(".email").css("border-color","red");
+                    login_check6.show();
+                } else {
+                    login_check6.hide();
+                    $(".email").css("border","1px solid black");
+                }
+            });
+
             $("#password").keyup(function () {
                 if ($("#password").val().split(" ").join("") != "") {
                     login_need2.hide();
@@ -233,6 +259,15 @@
                 } else if (uid.split(" ").join("") != "") {
                     login_need1.hide();
                 }
+
+                var email = $("#email").val();
+                if (email.split(" ").join("") == "") {
+                    login_need6.show();
+                    $("#email").val("");
+                } else if (email.split(" ").join("") != "") {
+                    login_need6.hide();
+                }
+
                 var pwd = $("#password").val();
                 if (pwd.split(" ").join("") == "") {
                     login_need2.show();
@@ -326,6 +361,12 @@
                             required
                     />
                 </div>
+                <span class="login_need6" id="login_need6"
+                >필수 입력 항목입니다.</span
+                >
+                <span class="login_check6" id="login_check6"
+                >hello@example.com 같은 Email 형식입니다.</span
+                >
 
                 <div class="infor_text">
                     <input
@@ -478,19 +519,19 @@
 </footer>
 
 
-<!--<div class="gray">-->
-<!--    <div-->
-<!--            class="e_young_box"-->
-<!--            aria-hidden="false"-->
-<!--            style="display: block; overflow-y: auto"-->
-<!--    >-->
-<!--        <div class="e_young_box1" style="min-height: 0">-->
-<!--            <div class="e_young_write">이용약관에 동의 해주세요.</div>-->
-<!--            <div class="e_young_btn">-->
-<!--                <button class="e_young_btn1" id="e_young_btn1">확인</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div class="gray">
+    <div
+            class="e_young_box"
+            aria-hidden="false"
+            style="display: block; overflow-y: auto"
+    >
+        <div class="e_young_box1" style="min-height: 0">
+            <div class="e_young_write">이용약관에 동의 해주세요.</div>
+            <div class="e_young_btn">
+                <button class="e_young_btn1" id="e_young_btn1">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
