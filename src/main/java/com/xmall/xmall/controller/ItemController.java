@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -41,6 +42,13 @@ public class ItemController {
         itemService.create(itemForm);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/items")
+    public String items(Model model) {
+        List<Item> itemLists = itemRepository.findAll();
+        model.addAttribute("itemLists", itemLists);
+        return "items/item-list";
     }
 
     @GetMapping("/items/{id}")
