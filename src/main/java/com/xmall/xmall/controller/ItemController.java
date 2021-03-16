@@ -24,7 +24,10 @@ public class ItemController {
 
     @GetMapping("/items/create-item")
     public String createItemForm(Model model) {
+        long totalCount = itemRepository.count();
         model.addAttribute(new ItemForm());
+        model.addAttribute("totalCount", totalCount);
+
         return "items/create-item";
     }
 
