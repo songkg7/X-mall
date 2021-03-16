@@ -45,12 +45,11 @@ public class AccountController {
             return "account/sign-up";
         }
 
-
-//        signUpFormValidator.validate(signUpForm, errors);
-//        if (errors.hasErrors()) {
-//            model.addAttribute(signUpForm);
-//            return "/sign-up";
-//        }
+        signUpFormValidator.validate(signUpForm, errors);
+        if (errors.hasErrors()) {
+            model.addAttribute(signUpForm);
+            return "account/sign-up";
+        }
 
         accountService.signUp(signUpForm);
 
@@ -80,31 +79,6 @@ public class AccountController {
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
         return "account/checkedEmail";
-
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "account/login";
-    }
-
-    // FIXME: refactoring
-    @PostMapping("/login")
-    public String loginProcess(@Valid AccountForm accountForm, Model model, Errors errors) {
-
-        Account findAccount = accountRepository.findByEmail(accountForm.getEmail());
-
-        if (findAccount == null) {
-            return "account/login";
-        }
-
-        boolean loginConfirm = accountService.login(accountForm, findAccount);
-
-        if (!loginConfirm) {
-            return "account/login";
-        }
-
-        return "redirect:/";
 
     }
 
