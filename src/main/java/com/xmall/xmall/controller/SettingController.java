@@ -62,4 +62,8 @@ public class SettingController {
     @GetMapping("/cus_center_refund_service")
     public String cus_center_refund_service() {
         return "customer_center/cus_center_refund_service";    }
+
+    @GetMapping("/as_infoguide")
+    public String as_infoguide() {
+        return "mypage/as_infoguide";    }
 }
