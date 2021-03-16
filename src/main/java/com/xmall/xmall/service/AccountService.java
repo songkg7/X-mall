@@ -1,7 +1,6 @@
 package com.xmall.xmall.service;
 
 import com.xmall.xmall.account.UserAccount;
-import com.xmall.xmall.form.AccountForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -32,7 +31,7 @@ public class AccountService implements UserDetailsService {
     private final JavaMailSender javaMailSender;
 
     // 회원가입
-    public void signUp(SignUpForm signUpForm) {
+    public Account signUp(SignUpForm signUpForm) {
 
         // lombok builder 를 사용해서 값을 설정해주기
         // - 아래 주석처리된 코드와 똑같이 동작한다.
@@ -40,6 +39,8 @@ public class AccountService implements UserDetailsService {
                 .email(signUpForm.getEmail())
                 .nickname(signUpForm.getNickname())
                 .password(passwordEncoder.encode(signUpForm.getPassword()))
+                .name(signUpForm.getName())
+                .phone(signUpForm.getPhone())
                 .build();
 
         // getter, setter 를 사용하는 전통적인 방법
@@ -71,19 +72,21 @@ public class AccountService implements UserDetailsService {
         // 메일 보내기
         javaMailSender.send(mailMessage);
 
+        return newAccount;
+
     }
 
     // 로그인
     // TODO: Security 처리하기
     // - 아직은 겉으로만 로그인일 뿐 실제 로그인 처리가 아니다.
-    public boolean login(AccountForm accountForm, Account account) {
-
-        String rawPassword = accountForm.getPassword(); // raw value
-        String encodedPassword = account.getPassword(); // encoded value
-
-        return passwordEncoder.matches(rawPassword, encodedPassword);
-
-    }
+//    public boolean login(AccountForm accountForm, Account account) {
+//
+//        String rawPassword = accountForm.getPassword(); // raw value
+//        String encodedPassword = account.getPassword(); // encoded value
+//
+//        return passwordEncoder.matches(rawPassword, encodedPassword);
+//
+//    }
 
     // Security Login
     public void login(Account account) {
