@@ -85,6 +85,7 @@
     <div class="main">
         <a href="#" th:href="@{/items/{id} (id=${itemList.id})}"
         ><img src="/images/main_img/nikemain1.png"
+              th:src="@{/images/main_img/} + ${itemList.getItemImage()}"
               style="width: 100%; display: block; margin: auto"
         /></a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
