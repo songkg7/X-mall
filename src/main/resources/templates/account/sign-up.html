@@ -167,9 +167,9 @@
     <!--  main jquery  -->
     <script>
         $(document).ready(function () {
-            // $("#login_btn").click(function () {
-            //     checkform();
-            // });
+            $("#login_btn").click(function () {
+                checkform();
+            });
 
             $(".gray").hide();
 
@@ -277,53 +277,54 @@
             $("#e_young_btn1").click(function () {
                 $(".gray").hide();
             });
+
         });
 
         function checkform() {
-            // var uid = $("#nickname").val();
-            // if (uid.split(" ").join("") == "") {
-            //     login_need1.show();
-            //     $("#nickname").val("");
-            // } else if (uid.split(" ").join("") != "") {
-            //     login_need1.hide();
-            // }
-            //
-            // var email = $("#email").val();
-            // if (email.split(" ").join("") == "") {
-            //     login_need6.show();
-            //     $("#email").val("");
-            // } else if (email.split(" ").join("") != "") {
-            //     login_need6.hide();
-            // }
-            //
-            // var pwd = $("#password").val();
-            // if (pwd.split(" ").join("") == "") {
-            //     login_need2.show();
-            //     $("#password").val("");
-            // } else if (pwd.split(" ").join("") != "") {
-            //     login_need2.hide();
-            // }
-            // var pwd2 = $("#password2").val();
-            // if (pwd2.split(" ").join("") == "") {
-            //     login_need3.show();
-            //     $("#password2").val("");
-            // } else if (pwd2.split(" ").join("") != "") {
-            //     login_need3.hide();
-            // }
-            // var name = $("#name").val();
-            // if (name.split(" ").join("") == "") {
-            //     login_need4.show();
-            //     $("#name").val("");
-            // } else if (name.split(" ").join("") != "") {
-            //     login_need4.hide();
-            // }
-            // var phone = $("#phone").val();
-            // if (phone.split(" ").join("") == "") {
-            //     login_need5.show();
-            //     $("#phone").val("");
-            // } else if (phone.split(" ").join("") != "") {
-            //     login_need5.hide();
-            // }
+            var uid = $("#nickname").val();
+            if (uid.split(" ").join("") == "") {
+                $("#login_need1").show();
+                $(".nickname").val("");
+            } else if (uid.split(" ").join("") != "") {
+                $("#login_need1").hide();
+            }
+
+            var email = $("#email").val();
+            if (email.split(" ").join("") == "") {
+                $("#login_need6").show();
+                $("#email").val("");
+            } else if (email.split(" ").join("") != "") {
+                $("#login_need6").hide();
+            }
+
+            var pwd = $("#password").val();
+            if (pwd.split(" ").join("") == "") {
+                $("#login_need2").show();
+                $("#password").val("");
+            } else if (pwd.split(" ").join("") != "") {
+                $("#login_need2").hide();
+            }
+            var pwd2 = $("#password2").val();
+            if (pwd2.split(" ").join("") == "") {
+                $("#login_need3").show();
+                $("#password2").val("");
+            } else if (pwd2.split(" ").join("") != "") {
+                $("#login_need3").hide();
+            }
+            var name = $("#name").val();
+            if (name.split(" ").join("") == "") {
+                $("#login_need4").show();
+                $("#name").val("");
+            } else if (name.split(" ").join("") != "") {
+                $("#login_need4").hide();
+            }
+            var phone = $("#phone").val();
+            if (phone.split(" ").join("") == "") {
+                $("#login_need5").show();
+                $("#phone").val("");
+            } else if (phone.split(" ").join("") != "") {
+                $("#login_need5").hide();
+            }
 
             if ($(".e_young_check").prop("checked") == false) {
                 $(".gray").show();
