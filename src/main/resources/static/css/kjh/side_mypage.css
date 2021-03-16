@@ -1,0 +1,90 @@
+.all_form {
+  display: grid;
+  grid-template-columns: 18% 300px 900px 18%;
+}
+
+.bottom_line {
+  text-align: left;
+  margin-top: 20px;
+  display: block;
+  width: 80%;
+  border-bottom: 1px solid #bcbcbc;
+  margin: 20px 0px;
+}
+
+.side_mypage,
+.recent_order_history {
+  text-align: left;
+  margin-top: 0px;
+  display: block;
+}
+.side_mypage a {
+  text-decoration: none;
+  color: black;
+}
+
+.side_mypage ul {
+  -webkit-padding-start: 0px;
+}
+.listyle {
+  margin: 20px 0px 0px 0px;
+  display: block;
+  text-align: left;
+}
+
+.listyle li {
+  margin-top: 20px;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.oder_lisytle,
+.wish_lisytle {
+  text-align: left;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #bcbcbc;
+  border-top: 1px solid #bcbcbc;
+  padding: 50px 0px 50px 0px;
+  margin: 40px 0px;
+}
+.wish_lisytle {
+  text-align: left;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #bcbcbc;
+  border-top: 1px solid #bcbcbc;
+  padding: 50px 0px 50px 0px;
+  margin: 40px 0px;
+}
+.btn_link {
+  height: 4px;
+  font-size: 14px;
+  padding: 12px 25px;
+  color: white;
+  background: black;
+  text-decoration: none;
+}
+.no_item {
+  padding: 50px 0;
+  text-align: center;
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: #dedfda;
+}
+.wish_lisytle {
+  padding: 40px 0 15px;
+  font-size: 23px;
+  color: #111111;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.recent_order_title {
+  position: relative;
+  margin: 0 0 20px 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  text-align: left;
+}
