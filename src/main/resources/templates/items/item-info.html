@@ -3,18 +3,18 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <!--  header nav bar 수입경로  -->
     <div th:replace="fragments.html :: fragment-header-navbar">
     </div>
+
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+    <!--  main jquery 부분   -->
     <script>
         $(document).ready(function () {
-            // var windowWidth = $( window ).width();
-            // if(windowWidth < 1000) {
-            // //창 가로 크기가 500 미만일 경우
-            //     $(".product_img1").addClass(".img_bigger")
-            // } else {
-            // //창 가로 크기가 500보다 클 경우
-            //     $(".product_img1").removeClass(".img_bigger")
-            // }
+
         });
 
         // 수량이 1 아래로 내려가지 못하도록 해주는 함수 선언
@@ -23,19 +23,28 @@
 
             if (upDown === 'up') {
                 $("[name=amount]").val(++amount);
+                if (amount > 1){
+                    $(".minus").css("color","black")
+                }
             }
 
             else if (upDown === 'down') {
+
                 if (amount > 1) {
                     $("[name=amount]").val(--amount);
-                }
+                    $(".minus").css("color","black")
+                    if (amount<2){
+                        $(".minus").css("color","lightgray")
 
-                else {
+                    }
+                }else {
                     return 0;
                 }
+
             }
         }
     </script>
+    <!--  main css 부분   -->
     <style>
         /* ============================================= */
         /* ============================================= */
@@ -276,22 +285,7 @@
             margin-bottom: 500px;
         }
 
-        .footer {
-            position: relative;
-            left: 0px;
-            bottom: 0px;
-            height: 500px;
-            width: 100%;
-            color: white;
-            background: black;
-        }
 
-        /* .main_margin1 {
-
-          width: 100%;
-          height: 100%;
-          margin-bottom: 500px;
-        } */
         .table_div {
             clear: both;
             /* position: relative; */
@@ -350,6 +344,13 @@
             float: left;
             margin-left: 2px;
         }
+        .minus:focus{
+            outline: none;
+        }
+        .plus:focus{
+            outline: none;
+        }
+
 
         .count_product {
             width: 60px;
@@ -369,9 +370,13 @@
             height: 60px;
             background-color: white;
             float: left;
-            font-size: 30px;
-
+            font-size: 40px;
+            color : lightgray;
+            line-height: 50px;
+            font-weight: lighter;
             border: none;
+
+
         }
 
         .plus {
@@ -573,16 +578,18 @@
                         />
                         <input
                                 type="button"
+                                class="minus"
+
+                                value="-"
+                                onClick="upDownAmount('down');"
+                        />
+                        <input
+                                type="button"
                                 class="plus"
                                 value="+"
                                 onClick="upDownAmount('up');"
                         />
-                        <input
-                                type="button"
-                                class="minus"
-                                value="-"
-                                onClick="upDownAmount('down');"
-                        />
+
                     </div>
 
                     <!-- <div class="count_div">
@@ -633,7 +640,10 @@
     </div>
 </main>
 <!-- --------------------------------- -->
-
-<div class="footer"></div>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 </body>
 </html>

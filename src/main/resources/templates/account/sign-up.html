@@ -167,9 +167,10 @@
     <!--  main jquery  -->
     <script>
         $(document).ready(function () {
-            $("#login_btn").click(function () {
-                checkform();
-            });
+            // $("#login_btn").click(function () {
+            //     checkform();
+            // });
+
             $(".gray").hide();
 
             var login_need1 = $("#login_need1");
@@ -273,61 +274,64 @@
                 }
             });
 
-            function checkform() {
-                var uid = $("#nickname").val();
-                if (uid.split(" ").join("") == "") {
-                    login_need1.show();
-                    $("#nickname").val("");
-                } else if (uid.split(" ").join("") != "") {
-                    login_need1.hide();
-                }
-
-                var email = $("#email").val();
-                if (email.split(" ").join("") == "") {
-                    login_need6.show();
-                    $("#email").val("");
-                } else if (email.split(" ").join("") != "") {
-                    login_need6.hide();
-                }
-
-                var pwd = $("#password").val();
-                if (pwd.split(" ").join("") == "") {
-                    login_need2.show();
-                    $("#password").val("");
-                } else if (pwd.split(" ").join("") != "") {
-                    login_need2.hide();
-                }
-                var pwd2 = $("#password2").val();
-                if (pwd2.split(" ").join("") == "") {
-                    login_need3.show();
-                    $("#password2").val("");
-                } else if (pwd2.split(" ").join("") != "") {
-                    login_need3.hide();
-                }
-                var name = $("#name").val();
-                if (name.split(" ").join("") == "") {
-                    login_need4.show();
-                    $("#name").val("");
-                } else if (name.split(" ").join("") != "") {
-                    login_need4.hide();
-                }
-                var phone = $("#phone").val();
-                if (phone.split(" ").join("") == "") {
-                    login_need5.show();
-                    $("#phone").val("");
-                } else if (phone.split(" ").join("") != "") {
-                    login_need5.hide();
-                }
-
-                if ($(".e_young_check").prop("checked") == false) {
-                    $(".gray").show();
-                }
-            }
-
             $("#e_young_btn1").click(function () {
                 $(".gray").hide();
             });
         });
+
+        function checkform() {
+            // var uid = $("#nickname").val();
+            // if (uid.split(" ").join("") == "") {
+            //     login_need1.show();
+            //     $("#nickname").val("");
+            // } else if (uid.split(" ").join("") != "") {
+            //     login_need1.hide();
+            // }
+            //
+            // var email = $("#email").val();
+            // if (email.split(" ").join("") == "") {
+            //     login_need6.show();
+            //     $("#email").val("");
+            // } else if (email.split(" ").join("") != "") {
+            //     login_need6.hide();
+            // }
+            //
+            // var pwd = $("#password").val();
+            // if (pwd.split(" ").join("") == "") {
+            //     login_need2.show();
+            //     $("#password").val("");
+            // } else if (pwd.split(" ").join("") != "") {
+            //     login_need2.hide();
+            // }
+            // var pwd2 = $("#password2").val();
+            // if (pwd2.split(" ").join("") == "") {
+            //     login_need3.show();
+            //     $("#password2").val("");
+            // } else if (pwd2.split(" ").join("") != "") {
+            //     login_need3.hide();
+            // }
+            // var name = $("#name").val();
+            // if (name.split(" ").join("") == "") {
+            //     login_need4.show();
+            //     $("#name").val("");
+            // } else if (name.split(" ").join("") != "") {
+            //     login_need4.hide();
+            // }
+            // var phone = $("#phone").val();
+            // if (phone.split(" ").join("") == "") {
+            //     login_need5.show();
+            //     $("#phone").val("");
+            // } else if (phone.split(" ").join("") != "") {
+            //     login_need5.hide();
+            // }
+
+            if ($(".e_young_check").prop("checked") == false) {
+                $(".gray").show();
+            }
+            else {
+                document.login_all_form.submit();
+            }
+        }
     </script>
 </head>
 <body>
@@ -539,9 +543,8 @@
                 /><span class="e_yooung_check">[필수] 약관에 동의 합니다.</span>
             </div>
             <div class="button_log">
-                <button type="submit" class="login_btn" id="login_btn">
-                    <b>회원가입하기</b>
-                </button>
+                <input type="button" class="login_btn" id="login_btn" value="회원가입하기" onclick="checkform();">
+
             </div>
         </form>
     </div>

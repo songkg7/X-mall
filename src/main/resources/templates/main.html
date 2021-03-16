@@ -7,6 +7,10 @@
 <head>
     <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
     <!-- main css 부분 -->
     <style>
 
@@ -59,15 +63,15 @@
             margin: 0;
         }
 
-        .footer {
-            position: relative;
-            left: 0px;
-            bottom: 0px;
-            height: 500px;
-            width: 100%;
-            color: white;
-            background: black;
-        }
+        /*.footer {*/
+        /*    position: relative;*/
+        /*    left: 0px;*/
+        /*    bottom: 0px;*/
+        /*    height: 500px;*/
+        /*    width: 100%;*/
+        /*    color: white;*/
+        /*    background: black;*/
+        /*}*/
     </style>
 </head>
 
@@ -139,6 +143,10 @@
 </main>
 
 
-<div class="footer"></div>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 </body>
 </html>
