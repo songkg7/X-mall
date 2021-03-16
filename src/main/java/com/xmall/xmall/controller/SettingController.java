@@ -63,10 +63,15 @@ public class SettingController {
     public String cus_center_refund_service() {
         return "customer_center/cus_center_refund_service";    }
 
+    @GetMapping("/cus_center_main")
+    public String cus_center_main() {
+        return "customer_center/cus_center_main";    }
+
     @GetMapping("/as_infoguide")
     public String as_infoguide() {
         return "mypage/as_infoguide";    }
 
+<<<<<<< HEAD
     @GetMapping("/coupon")
     public String coupon() {
         return "mypage/coupon";    }
@@ -82,4 +87,7 @@ public class SettingController {
     @GetMapping("/side_mypage")
     public String side_mypage() {
         return "mypage/side_mypage";    }
+=======
+
+>>>>>>> 639f4acb97891e994c03eb3a86fb15e08097d893
 }
