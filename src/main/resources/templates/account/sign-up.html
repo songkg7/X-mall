@@ -89,11 +89,13 @@
         .login_need3,
         .login_need4,
         .login_need5,
+        .login_need6,
         .login_check1,
         .login_check2,
         .login_check3,
         .login_check4,
-        .login_check5 {
+        .login_check5,
+        .login_check6 {
             padding-left: 0px;
             font-size: 8px;
             color: red;
@@ -149,22 +151,26 @@
             var login_need3 = $("#login_need3");
             var login_need4 = $("#login_need4");
             var login_need5 = $("#login_need5");
+            var login_need6 = $("#login_need6");
             var login_check1 = $("#login_check1");
             var login_check2 = $("#login_check2");
             var login_check3 = $("#login_check3");
             var login_check4 = $("#login_check4");
             var login_check5 = $("#login_check5");
+            var login_check6 = $("#login_check6");
 
             login_need1.hide();
             login_need2.hide();
             login_need3.hide();
             login_need4.hide();
             login_need5.hide();
+            login_need6.hide();
             login_check1.hide();
             login_check2.hide();
             login_check3.hide();
             login_check4.hide();
             login_check5.hide();
+            login_check6.hide();
 
             $("#nickname").keyup(function () {
                 if ($("#nickname").val().split(" ").join("") != "") {
@@ -178,6 +184,20 @@
                     $(".nickname").css("border","1px solid black");
                 }
             });
+
+            $("#email").keyup(function () {
+                if ($("#email").val().split(" ").join("") != "") {
+                    login_need6.hide();
+                }
+                if (checkEmail($("#email").val()) == false) {
+                    $(".email").css("border-color","red");
+                    login_check6.show();
+                } else {
+                    login_check6.hide();
+                    $(".email").css("border","1px solid black");
+                }
+            });
+
             $("#password").keyup(function () {
                 if ($("#password").val().split(" ").join("") != "") {
                     login_need2.hide();
@@ -235,6 +255,15 @@
                 } else if (uid.split(" ").join("") != "") {
                     login_need1.hide();
                 }
+
+                var email = $("#email").val();
+                if (email.split(" ").join("") == "") {
+                    login_need6.show();
+                    $("#email").val("");
+                } else if (email.split(" ").join("") != "") {
+                    login_need6.hide();
+                }
+
                 var pwd = $("#password").val();
                 if (pwd.split(" ").join("") == "") {
                     login_need2.show();
@@ -325,6 +354,12 @@
                             required
                     />
                 </div>
+                <span class="login_need6" id="login_need6"
+                >필수 입력 항목입니다.</span
+                >
+                <span class="login_check6" id="login_check6"
+                >hello@example.com 같은 Email 형식입니다.</span
+                >
 
                 <div class="infor_text">
                     <input
