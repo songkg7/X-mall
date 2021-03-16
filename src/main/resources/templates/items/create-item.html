@@ -28,6 +28,9 @@
                       placeholder="제품 설명을 입력하세요"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <div>
+            <span>현재 등록되어 있는 상품의 수</span><span th:text="${totalCount} + 개"></span>
+        </div>
     </form>
 </div>
 </body>

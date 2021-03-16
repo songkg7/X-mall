@@ -83,7 +83,7 @@
 <!-- main body 부분1 -->
 <main th:each="itemList : ${itemLists}">
     <div class="main">
-        <a href="#" th:href="@{/items/item-info}"
+        <a href="#" th:href="@{/items/{id} (id=${itemList.id})}"
         ><img src="/images/main_img/nikemain1.png"
               style="width: 100%; display: block; margin: auto"
         /></a>
