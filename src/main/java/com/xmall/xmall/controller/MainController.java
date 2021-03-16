@@ -26,6 +26,11 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "account/login";
+    }
+
 //    @GetMapping("/")
 //    public String home(@CurrentAccount Account account, Model model) {
 //        if (account != null) {
