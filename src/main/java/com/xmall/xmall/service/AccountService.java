@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -29,6 +30,25 @@ public class AccountService implements UserDetailsService {
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender javaMailSender;
+
+    // NOTE: 초기화
+    // Account 가 한명도 없다면, 아래 코드가 실행된다.
+    @PostConstruct
+    public void init() {
+
+        if (accountRepository.count() == 0) {
+            Account account = Account.builder()
+                    .email("admin@example.com")
+                    .nickname("admin")
+                    .password(passwordEncoder.encode("12345678"))
+                    .name("관리자")
+                    .phone("01011111111")
+                    .build();
+
+            accountRepository.save(account);
+        }
+
+    }
 
     // 회원가입
     public Account signUp(SignUpForm signUpForm) {
