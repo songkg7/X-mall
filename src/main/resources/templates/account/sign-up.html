@@ -10,7 +10,7 @@
     <!-- footer css 수입경로 -->
     <div th:replace="fragments.html :: fragment-footer-css"></div>
 
-<!--    <link rel="stylesheet" href="/css/khs/footer.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/khs/footer.css"/>-->
     <script src="/js/login.js"></script>
     <!--  main js  -->
     <!-- main css -->
@@ -39,14 +39,33 @@
             border-color: black;
             margin-top: 30px;
             border-width: 1px;
-            font-size : 14px;
+            font-size: 14px;
         }
-        input::-webkit-input-placeholder { font-size: 90%; }
-        input::-moz-placeholder { font-size: 90%; }
-        input:-ms-input-placeholder { font-size: 90%; }
-        input:-moz-placeholder { font-size: 90%; }
-        input::placeholder { font-size: 90%; }
-        input:focus { outline: none; }
+
+        input::-webkit-input-placeholder {
+            font-size: 90%;
+        }
+
+        input::-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input:-ms-input-placeholder {
+            font-size: 90%;
+        }
+
+        input:-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input::placeholder {
+            font-size: 90%;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
         .e_young {
             font-size: 14px;
             margin-top: 40px;
@@ -60,12 +79,14 @@
             /*margin-left: 39%;*/
             /*margin-right: 39%;*/
             width: 390px;
-            margin:0 auto;
+            margin: 0 auto;
             font-size: 12px;
         }
-        .scroll_box::placeholder{
-            font-size : 18px;
+
+        .scroll_box::placeholder {
+            font-size: 18px;
         }
+
         .e_yooung_check {
             font-size: 13px;
         }
@@ -84,8 +105,9 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .login_btn:hover {
-            background-color: rgba(0,0,0,0.8) ;
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         .login_need1,
@@ -181,11 +203,11 @@
                     login_need1.hide();
                 }
                 if (checkID($("#nickname").val()) == false) {
-                    $(".nickname").css("border-color","red");
+                    $(".nickname").css("border-color", "red");
                     login_check1.show();
                 } else {
                     login_check1.hide();
-                    $(".nickname").css("border","1px solid black");
+                    $(".nickname").css("border", "1px solid black");
                 }
             });
 
@@ -194,11 +216,11 @@
                     login_need6.hide();
                 }
                 if (checkEmail($("#email").val()) == false) {
-                    $(".email").css("border-color","red");
+                    $(".email").css("border-color", "red");
                     login_check6.show();
                 } else {
                     login_check6.hide();
-                    $(".email").css("border","1px solid black");
+                    $(".email").css("border", "1px solid black");
                 }
             });
 
@@ -207,11 +229,11 @@
                     login_need2.hide();
                 }
                 if (checkPwd($("#password").val()) == false) {
-                    $(".password").css("border-color","red");
+                    $(".password").css("border-color", "red");
                     login_check2.show();
                 } else {
                     login_check2.hide();
-                    $(".password").css("border","1px solid black");
+                    $(".password").css("border", "1px solid black");
                 }
             });
             $("#password2").keyup(function () {
@@ -219,11 +241,11 @@
                     login_need3.hide();
                 }
                 if ($("#password").val() != $("#password2").val()) {
-                    $(".password2").css("border-color","red");
+                    $(".password2").css("border-color", "red");
                     login_check3.show();
                 } else {
                     login_check3.hide();
-                    $(".password2").css("border","1px solid black");
+                    $(".password2").css("border", "1px solid black");
                 }
             });
             $("#name").keyup(function () {
@@ -231,11 +253,11 @@
                     login_need4.hide();
                 }
                 if (checkName($("#name").val()) == false) {
-                    $(".name").css("border-color","red");
+                    $(".name").css("border-color", "red");
                     login_check4.show();
                 } else {
                     login_check4.hide();
-                    $(".name").css("border","1px solid black");
+                    $(".name").css("border", "1px solid black");
                 }
             });
             $("#phone").keyup(function () {
@@ -243,11 +265,11 @@
                     login_need5.hide();
                 }
                 if (checkPhone($("#phone").val()) == false) {
-                    $(".phone").css("border-color","red");
+                    $(".phone").css("border-color", "red");
                     login_check5.show();
                 } else {
                     login_check5.hide();
-                    $(".phone").css("border","1px solid black");
+                    $(".phone").css("border", "1px solid black");
                 }
             });
 
@@ -328,11 +350,12 @@
                 최고의 제품과 혜택을 만나보세요.
             </p>
         </div>
-        <form name="login_all_form" action="#" th:action="@{/sign-up}" th:object="${signUpForm}" method="post" novalidate>
-<!--            <input-->
-<!--                    type="hidden"-->
-<!--                    th:name="${_csrf.parameterName}"-->
-<!--                    th:value="${_csrf.token}" />-->
+        <form name="login_all_form" action="#" th:action="@{/sign-up}" th:object="${signUpForm}"
+              method="post" novalidate>
+            <!--            <input-->
+            <!--                    type="hidden"-->
+            <!--                    th:name="${_csrf.parameterName}"-->
+            <!--                    th:value="${_csrf.token}" />-->
             <div class="info_blank">
                 <div class="infor_text">
                     <input
@@ -343,6 +366,11 @@
                             placeholder="사용하실 ID를 입력해주세요"
                             required
                     />
+                    <div>
+                        <small class="form-text text-danger"
+                               th:if="${#fields.hasErrors('nickname')}"
+                               th:errors="*{nickname}">Nickname Error</small>
+                    </div>
                 </div>
                 <span class="login_need1" id="login_need1"
                 >필수 입력 항목입니다.</span
@@ -360,6 +388,10 @@
                             placeholder="사용하실 Email을 입력해주세요"
                             required
                     />
+                    <div>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+                               th:errors="*{email}">Email Error</small>
+                    </div>
                 </div>
                 <span class="login_need6" id="login_need6"
                 >필수 입력 항목입니다.</span
@@ -377,7 +409,7 @@
                             placeholder="영문 대 소문+숫자 8~16자리"
                     />
                 </div>
-<!--                placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"-->
+                <!--                placeholder="영문 대 소문+숫자+특수문자 8~16자리(괄호(),<> 사용불가)"-->
 
                 <span class="login_need2" id="login_need2"
                 >필수 입력 항목입니다.</span

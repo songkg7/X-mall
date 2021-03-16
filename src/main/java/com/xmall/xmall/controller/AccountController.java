@@ -40,11 +40,12 @@ public class AccountController {
     // 여러 값을 받아올 때는 @ModelAttribute 가 필요하지만 생략이 가능하다.
     public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
         if (errors.hasErrors()) {
+            // 로그인 실패시 화면에 에러 정보를 같이 담아서 보내주기
             model.addAttribute(signUpForm);
             return "account/sign-up";
         }
 
-        signUpFormValidator.validate(signUpForm, errors);
+//        signUpFormValidator.validate(signUpForm, errors);
         if (errors.hasErrors()) {
             model.addAttribute(signUpForm);
             return "account/sign-up";
