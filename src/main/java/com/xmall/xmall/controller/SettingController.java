@@ -15,4 +15,7 @@ public class SettingController {
     public String cus_center_asview() {
         return "customer_center/cus_center_asview";    }
 
+    @GetMapping("/cus_center_cancel_refund")
+    public String cus_center_cancel_refund() {
+        return "customer_center/cus_center_cancel_refund";    }
 }

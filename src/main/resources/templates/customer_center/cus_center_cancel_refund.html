@@ -1,69 +1,24 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- 
-    1. a태그
-    <a href="이동할주소">이동하기<a> 
-    <a href="www.naver.com">이동하기<a> 
-    2. img태그
-    <img src="이미지저장주소/파일명.확장자">
-    <img src="./img/nikehome.png">
-    3. img를 클릭하면 네이버로 이동하는 방법
-    <a href="http://www.naver.com">
-        <img src=./img/nikehome.png">    
-    <a>
-    4. 특정 단어 클릭시 네이버 이동
-    <a href="http://www.naver.com">네이버로이동<a>
-    5. 이미지 가운데 정렬
-    <img src=".jpg" style="width:100%; display:block; margin:auto"> 
-    6. 글자 가운데 정렬
-    <p style="text-align:center;">글자가운데정렬<p>  
-    7. div박스는 한행을 전부다 차지한다. 옆으로 나란히 놓으려면?
-        1) float: left (붕떠서 왼쪽으로 정렬해주셈)
-        2) display:inline-block(옆으로 배치해주세욤)
-    8.clear라는 속성 :지금부터 float라는 속성을 무시해서 정상적으로 div박스를 출력
-    clear:both
-
-    -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../../../../../../Desktop/layout/css/main.css">
-    <link rel="stylesheet" href="../../../../../../../../Desktop/layout/css/footer.css">
-    <link rel="stylesheet" href="../../../../../../../../Desktop/layout/css/as.css">
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="css/khs/as.css">
     <style>
         
       
     </style>
 
 </head>
-<body class="jb_font-1">
+<body>
 
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
-    <header>
-        <!-- 헤더 1. 로그인바 -->
-        <div class="nav1">
-            <div class="nav1_logo"></div>
-            <div class="nav1_text">
-                   <a class="gray_atag" href="http://고객센터.com" style="cursor: hand;">고객센터 &nbsp;</a>
-                 | <a class="gray_atag" href="http://멤버가입.com" style="cursor: hand;">&nbsp; 멤버 가입 &nbsp;</a>
-                 | <a class="gray_atag" href="http://로그인.com" style="cursor: hand;">&nbsp; 로그인</a></div>
-        </div>
-
-        
-            
-            <!-- 중앙 카테고리 -->
-            <div class="navi1">
-                <a href="">고객센터</a> > 취소/반품
-             </div>
-             <div class="navi2">
-                 <input type="text">
-             </div>
-        </div>
-    </header>
+<header th:replace="fragments.html :: nav-bar"></header>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -79,10 +34,10 @@
                             <ul>
                                 <li><a href="http://127.0.0.1:5500/gongji.html">공지사항</a></li>
                                 <li><a href="http://127.0.0.1:5500/loginservice.html" >회원혜택/서비스</a></li>
-                                <li><a href="http://127.0.0.1:5500/asview.html" >A/S</a></li>
+                                <li><a href="cus_center_asview" >A/S</a></li>
                                 <li><a href="http://127.0.0.1:5500/order_file.html" >주문결제</a></li>
                                 <li><a href="http://127.0.0.1:5500/login_info.html" >회원정보</a></li>
-                                <li><a href="http://127.0.0.1:5500/cancel_refund.html" >취소/반품</a></li>
+                                <li><a href="cus_center_cancel_refund" >취소/반품</a></li>
                                 <li><a href="http://127.0.0.1:5500/delivery.html" >배송</a></li>
                             </ul>                            
                         </li>
@@ -130,11 +85,11 @@
             </div>
             <div class="imgcenter" style="background:white;">         
                 <font size="2em">
-                    <p><img src="/img/7632767abddaacec58a82f3240612d8b7d38c0c4.jpg"/></p>
+                    <p><img src="/images/icon/phone.jpg"/></p>
                     <h3>전화 문의</h3>               
                     <p>000-000-0000</p>               
                    <p>월~일 오전 9시 ~오후 8시</p>
-                   <p><img src="/img/제목 없음.png"/></p>
+                   <p><img src="/images/icon/message.png"/></p>
                     <h3> 1:1 채팅서비스</h3>
                     <p><a href="" class="chatmoon">1:1 채팅 문의하기</a></p>
                     </font>
@@ -154,33 +109,8 @@
 
 
 
-    <div class="footer"> 
-        <div class="footer"> 
-            <div class="footer_navi1">
-                <div class="footer_menu_1">
-                    <p><a href="">로그인</a></p>
-                    <p><a href="">회원가입</a></p>
-                </div>
-                <div class="footer_menu_2">
-                    <p>고객센터</p>
-                    <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
-                    <a href="http://127.0.0.1:5500/delivery.html">배송</a>
-                    <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
-                    <a href="http://127.0.0.1:5500/loginservice.html">회원혜택/서비스</a>
-                    <a href="http://127.0.0.1:5500/asview.html">A/S</a>
-                    <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
-                    <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
-                </div>
-                <div class="footer_menu_3">
-                    <p>ABOUT PROJECT</p>
-                    <a href="">프로젝트에 관하여</a>
-                </div>
-            </div>
-            <div class="footer_navi2">
-                <p>대한민국</p>
-            </div>
-        </div>
-    </div>
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 
     
     
