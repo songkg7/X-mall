@@ -517,8 +517,8 @@
                 <!-- 2-1-1. 모델명 -->
                 <!--======================-->
                 <div class="product_name">
-                    <p class="p_1">남성 하프집 후드 재킷 AS</p>
-                    <p class="p_2">나이키 스포츠웨어 헤리티지 윈드러너</p>
+                    <p class="p_1" th:text="${item.getDescription()}">남성 하프집 후드 재킷 AS</p>
+                    <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
                     <div class="thumnail">
                         <div class="thumnail_1">
                             <img class="thum_1" src="/images/main_img/vapor1.png"/>
@@ -534,7 +534,7 @@
                 <!--======================-->
                 <!-- 2-1-2. 가격 -->
                 <!--======================-->
-                <p class="price">129,000원</p>
+                <p class="price" th:text="${item.getPrice()}">129,000원</p>
                 <!--======================-->
                 <div style="clear: both"></div>
                 <!--======================-->
