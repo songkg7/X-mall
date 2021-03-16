@@ -33,6 +33,10 @@ public class Account {
     @Column(unique = true)
     private String nickname;
 
+    private String name;
+
+    private String phone;
+
     private String password;
     // ----
 
