@@ -6,16 +6,6 @@
     <div th:replace="fragments :: fragment-header-navbar"></div>
     <title>createItemForm</title>
     <style>
-
-            /* ============================================= */
-            /* ============================================= */
-            /* ============================================= */
-            /* ============================================= */
-            /* ============================================= */
-            /* ============================================= */
-            /* ============================================= */
-
-
             /* *********************************** */
             /* main 부분 css */
             /* *********************************** */
@@ -674,42 +664,3 @@
 <!--    </footer>-->
 </body>
 </html>
-<!--
-*
-<form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
-
-        *
-        <div class="form-group">
-            *
-            <p th:for="name">제품명</p>
-            <input type="text" th:field="*{name}" class="form-control"
-                   placeholder="제품명을 입력하세요">
-        </div>
-        <div class="form-group">
-            <p th:for="subTitle">상품 카테고리</p>
-            <input type="text" th:field="*{subTitle}" class="form-control"
-                   placeholder="카테고리를 입력하세요">
-        </div>
-        <div class="form-group">
-            <p th:for="price">가격</p>
-            <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요">
-        </div>
-        <div class="form-group">
-            <p th:for="stockQuantity">재고수량</p>
-            <input type="number" th:field="*{stockQuantity}" class="form-control"
-                   placeholder="재고수량을 입력하세요">
-        </div>
-        <div class="form-group">
-            <p th:for="description">제품 상세설명</p>
-            <textarea th:field="*{description}" class="form-control"
-                      placeholder="하단에 표시될 제품 설명을 입력하세요">
-            </textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <div>
-            <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
-        </div>
-    </form>
-
-
--->

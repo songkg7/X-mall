@@ -2,6 +2,7 @@ package com.xmall.xmall.form;
 
 import lombok.Data;
 
+import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -20,8 +21,7 @@ public class ItemForm {
 
     private String description;
 
-
-
-//    private String itemImage;
+    @Lob
+    private String itemImage;
 
 }

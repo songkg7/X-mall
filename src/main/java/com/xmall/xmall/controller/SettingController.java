@@ -16,20 +16,7 @@ public class SettingController {
 
     private final ItemRepository itemRepository;
 
-    // FIXME: order-payment url 적절하지 않음
-    @GetMapping("/order-payment/{id}")
-    public String orderPayment(@PathVariable Long id, Model model, @RequestParam("amount") int amount) {
-        Item item = itemRepository.findById(id).get();
 
-        if (item == null) {
-            return "error";
-        }
-
-        model.addAttribute("item", item);
-        model.addAttribute("amount", amount);
-
-        return "mypage/order-payment";
-    }
 
     @GetMapping("/cus_center_asview")
     public String cus_center_asview() {
