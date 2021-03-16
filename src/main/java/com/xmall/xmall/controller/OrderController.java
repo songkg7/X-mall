@@ -17,9 +17,7 @@ public class OrderController {
 
     // FIXME: order-payment url 적절하지 않음
     @GetMapping("/order-payment/{id}")
-    // FIXME: @RequestParam 을 쓰는 시도는 좋았으나 get 요청으로 url 로 직접 데이터를 넘기면
-    //  어노테이션으로 데이터를 받지 않고 다이렉트로 받아야합니다. 어노테이션으로 받고 싶다면 POST 요청으로
-    //  데이터를 보내도록 해야합니다.
+    // FIXME: @RequestParam
     public String orderPayment(@PathVariable Long id, Model model, @RequestParam("amount") int amount) {
         Item item = itemRepository.findById(id).get();
 

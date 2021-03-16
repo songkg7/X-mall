@@ -38,42 +38,42 @@
     <style>
     </style>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             // 라디오버튼 클릭시 이벤트 발생
-            $("input:radio[name=delivery]").click(function(){
+            $("input:radio[name=delivery]").click(function () {
 
-                if($("input[name=delivery]:checked").val() == "1"){
-                    $("input:text[name=address_input]").prop("disabled",false);
+                if ($("input[name=delivery]:checked").val() == "1") {
+                    $("input:text[name=address_input]").prop("disabled", false);
                     // radio 버튼의 value 값이 1이라면 활성화
 
-                }else if($("input[name=delivery]:checked").val() == "0"){
-                    $("input:text[name=address_input]").prop("disabled",true);
+                } else if ($("input[name=delivery]:checked").val() == "0") {
+                    $("input:text[name=address_input]").prop("disabled", true);
                     // radio 버튼의 value 값이 0이라면 비활성화
                 }
             });
         });
-        $(document).ready(function(){
+        $(document).ready(function () {
             // 라디오버튼 클릭시 이벤트 발생
-            $("input:radio[name=delivery]").click(function(){
+            $("input:radio[name=delivery]").click(function () {
 
-                if($("input[name=delivery]:checked").val() == "0"){
-                    $("input:text[name=pastAddress_input]").prop("disabled",false);
+                if ($("input[name=delivery]:checked").val() == "0") {
+                    $("input:text[name=pastAddress_input]").prop("disabled", false);
                     // radio 버튼의 value 값이 1이라면 활성화
 
-                }else if($("input[name=delivery]:checked").val() == "1"){
-                    $("input:text[name=pastAddress_input]").prop("disabled",true);
+                } else if ($("input[name=delivery]:checked").val() == "1") {
+                    $("input:text[name=pastAddress_input]").prop("disabled", true);
                     // radio 버튼의 value 값이 0이라면 비활성화
                 }
             });
         });
-        $(function(){
+        $(function () {
             //직접입력 인풋박스 기존에는 숨어있다가
             $("#selboxDirect").hide();
-            $("#memo").change(function() {
+            $("#memo").change(function () {
                 //직접입력을 누를 때 나타남
-                if($("#memo").val() == "직접입력") {
+                if ($("#memo").val() == "직접입력") {
                     $("#selboxDirect").show();
-                }  else {
+                } else {
                     $("#selboxDirect").hide();
                 }
             })
@@ -122,32 +122,35 @@
             </div>
             <!-- 기존 배송지 -->
             <div>
-                <div style="text-align: left; " id="address" >
-                    <p>(우편주소)주소 : <input type="text" size="10%" name="address_input"> <input type="text" size="60%"  name="address_input"></p>
-                    <p>상세주소 : <input type="text" size="100%"  name="address_input"></p>
-                    <p>번호 : <input type="text" size="20%"  name="address_input"></p>
+                <div style="text-align: left; " id="address">
+                    <p>(우편주소)주소 : <input type="text" size="10%" name="address_input"> <input
+                            type="text" size="60%" name="address_input"></p>
+                    <p>상세주소 : <input type="text" size="100%" name="address_input"></p>
+                    <p>번호 : <input type="text" size="20%" name="address_input"></p>
                 </div>
             </div>
             <!-- 신규 배송지 -->
             <div class="shop_input ">
-                <input type="radio" name="delivery" id="delivery_new" value="0"  >신규 배송지
-                <div style="text-align: left;" id="pastAddress" >
-                    <p>(우편주소)주소 : <input type="text" size="10%"  name="pastAddress_input"> <input type="text" size="60%"  name="pastAddress_input"></p>
-                    <p>상세주소 : <input type="text" size="15%"  name="pastAddress_input"></p>
-                    <p>번호 : <input type="text" size="20%"  name="pastAddress_input"></p>
+                <input type="radio" name="delivery" id="delivery_new" value="0">신규 배송지
+                <div style="text-align: left;" id="pastAddress">
+                    <p>(우편주소)주소 : <input type="text" size="10%" name="pastAddress_input"> <input
+                            type="text" size="60%" name="pastAddress_input"></p>
+                    <p>상세주소 : <input type="text" size="15%" name="pastAddress_input"></p>
+                    <p>번호 : <input type="text" size="20%" name="pastAddress_input"></p>
                 </div>
                 <div class="shop_input_baseaddress">
                     <input type="checkbox" name="address" value="">기본 주소 사용
                 </div>
                 <div style="text-align: left; padding-bottom: 50px;">
-                    <select name="memo" id="memo" style="padding-right:300px;" >
+                    <select name="memo" id="memo" style="padding-right:300px;">
                         <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
                         <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
                         <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
                         <option value="직접입력">직접입력</option>
                     </select>
                     <div style="padding-top: 20px; text-align: left;">
-                        <input type="text" id="selboxDirect" name="selboxDirect"  size="100px" style="padding-bottom:100px"/>
+                        <input type="text" id="selboxDirect" name="selboxDirect" size="100px"
+                               style="padding-bottom:100px"/>
                     </div>
                 </div>
             </div>
