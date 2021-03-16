@@ -28,5 +28,5 @@ function checkName(str) {
 }
 
 function checkPhone(str) {
-  return checkPattern(str, new RegExp(/^[0-9]+$/));
+  return checkPattern(str, new RegExp(/^010[0-9]{8}$/));
 }
