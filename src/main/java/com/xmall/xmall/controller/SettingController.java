@@ -11,9 +11,8 @@ public class SettingController {
     @GetMapping("/mypage/order-payment")
     public String orderPayment() {return "mypage/order-payment";}
 
-//    @GetMapping("/cs")
-//    public String cs() {
-//        return ""
-//    }
+    @GetMapping("/cus_center_asview")
+    public String cus_center_asview() {
+        return "customer_center/cus_center_asview";    }
 
 }
