@@ -1,41 +1,18 @@
 <!DOCTYPE html>
-<html lang="kor">
-  <head>
-    <!-- 
-    1. a태그
-    <a href="이동할주소">이동하기<a> 
-    <a href="www.naver.com">이동하기<a> 
-    2. img태그
-    <img src="이미지저장주소/파일명.확장자">
-    <img src="./img/nikehome.png">
-    3. img를 클릭하면 네이버로 이동하는 방법
-    <a href="http://www.naver.com">
-        <img src=./img/nikehome.png">    
-    <a>
-    4. 특정 단어 클릭시 네이버 이동
-    <a href="http://www.naver.com">네이버로이동<a>
-    5. 이미지 가운데 정렬
-    <img src=".jpg" style="width:100%; display:block; margin:auto"> 
-    6. 글자 가운데 정렬
-    <p style="text-align:center;">글자가운데정렬<p>  
-    7. div박스는 한행을 전부다 차지한다. 옆으로 나란히 놓으려면?
-        1) float: left (붕떠서 왼쪽으로 정렬해주셈)
-        2) display:inline-block(옆으로 배치해주세욤)
-    8.clear라는 속성 :지금부터 float라는 속성을 무시해서 정상적으로 div박스를 출력
-    clear:both
-
-    -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/side_mypage.css" />
-    <link rel="stylesheet" href="css/order_delivery.css" />
-    <script src="js/jquery-1.11.0.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- header nav css 수입경로-->
+  <div th:replace="fragments.html :: fragment-header-navbar"></div>
+  <!-- footer css 수입경로 -->
+  <div th:replace="fragments.html :: fragment-footer-css"></div>
+  <link rel="stylesheet" href="css/kjh/side_mypage.css">
+  <link rel="stylesheet" href="css/kjh/order_delivery.css">
+  <style></style>
   </head>
 
   <script>
+
     $(document).ready(function () {
       $(".dark").hide(); //팝업창 숨김화면
       $(".pop_up").hide(); //팝업창 숨김화면
@@ -90,40 +67,7 @@
     <!--+++++++++++++++++++++++++++++++++++-->
     <!-- main 부분 -->
     <!--+++++++++++++++++++++++++++++++++++-->
-    <header>
-      <!-- 헤더 1. 로그인바 -->
-      <div class="nav1">
-        <div class="nav1_logo"></div>
-        <div class="nav1_text">
-          <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
-            >고객센터 &nbsp;</a
-          >
-          <a class="gray_atag" href="http://멤버가입.com" style="cursor: hand"
-            >&nbsp; 멤버 가입 &nbsp;</a
-          >
-          <a class="gray_atag" href="http://로그인.com" style="cursor: hand"
-            >&nbsp; 로그인</a
-          >
-        </div>
-      </div>
-
-      <!-- 헤더 2. 네비게이션바 -->
-      <div class="nav2">
-        <!-- 중앙 카테고리 -->
-        <div class="nav2_category">
-          <ul class="li-inline">
-            <li><a class="black_atag" href="#">New Releases</a></li>
-            <li><a class="black_atag" href="#">Men</a></li>
-            <li><a class="black_atag" href="#">Women</a></li>
-            <li><a class="black_atag" href="#">Kids</a></li>
-            <li><a class="black_atag" href="#">Sale</a></li>
-          </ul>
-        </div>
-        <div class="nav2_search"></div>
-        <div class="nav2_wishlist"></div>
-        <div class="nav2_bag"></div>
-      </div>
-    </header>
+    <header th:replace="fragments.html :: nav-bar"></header>
     <!--+++++++++++++++++++++++++++++++++++-->
     <!-- main 부분 -->
     <!--+++++++++++++++++++++++++++++++++++-->
@@ -140,22 +84,15 @@
             <li class="listyle">
               <h4>쇼핑정보</h4>
               <ul>
-                <li>
-                  <a href="http://127.0.0.1:5501/coupon.html">쿠폰</a>
-                </li>
-                <li><a href="">주문배송</a></li>
-                <li>
-                  <a href="http://127.0.0.1:5501/returnRequest.html"
-                    >취소/ 반품</a
-                  >
-                </li>
+                <li><a href="coupon">쿠폰</a></li>
+                <li><a href="order_delivery.">주문배송</a></li>
+                <li><a href="return_cancle">취소/반품</a></li>
               </ul>
             </li>
             <div class="bottom_line"></div>
             <li class="listyle">
               <h4>나의정보</h4>
               <ul>
-                <li><a href="">배송지 관리</a></li>
                 <li><a href="">회원정보 관리</a></li>
                 <li><a href="">비밀번호 변경</a></li>
                 <li><a href="">회원탈퇴</a></li>
@@ -165,24 +102,22 @@
             <li class="listyle">
               <h4>A/S 신청.조회</h4>
               <ul>
-                <li>
-                  <a href="http://127.0.0.1:5501/as_infoguide.html"
-                    >접수 안내</a
-                  >
-                </li>
-                <li><a href="">A/S 신청</a></li>
+                <li><a href="as_infoguide">접수 안내</a></li>
+                <li><a href="cus_center_asview">as 신청</a></li>
               </ul>
             </li>
             <div class="bottom_line"></div>
             <li class="listyle">
               <h4>고객센터</h4>
               <ul>
-                <li><a href="">1:1 채팅 문의</a></li>
+                <li>
+                  <a href="">1:1 채팅 문의</a>
+                </li>
                 <li><a href="">1:1 E-mail 문의</a></li>
               </ul>
             </li>
             <div class="bottom_line"></div>
-            <h4>나이키닷컴 고객센터</h4>
+            <h4>나이키닷컴고객센터</h4>
             <h3>080-022-0182</h3>
             <p>월~일:오전 9시 ~ 오후 8시</p>
             <div class="bottom_line"></div>
@@ -252,6 +187,7 @@
     <!-- footer 부분 -->
     <!--+++++++++++++++++++++++++++++++++++-->
 
-    <div class="footer"></div>
+    <footer th:replace="fragments.html :: footer-body">
+    </footer>
   </body>
 </html>

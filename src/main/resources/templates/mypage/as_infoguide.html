@@ -6,8 +6,8 @@
   <div th:replace="fragments.html :: fragment-header-navbar"></div>
   <!-- footer css 수입경로 -->
   <div th:replace="fragments.html :: fragment-footer-css"></div>
-  <link rel="stylesheet" href="css/kjh/as_infoguide.css">
   <link rel="stylesheet" href="css/kjh/side_mypage.css">
+  <link rel="stylesheet" href="css/kjh/as_infoguide.css">
     <style></style>
   </head>
   <body>
@@ -27,23 +27,19 @@
           <h2>My PAGE</h2>
           <div class="bottom_line"></div>
           <div class="bottom_line"><h4>사용자</h4></div>
-          <div class="bottom_line"><a href=""><h4>고객센터</a></h4></div>
           <ul>
             <li class="listyle">
               <h4>쇼핑정보</h4>
               <ul>
-                <li><a href="http://127.0.0.1:5501/coupon.html">쿠폰</a></li>
-                <li><a href="">위시리스트</a></li>
-                <li><a href="">주문배송</a></li>
-                <li><a href="">취소/ 반품</a></li>
-                <li><a href="">반품 현황</a></li>
+                <li><a href="coupon">쿠폰</a></li>
+                <li><a href="order_delivery.">주문배송</a></li>
+                <li><a href="return_cancle">취소/반품</a></li>
               </ul>
             </li>
             <div class="bottom_line"></div>
             <li class="listyle">
               <h4>나의정보</h4>
               <ul>
-                <li><a href="">배송지 관리</a></li>
                 <li><a href="">회원정보 관리</a></li>
                 <li><a href="">비밀번호 변경</a></li>
                 <li><a href="">회원탈퇴</a></li>
@@ -53,8 +49,8 @@
             <li class="listyle">
               <h4>A/S 신청.조회</h4>
               <ul>
-                <li><a href="">접수 안내</a></li>
-                <li><a href="">A/S 신청</a></li>
+                <li><a href="as_infoguide">접수 안내</a></li>
+                <li><a href="cus_center_asview">as 신청</a></li>
               </ul>
             </li>
             <div class="bottom_line"></div>
@@ -62,7 +58,7 @@
               <h4>고객센터</h4>
               <ul>
                 <li>
-                  <a href="http://127.0.0.1:5500/asview.html">1:1 채팅 문의</a>
+                  <a href="">1:1 채팅 문의</a>
                 </li>
                 <li><a href="">1:1 E-mail 문의</a></li>
               </ul>
@@ -74,7 +70,6 @@
             <div class="bottom_line"></div>
           </ul>
         </div>
-
         <!-- 카테고리 메인 -->
         <div class="as_receipt_guide">
           <div class="customer-contents">
