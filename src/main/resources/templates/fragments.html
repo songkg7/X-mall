@@ -629,6 +629,11 @@
             <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand"
             >&nbsp; 로그아웃</a
             >
+            </span><span sec:authorize="isAuthenticated()">
+            |
+            <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand"
+            >&nbsp; 상품 등록</a
+            >
             </span>
         </div>
     </div>
