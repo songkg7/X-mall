@@ -615,7 +615,7 @@
 <header th:fragment="nav-bar">
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
-        <div class="nav1_logo"><a href="#"><img src="/images/icon/logo.png" alt=""/></a></div>
+        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
         <div class="nav1_text">
             <span sec:authorize="isAuthenticated()" >
                 <span sec:authentication="name">Username</span>
