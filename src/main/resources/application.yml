@@ -22,10 +22,5 @@ logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
 
-<<<<<<< HEAD
 # 8083 포트 사용 시 활성화
-server.port: 8083
-=======
-#8083 포트 사용 시 활성화
-#server.port: 8083
->>>>>>> b33e5013c7bf8f91d242c5f057b08c5793740980
+# server.port: 8083
