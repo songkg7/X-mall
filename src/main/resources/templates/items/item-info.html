@@ -568,7 +568,7 @@
                 <!--======================-->
                 <!-- 3. 수량 -->
                 <!--======================-->
-                <form method="get">
+                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">
                     <div class="count_div">
                         <div class="count_amount">수량</div>
                         <input
@@ -606,9 +606,7 @@
                     <!--======================-->
                     <!-- 4. 구매 -->
                     <!--======================-->
-                    <a href="#"
-                    ><input type="submit" class="buy_button" value="바로구매"
-                    /></a>
+                    <input type="submit" class="buy_button" value="바로구매"/>
 
                     <div class="kart_wish_div">
                         <a href="#"
