@@ -102,9 +102,17 @@
         .nav1_logo {
             width: 40px;
             height: 40px;
-            background-color: burlywood;
+
             float: left;
             margin-left: 25%;
+            cursor: pointer;
+        }
+        .nav1_logo a img {
+            margin-top: 5px;
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+
         }
 
         .nav1_text {
@@ -603,15 +611,22 @@
           crossorigin="anonymous"/>
 </head>
 
-<!-- 화면 전체에 적용할 header의 nav바 body 부분 -->
+<!-- 화면 전체에 적용할 header의 nav바s body 부분 -->
 <header th:fragment="nav-bar">
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
-        <div class="nav1_logo"></div>
+        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
         <div class="nav1_text">
-            <a class="gray_atag" href="http://고객센터.com" style="cursor: hand"
-            >고객센터 &nbsp;</a
+            <span sec:authorize="isAuthenticated()" >
+                <span sec:authentication="name">Username</span>
+                님 |
+            </span>
+            <span>
+
+            <a class="gray_atag" href="#" th:href="@{/customer_service}" style="cursor: hand"
+            >&nbsp; 고객센터 &nbsp;</a
             >
+            </span>
             <span sec:authorize="!isAuthenticated()">
             |
             <a class="gray_atag" href="#" th:href="@{/sign-up}" style="cursor: hand"

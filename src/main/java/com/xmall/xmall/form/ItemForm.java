@@ -11,12 +11,16 @@ public class ItemForm {
     @NotBlank
     private String name;
 
+    private String subTitle;
+
     @NotNull
     private int price;
 
     private int stockQuantity;
 
     private String description;
+
+
 
 //    private String itemImage;
 

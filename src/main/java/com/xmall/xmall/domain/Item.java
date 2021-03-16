@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -25,11 +26,20 @@ public class Item {
     // 재고
     private int stockQuantity;
 
+    // TODO: Size 선택 옵션에 대해서 생각해보기
+    // 사이즈
+//    private List<Size> sizes = new ArrayList<>();
+
+    private String subTitle;
+
     // 상품 상세설명
     @Lob
     private String description;
 
     @Lob
     private String itemImage;
+
+    // 상품 등록일
+    private LocalDateTime CreateAt;
 
 }

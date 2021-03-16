@@ -7,6 +7,10 @@
 <head>
     <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
     <!-- main css 부분 -->
     <style>
 
@@ -59,15 +63,15 @@
             margin: 0;
         }
 
-        .footer {
-            position: relative;
-            left: 0px;
-            bottom: 0px;
-            height: 500px;
-            width: 100%;
-            color: white;
-            background: black;
-        }
+        /*.footer {*/
+        /*    position: relative;*/
+        /*    left: 0px;*/
+        /*    bottom: 0px;*/
+        /*    height: 500px;*/
+        /*    width: 100%;*/
+        /*    color: white;*/
+        /*    background: black;*/
+        /*}*/
     </style>
 </head>
 
@@ -79,7 +83,7 @@
 <!-- main body 부분1 -->
 <main th:each="itemList : ${itemLists}">
     <div class="main">
-        <a href="#" th:href="@{/items/item-info}"
+        <a href="#" th:href="@{/items/{id} (id=${itemList.id})}"
         ><img src="/images/main_img/nikemain1.png"
               style="width: 100%; display: block; margin: auto"
         /></a>
@@ -87,7 +91,7 @@
         <p class="product" th:text="${itemList.getName()}">상품 모델 명 1</p>
         <div>
             <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
-            <p class="description" th:text="${itemList.getDescription()}">상품 추천 설명</p>
+            <p class="description" th:text="${itemList.getSubTitle()}">상품 추천 설명</p>
         </div>
         <div>
             <a class="button white_atag" href="http://www.naver.com">구매하기</a>
@@ -139,6 +143,10 @@
 </main>
 
 
-<div class="footer"></div>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 </body>
 </html>

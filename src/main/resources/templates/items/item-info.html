@@ -3,18 +3,18 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <!--  header nav bar 수입경로  -->
     <div th:replace="fragments.html :: fragment-header-navbar">
     </div>
+
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+    <!--  main jquery 부분   -->
     <script>
         $(document).ready(function () {
-            // var windowWidth = $( window ).width();
-            // if(windowWidth < 1000) {
-            // //창 가로 크기가 500 미만일 경우
-            //     $(".product_img1").addClass(".img_bigger")
-            // } else {
-            // //창 가로 크기가 500보다 클 경우
-            //     $(".product_img1").removeClass(".img_bigger")
-            // }
+
         });
 
         // 수량이 1 아래로 내려가지 못하도록 해주는 함수 선언
@@ -23,19 +23,28 @@
 
             if (upDown === 'up') {
                 $("[name=amount]").val(++amount);
+                if (amount > 1){
+                    $(".minus").css("color","black")
+                }
             }
 
             else if (upDown === 'down') {
+
                 if (amount > 1) {
                     $("[name=amount]").val(--amount);
-                }
+                    $(".minus").css("color","black")
+                    if (amount<2){
+                        $(".minus").css("color","lightgray")
 
-                else {
+                    }
+                }else {
                     return 0;
                 }
+
             }
         }
     </script>
+    <!--  main css 부분   -->
     <style>
         /* ============================================= */
         /* ============================================= */
@@ -276,22 +285,7 @@
             margin-bottom: 500px;
         }
 
-        .footer {
-            position: relative;
-            left: 0px;
-            bottom: 0px;
-            height: 500px;
-            width: 100%;
-            color: white;
-            background: black;
-        }
 
-        /* .main_margin1 {
-
-          width: 100%;
-          height: 100%;
-          margin-bottom: 500px;
-        } */
         .table_div {
             clear: both;
             /* position: relative; */
@@ -350,6 +344,13 @@
             float: left;
             margin-left: 2px;
         }
+        .minus:focus{
+            outline: none;
+        }
+        .plus:focus{
+            outline: none;
+        }
+
 
         .count_product {
             width: 60px;
@@ -369,9 +370,12 @@
             height: 60px;
             background-color: white;
             float: left;
-            font-size: 30px;
-
+            font-size: 40px;
+            color : lightgray;
+            font-weight: 100;
             border: none;
+
+
         }
 
         .plus {
@@ -380,6 +384,8 @@
             background-color: white;
             float: left;
             font-size: 30px;
+            margin-top: 3px;
+            font-weight: 100;
             border: none;
         }
 
@@ -517,8 +523,8 @@
                 <!-- 2-1-1. 모델명 -->
                 <!--======================-->
                 <div class="product_name">
-                    <p class="p_1">남성 하프집 후드 재킷 AS</p>
-                    <p class="p_2">나이키 스포츠웨어 헤리티지 윈드러너</p>
+                    <p class="p_1" th:text="${item.getSubTitle()}">남성 하프집 후드 재킷 AS</p>
+                    <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
                     <div class="thumnail">
                         <div class="thumnail_1">
                             <img class="thum_1" src="/images/main_img/vapor1.png"/>
@@ -534,7 +540,7 @@
                 <!--======================-->
                 <!-- 2-1-2. 가격 -->
                 <!--======================-->
-                <p class="price">129,000원</p>
+                <p class="price" th:text="${item.getPrice()} + 원">129,000원</p>
                 <!--======================-->
                 <div style="clear: both"></div>
                 <!--======================-->
@@ -549,6 +555,7 @@
                     </div>
                 </div>
                 <div class="table_div">
+<!--                    TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                     <div class="size_table">
                         <div class="size_cell"><p>85(XS)</p></div>
                         <div class="size_cell"><p>90(S)</p></div>
@@ -573,16 +580,18 @@
                         />
                         <input
                                 type="button"
+                                class="minus"
+
+                                value="-"
+                                onClick="upDownAmount('down');"
+                        />
+                        <input
+                                type="button"
                                 class="plus"
                                 value="+"
                                 onClick="upDownAmount('up');"
                         />
-                        <input
-                                type="button"
-                                class="minus"
-                                value="-"
-                                onClick="upDownAmount('down');"
-                        />
+
                     </div>
 
                     <!-- <div class="count_div">
@@ -615,8 +624,8 @@
                 </form>
                 <hr/>
                 <div class="detail_description_div">
-                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>
-                    <p>
+<!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
+                    <p th:text="${item.getDescription()}">
                         무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너
                         재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝
                         윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이
@@ -633,7 +642,10 @@
     </div>
 </main>
 <!-- --------------------------------- -->
-
-<div class="footer"></div>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 </body>
 </html>
