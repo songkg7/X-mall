@@ -120,6 +120,8 @@ public class AccountService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String emailOrNickname) throws UsernameNotFoundException {
         Account account = accountRepository.findByEmail(emailOrNickname);
+        String authority = "ROLE_USER";
+
         if (account == null) {
             account = accountRepository.findByNickname(emailOrNickname);
         }
@@ -128,7 +130,11 @@ public class AccountService implements UserDetailsService {
             throw new UsernameNotFoundException(emailOrNickname);
         }
 
-        return new UserAccount(account);
+        if (account.getEmail().equals("admin@example.com")) {
+            authority = "ROLE_ADMIN";
+        }
+
+        return new UserAccount(account, authority);
 
     }
 }
