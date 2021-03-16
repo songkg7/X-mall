@@ -15,9 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
-                .mvcMatchers("/items/**").permitAll()
-                .mvcMatchers("/mypage/**").permitAll()
-                // NOTE: 로그인 기능 전엔 모든 접속 허용.
+                .mvcMatchers("/items/create-item").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         // FIXME: csrf token 체크 기능 비활성화, 데이터베이스 공격에 취약해질 수 있으므로 반드시 다시 활성화해야한다.
