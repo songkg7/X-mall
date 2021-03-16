@@ -619,6 +619,8 @@
     <div class="nav1">
         <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
         <div class="nav1_text">
+
+            <span sec:authorize="hasRole('ROLE_ADMIN')">관리자 권한으로 페이지를 실행 중</span>
             <span sec:authorize="isAuthenticated()" >
                 <span sec:authentication="name">Username</span>
                 님 |
@@ -646,7 +648,7 @@
             <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand"
             >&nbsp; 로그아웃</a
             >
-            </span><span sec:authorize="isAuthenticated()">
+            </span><span sec:authorize="hasRole('ROLE_ADMIN')">
             |
             <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand"
             >&nbsp; 상품 등록</a
@@ -1027,13 +1029,13 @@
             </div>
             <div class="footer_menu_2">
                 <p>고객센터</p>
-                <a href="http://127.0.0.1:5500/order_file.html">주문/결제</a>
-                <a href="http://127.0.0.1:5500/delivery.html">배송</a>
-                <a href="http://127.0.0.1:5500/gongji.html">공지사항</a>
-                <a href="http://127.0.0.1:5500/loginservice.html">회원혜택/서비스</a>
-                <a href="http://127.0.0.1:5500/asview.html">A/S</a>
-                <a href="http://127.0.0.1:5500/cancel_refund.html">취소/반품</a>
-                <a href="http://127.0.0.1:5500/login_info.html">회원정보</a>
+                <a href="cus_center_order_file">주문/결제</a>
+                <a href="cus_center_delivery">배송</a>
+                <a href="cus_center_notice">공지사항</a>
+                <a href="cus_center_member_service">회원혜택/서비스</a>
+                <a href="cus_center_asview">A/S</a>
+                <a href="cus_center_cancel_refund">취소/반품</a>
+                <a href="cus_center_member_info">회원정보</a>
             </div>
             <div class="footer_menu_3">
                 <p>ABOUT PROJECT</p>
