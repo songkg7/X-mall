@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
@@ -295,8 +293,11 @@
                 최고의 제품과 혜택을 만나보세요.
             </p>
         </div>
-        <form name="login_all_form" action="#"
-              th:action="@{/sign-up}" th:object="${signUpForm}" method="post" novalidate>
+        <form name="login_all_form" action="#" th:action="@{/sign-up}" th:object="${signUpForm}" method="post" novalidate>
+<!--            <input-->
+<!--                    type="hidden"-->
+<!--                    th:name="${_csrf.parameterName}"-->
+<!--                    th:value="${_csrf.token}" />-->
             <div class="info_blank">
                 <div class="infor_text">
                     <input

@@ -17,13 +17,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
                 .mvcMatchers("/items/**").permitAll()
                 .mvcMatchers("/mypage/**").permitAll()
-                .mvcMatchers("/favicon.ico/**").permitAll()
                 // NOTE: 로그인 기능 전엔 모든 접속 허용.
-                .anyRequest().permitAll();
+                .anyRequest().authenticated();
 
         // FIXME: csrf token 체크 기능 비활성화, 데이터베이스 공격에 취약해질 수 있으므로 반드시 다시 활성화해야한다.
         // -- form tag 에 csrf token 값이 제대로 생성되지 않고 있는 것 같으니 체크해보자.
         http.csrf().disable();
+
 //         login
         http.formLogin()
                 .loginPage("/login").permitAll();
