@@ -51,7 +51,11 @@ public class AccountController {
             return "account/sign-up";
         }
 
-        accountService.signUp(signUpForm);
+        // 회원가입한 유저 정보 가져오기
+        Account account = accountService.signUp(signUpForm);
+
+        // 회원가입 후 바로 로그인 처리
+        accountService.login(account);
 
         return "redirect:/";
     }

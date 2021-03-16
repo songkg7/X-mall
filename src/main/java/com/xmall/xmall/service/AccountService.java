@@ -32,7 +32,7 @@ public class AccountService implements UserDetailsService {
     private final JavaMailSender javaMailSender;
 
     // 회원가입
-    public void signUp(SignUpForm signUpForm) {
+    public Account signUp(SignUpForm signUpForm) {
 
         // lombok builder 를 사용해서 값을 설정해주기
         // - 아래 주석처리된 코드와 똑같이 동작한다.
@@ -70,6 +70,8 @@ public class AccountService implements UserDetailsService {
 
         // 메일 보내기
         javaMailSender.send(mailMessage);
+
+        return newAccount;
 
     }
 
