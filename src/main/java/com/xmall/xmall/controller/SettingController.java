@@ -11,67 +11,75 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequiredArgsConstructor
 public class SettingController {
-
-    private final ItemRepository itemRepository;
-
-
 
     @GetMapping("/cus_center_asview")
     public String cus_center_asview() {
-        return "customer_center/cus_center_asview";    }
+        return "customer_center/cus_center_asview";
+    }
 
     @GetMapping("/cus_center_cancel_refund")
     public String cus_center_cancel_refund() {
-        return "customer_center/cus_center_cancel_refund";    }
+        return "customer_center/cus_center_cancel_refund";
+    }
 
     @GetMapping("/cus_center_delivery")
     public String cus_center_delivery() {
-        return "customer_center/cus_center_delivery";    }
+        return "customer_center/cus_center_delivery";
+    }
 
     @GetMapping("/cus_center_member_info")
     public String cus_center_member_info() {
-        return "customer_center/cus_center_member_info";    }
+        return "customer_center/cus_center_member_info";
+    }
 
     @GetMapping("/cus_center_member_service")
     public String cus_center_member_service() {
-        return "customer_center/cus_center_member_service";    }
+        return "customer_center/cus_center_member_service";
+    }
 
     @GetMapping("/cus_center_notice")
     public String cus_center_notice() {
-        return "customer_center/cus_center_notice";    }
+        return "customer_center/cus_center_notice";
+    }
 
     @GetMapping("/cus_center_order_file")
     public String cus_center_order_file() {
-        return "customer_center/cus_center_order_file";    }
+        return "customer_center/cus_center_order_file";
+    }
 
     @GetMapping("/cus_center_refund_service")
     public String cus_center_refund_service() {
-        return "customer_center/cus_center_refund_service";    }
+        return "customer_center/cus_center_refund_service";
+    }
 
     @GetMapping("/cus_center_main")
     public String cus_center_main() {
-        return "customer_center/cus_center_main";    }
+        return "customer_center/cus_center_main";
+    }
 
     @GetMapping("/as_infoguide")
     public String as_infoguide() {
-        return "mypage/as_infoguide";    }
-
+        return "mypage/as_infoguide";
+    }
 
     @GetMapping("/coupon")
     public String coupon() {
-        return "mypage/coupon";    }
+        return "mypage/coupon";
+    }
 
     @GetMapping("/order_delivery")
     public String order_delivery() {
-        return "mypage/order_delivery";    }
+        return "mypage/order_delivery";
+    }
 
     @GetMapping("/return_cancle")
     public String oreturn_cancle() {
-        return "mypage/return_cancle";    }
+        return "mypage/return_cancle";
+    }
 
     @GetMapping("/side_mypage")
     public String side_mypage() {
-        return "mypage/side_mypage";    }
+        return "mypage/side_mypage";
+    }
 }

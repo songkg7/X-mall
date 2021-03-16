@@ -37,7 +37,6 @@ public class ItemController {
 
     @PostMapping("/items/create-item")
     public String createItem(@Valid ItemForm itemForm, Errors errors, Model model) {
-
         if (errors.hasErrors()) {
             return "items/create-item";
         }
@@ -54,12 +53,12 @@ public class ItemController {
     public String items(Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
+
         return "items/item-list";
     }
 
     @GetMapping("/items/{id}")
     public String itemInfo(@PathVariable Long id, Model model) {
-
         // null check 필요, Optional을 사용하는게 좋을수도 있다.
         Item item = itemRepository.findById(id).get();
 
