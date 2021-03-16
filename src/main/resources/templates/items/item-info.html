@@ -523,7 +523,7 @@
                 <!-- 2-1-1. 모델명 -->
                 <!--======================-->
                 <div class="product_name">
-                    <p class="p_1" th:text="${item.getDescription()}">남성 하프집 후드 재킷 AS</p>
+                    <p class="p_1" th:text="${item.getSubTitle()}">남성 하프집 후드 재킷 AS</p>
                     <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
                     <div class="thumnail">
                         <div class="thumnail_1">
@@ -555,6 +555,7 @@
                     </div>
                 </div>
                 <div class="table_div">
+<!--                    TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                     <div class="size_table">
                         <div class="size_cell"><p>85(XS)</p></div>
                         <div class="size_cell"><p>90(S)</p></div>
@@ -623,8 +624,8 @@
                 </form>
                 <hr/>
                 <div class="detail_description_div">
-                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>
-                    <p>
+<!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
+                    <p th:text="${item.getDescription()}">
                         무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너
                         재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝
                         윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이

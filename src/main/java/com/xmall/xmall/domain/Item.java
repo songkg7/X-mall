@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -29,11 +30,16 @@ public class Item {
     // 사이즈
 //    private List<Size> sizes = new ArrayList<>();
 
+    private String subTitle;
+
     // 상품 상세설명
     @Lob
     private String description;
 
     @Lob
     private String itemImage;
+
+    // 상품 등록일
+    private LocalDateTime CreateAt;
 
 }
