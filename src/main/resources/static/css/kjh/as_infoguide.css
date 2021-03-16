@@ -1,0 +1,72 @@
+.as_receipt_guide a {
+  color: black;
+  font-weight: bold;
+}
+.as_info_layout {
+  padding: 1px 15px;
+}
+.as_info_layout,
+.as_receipt_process,
+.customer-contents,
+.recentOrderHistory {
+  text-align: left;
+}
+.con_title {
+  margin: 45px 0px 10px 0px;
+}
+
+.customer_contents .title {
+  font-size: 23px;
+  color: black;
+  font-weight: bold;
+}
+
+.customer_contents .asinfo_layout {
+  padding: 5px 20px 20px 20px;
+}
+
+.as_judgment_standard {
+  margin: 16px 0;
+}
+
+.as_judgment_standard table {
+  width: 100%;
+  table-layout: fixed;
+  margin: 20px 0px 20px 0px;
+  border-collapse: collapse;
+}
+
+.as_judgment_standard table td,
+.as_judgment_standard table tbody th {
+  padding: 14px 2px;
+  background: white;
+  color: gray;
+  font-size: 12px;
+  text-align: center;
+  border: 1px solid #e3e3e3;
+  font-weight: normal;
+}
+
+.as_judgment_standard table th {
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  background: #f7f7f7;
+  text-align: center;
+  border: 1px solid #e3e3e3;
+  padding: 15px 2px;
+  line-height: 1.33;
+}
+
+.as_judgment_standard caption {
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.p {
+  font-size: 14;
+}

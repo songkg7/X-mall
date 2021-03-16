@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+}
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+/* header CSS */
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+
+/* a태그(고객센터 로그인 멤버가입) 속성 */
+.gray_atag {
+  color: rgb(17, 17, 17);
+  text-decoration: none;
+}
+
+/* a태그(신상품 남성 여성 아동 세일) 속성 */
+.black_atag {
+  color: black;
+  text-decoration: none;
+}
+
+/* a태그(신상품 남성 여성 아동 세일) 속성 */
+.white_atag {
+  color: white;
+  text-decoration: none;
+}
+
+.font-normal {
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -1px;
+}
+div {
+  text-align: center;
+}
+.main .button {
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  border: none;
+  font-size: 17px;
+  font-weight: normal;
+  width: 120px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  display: block;
+  margin: auto;
+}
+.main .product {
+  font-weight: bold;
+  font-size: 43px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+.main .description {
+  width: 400px;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -1px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  display: block;
+  margin: auto;
+}
+.nav1 {
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+  height: 37px;
+  /* 부모 div 테이블 */
+  display: table;
+}
+.nav1_logo {
+  width: 40px;
+  height: 40px;
+  background-color: burlywood;
+  float: left;
+  margin-left: 40px;
+}
+.nav1_text {
+  display: table-cell;
+  background-color: none;
+  text-align: right;
+
+  /* 부모 div의 수직에 맞춰 중앙정렬 */
+  vertical-align: middle;
+
+  font-size: 12px;
+  padding-right: 40px;
+  color: rgb(49, 49, 49);
+}
+.nav2 {
+  width: 100%;
+  height: 70px;
+  background-color: white;
+}
+.nav2_category {
+  width: 40rem;
+  height: 70px;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+  /* 부모테이블로 만들기 */
+  display: table;
+}
+.li-inline {
+  text-align: center;
+  /* ul li 간격 주기 */
+  margin-right: 0px;
+  /* 자식테이블에서 수직정렬하기 */
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0px;
+}
+.li-inline li {
+  /* display:inline-block =>이 요소들이 전부 왼쪽으로 즉 옆으로 정렬된다. */
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 17px;
+  /* ul li 간격 주기 */
+  margin-right: 0px;
+}
+/* ----------------------------------- */
+/* 네비게이션바 밑줄 */
+/* ----------------------------------- */
+.nav2_category a {
+  position: relative;
+  padding: 20px 12px;
+}
+.nav2_category a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: black;
+}
+.nav2_category a:hover::after {
+  width: 100%;
+}
+
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+/* footer CSS */
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+.footer {
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+  height: 500px;
+  width: 100%;
+  color: white;
+  background: black;
+}
+
+/* =========================== */
+/* =========================== */
+/* header footer 끝 */
+/* =========================== */
+/* =========================== */
+
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+/* main CSS */
+/* MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM */
+.main {
+  background-color: white;
+  width: 100%;
+  height: 500px;
+}
