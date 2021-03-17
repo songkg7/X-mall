@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,11 +22,14 @@ public class Order {
 
     private String Location;
 
-    private String state;
+    private String status;
 
     private int total_price;
 
     @ManyToOne
     @JoinColumn(name="account_id")
     private Account account;
+
+    @OneToMany(mappedBy="order")
+    private List<OrderItem> orderItems = new ArrayList<>();
 }

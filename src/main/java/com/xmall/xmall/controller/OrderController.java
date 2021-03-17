@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -29,5 +30,11 @@ public class OrderController {
         // FIXME : 파일 경로 수정하기
         return "mypage/order-payment";
     }
+
+//    @PostMapping("/order-payment/{id}")
+//    public String orderPaymentProcess(@CurrentAccount Account account, @PathVariable Long id) {
+//
+//    }
+
 
 }
