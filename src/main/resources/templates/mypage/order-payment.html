@@ -323,16 +323,16 @@
                             </dt>
                             <dd class="order_list_DB">
                                 <!--DB에서 가져오는 값-->
-                                <div class="order_list_text_left">신발명</div>
-                                <div class="order_list_text_left">스타일 코드</div>
-                                <div class="order_list_text_left">사이즈 : 250</div>
-                                <div class="order_list_text_left">수량 : 1개</div>
+<!--                                <div class="order_list_text_left">신발명</div>-->
+<!--                                <div class="order_list_text_left">스타일 코드</div>-->
+<!--                                <div class="order_list_text_left">사이즈 : 250</div>-->
+<!--                                <div class="order_list_text_left">수량 : 1개</div>-->
+<!--                                <div class="order_list_text_left">가격</div>-->
                                 <!-- 가격은 DB에서 가져오는 값입니다.-->
-                                <div class="order_list_text_left">가격</div>
-                                <div class="jumun_text_left" th:text="${item.getName()}">신발명</div>
+                                <div class="jumun_text_left" th:text="${item.getName()}"></div>
                                 <div class="jumun_text_left">스타일 코드</div>
                                 <div class="jumun_text_left">사이즈 : 250</div>
-                                <div class="jumun_text_left" th:text="${amount}">수량 : 1개</div>
+                                <div class="jumun_text_left" th:text="|수량 : ${amount}|"></div>
                                 <!-- 가격은 DB에서 가져오는 값입니다.-->
     <!--                            <div class="jumun_text_left">가격</div>-->
                             </dd>
@@ -346,9 +346,7 @@
                     <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
                             <span class="" >
                                 <span class="" >상품 금액</span>
-                                <div class="goods_right" th:text="${item.getPrice()}">
-                                    <strong>189,000 원</strong>
-                                </div>
+                                <div class="goods_right" th:text="|${item.getPrice()} 원|"></div>
                             </span>
                         <!--+++++++++++++++++++++++++++++++++++-->
                         <div class="goods_left">
@@ -377,9 +375,7 @@
                                 <span class="">
                                     총 결제 예정 금액
                                 </span>
-                                <div class="goods_right" th:text="${item.getPrice() + 2500}">
-                                    <strong>191,500 원</strong>
-                                </div>
+                                <div class="goods_right" th:text="|${item.getPrice() + 2500} 원|"></div>
                         </div>
                         <div class="precautions"></div>
                         <!-- 주의사항 -->
