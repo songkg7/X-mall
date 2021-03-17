@@ -13,49 +13,49 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SettingController {
 
-    @GetMapping("/cus_center_asview")
-    public String cus_center_asview() {
-        return "customer_center/cus_center_asview";
+    @GetMapping("/asview")
+    public String asview() {
+        return "cs/asview";
     }
 
-    @GetMapping("/cus_center_cancel_refund")
-    public String cus_center_cancel_refund() {
-        return "customer_center/cus_center_cancel_refund";
+    @GetMapping("/cancel_refund")
+    public String cancel_refund() {
+        return "cs/cancel_refund";
     }
 
-    @GetMapping("/cus_center_delivery")
-    public String cus_center_delivery() {
-        return "customer_center/cus_center_delivery";
+    @GetMapping("/delivery")
+    public String delivery() {
+        return "cs/delivery";
     }
 
-    @GetMapping("/cus_center_member_info")
-    public String cus_center_member_info() {
-        return "customer_center/cus_center_member_info";
+    @GetMapping("/member_info")
+    public String member_info() {
+        return "cs/member_info";
     }
 
-    @GetMapping("/cus_center_member_service")
-    public String cus_center_member_service() {
-        return "customer_center/cus_center_member_service";
+    @GetMapping("/member_service")
+    public String member_service() {
+        return "cs/member_service";
     }
 
-    @GetMapping("/cus_center_notice")
-    public String cus_center_notice() {
-        return "customer_center/cus_center_notice";
+    @GetMapping("/notice")
+    public String notice() {
+        return "cs/notice";
     }
 
-    @GetMapping("/cus_center_order_file")
-    public String cus_center_order_file() {
-        return "customer_center/cus_center_order_file";
+    @GetMapping("/order_file")
+    public String order_file() {
+        return "cs/order_file";
     }
 
-    @GetMapping("/cus_center_refund_service")
-    public String cus_center_refund_service() {
-        return "customer_center/cus_center_refund_service";
+    @GetMapping("/refund_service")
+    public String refund_service() {
+        return "cs/refund_service";
     }
 
-    @GetMapping("/cus_center_main")
-    public String cus_center_main() {
-        return "customer_center/cus_center_main";
+    @GetMapping("/main")
+    public String main() {
+        return "cs/cus_center_main";
     }
 
     @GetMapping("/as_infoguide")
