@@ -100,6 +100,7 @@
             width: 60%;
             text-align: left;
             float: left;
+            font-weight: 500;
             /* margin-left: 40px; */
         }
         .product_name input{
@@ -114,11 +115,11 @@
 
 
             width: 40%;
-            height: 40px;
+            height: 80px;
             text-align: right;
-            font-size: 18px;
-            font-weight: 700;
-            float: left;
+            font-size: 20px;
+            font-weight: 500;
+            float: right;
             margin-top: 0px;
             margin-right: 0px;
             /* margin-right: 40px; */
@@ -126,52 +127,58 @@
         }
         .price input{
             width: 90%;
-            height: 90%;
+            height: 40px;
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
+            margin-top: 5px;
 
         }
         /* -------------------------------------- */
         /* 상품 스타일명 */
         .p_1 {
             margin-top: 0px;
-            font-size: 18px;
+            font-size: 20px;
 
             width: 100%;
-            height: 40px;
+            height: 80px;
         }
         .p_1 input {
             width: 90%;
-            height: 90%;
+            height: 40px;
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
+            margin-top: 5px;
         }
 
         /* -------------------------------------- */
         /* 상품 명 */
         .p_2 {
-            font-size: 30px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 500;
             margin-bottom: 50px;
 
             width: 100%;
-            height: 40px;
+            height: 80px;
 
         }
         .p_2 input{
+
             width: 90%;
-            height: 90%;
+            height: 40px;
             font-size: 18px;
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
+            margin-top: 5px;
         }
 
         /* -------------------------------------- */
         /* 사이즈 선택 */
         .product_size {
+            font-size: 20px;
+            font-weight: 500;
             float: left;
         }
 
@@ -269,6 +276,7 @@
             margin-left: 5%;
             margin-right: 5%;
             margin-bottom: 50px;
+
         }
 
 
@@ -351,10 +359,13 @@
             height: 60px;
             background-color: white;
             float: left;
-            line-height: 65px;
+            line-height: 40px;
             font-size: 20px;
             color: black;
             border: none;
+        }
+        .count_product input{
+            font-size: 20px;
         }
 
         .minus {
@@ -480,6 +491,11 @@
             color: rgb(77, 77, 77);
             font-weight: 300;
         }
+        .detail_description_div p{
+            color: black;
+            font-size: 20px;
+            font-weight: 500;
+        }
 .create_item{
     width: 100%;
     height: 60px;
@@ -511,6 +527,11 @@
     cursor: pointer;
     margin-bottom: 30px;
 }
+.btn-primary:hover{
+    background-color: deeppink;
+    opacity: 70%;
+
+}
 .legistration{
     margin-top: 50px;
 }
@@ -530,50 +551,43 @@
             <!--------------------- form 태그 선언 --------------------->
             <form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
             <!-------------------------------------------------------->
+            <!--+++++++++++++++++++++++++++++-->
+            <!-- 화면 분할 1. 좌측 -->
+            <!--+++++++++++++++++++++++++++++-->
+            <!--======================-->
+            <!-- 0. 사진 등록 -->
+            <!--======================-->
             <div class="product_img">
-                <img
-                        class="product_img1"
-                        src="../images/icon/photo1.png"
-
-                />
-                <img
-                        class="product_img2"
-                        src="../images/icon/photo1.png"
-
-                />
-                <img
-                        class="product_img3"
-                        src="../images/icon/photo1.png"
-
-                />
-                <img
-                        class="product_img4"
-                        src="../images/icon/photo1.png"
-
-                />
+                <img class="product_img1" src="../images/icon/photo1.png"/>
+                <img class="product_img2" src="../images/icon/photo1.png"/>
+                <img class="product_img3" src="../images/icon/photo1.png"/>
+                <img class="product_img4" src="../images/icon/photo1.png"/>
             </div>
             <!--+++++++++++++++++++++++++++++-->
             <!-- 화면 분할 2. 우측(content) -->
             <!--+++++++++++++++++++++++++++++-->
             <div class="content">
                 <div class="content_padding">
-                    <!--======================-->
-                    <!-- 2-1-1. 모델명 -->
-                    <!--======================-->
+
                     <div class="product_name">
+                        <!--======================-->
                         <!-- 1. 제품 카테고리 설정-->
-
+                        <!--======================-->
                        <p class="p_1">
-
+                           <span>카테고리명</span>
                            <input type="text" th:field="*{subTitle}"
                                placeholder="카테고리를 입력하세요">
                        </p>
+                        <!--======================-->
                         <!-- 2. 제품명 설정-->
-
+                        <!--======================-->
                         <p class="p_2">
-
+                            <span>제품명</span>
                             <input type="text" th:field="*{name}" placeholder="제품명을 입력하세요">
                         </p>
+                        <!--======================-->
+                        <!-- 3. 색상 관련 이미지 썸네일 설정-->
+                        <!--======================-->
                         <div class="thumnail">
                             <div class="thumnail_1">
                                 <img class="thum_1" src="/images/main_img/vapor1.png"/>
@@ -586,29 +600,25 @@
                             </div>
                         </div>
                     </div>
-                    <!--======================-->
-                    <!-- 2-1-2. 가격 -->
-                    <!--======================-->
-                    <!-- 3. 가격 설정 -->
+                    <!-- 4. 가격 설정 -->
                     <p class="price">
-
+                        <soan>가격</soan>
                         <input type="number" th:field="*{price}" class="price" placeholder="가격을 입력하세요">
                     </p>
-                    <!--======================-->
                     <div style="clear: both"></div>
                     <!--======================-->
-                    <!-- 2-2. 사이즈선택 -->
+                    <!-- 5. 사이즈 설정 -->
                     <!--======================-->
                     <div class="size_div">
                         <div class="product_size">
-                            <h4>사이즈 선택</h4>
+                            <p>사이즈 선택</p>
                         </div>
                         <div class="size_guide">
                             <p>사이즈 가이드</p>
                         </div>
                     </div>
                     <div class="table_div">
-                        <!--                    TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
+                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                         <div class="size_table">
                             <div class="size_cell"><p>85(XS)</p></div>
                             <div class="size_cell"><p>90(S)</p></div>
@@ -619,7 +629,7 @@
                         </div>
                     </div>
                     <!--======================-->
-                    <!-- 3. 수량 -->
+                    <!-- 6. 수량 설정 -->
                     <!--======================-->
 <!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
                     <div class="count_div">
@@ -631,11 +641,13 @@
 
                     </div>
 
-
+                    <!--======================-->
+                    <!-- 7. 상품 상세 설명 설정 -->
+                    <!--======================-->
                     <div class="detail_description_div">
-                        <p>제품 상세설명</p>
+                        <p>상품 상세설명</p>
                         <textarea th:field="*{description}"
-                                  placeholder="하단에 표시될 제품 설명을 입력하세요">
+                                  placeholder="하단에 표시될 상품 설명을 입력하세요">
                         </textarea>
                         <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
 <!--                        <p th:text="${item.getDescription()}">-->
@@ -645,9 +657,14 @@
 <!--                            돋보입니다.-->
 <!--                        </p>-->
 
-
+                        <!--======================-->
+                        <!-- 8. 상품 등록 버튼 -->
+                        <!--======================-->
                         <button type="submit" class="btn btn-primary">상품 등록</button>
                     </div>
+                    <!--======================-->
+                    <!-- 9. 현재 등록 되어있는 상품 수량 -->
+                    <!--======================-->
                     <div class="legistration">
                     <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
                     <!--+++++++++++++++++++++++++++++++++++++-->
