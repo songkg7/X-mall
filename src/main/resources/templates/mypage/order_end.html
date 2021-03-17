@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- order-payment CSS 수입 경로-->
+
+    <!-- main 부분 CSS-->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/LJH/order_end.css">
+    <style>
+    </style>
+    <script>
+    </script>
+
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+
+</head>
+
+<body class="main_font">
+
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar">
+</header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+    <header>
+        <!-- 헤더 1. 로그인바 -->
+        <div class="nav1" style="background-color: black;">
+       
+        </div>
+    </header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+    <main> 
+        <div style="margin-left: 300px;">
+                <div class="order_fin">
+                    주문완료
+                </div>
+                        <div class="main_line"></div>
+                <div class="order_fin_memo">
+                    주문이 완료 되었습니다. 감사합니다!   
+                <img src="../images/gift_box_icon.png" width="35;">
+                </div>
+        </div>
+        <div>
+             <button type="submit" class="go_item" style="float: left; margin-left: 700px; ">
+                <strong><a href="http://www.naver.com">주문내역 확인</strong></a>
+            </button>
+        </div>
+        <div>
+             <button type="submit" class="go_item" style=" margin-right: 700px;  ">
+                <strong><a href="http://www.naver.com">홈으로 가기</strong></a>
+            </button>
+        </div>
+    </main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+<footer th:replace="fragments.html :: footer-body">
+</footer>
+
+    
+    
+    
+</body>
+</html>

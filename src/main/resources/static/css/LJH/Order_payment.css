@@ -151,6 +151,10 @@ main{
     opacity: 70%;
     color:white;
 }
+.payment_submit a{
+    text-decoration-line: none;
+    color: white;
+}
 .send {
     text-align: center;
     background-color: black;
@@ -166,7 +170,14 @@ main{
     opacity: 70%;
     color:white;
 }
+.send a{
+    text-decoration-line: none;
+    color: white;
+}
 .basket {
     text-align: left;
     float: left;
+}
+.jumun_text_left {
+    text-align: left;
 }

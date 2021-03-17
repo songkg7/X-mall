@@ -7,6 +7,7 @@
     <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
     <!-- order-payment CSS 수입 경로-->
+    <link rel="stylesheet" href="../css/LJH/Order_payment.css">
 
     <!-- main 부분 CSS-->
     <style>
@@ -382,8 +383,30 @@
                             <!--                            <div class="jumun_text_left">가격</div>-->
                         </dd>
                     </div>
-                    <!--+++++++++++++++++++++++++++++++++++-->
-                    <div class="초록네모2">
+                    <div class="빨간네모2">
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="초록네모1">
+                            <dt class="order_list_img">
+                                <img src="../images/main_img/nike_m_s_air.jpg" >
+                            </dt>
+                            <dd class="order_list_DB">
+                                <!--DB에서 가져오는 값-->
+<!--                                <div class="order_list_text_left">신발명</div>-->
+<!--                                <div class="order_list_text_left">스타일 코드</div>-->
+<!--                                <div class="order_list_text_left">사이즈 : 250</div>-->
+<!--                                <div class="order_list_text_left">수량 : 1개</div>-->
+<!--                                <div class="order_list_text_left">가격</div>-->
+                                <!-- 가격은 DB에서 가져오는 값입니다.-->
+                                <div class="jumun_text_left" th:text="${item.getName()}"></div>
+                                <div class="jumun_text_left" th:text="|가격 : ${item.getPrice()} 원|"></div>
+                                <div class="jumun_text_left">사이즈 : 250</div>
+                                <div class="jumun_text_left" th:text="|수량 : ${amount} 개|"></div>
+                                <!-- 가격은 DB에서 가져오는 값입니다.-->
+    <!--                            <div class="jumun_text_left">가격</div>-->
+                            </dd>
+                        </div>
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="초록네모2">
 
                     </div>
                 </div>
@@ -453,8 +476,8 @@
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
-                <button type="submit" class="payment_submit">
-                    <a href="http://www.naver.com"><strong>실시간계좌이체</strong></a>
+                <button type="submit" class="send">
+                    <a onClick="alert('주문이 완료되었습니다!')" href="http://www.naver.com" >주문 완료</a>
                 </button>
             </div>
         </div>
