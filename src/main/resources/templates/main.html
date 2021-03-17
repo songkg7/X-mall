@@ -95,7 +95,7 @@
             <p class="description" th:text="${itemList.getSubTitle()}">상품 추천 설명</p>
         </div>
         <div>
-            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+            <a class="button white_atag" th:href="@{/items/{id} (id=${itemList.id})}">구매하기</a>
         </div>
     </div>
 </main>
