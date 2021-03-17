@@ -3,13 +3,12 @@ package com.xmall.xmall.domain;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -40,7 +39,15 @@ public class Account {
     private String password;
     // ----
 
-    private String Location;
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    private List<Order> orders = new ArrayList<>();
+
+//    private String Location;
+
+    @OneToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
 
     // Email
     // - token
