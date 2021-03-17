@@ -79,6 +79,8 @@ public class AccountService implements UserDetailsService {
 
     }
 
+    // TODO: email 인증 메일을 다시 받고 싶을 경우 처리하는 로직 필요
+
     private void sendEmail(Account newAccount) {
         // TODO: email 보내기
         // - 가짜 객체(ConsoleMailSender)를 만들어서 토큰을 콘솔에 출력
