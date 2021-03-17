@@ -73,6 +73,15 @@ public class AccountService implements UserDetailsService {
         // 회원 저장 후 이메일을 보내주기 위해 저장된 회원의 정보를 가져온다
         Account newAccount = accountRepository.save(account);
 
+        sendEmail(newAccount);
+
+        return newAccount;
+
+    }
+
+    // TODO: email 인증 메일을 다시 받고 싶을 경우 처리하는 로직 필요
+
+    private void sendEmail(Account newAccount) {
         // TODO: email 보내기
         // - 가짜 객체(ConsoleMailSender)를 만들어서 토큰을 콘솔에 출력
         // - 아직 메일서버와 연결되지 않았기 때문에 추후 진짜 메일로 바꾼다.
@@ -91,22 +100,7 @@ public class AccountService implements UserDetailsService {
 
         // 메일 보내기
         javaMailSender.send(mailMessage);
-
-        return newAccount;
-
     }
-
-    // 로그인
-    // TODO: Security 처리하기
-    // - 아직은 겉으로만 로그인일 뿐 실제 로그인 처리가 아니다.
-//    public boolean login(AccountForm accountForm, Account account) {
-//
-//        String rawPassword = accountForm.getPassword(); // raw value
-//        String encodedPassword = account.getPassword(); // encoded value
-//
-//        return passwordEncoder.matches(rawPassword, encodedPassword);
-//
-//    }
 
     // Security Login
     public void login(Account account) {
