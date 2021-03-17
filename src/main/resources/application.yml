@@ -1,19 +1,17 @@
 spring:
 #  DB 설정하기 전엔 아래 옵션을 비활성화하기
 #  -----
-<<<<<<< HEAD
+
  # datasource:
    # url: jdbc:h2:tcp://localhost/~/xmall
     #username: sa
     #password:
     #driver-class-name: org.h2.Driver
-=======
 #  datasource:
 #    url: jdbc:h2:tcp://localhost/~/xmall
 #    username: sa
 #    password:
 #    driver-class-name: org.h2.Driver
->>>>>>> b49d9817813cc1cb08ee71387b47d34789789367
 #  -----
 #  thymeleaf:
 #    cache: false
@@ -31,4 +29,4 @@ logging.level:
   org.hibernate.type: trace
 
 # 8083 포트 사용 시 활성화
-server.port: 8083
+#server.port: 8083
