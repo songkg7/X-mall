@@ -182,6 +182,9 @@
             text-align: left;
             float: left;
         }
+        .jumun_text_left {
+            text-align: left;
+        }
 
     </style>
     <script>
@@ -330,9 +333,9 @@
 <!--                                <div class="order_list_text_left">가격</div>-->
                                 <!-- 가격은 DB에서 가져오는 값입니다.-->
                                 <div class="jumun_text_left" th:text="${item.getName()}"></div>
-                                <div class="jumun_text_left">스타일 코드</div>
+                                <div class="jumun_text_left" th:text="|가격 : ${item.getPrice()} 원|"></div>
                                 <div class="jumun_text_left">사이즈 : 250</div>
-                                <div class="jumun_text_left" th:text="|수량 : ${amount}|"></div>
+                                <div class="jumun_text_left" th:text="|수량 : ${amount} 개|"></div>
                                 <!-- 가격은 DB에서 가져오는 값입니다.-->
     <!--                            <div class="jumun_text_left">가격</div>-->
                             </dd>
@@ -346,7 +349,7 @@
                     <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
                             <span class="" >
                                 <span class="" >상품 금액</span>
-                                <div class="goods_right" th:text="|${item.getPrice()} 원|"></div>
+                                <div class="goods_right" th:text="|${item.getPrice() * amount} 원|"></div>
                             </span>
                         <!--+++++++++++++++++++++++++++++++++++-->
                         <div class="goods_left">
@@ -375,7 +378,7 @@
                                 <span class="">
                                     총 결제 예정 금액
                                 </span>
-                                <div class="goods_right" th:text="|${item.getPrice() + 2500} 원|"></div>
+                                <div class="goods_right" th:text="|${item.getPrice() * amount + 2500} 원|"></div>
                         </div>
                         <div class="precautions"></div>
                         <!-- 주의사항 -->
