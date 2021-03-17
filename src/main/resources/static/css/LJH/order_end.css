@@ -1,0 +1,32 @@
+.go_item { 
+    border: 1px solid black; 
+    background-color: black;
+    font-size: 17px;
+    border-radius: 50px; 
+    padding: 30px;"
+  }
+  .go_item:hover {
+    opacity: 70%;
+    color: white;
+  }
+  .go_item a{
+    text-decoration-line: none;
+    color: white;
+  }
+  .order_fin{
+    font-size: 28px;  
+    font-weight: bolder; 
+    padding:20px; 
+    padding-right: 370px;
+  }
+  .order_fin_memo{
+    font-weight:bolder;
+    font-size:40px; 
+    padding: 200px; 
+    padding-right: 500px;
+  }
+  .main_line {
+    border-bottom: 1px solid black;
+    width: 80%;
+  }
+  
