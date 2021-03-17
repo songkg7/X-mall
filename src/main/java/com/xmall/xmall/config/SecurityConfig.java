@@ -14,9 +14,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
-                .mvcMatchers("/items/create-item").hasRole("ADMIN")
-                .mvcMatchers("/mypage/**", "/order-payment/**").authenticated()
+//                .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
+//                .mvcMatchers("/items/create-item").hasRole("ADMIN")
+//                .mvcMatchers("/mypage/**", "/order-payment/**").authenticated()
                 .anyRequest().permitAll();
 
         // FIXME: csrf token 체크 기능 비활성화, 데이터베이스 공격에 취약해질 수 있으므로 반드시 다시 활성화해야한다.
@@ -24,12 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
 //         login
-        http.formLogin()
-                .loginPage("/login").permitAll();
-
-        // logout
-        http.logout()
-                .logoutSuccessUrl("/");
+//        http.formLogin()
+//                .loginPage("/login").permitAll();
+//
+//        // logout
+//        http.logout()
+//                .logoutSuccessUrl("/");
     }
 
     @Override
