@@ -106,6 +106,8 @@
         .product_name input{
             width: 100%;
             margin-left: 0;
+            margin-top: 20px;
+            margin-bottom: 30px;
 
         }
 
@@ -115,33 +117,38 @@
 
 
             width: 40%;
-            height: 80px;
+
             text-align: right;
             font-size: 20px;
             font-weight: 500;
             float: right;
-            margin-top: 0px;
-            margin-right: 0px;
+            margin-top: 0;
+            margin-right: 0;
             /* margin-right: 40px; */
+
 
         }
         .price input{
+
             width: 90%;
             height: 40px;
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
-            margin-top: 5px;
+            margin-top: 20px;
+        }
+        input{
+            margin-top:0;
+            margin-bottom:0;
 
         }
+
         /* -------------------------------------- */
         /* 상품 스타일명 */
         .p_1 {
             margin-top: 0px;
             font-size: 20px;
-
             width: 100%;
-            height: 80px;
         }
         .p_1 input {
             width: 90%;
@@ -149,7 +156,9 @@
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
-            margin-top: 5px;
+            margin-top: 20px;
+            margin-bottom: 0;
+
         }
 
         /* -------------------------------------- */
@@ -157,13 +166,10 @@
         .p_2 {
             font-size: 20px;
             font-weight: 500;
-            margin-bottom: 50px;
-
             width: 100%;
-            height: 80px;
-
         }
         .p_2 input{
+            margin-top: 20px;
 
             width: 90%;
             height: 40px;
@@ -171,7 +177,17 @@
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
-            margin-top: 5px;
+            margin-bottom: 0;
+
+        }
+        /* -------------------------------------- */
+        /* 사이즈 선택 */
+        .product_category {
+
+            font-size: 20px;
+            font-weight: 500;
+            margin-left: 0;
+
         }
 
         /* -------------------------------------- */
@@ -180,22 +196,19 @@
             font-size: 20px;
             font-weight: 500;
             float: left;
+
         }
 
-        .size_guide {
-            margin-top: 10px;
-            text-align: right;
-            font-weight: 300;
-            font-size: 14px;
-            color: rgb(133, 131, 131);
-            float: right;
-        }
 
-        .size_div {
+
+        .select_div {
             margin-top: 20px;
             width: 100%;
-            height: 60px;
             background-color: white;
+            font-size: 20px;
+            font-weight: 500;
+            float: left;
+            text-align: left;
         }
 
         /* -------------------------------------- */
@@ -535,8 +548,53 @@
 .legistration{
     margin-top: 50px;
 }
-
     </style>
+    <script>
+        $(document).ready(function () {
+            //-----------------------------
+            // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
+            //-----------------------------
+            $('#top_size').hide();
+            $('#pants_size').hide();
+            $('#shoes_size').hide();
+
+            $('#top').click(function (){
+                $('#pants_size').hide();
+                $('#shoes_size').hide();
+                $('#top_size').show();
+            });
+            $('#pants').click(function (){
+                $('#top_size').hide();
+                $('#shoes_size').hide();
+                $('#pants_size').show();
+            });
+            $('#shoes').click(function (){
+                $('#top_size').hide();
+                $('#pants_size').hide();
+                $('#shoes_size').show();
+            });
+
+            //-----------------------------
+            // 2. div태그의 성별 클릭이벤트시 성별(value)값을 input text로 담아버리기
+            //-----------------------------
+            $('#men, #women, #kids, #unisex').click(function() {
+                $('#gender').val($(this).text());
+            });
+
+            //-----------------------------
+            // 3. div태그의 품목 클릭이벤트시 품목(value)값을 input text로 담아버리기
+            //-----------------------------
+            $('#top, #pants, #shoes').click(function() {
+                $('#category').val($(this).text());
+            });
+
+        })
+
+        //
+        function show_topsize(){
+            $('#top_size').css("display","show");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -574,7 +632,7 @@
                         <!-- 1. 제품 카테고리 설정-->
                         <!--======================-->
                        <p class="p_1">
-                           <span>카테고리명</span>
+                           <span>카테고리 명</span>
                            <input type="text" th:field="*{subTitle}"
                                placeholder="카테고리를 입력하세요">
                        </p>
@@ -602,34 +660,89 @@
                     </div>
                     <!-- 4. 가격 설정 -->
                     <p class="price">
-                        <soan>가격</soan>
+                        <soan>상품 가격</soan>
                         <input type="number" th:field="*{price}" class="price" placeholder="가격을 입력하세요">
                     </p>
                     <div style="clear: both"></div>
                     <!--======================-->
-                    <!-- 5. 사이즈 설정 -->
+                    <!-- 5. 성별 설정 -->
                     <!--======================-->
-                    <div class="size_div">
-                        <div class="product_size">
-                            <p>사이즈 선택</p>
+                    <div class="select_div">
+                            <p>성별 선택</p>
+                    </div>
+                    <div class="table_div">
+                        <div class="gender_table"  id="select_gender">
+                            <div class="size_cell" id="men"><p>남성</p></div>
+                            <div class="size_cell" id="women"><p>여성</p></div>
+                            <div class="size_cell" id="kids"><p>아동</p></div>
+                            <div class="size_cell" id="unisex"><p>남녀공용</p></div>
+                            <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
+                            <input type="hidden" id="gender" name="gender" value="">
                         </div>
-                        <div class="size_guide">
-                            <p>사이즈 가이드</p>
-                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                    <!--======================-->
+                    <!-- 6. 품목 설정 -->
+                    <!--======================-->
+                    <div class="select_div">
+                            <p>품목 선택</p>
                     </div>
                     <div class="table_div">
                         <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
-                        <div class="size_table">
+                        <div class="category_table" id="select_category">
+                            <div class="size_cell" id="top"><p>상의</p></div>
+                            <div class="size_cell" id="pants"><p>하의</p></div>
+                            <div class="size_cell" id="shoes"><p>신발</p></div>
+                            <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
+                            <input type="hidden" id="category" name="category" value="">
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                    <!--======================-->
+                    <!-- 7. 사이즈 설정 -->
+                    <!--======================-->
+                    <div class="select_div">
+                            <p>사이즈 선택</p>
+                    </div>
+                    <div class="table_div">
+                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
+                        <div class="size_table" id="select_top_size">
                             <div class="size_cell"><p>85(XS)</p></div>
                             <div class="size_cell"><p>90(S)</p></div>
                             <div class="size_cell"><p>95(M)</p></div>
                             <div class="size_cell"><p>100(L)</p></div>
                             <div class="size_cell"><p>105(XL)</p></div>
                             <div class="size_cell"><p>110(2XL)</p></div>
+                            <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
+                            <input type="hidden" id="gender" name="gender" value="">
+                        </div>
+                        <div class="size_table" id="pants_size">
+                            <div class="size_cell"><p>26</p></div>
+                            <div class="size_cell"><p>28</p></div>
+                            <div class="size_cell"><p>30</p></div>
+                            <div class="size_cell"><p>32</p></div>
+                            <div class="size_cell"><p>34</p></div>
+                            <div class="size_cell"><p>36</p></div>
+                        </div>
+                        <div class="size_table" id="shoes_size">
+                            <div class="size_cell"><p>225(mm)</p></div>
+                            <div class="size_cell"><p>230(mm)</p></div>
+                            <div class="size_cell"><p>235(mm)</p></div>
+                            <div class="size_cell"><p>240(mm)</p></div>
+                            <div class="size_cell"><p>245(mm)</p></div>
+                            <div class="size_cell"><p>250(mm)</p></div>
+                            <div class="size_cell"><p>255(mm)</p></div>
+                            <div class="size_cell"><p>260(mm)</p></div>
+                            <div class="size_cell"><p>265(mm)</p></div>
+                            <div class="size_cell"><p>270(mm)</p></div>
+                            <div class="size_cell"><p>275(mm)</p></div>
+                            <div class="size_cell"><p>280(mm)</p></div>
+                            <div class="size_cell"><p>285(mm)</p></div>
+                            <div class="size_cell"><p>290(mm)</p></div>
                         </div>
                     </div>
                     <!--======================-->
-                    <!-- 6. 수량 설정 -->
+                    <!-- 8. 수량 설정 -->
                     <!--======================-->
 <!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
                     <div class="count_div">
@@ -642,7 +755,7 @@
                     </div>
 
                     <!--======================-->
-                    <!-- 7. 상품 상세 설명 설정 -->
+                    <!-- 9. 상품 상세 설명 설정 -->
                     <!--======================-->
                     <div class="detail_description_div">
                         <p>상품 상세설명</p>
@@ -658,12 +771,12 @@
 <!--                        </p>-->
 
                         <!--======================-->
-                        <!-- 8. 상품 등록 버튼 -->
+                        <!-- 10. 상품 등록 버튼 -->
                         <!--======================-->
                         <button type="submit" class="btn btn-primary">상품 등록</button>
                     </div>
                     <!--======================-->
-                    <!-- 9. 현재 등록 되어있는 상품 수량 -->
+                    <!-- 11. 현재 등록 되어있는 상품 수량 -->
                     <!--======================-->
                     <div class="legistration">
                     <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
