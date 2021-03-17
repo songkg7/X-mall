@@ -60,4 +60,9 @@ public class OrderController {
         return "redirect:/";
     }
 
+    @GetMapping("1")
+    public String test() {
+        return "mypage/order-payment";
+    }
+
 }

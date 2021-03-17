@@ -578,25 +578,25 @@
     </div>
 
     <div>
-        <div th:text="${item.getName()}"></div>
+<!--        <div th:text="${item.getName()}"></div>-->
         <label th:for="itemName">선택한 상품 이름</label>
         <input name="itemName" type="text" th:value="${item.getName()}">
     </div>
     <div>
         <div>상품가격</div>
-        <div th:text="${item.getPrice()}"></div>
+<!--        <div th:text="${item.getPrice()}"></div>-->
         <input name="price" type="text" th:value="${item.getPrice()}">
 
     </div>
     <div>
         <div>수량</div>
-        <div th:text="${amount}"></div>
+<!--        <div th:text="${amount}"></div>-->
         <input name="amount" type="text" th:value="${amount}">
 
     </div>
     <div>
         <div>총 결제 금액</div>
-        <div th:text="${item.getPrice() * amount}"></div>
+        <div th:text="${item.getPrice() * amount} + 원"></div>
 
     </div>
 
