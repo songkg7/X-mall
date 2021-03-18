@@ -99,7 +99,7 @@
     display: inline-block;
     float: right;
     width: 40%;
-    border-width: 2px solid;
+    border: 2px solid;
 }
 .order_list_base {
     border: 2px solid orange;
