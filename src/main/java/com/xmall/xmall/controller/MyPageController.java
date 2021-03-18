@@ -2,12 +2,20 @@ package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.domain.Order;
+import com.xmall.xmall.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
+@RequiredArgsConstructor
 public class MyPageController {
+
+    private final OrderRepository orderRepository;
 
     // A/S 접수 안내
     @GetMapping("/as_infoguide")
@@ -44,7 +52,13 @@ public class MyPageController {
     // 최근 주문 내역     *url 로 접속해야 함
     @GetMapping("/my_page")
     public String side_mypage(@CurrentAccount Account account, Model model) {
+
+        // FIXME: join table 해서 특정사용자의 주문만 가져올 수 있도록 수정
+//        account.getId();
+        List<Order> orderLists = orderRepository.findAll();
+
         model.addAttribute(account);
+        model.addAttribute("orderLists", orderLists);
 
         return "mypage/side_mypage";
     }

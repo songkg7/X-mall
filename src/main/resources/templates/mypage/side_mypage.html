@@ -2,111 +2,124 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <!-- header nav css 수입경로-->
-  <div th:replace="fragments.html :: fragment-header-navbar"></div>
-  <!-- footer css 수입경로 -->
-  <div th:replace="fragments.html :: fragment-footer-css"></div>
-  <link rel="stylesheet" href="css/kjh/side_mypage.css">
-  <style></style>
-  </head>
-  <body class="jb_font-1">
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- main 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <header th:replace="fragments.html :: nav-bar"></header>
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- main 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <main>
-      <div class="all_form">
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="css/kjh/side_mypage.css">
+    <style></style>
+</head>
+<body class="jb_font-1">
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<header th:replace="fragments.html :: nav-bar"></header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<main>
+    <div class="all_form">
         <!--왼쪽여백-->
         <div></div>
         <!-- 왼쪽 카테고리 바-->
         <div class="side_mypage">
-          <h2>My PAGE</h2>
-          <div class="bottom_line"></div>
-          <div th:replace="fragments :: userId"></div>
-          <ul>
-            <li class="listyle">
-              <h4>쇼핑정보</h4>
-              <ul>
-                <li><a href="coupon">쿠폰</a></li>
-                <li><a href="order_delivery">주문배송</a></li>
-                <li><a href="return_cancle">취소/반품</a></li>
-              </ul>
-            </li>
+            <h2>My PAGE</h2>
             <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>나의정보</h4>
-              <ul>
-                <li><a href="pwd_change">비밀번호 변경</a></li>
-                <li><a href="withdrawal">회원탈퇴</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>A/S 신청.조회</h4>
-              <ul>
-                <li><a href="as_infoguide">접수 안내</a></li>
-                <li><a href="asview">as 신청</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>고객센터</h4>
-              <ul>
-                <li>
-                  <a href="">1:1 채팅 문의</a>
+            <div th:replace="fragments :: userId"></div>
+            <ul>
+                <li class="listyle">
+                    <h4>쇼핑정보</h4>
+                    <ul>
+                        <li><a href="coupon">쿠폰</a></li>
+                        <li><a href="order_delivery">주문배송</a></li>
+                        <li><a href="return_cancle">취소/반품</a></li>
+                    </ul>
                 </li>
-                <li><a href="">1:1 E-mail 문의</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <h4>나이키닷컴고객센터</h4>
-            <h3>080-022-0182</h3>
-            <p>월~일:오전 9시 ~ 오후 8시</p>
-            <div class="bottom_line"></div>
-          </ul>
+                <div class="bottom_line"></div>
+                <li class="listyle">
+                    <h4>나의정보</h4>
+                    <ul>
+                        <li><a href="pwd_change">비밀번호 변경</a></li>
+                        <li><a href="withdrawal">회원탈퇴</a></li>
+                    </ul>
+                </li>
+                <div class="bottom_line"></div>
+                <li class="listyle">
+                    <h4>A/S 신청.조회</h4>
+                    <ul>
+                        <li><a href="as_infoguide">접수 안내</a></li>
+                        <li><a href="asview">as 신청</a></li>
+                    </ul>
+                </li>
+                <div class="bottom_line"></div>
+                <li class="listyle">
+                    <h4>고객센터</h4>
+                    <ul>
+                        <li>
+                            <a href="">1:1 채팅 문의</a>
+                        </li>
+                        <li><a href="">1:1 E-mail 문의</a></li>
+                    </ul>
+                </li>
+                <div class="bottom_line"></div>
+                <h4>나이키닷컴고객센터</h4>
+                <h3>080-022-0182</h3>
+                <p>월~일:오전 9시 ~ 오후 8시</p>
+                <div class="bottom_line"></div>
+            </ul>
         </div>
         <!-- 카테고리 메인 -->
         <div class="tagform">
-          <div class="recent_order_history">
-            <div class="recent_order_title">
-              <h2>최근 주문 내역</h2>
-              <sub
-                >상품의 출고지가 여러 곳이거나 온라인 물류센터 보관 장소에 따라
-                분리 배송될 수 있습니다.</sub
-              ><br />
-              <sub
-                >분리 배송된 상품별로 운송장이 발급되어 다른 날짜에 받으실 수
-                있으며, 마이페이지에서 배송 조회가 가능합니다.</sub
-              >
-            </div>
+            <div class="recent_order_history">
+                <div class="recent_order_title">
+                    <h2>최근 주문 내역</h2>
+                    <sub
+                    >상품의 출고지가 여러 곳이거나 온라인 물류센터 보관 장소에 따라
+                        분리 배송될 수 있습니다.</sub
+                    ><br/>
+                    <sub
+                    >분리 배송된 상품별로 운송장이 발급되어 다른 날짜에 받으실 수
+                        있으며, 마이페이지에서 배송 조회가 가능합니다.</sub
+                    >
+                </div>
 
-            <!--  아래 글이 사라지면서 위시리스트 상품 불러오기 -->
-            <div class="no_item">최근 등록된 주문내역이 없습니다.</div>
-            <!---------------------------------------------------->
-
-            <h2 class="wish_line">위시리스트</h2>
-
-            <div>
-              <div class="no_item">
                 <!--  아래 글이 사라지면서 위시리스트 상품 불러오기 -->
-                <p>위시리스트에 담긴 상품이 없습니다.</p>
+                <div class="no_item">
+                    <div th:if="${orderLists == null}">최근 등록된 주문내역이 없습니다.</div>
+                    <div th:if="${orderLists}">
+                        <div th:each="orderList : ${orderLists}">
+                            <span th:text="${orderList.id}"></span>
+                            <span th:text="${orderList.orderItems[0].item.getName()}"></span>
+                            <span th:text="${orderList.orderItems[0].orderPrice}"></span>
+                            <span th:text="|수량 : ${orderList.orderItems[0].amount}|"></span>
+                            <span th:text="|총결제금액 : ${orderList.getTotalPrice()}원|"></span>
+                        </div>
+                    </div>
+
+                </div>
+
                 <!---------------------------------------------------->
-                <br />
-                <a class="btn_link" href="/">계속 쇼핑하기</a>
-              </div>
+
+                <h2 class="wish_line">위시리스트</h2>
+
+                <div>
+                    <div class="no_item">
+                        <!--  아래 글이 사라지면서 위시리스트 상품 불러오기 -->
+                        <p>위시리스트에 담긴 상품이 없습니다.</p>
+                        <!---------------------------------------------------->
+                        <br/>
+                        <a class="btn_link" href="/">계속 쇼핑하기</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </main>
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- footer 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
+    </div>
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
 
 
-    <footer th:replace="fragments.html :: footer-body"></footer>
-  </body>
+<footer th:replace="fragments.html :: footer-body"></footer>
+</body>
 </html>
