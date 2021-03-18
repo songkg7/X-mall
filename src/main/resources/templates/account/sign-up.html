@@ -181,10 +181,6 @@
     <script>
         $(document).ready(function () {
 
-            // $("#login_btn").click(function () {
-            //     checkform();
-            // });
-
             var login_need1 = $("#login_need1");
             var login_need2 = $("#login_need2");
             var login_need3 = $("#login_need3");
@@ -214,75 +210,102 @@
             login_check6.hide();
 
             $("#nickname").keyup(function () {
-                if ($("#nickname").val().split(" ").join("") != "") {
-                    login_need1.hide();
-                }
-                if (checkID($("#nickname").val()) == false) {
+                if ($("#nickname").val().split(" ").join("") === "") {
                     $(".nickname").css("border-color", "red");
+                    login_need1.show();
+                    login_check1.hide();
+                }
+                else if (checkID($("#nickname").val()) === false) {
+                    $(".nickname").css("border-color", "red");
+                    login_need1.hide();
                     login_check1.show();
                 } else {
+                    login_need1.hide();
                     login_check1.hide();
                     $(".nickname").css("border", "1px solid black");
                 }
             });
 
             $("#email").keyup(function () {
-                if ($("#email").val().split(" ").join("") != "") {
-                    login_need6.hide();
-                }
-                if (checkEmail($("#email").val()) == false) {
+                if ($("#email").val().split(" ").join("") === "") {
                     $(".email").css("border-color", "red");
+                    login_check6.hide();
+                    login_need6.show();
+                }
+                else if (checkEmail($("#email").val()) === false) {
+                    $(".email").css("border-color", "red");
+                    login_need6.hide();
                     login_check6.show();
                 } else {
+                    login_need6.hide();
                     login_check6.hide();
                     $(".email").css("border", "1px solid black");
                 }
             });
 
             $("#password").keyup(function () {
-                if ($("#password").val().split(" ").join("") != "") {
-                    login_need2.hide();
-                }
-                if (checkPwd($("#password").val()) == false) {
+                if ($("#password").val().split(" ").join("") === "") {
                     $(".password").css("border-color", "red");
+                    login_check2.hide();
+                    login_need2.show();
+                }
+                else if (checkPwd($("#password").val()) === false) {
+                    $(".password").css("border-color", "red");
+                    login_need2.hide();
                     login_check2.show();
                 } else {
+                    login_need2.hide();
                     login_check2.hide();
                     $(".password").css("border", "1px solid black");
                 }
             });
+
             $("#password2").keyup(function () {
-                if ($("#password2").val().split(" ").join("") != "") {
-                    login_need3.hide();
-                }
-                if ($("#password").val() != $("#password2").val()) {
+                if ($("#password2").val().split(" ").join("") === "") {
                     $(".password2").css("border-color", "red");
+                    login_check3.hide();
+                    login_need3.show();
+                }
+                else if ($("#password").val() !== $("#password2").val()) {
+                    $(".password2").css("border-color", "red");
+                    login_need3.hide();
                     login_check3.show();
                 } else {
+                    login_need3.hide();
                     login_check3.hide();
                     $(".password2").css("border", "1px solid black");
                 }
             });
+
             $("#name").keyup(function () {
-                if ($("#name").val().split(" ").join("") != "") {
-                    login_need4.hide();
-                }
-                if (checkName($("#name").val()) == false) {
+                if ($("#name").val().split(" ").join("") === "") {
                     $(".name").css("border-color", "red");
+                    login_check4.hide();
+                    login_need4.show();
+                }
+                else if (checkName($("#name").val()) === false) {
+                    $(".name").css("border-color", "red");
+                    login_need4.hide();
                     login_check4.show();
                 } else {
+                    login_need4.hide();
                     login_check4.hide();
                     $(".name").css("border", "1px solid black");
                 }
             });
+
             $("#phone").keyup(function () {
-                if ($("#phone").val().split(" ").join("") != "") {
-                    login_need5.hide();
-                }
-                if (checkPhone($("#phone").val()) == false) {
+                if ($("#phone").val().split(" ").join("") === "") {
                     $(".phone").css("border-color", "red");
+                    login_check5.hide();
+                    login_need5.show();
+                }
+                else if (checkPhone($("#phone").val()) === false) {
+                    $(".phone").css("border-color", "red");
+                    login_need5.hide();
                     login_check5.show();
                 } else {
+                    login_need5.hide();
                     login_check5.hide();
                     $(".phone").css("border", "1px solid black");
                 }
