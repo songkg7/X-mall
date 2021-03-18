@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @Builder
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Item {
 
