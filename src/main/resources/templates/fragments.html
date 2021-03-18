@@ -626,7 +626,7 @@
                 <span sec:authentication="name">Username</span>&nbsp;&nbsp;님&nbsp;&nbsp;|
             </span>
 
-            <span sec:authorize="hasRole('ROLE_USER')" >
+            <span sec:authorize="isAuthenticated()" >
                 <a class="gray_atag" href="#" th:href="@{/my_page}" style="cursor: hand">&nbsp;마이페이지&nbsp;&nbsp;|</a>
             </span>
 
@@ -1047,8 +1047,12 @@
             <p>대한민국</p>
         </div>
     </div>
-
 </footer>
+
+<div class="bottom_line" th:fragment="userId">
+    <img class="user_img" src="../images/icon/user.png"/>
+    <h4 th:text="|${account.getNickname()} 님|">사용자</h4>
+</div>
 
 
 </html>
