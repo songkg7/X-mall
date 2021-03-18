@@ -29,11 +29,10 @@ public class OrderController {
     private final CartRepository cartRepository;
     private final OrderService orderService;
 
-    @GetMapping("/order-payment/{id}")
+    @GetMapping("/order/{id}")
     // FIXME: @RequestParam
     public String orderPayment(@CurrentAccount Account account,
-                               @PathVariable Long id, Model model,
-                               @RequestParam("amount") int amount,
+                               @PathVariable Long id, Model model, int amount,
                                OrderForm orderForm) {
         Item item = itemRepository.findById(id).get();
 
@@ -43,7 +42,7 @@ public class OrderController {
         model.addAttribute("amount", amount);
 
         // FIXME : 파일 경로 수정하기
-        return "payment-ref";
+        return "order/payment";
     }
 
     @PostMapping("/order/payment")

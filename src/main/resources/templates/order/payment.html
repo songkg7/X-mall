@@ -82,9 +82,9 @@
                 </div>
                 <!--DB에서 가져오는 값-->
                 <div class="shop_input">
-                    <p>이름</p>
-                    <p>번호</p>
-                    <p>이메일</p>
+                    <p>이름</p><span th:text="${account.name}"></span>
+                    <p>번호</p><span th:text="${account.phone}"></span>
+                    <p>이메일</p><span th:text="${account.email}"></span>
                 </div>
                 <!--+++++++++++++++++++++++++++++++++++-->
                 <div class="sub_line"></div>
@@ -161,12 +161,12 @@
                             </div>
                             <div class="order_list_DB">
                                 <!--DB에서 가져오는 값-->
-                                <div class="order_list_text_left">신발명</div>
+                                <div class="order_list_text_left" th:text="${item.name}">신발명</div>
                                 <div class="order_list_text_left">스타일 코드</div>
                                 <div class="order_list_text_left">사이즈 : 250</div>
-                                <div class="order_list_text_left">수량 : 1개</div>
+                                <div class="order_list_text_left" th:text="${amount}개">수량 : 1개</div>
                                 <!-- 가격은 DB에서 가져오는 값입니다.-->
-                                <div class="order_list_text_left">가격</div>
+                                <div class="order_list_text_left" th:text="${item.price}원">가격</div>
                             </div>
                         </div>
                         <!--+++++++++++++++++++++++++++++++++++-->
