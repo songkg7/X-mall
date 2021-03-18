@@ -1,8 +1,7 @@
 package com.xmall.xmall.domain;
 
 import com.xmall.xmall.exception.NotEnoughStockException;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,6 +9,10 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Item {
 
     @Id
@@ -41,7 +44,7 @@ public class Item {
     private String itemImage;
 
     // 상품 등록일
-    private LocalDateTime CreateAt;
+    private LocalDateTime CreatedAt;
 
     /*
     stock 증가

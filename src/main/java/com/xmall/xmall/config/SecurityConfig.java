@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
@@ -23,6 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // -- form tag 에 csrf token 값이 제대로 생성되지 않고 있는 것 같으니 체크해보자.
         http.csrf().disable();
 
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
 //         login
         http.formLogin()
                 .loginPage("/login").permitAll();
