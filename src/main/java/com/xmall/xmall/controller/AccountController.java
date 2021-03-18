@@ -38,6 +38,7 @@ public class AccountController {
         return "account/sign-up";
     }
 
+    // TODO: addFlashAttribute
     @PostMapping("/sign-up")
     // 여러 값을 받아올 때는 @ModelAttribute 가 필요하지만 생략이 가능하다.
     public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
