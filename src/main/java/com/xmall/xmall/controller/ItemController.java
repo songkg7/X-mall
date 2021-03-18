@@ -45,7 +45,6 @@ public class ItemController {
             return "items/create-item";
         }
 
-        log.info(itemForm.getItemImage());
 //        ClassPathResource resource = new ClassPathResource();
 
         itemService.create(itemForm);
