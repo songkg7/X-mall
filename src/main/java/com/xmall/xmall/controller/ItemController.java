@@ -26,6 +26,9 @@ public class ItemController {
     private final ItemService itemService;
     private final ItemRepository itemRepository;
 
+    /**
+     * 상품 등록
+     */
     @GetMapping("/items/create-item")
     public String createItemForm(Model model) {
         long totalCount = itemRepository.count();
@@ -49,6 +52,19 @@ public class ItemController {
         return "redirect:/";
     }
 
+    /**
+     * 상품 수정
+     */
+    @GetMapping("/items/{id}/edit")
+    public String updateItem() {
+        return "redirect:/";
+    }
+
+    /**
+     * 상품 삭제
+     */
+
+
     @GetMapping("/items")
     public String items(Model model) {
         List<Item> itemLists = itemRepository.findAll();
@@ -57,6 +73,9 @@ public class ItemController {
         return "items/item-list";
     }
 
+    /**
+     * Item 상세 정보 페이지
+     */
     @GetMapping("/items/{id}")
     public String itemInfo(@PathVariable Long id, Model model) {
         // null check 필요, Optional을 사용하는게 좋을수도 있다.

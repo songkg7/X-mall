@@ -510,6 +510,8 @@
 
 <!-- --------------------------------- -->
 <main>
+    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+       class="btn btn-primary" role="button">수정</a>
     <div class="main">
         <!--+++++++++++++++++++++++++++++-->
         <!-- 화면 분할 1. 좌측(product_img) -->
@@ -545,7 +547,7 @@
                 <!-- 2-1-1. 모델명 -->
                 <!--======================-->
                 <div class="product_name">
-                    <p class="p_1" th:text="${item.getSubTitle()}">남성 하프집 후드 재킷 AS</p>
+                    <p class="p_1" th:text="${item.subTitle}">남성 하프집 후드 재킷 AS</p>
                     <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
                     <div class="thumnail">
                         <div class="thumnail_1">
