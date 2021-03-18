@@ -63,15 +63,6 @@
     </script>
     <!--  main css 부분   -->
     <style>
-        /* ============================================= */
-        /* ============================================= */
-        /* ============================================= */
-        /* ============================================= */
-        /* ============================================= */
-        /* ============================================= */
-        /* ============================================= */
-
-
         /* *********************************** */
         /* main 부분 css */
         /* *********************************** */
@@ -477,6 +468,7 @@
             color: white;
         }
 
+
         .detail_description_div {
             margin-top: 10px;
             font-weight: 300;
@@ -500,6 +492,41 @@
         .selected{
             background-color: black;
             color: white;
+        }
+        .update_delete{
+            margin-top: 10px;
+            font-weight: 300;
+            width: 100%;
+            height: 100px;
+        }
+        .update_btn{
+            width: 48%;
+            height: 60px;
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid black;
+            float: left;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+
+        }
+        .delete_btn{
+            width: 48%;
+            height: 60px;
+            background-color: white;
+            border-radius: 50px;
+            color: black;
+            text-align: center;
+            line-height: 60px;
+            border: 1px solid black;
+            float: right;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -675,7 +702,22 @@
                                 value="위시리스트"
                         /></a>
                     </div>
+                    <hr/>
+
                 </form>
+                <h3>관리자 모드</h3>
+                <hr/>
+                <div class="update_delete">
+                    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+                       class="btn btn-primary" role="button"><div class="update_btn">
+                        상품 수정
+                    </div></a>
+                    <a href="#" th:href="@{/items/{id}/delete (id=${item.id})}"
+                       class="btn btn-primary" role="button"><div class="delete_btn">
+                        상품 삭제
+                    </div></a>
+                </div>
+
                 <hr/>
                 <div class="detail_description_div">
 <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
