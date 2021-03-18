@@ -34,7 +34,6 @@ public class MyPageController {
     }
 
     // 최근 주문 내역     *url 로 접속해야 함
-    // TODO: 버튼이 필요할 것
     @GetMapping("/my_page")
     public String side_mypage(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
