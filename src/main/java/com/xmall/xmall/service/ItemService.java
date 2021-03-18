@@ -16,20 +16,19 @@ import java.util.Optional;
 public class ItemService {
     private final ItemRepository itemRepository;
 
-    public Long create(ItemForm itemForm) {
-        Item item = new Item();
-        item.setName(itemForm.getName());
-        item.setSubTitle(itemForm.getSubTitle());
-        item.setPrice(itemForm.getPrice());
-        item.setStockQuantity(itemForm.getStockQuantity());
-        item.setDescription(itemForm.getDescription());
-        item.setItemImage(itemForm.getItemImage());
+    public void create(ItemForm itemForm) {
 
-        item.setCreateAt(LocalDateTime.now());
+        Item item = Item.builder()
+                .name(itemForm.getName())
+                .subTitle(itemForm.getSubTitle())
+                .price(itemForm.getPrice())
+                .stockQuantity(itemForm.getStockQuantity())
+                .description(itemForm.getDescription())
+                .itemImage(itemForm.getItemImage())
+                .CreatedAt(LocalDateTime.now())
+                .build();
 
-        Item newItem = itemRepository.save(item);
-
-        return newItem.getId();
+        itemRepository.save(item);
 
     }
 

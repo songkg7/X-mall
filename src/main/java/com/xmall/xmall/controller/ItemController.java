@@ -59,12 +59,6 @@ public class ItemController {
     @GetMapping("/items/{id}/edit")
     public String updateItem(@PathVariable Long id, Model model) {
         Item item = itemRepository.findById(id).get();
-//        ItemForm itemForm = new ItemForm();
-//        itemForm.setName(item.getName());
-//        itemForm.setSubTitle(item.getSubTitle());
-//        itemForm.setPrice(item.getPrice());
-//        itemForm.setStockQuantity(item.getStockQuantity());
-//        itemForm.setDescription(item.getDescription());
 
         model.addAttribute(item);
 
@@ -101,7 +95,7 @@ public class ItemController {
      */
     @GetMapping("/items/{id}")
     public String itemInfo(@PathVariable Long id, Model model) {
-        // null check 필요, Optional을 사용하는게 좋을수도 있다.
+        // null check 필요, Optional 을 사용하는게 좋을수도 있다.
         Item item = itemRepository.findById(id).get();
 
         if (item == null) {
