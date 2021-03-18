@@ -1020,10 +1020,18 @@
 
     <div class="footer">
         <div class="footer_navi1">
-            <div class="footer_menu_1">
-                <p><a href="">로그인</a></p>
-                <p><a href="">회원가입</a></p>
-            </div>
+            <span sec:authorize="!isAuthenticated()" >
+                <div class="footer_menu_1">
+                    <p><a href="/login">로그인</a></p>
+                    <p><a href="/sign-up">회원가입</a></p>
+                </div>
+            </span>
+
+            <span sec:authorize="isAuthenticated()" >
+                <div class="footer_menu_1">
+                    <p><a href="/logout">로그아웃</a></p>
+                </div>
+            </span>
             <div class="footer_menu_2">
                 <p>고객센터</p>
                 <a href="/cs/order_file">주문/결제</a>
