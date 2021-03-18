@@ -1,19 +1,11 @@
 spring:
 #  DB 설정하기 전엔 아래 옵션을 비활성화하기
 #  -----
-<<<<<<< HEAD
  # datasource:
    # url: jdbc:h2:tcp://localhost/~/xmall
     #username: sa
     #password:
     #driver-class-name: org.h2.Driver
-=======
-#  datasource:
-#    url: jdbc:h2:tcp://localhost/~/xmall
-#    username: sa
-#    password:
-#    driver-class-name: org.h2.Driver
->>>>>>> 4fb6d60a4e38d033a25033d4b68be7e6a16dbd13
 #  -----
 #  thymeleaf:
 #    cache: false
