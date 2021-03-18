@@ -74,8 +74,14 @@
     margin-left: 40px;
 }
 .padding_left {
-    padding-left: 100px;
-    padding-right: 100px;
+
+    height: 1600px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.shop_left{
+    width: 100%;
+
 }
 .sub_line {
     margin-bottom: 30px;
@@ -95,12 +101,13 @@
     height: 1000px;
     display: inline-block;
     float: right;
-    width: 40%;
-    border-width: 2px solid;
+    width: 38%;
+    border: 2px solid;
 }
 .order_list_base {
-    border: 2px solid black;
-    height: 700px;
+    width: 100%;
+    /*border: 2px solid black;*/
+    height: 100%;
 
 }
 .order_list_img {

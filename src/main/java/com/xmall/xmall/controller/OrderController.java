@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-import static com.xmall.xmall.domain.Order.createOrder;
-import static com.xmall.xmall.domain.OrderItem.createOrderItem;
-
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -32,11 +29,10 @@ public class OrderController {
     private final CartRepository cartRepository;
     private final OrderService orderService;
 
-    @GetMapping("/order-payment/{id}")
+    @GetMapping("/order/{id}")
     // FIXME: @RequestParam
     public String orderPayment(@CurrentAccount Account account,
-                               @PathVariable Long id, Model model,
-                               @RequestParam("amount") int amount,
+                               @PathVariable Long id, Model model, int amount,
                                OrderForm orderForm) {
         Item item = itemRepository.findById(id).get();
 
@@ -62,7 +58,7 @@ public class OrderController {
 
     @GetMapping("1")
     public String test() {
-        return "mypage/order-payment";
+        return "order/payment";
     }
 
 }

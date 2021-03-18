@@ -42,7 +42,9 @@ public class Account {
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
-//    private String Location;
+    // 주소
+    @Embedded
+    private Address address;
 
     @OneToOne
     @JoinColumn(name = "cart_id")

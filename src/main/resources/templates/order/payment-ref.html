@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- main 부분 CSS-->
+    <style>
+
+        body {
+            margin: 0;
+        }
+
+        .main {
+
+            margin-top: 50px;
+            background-color: white;
+            width: 100%;
+            height: 1000px;
+            margin-bottom: 100px;
+        }
+
+        .shop_order {
+            font-size: 28px;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        .shop_customer {
+            display: inline-block;
+            float: left;
+            width: 80%;
+        }
+
+        .shop_customer_sub {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 70%;
+            padding-top: 30px;
+            padding-bottom: 13px;
+        }
+
+        .shop_customer_sub_delivery {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 10%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .shop_agree {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 70%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .shop_address {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 47%;
+        }
+
+        .shop_float {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bolder;
+            width: 95.5%;
+            background-color: lightgray;
+            padding-bottom: 13px;
+            padding-top: 13px;
+            padding-left: 13px;
+        }
+
+        .shop_input {
+            text-align: left;
+            width: 70%;
+        }
+
+        .shop_input_baseaddress {
+            padding-bottom: 10px;
+            text-align: left;
+        }
+
+        .nav1 {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+        }
+
+        .nav1_img {
+            width: 8%;
+            height: 10%;
+            display: block;
+            margin-left: 40px;
+        }
+
+        .padding_left {
+            padding-left: 270px;
+            padding-right: 250px;
+        }
+
+        .main_line {
+            border-bottom: 1px solid black;
+            width: 80%;
+        }
+
+        .sub_line {
+            border-bottom: 1px solid black;
+            width: 100%;
+        }
+
+        .cl_memo {
+            padding-right: 300px;
+        }
+
+        .order_list {
+            display: inline-block;
+            float: right;
+            width: 20%;
+        }
+
+        .order_list_base {
+            border: 2px solid black;
+        }
+
+        .order_list_img {
+            text-align: left;
+            float: left;
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+        .order_list_DB {
+            float: left;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+        .order_list_text_left {
+            text-align: left;
+        }
+
+        .goods_right {
+            text-align: right;
+            float: right;
+        }
+
+        .goods_left {
+            padding-top: 13px;
+            text-align: left;
+        }
+
+        .precautions {
+            border-bottom: 2px solid black;
+        }
+
+        .precautions_sub {
+            text-align: left;
+            padding-top: 20px;
+        }
+
+        .precautions_pro {
+            text-align: left;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .payment {
+            display: inline-block;
+            float: left;
+            width: 80%;
+        }
+
+        .payment_submit {
+            width: 20%;
+            display: block;
+            margin: 0px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+            background-color: black;
+            height: 48px;
+            font-size: 15px;
+            border-radius: 50px;
+        }
+
+        .payment_submit:hover {
+            background-color: black;
+            opacity: 70%;
+            color: white;
+        }
+
+        .send {
+            text-align: center;
+            background-color: black;
+            width: 100%;
+            height: 48px;
+            font-size: 15px;
+            padding: 16px 50px;
+            border: 1px solid black;
+            border-radius: 50px;
+        }
+
+        .send:hover {
+            background-color: black;
+            opacity: 70%;
+            color: white;
+        }
+
+        .basket {
+            text-align: left;
+            float: left;
+        }
+
+        .jumun_text_left {
+            text-align: left;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            // 라디오버튼 클릭시 이벤트 발생
+            $("input:radio[name=delivery]").click(function () {
+
+                if ($("input[name=delivery]:checked").val() == "1") {
+                    $("input:text[name=address_input]").prop("disabled", false);
+                    $("input:text[name=pastAddress_input]").prop("disabled", true);
+                    // radio 버튼의 value 값이 1이라면 활성화
+
+                } else if ($("input[name=delivery]:checked").val() == "0") {
+                    $("input:text[name=pastAddress_input]").prop("disabled", false);
+                    $("input:text[name=address_input]").prop("disabled", true);
+                    // radio 버튼의 value 값이 0이라면 비활성화
+                }
+            });
+            $("[name=delivery]:eq(0)").click();
+        });
+
+        $(function () {
+            //직접입력 인풋박스 기존에는 숨어있다가
+            $("#selboxDirect").hide();
+            $("#memo").change(function () {
+                //직접입력을 누를 때 나타남
+                if ($("#memo").val() == "직접입력") {
+                    $("#selboxDirect").show();
+                } else {
+                    $("#selboxDirect").hide();
+                }
+            })
+        });
+    </script>
+
+    <!-- header footer css 수입경로-->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+
+</head>
+
+<body class="main_font">
+
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar">
+</header>
+
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <!-- main 부분 -->
+            <!--+++++++++++++++++++++++++++++++++++-->
+
+            <main>
+                <div class="padding_left">
+
+                    <div class="shop_order">
+                        주문 결제
+                    </div>
+
+                    <!--+++++++++++++가운데 줄++++++++++++++++++++++-->
+                    <div class="main_line"></div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+
+                    <div class="shop_customer">
+
+                        <div class="shop_customer_sub">
+                            주문고객
+                        </div>
+
+                        <!-- TODO: DB에서 가져오는 값-->
+                        <div class="shop_input">
+                            <p>이름</p>
+                            <span th:text="${account.getName()}"></span>
+                            <p>번호</p>
+                            <span th:text="${account.getPhone()}"></span>
+                            <p>이메일</p>
+                            <span th:text="${account.getEmail()}"></span>
+                        </div>
+
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="sub_line"></div>
+                        <!--+++++++++++++++++++++++++++++++++++-->
+
+                        <div class="shop_customer_sub_delivery">
+                            배송지 정보
+                        </div>
+
+                        <div style="text-align: left;">
+                            <input type="radio" name="delivery" id="delivery" value="1" checked="checked">기존 배송지
+                        </div>
+
+                        <!-- 기존 배송지 -->
+
+                        <div>
+                            <div style="text-align: left; " id="address" >
+                                <p><input type="text" size="10%" name="address_input" placeholder="우편주소"> <input type="text" size="60%"  name="address_input" placeholder="주소"></p>
+                                <p><input type="text" size="100%"  name="address_input" placeholder="상세주소"></p>
+                                <p><input type="text" size="20%"  name="address_input" placeholder="전화 번호"></p>
+                            </div>
+                        </div>
+
+                        <!-- 신규 배송지 -->
+                        <div class="shop_input ">
+
+                            <input type="radio" name="delivery" id="delivery_new" value="0"  >신규 배송지
+
+                            <div style="text-align: left;" id="pastAddress" >
+                                <p><input type="text" size="10%"  name="pastAddress_input" placeholder="우편주소"> <input type="text" size="60%"  name="pastAddress_input"  placeholder="주소"></p>
+                                <p><input type="text" size="15%"  name="pastAddress_input" placeholder="상세주소"></p>
+                                <p><input type="text" size="20%"  name="pastAddress_input" placeholder="전화 번호"></p>
+                            </div>
+
+                            <div class="shop_input_baseaddress">
+                                <input type="checkbox" name="address" value="">기본 주소 사용
+                            </div>
+
+                            <div style="text-align: left; padding-bottom: 50px;">
+
+                                <select name="memo" id="memo" style="padding-right:300px;">
+                                    <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
+                                    <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
+                                    <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+                                    <option value="직접입력">직접입력</option>
+                                </select>
+
+                                <div style="padding-top: 20px; text-align: left;">
+                                    <input type="text" id="selboxDirect" name="selboxDirect" size="100px"
+                                           style="padding-bottom:100px"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="sub_line"></div>
+                        <!--+++++++++++++++++++++++++++++++++++-->
+
+                        <div>
+                            <div class="shop_agree">
+                                배송방식
+                            </div>
+
+                            <div class="shop_input">
+                                <p><strong>일반배송 : 배송비 2500원</strong></p>
+                                <p><strong>배송지역 : 전국(일부 도서산간 지역 제외)</strong></p>
+                                <p><strong>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</strong></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order_list">
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="order_list_base">
+
+                            <!--+++++++++++++++++++++++++++++++++++-->
+                            <div class="shop_float">
+                                주문내역
+                            </div>
+                            <div class="빨간네모2">
+                                <!--+++++++++++++++++++++++++++++++++++-->
+                                <div class="초록네모1">
+                                    <dt class="order_list_img">
+                                        <img src="./img/nike_shoes.jpg">
+                                    </dt>
+                                    <dd class="order_list_DB">
+                                        <!--DB에서 가져오는 값-->
+                                        <!--                                <div class="order_list_text_left">신발명</div>-->
+                                        <!--                                <div class="order_list_text_left">스타일 코드</div>-->
+                                        <!--                                <div class="order_list_text_left">사이즈 : 250</div>-->
+                                        <!--                                <div class="order_list_text_left">수량 : 1개</div>-->
+                                        <!--                                <div class="order_list_text_left">가격</div>-->
+                                        <!-- 가격은 DB에서 가져오는 값입니다.-->
+                                        <div class="jumun_text_left" th:text="${item.getName()}"></div>
+                                        <div class="jumun_text_left"
+                                             th:text="|가격 : ${item.getPrice()} 원|"></div>
+                                        <div class="jumun_text_left">사이즈 : 250</div>
+                                        <div class="jumun_text_left" th:text="|수량 : ${amount} 개|"></div>
+                                        <!-- 가격은 DB에서 가져오는 값입니다.-->
+                                        <!--                            <div class="jumun_text_left">가격</div>-->
+                                    </dd>
+                                </div>
+                                <div class="빨간네모2">
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="초록네모1">
+                                        <dt class="order_list_img">
+                                            <img src="../images/main_img/nike_m_s_air.jpg" >
+                                        </dt>
+                                        <dd class="order_list_DB">
+                                            <!--DB에서 가져오는 값-->
+                                            <!--                                <div class="order_list_text_left">신발명</div>-->
+                                            <!--                                <div class="order_list_text_left">스타일 코드</div>-->
+                                            <!--                                <div class="order_list_text_left">사이즈 : 250</div>-->
+                                            <!--                                <div class="order_list_text_left">수량 : 1개</div>-->
+                                            <!--                                <div class="order_list_text_left">가격</div>-->
+                                            <!-- 가격은 DB에서 가져오는 값입니다.-->
+                                            <div class="jumun_text_left" th:text="${item.getName()}"></div>
+                                            <div class="jumun_text_left" th:text="|가격 : ${item.getPrice()} 원|"></div>
+                                            <div class="jumun_text_left">사이즈 : 250</div>
+                                            <div class="jumun_text_left" th:text="|수량 : ${amount} 개|"></div>
+                                            <!-- 가격은 DB에서 가져오는 값입니다.-->
+                                            <!--                            <div class="jumun_text_left">가격</div>-->
+                                        </dd>
+                                    </div>
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="초록네모2">
+
+                                    </div>
+                                </div>
+                                <!--+++++++++++++++++++++++++++++++++++-->
+                                <div class="빨간네모3" style="padding-top: 150px; text-align: left;">
+                                        <span class="">
+                                            <span class="">상품 금액</span>
+                                            <div class="goods_right"
+                                                 th:text="|${item.getPrice() * amount} 원|"></div>
+                                        </span>
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="goods_left">
+                                        <span class="">배송비</span>
+                                        <span class="goods_right">
+                                            <strong>2500 원</strong>
+                                        </span>
+                                    </div>
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="goods_left">
+                                        <span class="">상품 할인 금액</span>
+                                        <div class="goods_right">
+                                            <strong>0 원</strong>
+                                        </div>
+                                    </div>
+                                    <div class="goods_left">
+                                        <span class="">주문 할인 금액</span>
+                                        <div class="goods_right">
+                                            <strong>
+                                                0 원
+                                            </strong>
+                                        </div>
+                                    </div>
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="goods_left">
+                                            <span class="">
+                                                총 결제 예정 금액
+                                            </span>
+                                        <div class="goods_right"
+                                             th:text="|${item.getPrice() * amount + 2500} 원|"></div>
+                                    </div>
+                                    <div class="precautions"></div>
+                                    <!-- 주의사항 -->
+                                    <div class="precautions_sub">
+                                        <strong>●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+                                            보관됩니다.</strong>
+                                    </div>
+                                    <!--+++++++++++++++++++++++++++++++++++-->
+                                    <div class="precautions_pro">
+                                        <strong>●프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div class="payment">
+                            <div class="shop_customer_sub">
+                                결제 수단 선택
+                            </div>
+                            <!--+++++++++++++++++++++++++++++++++++-->
+                            <div>
+                                <button type="submit" class="payment_submit">
+                                    <a href="http://www.naver.com"><strong>신용카드</strong></a>
+                                </button>
+                            </div>
+                            <!--+++++++++++++++++++++++++++++++++++-->
+                            <div>
+                                <button type="submit" class="send">
+                                    <a onClick="alert('주문이 완료되었습니다!')" href="http://www.naver.com" >주문 완료</a>
+                                </button>
+                            </div>
+                        </div>
+                        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+                        <div class="basket">
+                            <li><a href="http://www.naver.com">장바구니 바로가기</a></li>
+                        </div>
+                        <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+                        <div>
+                            <button type="submit" class="send">
+                                <a href="http://www.naver.com">주문 완료</a>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>주문결제</title>
+</head>
+<body>
+<div th:text="${account.getName()}">사용자 이름</div>
+<div th:text="${account.getPhone()}">번호</div>
+<div th:text="${account.getEmail()}">이메일</div>
+
+<form th:action="@{/order/payment}" method="post" th:object="${orderForm}" >
+
+    <div>
+
+        <div>주소</div>
+&lt;!&ndash;        <input type="text"/>&ndash;&gt;
+    </div>
+
+    <div>-->
+    <!--<div th:text="${item.getName()}"></div>-->
+<!--    <label th:for="itemName">선택한 상품 이름</label>
+        <input name="itemName" type="text" th:value="${item.getName()}">
+    </div>
+    <div>
+        <div>상품가격</div>-->
+<!--        <div th:text="${item.getPrice()}"></div>-->
+<!--<input name="price" type="text" th:value="${item.getPrice()}">
+
+    </div>
+    <div>
+        <div>수량</div>-->
+<!--        <div th:text="${amount}"></div>-->
+       <!-- <input name="amount" type="text" th:value="${amount}">
+
+    </div>
+    <div>
+        <div>총 결제 금액</div>
+        <div th:text="${item.getPrice() * amount} + 원"></div>
+
+    </div>
+
+    <button type="submit">submit</button>
+
+</form>
+</body>
+</html>-->

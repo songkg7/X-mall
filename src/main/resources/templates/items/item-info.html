@@ -582,7 +582,7 @@
                 </div>
                 <div class="table_div">
                     <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
-                    <div class="size_table" id="top_size_table">
+                    <div  class="size_table" id="top_size_table">
                         <div class="size_cell" id="85xs"><p>85(XS)</p></div>
                         <div class="size_cell" id="90s"><p>90(S)</p></div>
                         <div class="size_cell" id="95m"><p>95(M)</p></div>
@@ -624,7 +624,7 @@
                 <!--======================-->
                 <!-- 3. 수량 -->
                 <!--======================-->
-                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">
+                <form method="get" th:action="@{/order/{id} (id=${item.id})}">
                     <div class="count_div">
                         <div class="count_amount">수량</div>
                         <input
