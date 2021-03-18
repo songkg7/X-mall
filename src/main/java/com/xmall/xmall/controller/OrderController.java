@@ -15,6 +15,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,24 +28,33 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping("/order/{id}")
-    // FIXME: @RequestParam
     public String orderPayment(@CurrentAccount Account account,
                                @PathVariable Long id, Model model, int amount) {
         Item item = itemRepository.findById(id).get();
 
+        // TODO: 배송지 정보 받아오기
+        OrderForm orderForm = new OrderForm(); // 주문서 작성
+        orderForm.setAmount(amount); // 주문 수량 미리 설정
+        orderForm.setItemName(item.getName());
+        orderForm.setPrice(item.getPrice());
+
         model.addAttribute(account);
+        model.addAttribute(orderForm);
         model.addAttribute("item", item);
-        model.addAttribute("amount", amount);
 
         return "order/payment";
     }
 
-    @PostMapping("/order/payment")
-    public String orderPaymentProcess(@ModelAttribute("item") @Valid OrderForm orderForm, Errors errors, @CurrentAccount Account account) {
+    // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
+    @PostMapping("/order/payment/{id}")
+    public String orderPaymentProcess(@CurrentAccount Account account,
+                                      @PathVariable Long id,
+                                      @Valid OrderForm orderForm,
+                                      Errors errors) {
+        log.info(String.valueOf(orderForm.getPrice()));
 
-        Item item = itemRepository.findByName(orderForm.getItemName());
-
-        orderService.order(item, orderForm, account);
+        Optional<Item> byId = itemRepository.findById(id);
+        byId.ifPresent(item -> orderService.order(item, orderForm, account));
 
         // FIXME: 주문 완료 페이지로 가기
         return "redirect:/";

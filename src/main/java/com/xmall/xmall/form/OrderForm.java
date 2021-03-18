@@ -11,4 +11,8 @@ public class OrderForm {
 
     private int amount;
 
+    private String mainAddress;
+
+    private String detailAddress;
+
 }
