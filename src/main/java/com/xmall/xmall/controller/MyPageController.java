@@ -51,7 +51,7 @@ public class MyPageController {
     // 비밀번호 변경
     @GetMapping("/mypage/pwd_change")
     public String pwd_change() {
-        return "/mypage/pwd_change";
+        return "mypage/pwd_change";
     }
     
     // 회원 탈퇴
