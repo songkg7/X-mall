@@ -29,7 +29,7 @@ public class Account {
     @Column(unique = true)
     private String email;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "account_id")
     private String nickname;
 
     private String name;

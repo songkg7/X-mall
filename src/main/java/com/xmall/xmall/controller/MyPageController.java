@@ -11,25 +11,33 @@ public class MyPageController {
 
     // A/S 접수 안내
     @GetMapping("/as_infoguide")
-    public String as_infoguide() {
+    public String as_infoguide(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
         return "mypage/as_infoguide";
     }
 
     // 쿠폰
     @GetMapping("/coupon")
-    public String coupon() {
+    public String coupon(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
         return "mypage/coupon";
     }
 
     // 주문배송
     @GetMapping("/order_delivery")
-    public String order_delivery() {
+    public String order_delivery(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
         return "mypage/order_delivery";
     }
 
     // 취소/반품
     @GetMapping("/return_cancle")
-    public String oreturn_cancle() {
+    public String oreturn_cancle(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
         return "mypage/return_cancle";
     }
 
