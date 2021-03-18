@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -30,5 +31,10 @@ public class ItemService {
 
         return newItem.getId();
 
+    }
+
+    public void delete(Long id) {
+        Optional<Item> byId = itemRepository.findById(id);
+        byId.ifPresent(itemRepository::delete);
     }
 }

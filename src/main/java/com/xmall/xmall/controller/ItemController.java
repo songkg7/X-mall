@@ -63,6 +63,11 @@ public class ItemController {
     /**
      * 상품 삭제
      */
+    @GetMapping("/items/{id}/delete")
+    public String deleteItem(@PathVariable Long id) {
+        itemService.delete(id);
+        return "redirect:/";
+    }
 
 
     @GetMapping("/items")
