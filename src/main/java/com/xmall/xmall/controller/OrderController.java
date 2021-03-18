@@ -58,7 +58,7 @@ public class OrderController {
 
     @GetMapping("1")
     public String test() {
-        return "mypage/order-payment";
+        return "order/payment";
     }
 
 }
