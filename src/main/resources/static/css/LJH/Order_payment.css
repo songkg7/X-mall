@@ -23,14 +23,12 @@
     width: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: pink;
 }
 .shop_agree {
     font-size: 20px;
     text-align: left;
     font-weight: bolder;
     width: 100%;
-    background-color: sandybrown;
     padding-top: 80px;
     padding-bottom: 30px;
 }
@@ -55,7 +53,6 @@
     margin-left: 20px;
 }
 .shop_input {
-    background-color: purple;
     text-align: left;
     width: 100%;
     margin-top: 20px;
@@ -102,7 +99,7 @@
     border: 2px solid;
 }
 .order_list_base {
-    border: 2px solid orange;
+    border: 2px solid black;
     height: 700px;
 
 }
@@ -111,46 +108,62 @@
     float: left;
     width: 30%;
     height: 200px;
-    background-color: teal;
     padding-top: 10px;
     padding-left: 10px;
+}
+.order_list_img img{
+    width: 100%;
+    height: 100%
 }
 .order_list_DB {
     width: 60%;
     height: 200px;
-    background-color: violet;
     float: right;
     padding-top: 10px;
     text-align: right;
+    display: inline-block;
 }
 .order_list_text_left {
     text-align: left;
 }
 .goods_right {
     text-align: right;
+    width:50%;
     float: right;
+    height: 50%;
+    margin-top: 20px;
 }
 .goods_left {
-    padding-top: 13px;
     text-align: left;
+    float: left;
+    width:50%;
+    height: 50%;
+    margin-top: 20px;
 }
 .precautions {
     border-bottom: 2px solid black;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 .precautions_sub {
     text-align: left;
-    padding-top: 20px;
+    width:100%;
+    display:inline-block;
 }
 .precautions_pro {
     text-align: left;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width:100%;
+
+}
+.precautions_sub p{
+    margin-top: 0;
+    margin-left: 20px;
 }
 .payment {
     display: inline-block;
     float: left;
-    background-color: seagreen;
-    width: 100%;
+    width: 80%;
+    margin-left: 100px;
 }
 .payment_submit {
     width: 20%;
@@ -176,7 +189,7 @@
 .send {
     text-align: center;
     background-color:black;
-    width: 100%;
+    width: 90%;
     height: 60px;
     font-size: 15px;
     margin-top: 30px;
@@ -196,7 +209,6 @@
     float: left;
 }
 .address1{
-    background-color: royalblue;
 }
 .address1 .sub2{
     margin-left: 10px;
@@ -213,10 +225,19 @@
 }
 .select_memo{
     width: 100%;
-    background-color: salmon;
 }
 .select_box{
     width: 400px;
     height: 50px;
     float: left;
+}
+.selbox{
+    padding-top: 20px;
+    text-align: left;
+}
+.selbox input{
+    padding-bottom:100px;
+}
+.text_left{
+    text-align: left;
 }

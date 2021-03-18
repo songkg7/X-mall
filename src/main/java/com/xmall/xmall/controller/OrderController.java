@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-import static com.xmall.xmall.domain.Order.createOrder;
-import static com.xmall.xmall.domain.OrderItem.createOrderItem;
-
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -46,7 +43,7 @@ public class OrderController {
         model.addAttribute("amount", amount);
 
         // FIXME : 파일 경로 수정하기
-        return "order/payment";
+        return "payment-ref";
     }
 
     @PostMapping("/order/payment")

@@ -1,7 +1,5 @@
 package com.xmall.xmall.controller;
 
-import com.xmall.xmall.account.CurrentAccount;
-import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
+/**
+ * Login 관련 컨트롤러
+ */
 @Controller
 @RequiredArgsConstructor
 public class MainController {
