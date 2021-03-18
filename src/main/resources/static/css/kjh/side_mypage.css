@@ -9,7 +9,6 @@
   display: block;
   width: 80%;
   border-bottom: 1px solid #bcbcbc;
-  margin: 20px 0px;
 }
 
 .side_mypage,
@@ -87,4 +86,11 @@
   border: 0;
   width: 100%;
   text-align: left;
+}
+
+.user_img {
+  float: left;
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
 }
