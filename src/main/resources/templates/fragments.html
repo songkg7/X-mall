@@ -620,39 +620,34 @@
         <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
         <div class="nav1_text">
 
-            <span sec:authorize="hasRole('ROLE_ADMIN')">관리자 권한으로 페이지를 실행 중</span>
-            <span sec:authorize="isAuthenticated()" >
-                <span sec:authentication="name">Username</span>
-                님 |
-            </span>
-            <span>
+            <span sec:authorize="hasRole('ROLE_ADMIN')">관리자 권한으로 페이지를 실행 중&nbsp;&nbsp;</span>
 
-            <a class="gray_atag" href="#" th:href="@{/cs/notice}" style="cursor: hand"
-            >&nbsp; 고객센터 &nbsp;</a
-            >
+            <span sec:authorize="isAuthenticated()" >
+                <span sec:authentication="name">Username</span>&nbsp;&nbsp;님&nbsp;&nbsp;|
             </span>
+
+            <span sec:authorize="hasRole('ROLE_USER')" >
+                <a class="gray_atag" href="#" th:href="@{/my_page}" style="cursor: hand">&nbsp;마이페이지&nbsp;&nbsp;|</a>
+            </span>
+
+            <span>
+                <a class="gray_atag" href="#" th:href="@{/notice}" style="cursor: hand">&nbsp;고객센터&nbsp;&nbsp;|</a>
+            </span>
+
             <span sec:authorize="!isAuthenticated()">
-            |
-            <a class="gray_atag" href="#" th:href="@{/sign-up}" style="cursor: hand"
-            >&nbsp; 멤버 가입 &nbsp;</a
-            >
+                <a class="gray_atag" href="#" th:href="@{/sign-up}" style="cursor: hand">&nbsp;멤버 가입&nbsp;&nbsp;|</a>
             </span>
+
             <span sec:authorize="!isAuthenticated()">
-            |
-            <a class="gray_atag" href="#" th:href="@{/login}" style="cursor: hand"
-            >&nbsp; 로그인</a
-            >
+                <a class="gray_atag" href="#" th:href="@{/login}" style="cursor: hand">&nbsp;로그인</a>
             </span>
+
             <span sec:authorize="isAuthenticated()">
-            |
-            <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand"
-            >&nbsp; 로그아웃 </a
-            >
-            </span><span sec:authorize="hasRole('ROLE_ADMIN')">
-            |
-            <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand"
-            >&nbsp; 상품 등록</a
-            >
+                <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand">&nbsp;로그아웃</a>
+            </span>
+
+            <span sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록</a>
             </span>
         </div>
     </div>
