@@ -26,6 +26,9 @@ public class AccountController {
     private final AccountRepository accountRepository;
     private final SignUpFormValidator signUpFormValidator;
 
+    /**
+     * Custom validator
+     */
     @InitBinder("signUpForm")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(signUpFormValidator);
@@ -45,7 +48,6 @@ public class AccountController {
         if (errors.hasErrors()) {
             // 로그인 실패시 화면에 에러 정보를 같이 담아서 보내주기
             model.addAttribute(signUpForm);
-
             return "account/sign-up";
         }
 //        signUpFormValidator.validate(signUpForm, errors);
