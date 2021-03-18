@@ -30,14 +30,14 @@ public class OrderItem {
     private int amount; // 주문 당시 수량
 
     // 생성 메서드
-    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+    public static OrderItem createOrderItem(Item item, int orderPrice, int amount) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrderPrice(orderPrice);
-        orderItem.setAmount(count);
+        orderItem.setAmount(amount);
 
         // 주문한 수량만큼 재고를 감소
-        item.removeStock(count);
+        item.removeStock(amount);
 
         return orderItem;
     }

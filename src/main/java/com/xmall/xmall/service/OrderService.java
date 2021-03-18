@@ -22,11 +22,10 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
 
-    public void order(Item item, OrderForm orderForm, Account account) {
+    public void order(Item item, Account account, int amount) {
 
-        log.info(String.valueOf(orderForm.getPrice()));
         // 주문 아이템 생성
-        OrderItem orderItem = createOrderItem(item, orderForm.getPrice(), orderForm.getAmount());
+        OrderItem orderItem = createOrderItem(item, item.getPrice(), amount);
 
         // 주문 생성
         Order order = createOrder(account, orderItem);

@@ -27,37 +27,37 @@ public class OrderController {
     private final CartRepository cartRepository;
     private final OrderService orderService;
 
+    // 바로 구매로 상품 하나 구매
     @GetMapping("/order/{id}")
     public String orderPayment(@CurrentAccount Account account,
-                               @PathVariable Long id, Model model, int amount) {
-        Item item = itemRepository.findById(id).get();
-
-        // TODO: 배송지 정보 받아오기
-        OrderForm orderForm = new OrderForm(); // 주문서 작성
-        orderForm.setAmount(amount); // 주문 수량 미리 설정
-        orderForm.setItemName(item.getName());
-        orderForm.setPrice(item.getPrice());
+                               @PathVariable Long id, Model model,
+                               @RequestParam int amount) {
 
         model.addAttribute(account);
-        model.addAttribute(orderForm);
-        model.addAttribute("item", item);
 
-        return "order/payment";
+        // 선택한 상품 갯수 전달
+        model.addAttribute("amount", amount);
+
+        // 바로구매로 진입하면 선택한 아이템 찾아오기
+        Optional<Item> byId = itemRepository.findById(id);
+        byId.ifPresent(item -> model.addAttribute(item));
+
+
+        // TODO: 배송지 정보 받아오기
+
+        return "order/payment-test";
     }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
-    @PostMapping("/order/payment/{id}")
+    @PostMapping("/order/payment")
     public String orderPaymentProcess(@CurrentAccount Account account,
-                                      @PathVariable Long id,
-                                      @Valid OrderForm orderForm,
-                                      Errors errors) {
-        log.info(String.valueOf(orderForm.getPrice()));
+                                      @RequestParam Long itemId,
+                                      @RequestParam int amount) {
 
-        Optional<Item> byId = itemRepository.findById(id);
-        byId.ifPresent(item -> orderService.order(item, orderForm, account));
+        Optional<Item> byId = itemRepository.findById(itemId);
+        byId.ifPresent(item -> orderService.order(item, account, amount));
 
-        // FIXME: 주문 완료 페이지로 가기
-        return "redirect:/";
+        return "redirect:/my_page";
     }
 
     @GetMapping("1")
