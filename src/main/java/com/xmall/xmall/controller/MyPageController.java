@@ -49,13 +49,13 @@ public class MyPageController {
         return "mypage/side_mypage";
     }
     // 비밀번호 변경
-    @GetMapping("/mypage/pwd_change")
+    @GetMapping("/pwd_change")
     public String pwd_change() {
         return "mypage/pwd_change";
     }
     
     // 회원 탈퇴
-    @GetMapping("/mypage/withdrawal")
+    @GetMapping("/withdrawal")
     public String withdrawal() {
         return "mypage/withdrawal";
     }
