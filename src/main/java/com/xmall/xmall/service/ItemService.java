@@ -37,4 +37,15 @@ public class ItemService {
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(itemRepository::delete);
     }
+
+    public void update(Long id, ItemForm itemForm) {
+        Item item = itemRepository.findById(id).get();
+
+        item.setSubTitle(itemForm.getSubTitle());
+        item.setName(itemForm.getName());
+        item.setPrice(itemForm.getPrice());
+        item.setStockQuantity(itemForm.getStockQuantity());
+        item.setDescription(itemForm.getDescription());
+
+    }
 }

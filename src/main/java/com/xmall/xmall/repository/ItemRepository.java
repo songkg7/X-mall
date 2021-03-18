@@ -7,4 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Item findByName(String name);
+  
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -56,7 +57,24 @@ public class ItemController {
      * 상품 수정
      */
     @GetMapping("/items/{id}/edit")
-    public String updateItem() {
+    public String updateItem(@PathVariable Long id, Model model) {
+        Item item = itemRepository.findById(id).get();
+//        ItemForm itemForm = new ItemForm();
+//        itemForm.setName(item.getName());
+//        itemForm.setSubTitle(item.getSubTitle());
+//        itemForm.setPrice(item.getPrice());
+//        itemForm.setStockQuantity(item.getStockQuantity());
+//        itemForm.setDescription(item.getDescription());
+
+        model.addAttribute(item);
+
+        return "items/update-item";
+    }
+
+    @PostMapping("/items/{id}/edit")
+    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm) {
+        itemService.update(id, itemForm);
+
         return "redirect:/";
     }
 
