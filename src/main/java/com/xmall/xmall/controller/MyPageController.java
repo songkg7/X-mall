@@ -55,7 +55,8 @@ public class MyPageController {
 
         // FIXME: join table 해서 특정사용자의 주문만 가져올 수 있도록 수정
 //        account.getId();
-        List<Order> orderLists = orderRepository.findAll();
+//        List<Order> orderLists = orderRepository.findAll();
+        List<Order> orderLists = orderRepository.findByAccount(account);
 
         model.addAttribute(account);
         model.addAttribute("orderLists", orderLists);
