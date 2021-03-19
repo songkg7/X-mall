@@ -85,7 +85,7 @@
 
                 <!--  아래 글이 사라지면서 위시리스트 상품 불러오기 -->
                 <div class="no_item">
-                    <div th:if="${orderLists == null}">최근 등록된 주문내역이 없습니다.</div>
+                    <div th:if="${orderLists.size() == 0}">최근 등록된 주문내역이 없습니다.</div>
                     <div th:if="${orderLists}">
                         <div th:each="orderList : ${orderLists}">
                             <span th:text="${orderList.id}"></span>
