@@ -103,9 +103,9 @@ public class AccountController {
             return "mypage/pwd_change";
         }
 
-        accountService.update(account.getNickname(), checkPwdForm);
+        accountService.changePwd(account, checkPwdForm);
 
-        return "redirect:/logout";
+        return "mypage/pwd_change";
     }
 
 //    회원 탈퇴
@@ -119,7 +119,7 @@ public class AccountController {
             return "mypage/withdrawal";
         }
 
-        accountService.delete(account.getNickname());
+        accountService.delete(account);
 
         return "redirect:/logout";
     }

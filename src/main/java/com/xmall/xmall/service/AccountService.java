@@ -136,16 +136,12 @@ public class AccountService implements UserDetailsService {
     }
 
 //    회원 탈퇴
-    public void delete(String nickname) {
-        Account byNickname = accountRepository.findByNickname(nickname);
-
-        accountRepository.delete(byNickname);
+    public void delete(Account account) {
+        accountRepository.delete(account);
     }
 
 //    비밀번호 변경
-    public void update(String nickname, CheckPwdForm checkPwdForm) {
-        Account account = accountRepository.findByNickname(nickname);
-
+    public void changePwd(Account account, CheckPwdForm checkPwdForm) {
         String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
         account.setPassword(encodePwd);
     }
