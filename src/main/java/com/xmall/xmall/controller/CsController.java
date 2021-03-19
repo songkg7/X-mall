@@ -46,6 +46,8 @@ public class CsController {
 //        account.ifPresent(account -> csBoardService.create(account, form.getSubject(), form.getMainText()));
         csBoardService.create(account, form.getSubject(), form.getMainText());
 
+        Optional<Account> account = Optional.ofNullable(accountRepository.findByEmail("admin@example.com"));
+        account.ifPresent(value -> csBoardService.create(value, form.getSubject(), form.getMainText()));
         return "redirect:/cs/cs_board";
     }
 
