@@ -2,179 +2,183 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <!-- header nav css 수입경로-->
-  <div th:replace="fragments.html :: fragment-header-navbar"></div>
-  <!-- footer css 수입경로 -->
-  <div th:replace="fragments.html :: fragment-footer-css"></div>
-  <link rel="stylesheet" href="css/kjh/side_mypage.css">
-  <link rel="stylesheet" href="css/kjh/withdrawal.css">
-  <style></style>
-  <script>
-    $(document).ready(function () {
-      $(".gray").hide();
-      $(".pwd_need1").hide();
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="css/kjh/side_mypage.css">
+    <link rel="stylesheet" href="css/kjh/withdrawal.css">
+    <style></style>
+    <script>
+        $(document).ready(function () {
+            $(".gray").hide();
+            $(".pwd_need1").hide();
 
-      $("#e_young_btn1").click(function () {
-        $(".gray").hide();
-      });
-    });
+            $("#e_young_btn1").click(function () {
+                $(".gray").hide();
+            });
+        });
 
-    function checkForm() {
-      if ($(".current_pwd").val().split(" ").join("") == "") {
-        $(".pwd_need1").show();
-      } else if ($(".withdrawalCheck").prop("checked") == false) {
-        $(".pwd_need1").hide();
-        $(".gray").show();
-      } else {
-        document.pwd_change_form.submit();
-      }
-    }
-  </script>
+        function checkForm() {
+            if ($(".current_pwd").val().split(" ").join("") == "") {
+                $(".pwd_need1").show();
+            } else if ($(".withdrawalCheck").prop("checked") == false) {
+                $(".pwd_need1").hide();
+                $(".gray").show();
+            } else {
+                document.pwd_change_form.submit();
+            }
+        }
+    </script>
 </head>
 <body class="jb_font-1">
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- main 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <header th:replace="fragments.html :: nav-bar"></header>
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- main 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <div class="all_form">
-      <!--왼쪽여백-->
-      <div></div>
-      <!-- 왼쪽 카테고리 바-->
-      <div class="side_mypage">
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<header th:replace="fragments.html :: nav-bar"></header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<div class="all_form">
+    <!--왼쪽여백-->
+    <div></div>
+    <!-- 왼쪽 카테고리 바-->
+    <div class="side_mypage">
         <h2>My PAGE</h2>
         <div class="bottom_line"></div>
         <div th:replace="fragments :: userId"></div>
         <ul>
-          <li class="listyle">
-            <h4>쇼핑정보</h4>
-            <ul>
-              <li><a href="coupon">쿠폰</a></li>
-              <li><a href="order_delivery">주문배송</a></li>
-              <li><a href="return_cancle">취소/반품</a></li>
-            </ul>
-          </li>
-          <div class="bottom_line"></div>
-          <li class="listyle">
-            <h4>나의정보</h4>
-            <ul>
-              <li><a href="pwd_change">비밀번호 변경</a></li>
-              <li><a href="withdrawal">회원탈퇴</a></li>
-            </ul>
-          </li>
-          <div class="bottom_line"></div>
-          <li class="listyle">
-            <h4>A/S 신청.조회</h4>
-            <ul>
-              <li><a href="as_infoguide">접수 안내</a></li>
-              <li><a href="asview">as 신청</a></li>
-            </ul>
-          </li>
-          <div class="bottom_line"></div>
-          <li class="listyle">
-            <h4>고객센터</h4>
-            <ul>
-              <li>
-                <a href="">1:1 채팅 문의</a>
-              </li>
-              <li><a href="">1:1 E-mail 문의</a></li>
-            </ul>
-          </li>
-          <div class="bottom_line"></div>
-          <h4>나이키닷컴고객센터</h4>
-          <h3>080-022-0182</h3>
-          <p>월~일:오전 9시 ~ 오후 8시</p>
-          <div class="bottom_line"></div>
+            <li class="listyle">
+                <h4>쇼핑정보</h4>
+                <ul>
+                    <li><a href="coupon">쿠폰</a></li>
+                    <li><a href="order_delivery">주문배송</a></li>
+                    <li><a href="return_cancle">취소/반품</a></li>
+                </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+                <h4>나의정보</h4>
+                <ul>
+                    <li><a href="pwd_change">비밀번호 변경</a></li>
+                    <li><a href="withdrawal">회원탈퇴</a></li>
+                </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+                <h4>A/S 신청.조회</h4>
+                <ul>
+                    <li><a href="as_infoguide">접수 안내</a></li>
+                    <li><a href="asview">as 신청</a></li>
+                </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+                <h4>고객센터</h4>
+                <ul>
+                    <li>
+                        <a href="">1:1 채팅 문의</a>
+                    </li>
+                    <li><a href="">1:1 E-mail 문의</a></li>
+                </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <h4>나이키닷컴고객센터</h4>
+            <h3>080-022-0182</h3>
+            <p>월~일:오전 9시 ~ 오후 8시</p>
+            <div class="bottom_line"></div>
         </ul>
-      </div>
-        <!-- 카테고리 메인 -->
-        <div class="warp">
-          <div class="title">
+    </div>
+    <!-- 카테고리 메인 -->
+    <div class="warp">
+        <div class="title">
             <h2>회원탈퇴</h2>
-          </div>
+        </div>
 
-          <form name="pwd_change_form" method="post" action="#" th:action="@{/withdrawal/delete}" th:object="${checkPwdForm}">
+        <form name="pwd_change_form" th:method="post" action="#" th:action="@{/withdrawal}"
+              th:object="${checkPwdForm}">
             <div>
-              <label>기존 비밀번호</label>
-              <div class="info_text">
-                <input
-                  type="password"
-                  name="current_pwd"
-                  class="current_pwd"
-                  id="current_pwd"
-                  th:field="*{current_pwd}"
-                  placeholder="기존 비밀번호"
-                />
-                <div class="pwd_need1" id="pwd_need1">
-                  필수 입력 항목입니다.
+                <label>기존 비밀번호</label>
+                <div class="info_text">
+                    <input
+                            type="password"
+                            name="current_pwd"
+                            class="current_pwd"
+                            id="current_pwd"
+                            th:field="*{current_pwd}"
+                            placeholder="기존 비밀번호"
+                    />
+                    <div class="pwd_need1" id="pwd_need1">
+                        필수 입력 항목입니다.
+                    </div>
                 </div>
-              </div>
-
-              <div class="title">
-                <label class="withdrawal">회원 탈퇴 동의</label>
-                <div class="input_checkbox">
-                  <input type="checkbox" class="withdrawalCheck" />
-                  <span
-                    >회원탈퇴 안내를 모두 확인하였으며 탈퇴에 동의합니다</span
-                  >
+                <div>
+                    <small th:if="${error}" th:text="${error}">error</small>
                 </div>
-              </div>
 
-              <div class="sub_title">
-                <label class="withdrawal">회원탈퇴 안내사항</label>
-                <ol>
-                  <li>
-                    탈퇴 이후에는 보유하신 쿠폰, MiLE 그리고 참여하신 이벤트의
-                    응모 및 당첨 혜택이 모두 소멸됩니다.
-                  </li>
-                  <li>
-                    회원정보는 탈퇴 시 관련법령에 따라 보관 의무가 있는 경우를
-                    제외하고는 즉시 삭제됩니다.
-                  </li>
-                  <li>
-                    전자상거래 등에서의 소비자보호에 관한 법률에 따라 계약 또는
-                    청약철회에 관한 기록, 대금 결제 및 재화 등의 공급에 관한
-                    기록은 5년, 그리고 소비자의 불만 또는 분쟁처리에 관한 기록은
-                    3년간 보존됩니다.
-                  </li>
-                  <li>
-                    탈퇴 이후에는 어떠한 방법으로도 삭제된 회원정보를 복원할 수
-                    없습니다.
-                  </li>
-                </ol>
-              </div>
+                <div class="title">
+                    <label class="withdrawal">회원 탈퇴 동의</label>
+                    <div class="input_checkbox">
+                        <input type="checkbox" class="withdrawalCheck"/>
+                        <span
+                        >회원탈퇴 안내를 모두 확인하였으며 탈퇴에 동의합니다</span
+                        >
+                    </div>
+                </div>
+
+                <div class="sub_title">
+                    <label class="withdrawal">회원탈퇴 안내사항</label>
+                    <ol>
+                        <li>
+                            탈퇴 이후에는 보유하신 쿠폰, MiLE 그리고 참여하신 이벤트의
+                            응모 및 당첨 혜택이 모두 소멸됩니다.
+                        </li>
+                        <li>
+                            회원정보는 탈퇴 시 관련법령에 따라 보관 의무가 있는 경우를
+                            제외하고는 즉시 삭제됩니다.
+                        </li>
+                        <li>
+                            전자상거래 등에서의 소비자보호에 관한 법률에 따라 계약 또는
+                            청약철회에 관한 기록, 대금 결제 및 재화 등의 공급에 관한
+                            기록은 5년, 그리고 소비자의 불만 또는 분쟁처리에 관한 기록은
+                            3년간 보존됩니다.
+                        </li>
+                        <li>
+                            탈퇴 이후에는 어떠한 방법으로도 삭제된 회원정보를 복원할 수
+                            없습니다.
+                        </li>
+                    </ol>
+                </div>
             </div>
             <input
-              type="button"
-              class="withdrawal_btn"
-              onclick="checkForm();"
-              value="탈퇴하기"
+                    type="button"
+                    class="withdrawal_btn"
+                    onclick="checkForm();"
+                    value="탈퇴하기"
             />
-          </form>
-        </div>
-      </div>
-      <!-- 오른쪽여백 -->
-    </main>
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <!-- footer 부분 -->
-    <!--+++++++++++++++++++++++++++++++++++-->
-    <footer th:replace="fragments.html :: footer-body"></footer>
-
-    <div class="gray">
-      <div
-        class="e_young_box"
-        aria-hidden="false"
-        style="display: block; overflow-y: auto"
-      >
-        <div class="e_young_box1" style="min-height: 0">
-          <div class="e_young_write">회원 탈퇴 동의를 체크해주세요.</div>
-          <div class="e_young_btn">
-            <button class="e_young_btn1" id="e_young_btn1">확인</button>
-          </div>
-        </div>
-      </div>
+        </form>
     </div>
-  </body>
+</div>
+<!-- 오른쪽여백 -->
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body"></footer>
+
+<div class="gray">
+    <div
+            class="e_young_box"
+            aria-hidden="false"
+            style="display: block; overflow-y: auto"
+    >
+        <div class="e_young_box1" style="min-height: 0">
+            <div class="e_young_write">회원 탈퇴 동의를 체크해주세요.</div>
+            <div class="e_young_btn">
+                <button class="e_young_btn1" id="e_young_btn1">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

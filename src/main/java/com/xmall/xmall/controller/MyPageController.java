@@ -104,17 +104,18 @@ public class MyPageController {
         return "mypage/withdrawal";
     }
 
-    @PostMapping("/withdrawal/delete")
+    @PostMapping("/withdrawal")
     public String withdrawalDelete(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
         model.addAttribute(account);
         boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
 
-        if (resultPwdCheck == false) {
-            return "error";
+        if (!resultPwdCheck) {
+            model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
+            return "mypage/withdrawal";
         }
 
         accountService.delete(account.getNickname());
 
-        return "redirect:/";
+        return "redirect:/logout";
     }
 }
