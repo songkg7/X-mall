@@ -26,7 +26,7 @@
                 <a th:href="@{/cs/{id} (id=${boardList.id})}"
                    th:text="${boardList.subject}" class="btn btn-default"></a>
             </td>
-            <td th:text="${boardList.account.getName()}"></td>
+            <td th:text="${boardList.account?.getName()}"></td>
             <td th:text="${boardList.getCreateTime()}">
                 <!--                    <a href="#" th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
                 <!--                       class="btn btn-primary" role="button">수정</a>-->
