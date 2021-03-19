@@ -77,9 +77,9 @@ public class AccountController {
             return "account/checkedEmail";
         }
         // 위를 모두 통과하면 정식 회원가입 절차 완료
+        accountService.emailVerifiedConfirm(account);
+
         // 인증 뷰로 데이터 보여주기
-        account.setEmailVerified(true);
-        account.setJoinedAt(LocalDateTime.now());
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
 

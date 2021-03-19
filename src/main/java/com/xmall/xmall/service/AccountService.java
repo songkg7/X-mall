@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -147,5 +148,10 @@ public class AccountService implements UserDetailsService {
 
         String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
         account.setPassword(encodePwd);
+    }
+
+    public void emailVerifiedConfirm(Account account) {
+        account.completeSignUp();
+        login(account);
     }
 }

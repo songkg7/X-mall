@@ -55,8 +55,7 @@ public class Account {
     // - token
     private String emailCheckToken;
 
-    @Builder.Default
-    private boolean emailVerified = false;
+    private boolean emailVerified;
 
     // 가입한 날짜
     private LocalDateTime JoinedAt;
@@ -64,5 +63,10 @@ public class Account {
     // UUID 를 사용하여 랜덤한 값을 생성한 후 Account 에 담는다.
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
+    }
+
+    public void completeSignUp() {
+        this.emailVerified = true;
+        this.JoinedAt = LocalDateTime.now();
     }
 }
