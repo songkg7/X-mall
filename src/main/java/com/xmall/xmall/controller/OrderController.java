@@ -62,7 +62,7 @@ public class OrderController {
 
     @GetMapping("1")
     public String test() {
-        return "order/payment";
+        return "order/payment-test2";
     }
 
 }
