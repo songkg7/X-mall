@@ -1,6 +1,6 @@
 .all_form {
   display: grid;
-  grid-template-columns: 18% 300px 900px 18%;
+  grid-template-columns: 10% 20% 60% 10%;
 }
 
 .bottom_line {
@@ -136,6 +136,8 @@
 .item_review a{
   margin-top: 5px;
   font-weight: normal;
+
+  color: black;
 
 }
 .item_result p {
