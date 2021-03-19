@@ -116,6 +116,24 @@
   font-size: 25px;
 }
 .board_div table{
-  width:350px;
+  width:600px;
   margin: auto;
+}
+.as_boardform .board_div table a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.as_boardform {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 50px 50px;
+}
+
+.as_boardform h2 {
+  display: block;
+  margin-bottom: 50px;
+  height: 50px;
+  border-bottom: 1px solid black;
 }
