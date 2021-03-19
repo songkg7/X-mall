@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 
@@ -88,7 +90,7 @@ public class AccountController {
 
 //    비밀번호 변경
     @PostMapping("/pwd_change")
-    public String pwd_changeEdit(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+    public String pwd_changeEdit(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm, RedirectAttributes redirectAttributes) {
         model.addAttribute(account);
 
         boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
@@ -105,7 +107,10 @@ public class AccountController {
 
         accountService.changePwd(account, checkPwdForm);
 
-        return "mypage/pwd_change";
+        String message = "비밀번호가 성공적으로 변경 되었습니다.";
+        redirectAttributes.addFlashAttribute("message",message);
+
+        return "redirect:/pwd_change";
     }
 
 //    회원 탈퇴
