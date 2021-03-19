@@ -7,7 +7,29 @@
   <!-- footer css 수입경로 -->
   <div th:replace="fragments.html :: fragment-footer-css"></div>
   <link rel="stylesheet" href="css/kjh/side_mypage.css">
+  <link rel="stylesheet" href="css/kjh/withdrawal.css">
   <style></style>
+  <script>
+    $(document).ready(function () {
+      $(".gray").hide();
+      $(".pwd_need1").hide();
+
+      $("#e_young_btn1").click(function () {
+        $(".gray").hide();
+      });
+    });
+
+    function checkForm() {
+      if ($(".current_pwd").val().split(" ").join("") == "") {
+        $(".pwd_need1").show();
+      } else if ($(".withdrawalCheck").prop("checked") == false) {
+        $(".pwd_need1").hide();
+        $(".gray").show();
+      } else {
+        document.pwd_change_form.submit();
+      }
+    }
+  </script>
 </head>
 <body class="jb_font-1">
     <!--+++++++++++++++++++++++++++++++++++-->
@@ -73,14 +95,16 @@
             <h2>회원탈퇴</h2>
           </div>
 
-          <form class="pwd_change_form" method="POST">
+          <form name="pwd_change_form" method="post" action="#" th:action="@{/withdrawal/delete}" th:object="${checkPwdForm}">
             <div>
               <label>기존 비밀번호</label>
               <div class="info_text">
                 <input
                   type="password"
+                  name="current_pwd"
                   class="current_pwd"
                   id="current_pwd"
+                  th:field="*{current_pwd}"
                   placeholder="기존 비밀번호"
                 />
                 <div class="pwd_need1" id="pwd_need1">

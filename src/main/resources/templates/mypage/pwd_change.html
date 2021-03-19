@@ -23,24 +23,35 @@
         if ($("#current_pwd").val().split(" ").join("") == "") {
           pwd_need1.show();
         }
+        else {
+          $(".current_pwd").css("border", "1px solid black");
+          pwd_need1.hide();
+        }
       });
+
       $("#new_pwd").keyup(function () {
-        if (checkPwd($("#new_pwd").val()) == false) {
+        if ($("#new_pwd").val().split(" ").join("") == "") {
+          pwd_check2.hide();
+          pwd_need2.show();
+        }
+        else if (checkPwd($("#new_pwd").val()) == false) {
           $(".new_pwd").css("border-color", "red");
+          pwd_need2.hide();
           pwd_check2.show();
         } else {
           $(".new_pwd").css("border", "1px solid black");
           pwd_check2.hide();
           pwd_need2.hide();
         }
-        if ($("#new_pwd").val().split(" ").join("") == "") {
-          pwd_check2.hide();
-          pwd_need2.show();
-        }
       });
       $("#new_pwd_check").keyup(function () {
-        if ($("#new_pwd").val() != $("#new_pwd_check").val()) {
+        if ($("#new_pwd_check").val().split(" ").join("") == "") {
+          pwd_check3.hide();
+          pwd_need3.show();
+        }
+        else if ($("#new_pwd").val() != $("#new_pwd_check").val()) {
           $(".new_pwd_check").css("border-color", "red");
+          pwd_need3.hide();
           pwd_check3.show();
         } else {
           $(".new_pwd_check").css("border", "1px solid black");
@@ -109,6 +120,7 @@
         } else {
           pwd_check3.hide();
           $(".new_pwd_check").css("border", "1px solid black");
+          document.pwd_change_form.submit();
         }
       }
     }
@@ -190,7 +202,7 @@
               <div>기존 비밀번호와 동일하게 변경할 수 없습니다.</div>
             </div>
             <!-- -------------------------------------------------- -->
-            <form class="pwd_change_form" method="POST">
+            <form name="pwd_change_form" method="post" action="#" th:action="@{/pwd_change/edit}" th:object="${checkPwdForm}">
               <div>
                 <label>기존 비밀번호</label>
                 <div class="info_text">
@@ -198,6 +210,7 @@
                     type="password"
                     class="current_pwd"
                     id="current_pwd"
+                    th:field="*{current_pwd}"
                     placeholder="기존 비밀번호"
                     required
                   />
@@ -224,7 +237,7 @@
                     필수 입력 항목입니다.
                   </div>
                   <div class="pwd_check2" id="pwd_check2">
-                    영어 대문자 소문자, _@ 8~14자리
+                    영문 대 or 소문자 + 숫자 8~16자리
                   </div>
                 </div>
               </div>
@@ -235,6 +248,7 @@
                     type="password"
                     class="new_pwd_check"
                     id="new_pwd_check"
+                    th:field="*{new_pwd_check}"
                     placeholder="새 비밀번호 확인"
                     required
                   />
@@ -249,9 +263,8 @@
                 </div>
               </div>
             </form>
-            <button class="change_pwd_btn" onclick="checkForm();">
-              변경하기
-            </button>
+            <input type="button" class="change_pwd_btn" value="변경하기" onclick="checkForm();">
+
             <!--  -->
           </div>
         </div>

@@ -2,12 +2,23 @@ package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.form.CheckPwdForm;
+import com.xmall.xmall.service.AccountService;
+import com.xmall.xmall.service.ItemService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequiredArgsConstructor
 public class MyPageController {
+
+    private final AccountService accountService;
+    private final PasswordEncoder passwordEncoder;
 
     // A/S 접수 안내
     @GetMapping("/as_infoguide")
@@ -49,14 +60,48 @@ public class MyPageController {
         return "mypage/side_mypage";
     }
     // 비밀번호 변경
-    @GetMapping("/mypage/pwd_change")
-    public String pwd_change() {
+    @GetMapping("/pwd_change")
+    public String pwd_change(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+        model.addAttribute(new CheckPwdForm());
+
         return "mypage/pwd_change";
+    }
+
+    @PostMapping("/pwd_change/edit")
+    public String pwd_changeEdit(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+        model.addAttribute(account);
+        boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
+
+        if (resultPwdCheck == false) {
+            return "error";
+        }
+
+        accountService.update(account.getNickname(), checkPwdForm);
+
+        return "redirect:/";
     }
     
     // 회원 탈퇴
-    @GetMapping("/mypage/withdrawal")
-    public String withdrawal() {
+    @GetMapping("/withdrawal")
+    public String withdrawal(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+        model.addAttribute(new CheckPwdForm());
+
         return "mypage/withdrawal";
+    }
+
+    @PostMapping("/withdrawal/delete")
+    public String withdrawalDelete(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+        model.addAttribute(account);
+        boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
+
+        if (resultPwdCheck == false) {
+            return "error";
+        }
+
+        accountService.delete(account.getNickname());
+
+        return "redirect:/";
     }
 }

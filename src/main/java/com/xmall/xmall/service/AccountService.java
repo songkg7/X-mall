@@ -1,6 +1,7 @@
 package com.xmall.xmall.service;
 
 import com.xmall.xmall.account.UserAccount;
+import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -130,5 +132,20 @@ public class AccountService implements UserDetailsService {
 
         return new UserAccount(account, authority);
 
+    }
+
+//    회원 탈퇴
+    public void delete(String nickname) {
+        Account byNickname = accountRepository.findByNickname(nickname);
+
+        accountRepository.delete(byNickname);
+    }
+
+//    비밀번호 변경
+    public void update(String nickname, CheckPwdForm checkPwdForm) {
+        Account account = accountRepository.findByNickname(nickname);
+
+        String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
+        account.setPassword(encodePwd);
     }
 }
