@@ -8,60 +8,102 @@
     <div th:replace="fragments.html :: fragment-footer-css"></div>
     <link rel="stylesheet" href="css/kjh/side_mypage.css">
     <style>
-.review_title{
-    text-align: left;
-}
-.bottom_line{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: block;
-    width: 100%;
-    border-bottom: 1px solid rgb(255,255,255);
-}
+    .review_title{
+        text-align: left;
+        margin-bottom: 30px;
+    }
+    .bottom_line{
+        text-align: left;
+        margin-top: 20px;
+        display: block;
+        width: 80%;
+        border-bottom: 1px solid #bcbcbc;
+    }
+    .bottom_line1{
+        text-align: left;
+        margin-top: 25px;
+        margin-bottom: 20px;
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #bcbcbc;
+    }
 
-.no_item1 {
-    text-align: center;
-    padding: 25px 0;
-    border-width: 1px 0 0 0;
-    border-style: solid;
-    border-color: #dedfda;
-}
-.subject{
-    background-color: cyan;
-    width: 100%;
-    height: 70px;
-}
+    .no_item1 {
+        text-align: center;
+        padding: 25px 0;
+        border-width: 1px 0 0 0;
+        border-style: solid;
+        border-color: #dedfda;
+    }
+    .subject{
+        background-color: cyan;
+        width: 100%;
+        height: 70px;
+    }
 
-.review_confirm{
-    width: 200px;
-    height: 70px;
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    border-color: black ;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    border-style: solid;
-}
-.star1, .star2, .star3, .star4, .star5{
-    color: #999999;
-    font-size: 40px;
-}
-.no_item1 textarea{
-    width: 100%;
-    height: 150px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    font-size: 16px;
-    resize: none;
-}
-.no_item1 textarea:focus {
-    outline: none;
-}
+    .review_confirm{
+        width: 200px;
+        height: 70px;
+        background-color: black;
+        color: white;
+        font-size: 16px;
+        border-color: black ;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-style: solid;
+        cursor:pointer;
+    }
+    .review_confirm:hover{
+        background-color: black;
+        opacity: 0.7;
+    }
+
+    .no_item1 textarea{
+        margin-top: 30px;
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 16px;
+        resize: none;
+    }
+
+    .no_item1 textarea:focus {
+        outline: none;
+    }
+    #star a{
+        text-decoration: none;
+        color: #cccccc;
+        font-size: 30px;
+    }
+    #star a.on{
+        color: black;
+    }
+    /*<p id="star">*/
+    /*    <a href="#" value="1">★</a> */
+    /*    <a href="#" value="2">★</a>*/
+    /*    <a href="#" value="3">★</a>*/
+    /*    <a href="#" value="4">★</a>*/
+    /*    <a href="#" value="5">★</a>*/
+    /*</p>*/
     </style>
+    <script>
+        $(document).ready(function(){
+            $('#star a').click(function () {
+                //자식 a태그를 클릭하면 자식 a태그의 부모를 선택하여 다시 그 자식 a태그들 on클래스 다 삭제
+                $(this).parent().children("a").removeClass("on");
+                //클릭한 a태그에만 on 클래스를 추가해 주고 그 이전의 형제들을 모두 데려와서 on 을 추가해준다.
+                //on의 색을 입히는 과정
+                $(this).addClass("on").prevAll("a").addClass("on");
+
+                return false;
+            });
+        });
+
+    </script>
 </head>
 <body >
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -130,6 +172,7 @@
                     <sub
                     >나이키에서 구매한 상품 리뷰 작성하고 포인트 적립 혜택 받으세요! .</sub
                     >
+
                 </div>
                 <div class="no_item1">
                     <h2>☆☆☆☆☆</h2>
@@ -154,29 +197,30 @@
                         </div>
                     </div>
                 </div>
-
                 <!---------------------------------------------------->
-
-
-                <div>
+                <form>
                     <div class="no_item1">
                         <h3>상품을 사용해보셨나요?</h3>
                         <!---------------------------------------------------->
-                        <span class="star1">★</span>
-                        <span class="star2">★</span>
-                        <span class="star3">★</span>
-                        <span class="star4">★</span>
-                        <span class="star5">★</span>
+                        <p id="star">
+                            <a href="#" value="1">★</a>
+                            <a href="#" value="2">★</a>
+                            <a href="#" value="3">★</a>
+                            <a href="#" value="4">★</a>
+                            <a href="#" value="5">★</a>
+                        </p>
 
-                        <div class="bottom_line"></div>
+                        <div class="bottom_line1"></div>
                         <!---------------------------------------------------->
                         <h3>어떤 점이 좋았나요?</h3>
                         <!---------------------------------------------------->
+
                         <textarea></textarea>
+
                         <!---------------------------------------------------->
                         <input type="submit" class="review_confirm" value="리뷰작성"/>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
