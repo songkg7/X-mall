@@ -192,17 +192,17 @@
           <div style="width: 50%; text-align: left">
             <!-- -------------------------------------------------- -->
             <!-- DB에 저장된 기존 패스워드와 맞지 않을시에 보여주기 -->
-            <div class="alert_danger1">
-              <div>패스워드가 맞지 않습니다. 다시 입력해주세요.</div>
-            </div>
+<!--            <div class="alert_danger1">-->
+<!--              <div>패스워드가 맞지 않습니다. 다시 입력해주세요.</div>-->
+<!--            </div>-->
 
             <!-- -------------------------------------------------- -->
             <!-- DB에 저장된 기존 패스워드와 일치 하였을때 보여주기 -->
-            <div class="alert_danger2">
-              <div>기존 비밀번호와 동일하게 변경할 수 없습니다.</div>
-            </div>
+<!--            <div class="alert_danger2">-->
+<!--              <div>기존 비밀번호와 동일하게 변경할 수 없습니다.</div>-->
+<!--            </div>-->
             <!-- -------------------------------------------------- -->
-            <form name="pwd_change_form" method="post" action="#" th:action="@{/pwd_change/edit}" th:object="${checkPwdForm}">
+            <form name="pwd_change_form" method="post" action="#" th:action="@{/pwd_change}" th:object="${checkPwdForm}">
               <div>
                 <label>기존 비밀번호</label>
                 <div class="info_text">
@@ -219,6 +219,12 @@
                   <div class="pwd_need1" id="pwd_need1">
                     필수 입력 항목입니다.
                   </div>
+                </div>
+                <div>
+                  <small class="pwd_error" th:if="${error1}" th:text="${error1}">error</small>
+                </div>
+                <div>
+                  <small class="pwd_error" th:if="${error2}" th:text="${error2}">error</small>
                 </div>
               </div>
               <div>

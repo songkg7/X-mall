@@ -121,3 +121,14 @@ textarea:focus {
   background-color: black;
   color: white;
 }
+
+.pwd_error {
+  font-size: 11px;
+  color: red;
+  text-align: left;
+  /* display: none; */
+  margin-bottom: 20px;
+  line-height: 100%;
+  float: left;
+  clear: both;
+}
