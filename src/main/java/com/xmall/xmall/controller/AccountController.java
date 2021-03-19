@@ -13,6 +13,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
@@ -44,22 +45,17 @@ public class AccountController {
     // TODO: addFlashAttribute
     @PostMapping("/sign-up")
     // 여러 값을 받아올 때는 @ModelAttribute 가 필요하지만 생략이 가능하다.
-    public String signUpProcess(@Valid SignUpForm signUpForm,  Errors errors, Model model) {
+    public String signUpProcess(@Valid SignUpForm signUpForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             // 로그인 실패시 화면에 에러 정보를 같이 담아서 보내주기
             model.addAttribute(signUpForm);
             return "account/sign-up";
         }
-//        signUpFormValidator.validate(signUpForm, errors);
-        if (errors.hasErrors()) {
-            model.addAttribute(signUpForm);
-            return "account/sign-up";
-        }
+
         // 회원가입한 유저 정보 가져오기
         Account account = accountService.signUp(signUpForm);
         // 회원가입 후 바로 로그인 처리
         accountService.login(account);
-
         return "redirect:/";
     }
 
