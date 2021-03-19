@@ -58,4 +58,10 @@ public class Order {
         order.setOrderDate(LocalDateTime.now());
         return order;
     }
+
+    public int getTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
+    }
 }
