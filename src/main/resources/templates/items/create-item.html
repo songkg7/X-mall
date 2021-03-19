@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<head th:replace="fragments/header :: header"/>-->
 <head>
-
+    <script src="/js/create-item.js"></script>
     <div th:replace="fragments :: fragment-header-navbar"></div>
     <style>
-            /* *********************************** */
-            /* main 부분 css */
-            /* *********************************** */
-            /* -------------------- */
-            /* 화면 분할 1. 좌측(product_img) */
-            /* -------------------- */
+        /* *********************************** */
+        /* main 부분 css */
+        /* *********************************** */
+        /* -------------------- */
+        /* 화면 분할 1. 좌측(product_img) */
+        /* -------------------- */
         .product_img {
             width: 100%;
             height: 1000px;
@@ -40,6 +40,7 @@
         /* -------------------------------------- */
         /* 상품사진-섬네일부분 */
         .thumnail {
+            margin-top: 10px;
             width: 100%;
             height: 100%;
         }
@@ -102,7 +103,23 @@
             font-weight: 500;
             /* margin-left: 40px; */
         }
-        .product_name input{
+
+        #alt_1, #alt_2, #alt_4, #alt_5, #alt_6, #alt_7,#alt_7_1, #alt_8 {
+            margin-top: 5px;
+            color: red;
+            font-size: 12px;
+            text-align: left;
+            margin-left: 0;
+        }
+
+        #alt_3,#alt_3_1 {
+            margin-top: 5px;
+            color: red;
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .product_name input {
             width: 100%;
             margin-left: 0;
             margin-top: 20px;
@@ -113,21 +130,17 @@
         /* -------------------------------------- */
         /* 가격 */
         .price {
-
-
             width: 40%;
-
             text-align: right;
             font-size: 20px;
             font-weight: 500;
             float: right;
             margin-top: 0;
             margin-right: 0;
-            /* margin-right: 40px; */
-
-
+            margin-bottom: 0;
         }
-        .price input{
+
+        .price input {
 
             width: 90%;
             height: 40px;
@@ -137,26 +150,31 @@
             border-radius: 5px;
             margin-top: 20px;
         }
+
         .price input:focus {
             border-color: deeppink;
         }
+
         .price input:hover {
             border-color: deeppink;
         }
-        input{
-            margin-top:0;
-            margin-bottom:0;
+
+        input {
+            margin-top: 0;
+            margin-bottom: 0;
 
         }
 
         /* -------------------------------------- */
         /* 상품 스타일명 */
         .p_1 {
-            margin-top: 0px;
+            margin-top: 0;
             font-size: 20px;
             width: 100%;
+            margin-bottom: 0;
 
         }
+
         .p_1 input {
             width: 90%;
             height: 40px;
@@ -167,9 +185,11 @@
             margin-top: 20px;
             margin-bottom: 0;
         }
+
         .p_1 input:focus {
             border-color: deeppink;
         }
+
         .p1 input:hover {
             border-color: deeppink;
         }
@@ -180,8 +200,10 @@
             font-size: 20px;
             font-weight: 500;
             width: 100%;
+            margin-bottom: 0;
         }
-        .p_2 input{
+
+        .p_2 input {
             margin-top: 20px;
 
             width: 90%;
@@ -193,33 +215,14 @@
             border-radius: 5px;
             margin-bottom: 0;
         }
+
         .p2 input:hover {
             border-color: deeppink;
         }
+
         .p2 input:focus {
             border-color: deeppink;
         }
-
-        /* -------------------------------------- */
-        /* 사이즈 선택 */
-        .product_category {
-
-            font-size: 20px;
-            font-weight: 500;
-            margin-left: 0;
-
-        }
-
-        /* -------------------------------------- */
-        /* 사이즈 선택 */
-        .product_size {
-            font-size: 20px;
-            font-weight: 500;
-            float: left;
-
-        }
-
-
 
         .select_div {
             margin-top: 20px;
@@ -236,7 +239,8 @@
         .product_img {
             margin-bottom: 20px;
         }
-        .product_img img{
+
+        .product_img img {
             border-width: 2px;
             border-style: solid;
             border-color: deeppink;
@@ -244,15 +248,6 @@
 
         .product_img1 {
             width: 46%;
-            margin-right: 12px;
-            margin-bottom: 8px;
-            height: unset;
-            float: left;
-            object-fit: cover;
-        }
-
-        .img_bigger {
-            width: 96%;
             margin-right: 12px;
             margin-bottom: 8px;
             height: unset;
@@ -352,10 +347,11 @@
         }
 
         .size_cell:hover {
-            border: 1px solid deeppink;
+            border: 1px solid deepskyblue;
         }
+
         .size_cell:focus {
-            background-color: deeppink;
+            background-color: deepskyblue;
         }
 
         .count_div {
@@ -366,9 +362,10 @@
             height: 60px;
             background-color: white;
         }
+
         .count_div input {
             width: 90%;
-            hieght:90%;
+            hieght: 90%;
             border-radius: 5px;
             border-width: 1px;
             border-style: solid;
@@ -388,12 +385,6 @@
             float: left;
             margin-left: 2px;
         }
-        .minus:focus{
-            outline: none;
-        }
-        .plus:focus{
-            outline: none;
-        }
 
 
         .count_amount {
@@ -407,98 +398,8 @@
             border: none;
         }
 
-        .count_product input{
+        .count_product input {
             font-size: 20px;
-        }
-
-        .minus {
-            align-items: center;
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            float: left;
-            font-size: 40px;
-            color : lightgray;
-            font-weight: 100;
-            border: none;
-
-
-        }
-
-        .plus {
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            float: left;
-            font-size: 30px;
-            margin-top: 3px;
-            font-weight: 100;
-            border: none;
-        }
-
-        .buy_button {
-            margin-top: 10px;
-            width: 100%;
-            height: 60px;
-            background-color: #000000;
-            border-radius: 50px;
-            font-size: 16px;
-            color: white;
-            border: none;
-            text-align: center;
-            line-height: 60px;
-            cursor: pointer;
-        }
-
-        .kart_wish_div {
-            margin-top: 10px;
-            width: 100%;
-            height: 70px;
-            background-color: white;
-        }
-
-        .kart_button {
-            width: 48%;
-            height: 60px;
-            background-color: white;
-            border-radius: 50px;
-            color: black;
-            border-color: rgb(0, 0, 0);
-            text-align: center;
-            line-height: 60px;
-            border: 1px solid black;
-            float: left;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .wishList_button {
-            width: 48%;
-            height: 60px;
-            background-color: white;
-            border-radius: 50px;
-            color: black;
-            text-align: center;
-            line-height: 60px;
-            border: 1px solid black;
-            float: right;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .buy_button:hover {
-            background-color: black;
-            opacity: 70%;
-        }
-
-        .kart_button:hover {
-            border: 1px solid rgba(34, 34, 34, 0.651);
-        }
-
-        .wishList_button:hover {
-            border: 1px solid rgba(34, 34, 34, 0.651);
         }
 
         .buy_button a {
@@ -520,7 +421,8 @@
             text-align: left;
             margin-top: 10px;
         }
-        .detail_description_div textarea{
+
+        .detail_description_div textarea {
 
             width: 100%;
             height: 200px;
@@ -529,85 +431,248 @@
             border-radius: 5px;
             border-color: rgb(223, 223, 223);
         }
-        .selected{
-            background-color: deeppink;
+
+        .detail_description_div textarea::placeholder {
+            color: #cccccc;
+        }
+
+        .selected {
+            border-color: deepskyblue;
+            background-color: deepskyblue;
             color: white;
         }
+
         .detail_description_div a {
             text-decoration: none;
             color: rgb(77, 77, 77);
             font-weight: 300;
         }
-        .detail_description_div p{
+
+        .detail_description_div p {
             color: black;
             font-size: 20px;
             font-weight: 500;
         }
-.create_item{
-    width: 100%;
-    height: 60px;
-}
-.create_item p{
-    font-size: 36px;
-}
-.count_product{
-    width: 100px;
-    height: 100px;
-    float:left;
-}
-.count_product input {
-    width: 100%;
-    height: 40px;
-}
-.btn-primary {
 
-    margin-top: 10px;
-    width: 100%;
-    height: 60px;
-    background-color: deeppink;
-    border-radius: 50px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    text-align: center;
-    line-height: 60px;
-    cursor: pointer;
-    margin-bottom: 30px;
-}
-.btn-primary:hover{
-    background-color: deeppink;
-    opacity: 70%;
+        .create_item {
+            width: 100%;
+            height: 60px;
+        }
 
-}
-.legistration{
-    margin-top: 50px;
+        .create_item p {
+            font-size: 36px;
+        }
 
-}
+        .count_product {
+            width: 120px;
+            height: 120px;
+            float: left;
+        }
+
+        .count_product input {
+            width: 100%;
+            height: 40px;
+        }
+
+        .btn-primary {
+
+            margin-top: 10px;
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            border-radius: 50px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+        .btn-primary:hover{
+            background-color: black;
+            opacity: 70%;
+        }
+
+
+        .legistration {
+            margin-top: 50px;
+        }
+        #category{
+
+            /*border: none; background-color: transparent;*/
+            /*caret-color: transparent;*/
+        }
     </style>
     <script>
         $(document).ready(function () {
-            $('#category_name, #product_name,#description,#amount').focus(
-                function(){
-                    $(this).css('border-color','deeppink');
-                }
-                ,function (){
-                    $(this).css('border-color','rgb(223, 223, 223')
-                }
-            )
+            //--------------------------
+            //유효성 체크
+            //--------------------------
+            // 경고창 변수 모음
+            var alt1= $("#alt_1"); var alt2= $("#alt_2"); var alt3= $("#alt_3");
+            var alt4= $("#alt_4"); var alt5= $("#alt_5"); var alt6= $("#alt_6");
+            var alt7= $("#alt_7"); var alt8= $("#alt_8");
 
-            $('#category_name, #product_name,#description,#amount').hover(
-                function(){
-                    $(this).css('border-color','deeppink');
+            var alt3_1 = $("#alt_3_1");
+            var alt7_1 = $("#alt_7_1");
+
+            // 경고창 숨기기
+            alt1.hide();alt2.hide();alt3.hide();alt4.hide();
+            alt5.hide();alt6.hide();alt7.hide();alt8.hide();
+
+
+            alt3_1.hide(); alt7_1.hide();
+
+            //-----------------
+            // 1. 카테고리 입력했는지
+            //-----------------
+            $("#category_name").keyup(function (){
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink")
+                    alt1.show();
+                }else{
+                    $(this).css("border-color","deepskyblue")
+                    alt1.hide();
                 }
-                ,function (){
-                    $(this).css('border-color','rgb(223, 223, 223')
+            });
+            $("#category_name").focusout(function () {
+                if($("#category_name").val().split(" ").join("")===""){
+                    alt1.show();
+                }else{
+                    $("#price").focus();
+                    alt3.show();
+                    alt1.hide();
                 }
-            )
-            $('#category_name, #product_name,  #amount,#description').on("focus change keyup paste input",
-                function (){
-                    $(this).css('border-color','deepink');
+            });
+            //-----------------
+            // 2. 상품가격 입력했는지
+            //-----------------
+            $("#price").keyup(function (){
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink")
+                    alt3.show();
+                    alt3_1.hide();
                 }
-            )
+                else if(check_price($(this).val())===false){
+                    $(this).css("border-color","deeppink")
+                    alt3.hide();
+                    alt3_1.show();
+                }
+                else{
+                    $(this).css("border-color","deepskyblue")
+                    alt3.hide();
+                    alt3_1.hide();
+                }
+            });
+
+            //--------------------------
+            // 3. 제품명 입력했는지
+            //--------------------------
+            $("#product_name").keyup(function (){
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink");
+                    alt2.show();
+                }else{
+                    $(this).css("border-color","deepskyblue");
+                    alt2.hide();
+
+                }
+            });
+
+            // 제품명 입력빠져나가면
+            $("#product_name").focusout(function () {
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink");
+                    alt2.show();
+                }else{
+
+                    alt4.show();
+                    $("#men, #women, #kids, #unisex").css("border-color","deeppink");
+                }
+            });
+
+            //4 성별입력이 바뀌면
+            $("#gender").change(function(){
+                alt5.show();
+                $("#top, #pants, #shoes").css("border-color","deeppink");
+            });
+
+            $("#men, #women, #kids, #unisex").click(function (){
+                $(this).siblings().css("border-color","deepskyblue");
+                $(this).css("border-color","deepskyblue");
+                alt4.hide();
+                alt5.show();
+            });
+
+            //5 품목을 선택하면
+            $("#top, #pants, #shoes").click(function (){
+                $(this).siblings().css("border-color","deepskyblue");
+                alt5.hide();
+                alt6.show();
+            });
+
+            //function checkForm() { document.login_all_form.submit();
+            //6. 사이즈 선택
+
+
+            //-----------------
+            // 7. 수량 입력했는지
+            //-----------------
+            $("#amount").keyup(function (){
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink")
+                    alt7.show();
+                    alt7_1.hide();
+                }
+                else if(check_price($(this).val())===false){
+                    $(this).css("border-color","deeppink")
+                    alt7.hide();
+                    alt7_1.show();
+                }
+                else{
+                    $(this).css("border-color","deepskyblue")
+                    alt7.hide();
+                    alt7_1.hide();
+                }
+            });
+            $("#amount").focusout(function () {
+
+                    $("#description").css("border-color","deeppink");
+                    alt8.show();
+
+            });
+            $("#description").keyup(function (){
+                if($(this).val().split(" ").join("")===""){
+                    $(this).css("border-color","deeppink");
+                    alt8.show();
+                }else{
+                    $(this).css("border-color","deepskyblue");
+                    alt8.hide();
+
+                }
+            });
+
+
+
+
+
+            // //갖다 대면 색 변화
+            // $('#category_name, #product_name,#description,#amount').focus(
+            //     function () {
+            //         $(this).css('border-color', 'deeppink');
+            //     }
+            //     , function () {
+            //         $(this).css('border-color', 'rgb(223, 223, 223')
+            //     }
+            // )
+            //
+            //
+            // $('#category_name, #product_name,  #amount,#description').on("focus change keyup paste input",
+            //     function () {
+            //         $(this).css('border-color', 'deepink');
+            //     }
+            // )
 
             //-----------------------------
             // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
@@ -616,18 +681,18 @@
             $('#pants_size_table').hide();
             $('#shoes_size_table').hide();
 
-            $('#top').click(function (){
+            $('#top').click(function () {
                 $('#pants_size_table').hide();
                 $('#shoes_size_table').hide();
                 $('#top_size_table').show();
 
             });
-            $('#pants').click(function (){
+            $('#pants').click(function () {
                 $('#top_size_table').hide();
                 $('#shoes_size_table').hide();
                 $('#pants_size_table').show();
             });
-            $('#shoes').click(function (){
+            $('#shoes').click(function () {
                 $('#top_size_table').hide();
                 $('#pants_size_table').hide();
                 $('#shoes_size_table').show();
@@ -636,7 +701,7 @@
             //-----------------------------
             // 2. 성별 클릭시 성별값을 히든 input text에 담기
             //-----------------------------
-            $('#men, #women, #kids, #unisex').click(function() {
+            $('#men, #women, #kids, #unisex').click(function () {
                 // $(this).not($(this)).css("background","white");
                 // $(this).css("background","deeppink");
                 $('#gender').val($(this).text());
@@ -645,7 +710,7 @@
             //-----------------------------
             // 3. 품목 클릭시 품목값을 히든 input text로 담기
             //-----------------------------
-            $('#top, #pants, #shoes').click(function() {
+            $('#top, #pants, #shoes').click(function () {
                 // $(this).not($(this)).css("background","white");
                 // $(this).css("background","deeppink");
                 $('#category').val($(this).text());
@@ -654,56 +719,245 @@
             //-----------------------------
             // 4. 상의사이즈 클릭시 상의사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').click(function(){
+            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').click(function () {
                 // $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').css("background","white");
                 // $(this).css("background","deeppink");
                 $('#top_size').val($(this).text());
+                alt6.hide();
+                alt7.show();
             });
             //-----------------------------
             // 5. 하의사이즈 클릭시 하의사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').click(function(){
+            $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').click(function () {
                 // $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').css("background","white");
                 // $(this).css("background","deeppink");
                 $('#pants_size').val($(this).text());
+                alt6.hide();
+                alt7.show();
             });
             //-----------------------------
             // 6. 신발사이즈 클릭시 신발사이즈 값을 히든 input text로 담기
             //-----------------------------
             $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290')
-            .click(function(){
-                // $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290').css("background","white");
-                $('#shoes_size').val($(this).text());
-            });
+                .click(function () {
+                    // $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290').css("background","white");
+                    $('#shoes_size').val($(this).text());
+                    alt6.hide();
+                    alt7.show();
+                });
 
             //-----------------------------------------
-            // 클릭시 이벤트 적용시키고 클릭 안된 다른부분 이벤트 해제
+            // 클릭시 이벤트 적용시키고 클릭 안된 다른 부분 이벤트 해제
             //-----------------------------------------
             $('.size_cell').each(function () {
                 $(this).click(function () {
                     $(this).addClass("selected");                      //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
                     $(this).siblings().removeClass("selected");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
+
+
                 });
             });
+        });
+        function checkItemForm() {
+            var btn = document.getElementById('btn-regist_btn');
+
+            //--------------------------
+            //유효성 체크
+            //--------------------------
+            // 경고창 변수 모음
+            var alt1 = $("#alt_1");
+            var alt2 = $("#alt_2");
+            var alt3 = $("#alt_3");
+            var alt4 = $("#alt_4");
+            var alt5 = $("#alt_5");
+            var alt6 = $("#alt_6");
+            var alt7 = $("#alt_7");
+            var alt8 = $("#alt_8");
+
+            var alt3_1 = $("#alt_3_1");
+            var alt7_1 = $("#alt_7_1");
+
+            // 경고창 숨기기
+            alt1.hide();
+            alt2.hide();
+            alt3.hide();
+            alt4.hide();
+            alt5.hide();
+            alt6.hide();
+            alt7.hide();
+            alt8.hide();
 
 
+            alt3_1.hide();
+            alt7_1.hide();
 
-        })
+            //-----------------
+            // 1. 카테고리 입력했는지
+            //-----------------
+            var category_name = $("#category_name").val();
+            if (category_name.split(" ").join("") === "") {
+                $("#category_name").css("border-color", "deeppink")
+                alt1.show();
+                $("#category_name").val("");
+                $("#category_name").focus();
+                return;
+            } else {
+                $("#category_name").css("border-color", "deepskyblue")
+                alt1.hide();
+            }
+            // 2.가격
+            var price = $("#price").val();
+            if (price.split(" ").join("") === "") {
+                $("#price").css("border-color", "deeppink")
+                alt3.show();
+                alt3_1.hide();
+
+                $("#price").val("");
+                $("#price").focus();
+                return;
+            } else if (check_price(price) === false) {
+                $("#price").css("border-color", "deeppink")
+                alt3.hide();
+                alt3_1.show();
+                $("#price").focus();
+                return;
+            } else {
+                $("#price").css("border-color", "deepskyblue")
+                alt3.hide();
+                alt3_1.hide();
+            }
+
+            //--------------------------
+            // 3. 제품명 입력했는지
+            //--------------------------
+            var product_name = $("#product_name").val();
+            if (product_name.split(" ").join("") === "") {
+                $("#product_name").css("border-color", "deeppink");
+                alt2.show();
+                $("#product_name").val("");
+                $("#product_name").focus();
+                return;
+            } else {
+                alt4.show();
+                $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
+            }
+
+            //4 성별입력이 바뀌면
+            var gender = $("#gender").val();
+            if(gender.split(" ").join("") === "") {
+                $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
+                alt4.show();
+                return;
+            }else{
+                $("#men, #women, #kids, #unisex").siblings().css("border-color", "deepskyblue");
+                $("#men, #women, #kids, #unisex").css("border-color", "deepskyblue");
+                alt4.hide();
+                alt5.show();
+            }
+
+            //5 품목을 선택하면
+            var category = $("#category").val();
+            if(category.split(" ").join("") === "") {
+                $("#top, #pants, #shoes").css("border-color", "deeppink");
+                alt5.show();
+                return;
+            }else{
+                $("#top, #pants, #shoes").siblings().css("border-color", "deepskyblue");
+                $("#top, #pants, #shoes").css("border-color", "deepskyblue");
+                alt5.hide();
+                alt6.show();
+            }
+
+            var top_size = $("#top_size").val();
+            var pants_size = $("#pants_size").val();
+            var shoes_size = $("#shoes_size").val();
+
+            if(
+                (top_size.split(" ").join("") === "")&&
+                (pants_size.split(" ").join("") === "")&&
+                (shoes_size.split(" ").join("") === "")
+            ){
+                alt6.show();
+                return;
+            }
+            else if(
+                (top_size.split(" ").join("") === "")&&
+                (pants_size.split(" ").join("") === "")&&
+                !(shoes_size.split(" ").join("") === "")
+            ){
+                alt6.hide();
+
+            }else if(
+                (top_size.split(" ").join("") === "")&&
+                !(pants_size.split(" ").join("") === "")&&
+                (shoes_size.split(" ").join("") === "")
+            ){
+                alt6.hide();
+
+            }else if(
+                !(top_size.split(" ").join("") === "")&&
+                (pants_size.split(" ").join("") === "")&&
+                (shoes_size.split(" ").join("") === "")
+            ){
+                alt6.hide();
+
+            }
+
+            //-----------------
+            // 7. 수량 입력했는지
+            //-----------------
+            var amount = $("#amount").val();
+            if (amount.split(" ").join("") === "") {
+                $("#amount").css("border-color", "deeppink")
+                alt7.show();
+                alt7_1.hide();
+                $("#amount").val("");
+                $("#amount").focus();
+                return;
+                alert("왜안돼.3");
+            } else if (check_price(amount.val()) === false) {
+                $("#amount").css("border-color", "deeppink")
+                alt7.hide();
+                alt7_1.show();
+                $("#amount").focus();
+                return;
+                alert("왜안돼.2");
+            } else {
+                $("#amount").css("border-color", "deepskyblue")
+                alt7.hide();
+                alt7_1.hide();
+            }
+
+
+            var description = $("#description").val();
+            if (description.split(" ").join("") === "") {
+                $("#description").css("border-color", "deeppink");
+                alt8.show();
+                return;
+                alert("왜안돼.1");
+            } else {
+                $("#description").css("border-color", "deepskyblue");
+                alt8.hide();
+                alert("왜안돼.");
+                document.itemRegisterForm.submit();
+            }
+        }
 
     </script>
 </head>
 <body>
-    <div class="container">
-        <div th:replace="fragments :: nav-bar"></div>
-    </div>
-    <div class="create_item">
-        <p>상품 등록</p>
-    </div>
-    <main>
+<div class="container">
+    <div th:replace="fragments :: nav-bar"></div>
+</div>
+<div class="create_item">
+    <p>상품 등록</p>
+</div>
+<main>
     <!------------------->
-        <div class="main">
-            <!--------------------- form 태그 선언 --------------------->
-            <form th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+    <div class="main">
+        <!--------------------- form 태그 선언 --------------------->
+        <form name="itemRegisterForm" th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
             <!-------------------------------------------------------->
             <!--+++++++++++++++++++++++++++++-->
             <!-- 화면 분할 1. 좌측 -->
@@ -727,11 +981,13 @@
                         <!--======================-->
                         <!-- 1. 제품 카테고리 설정-->
                         <!--======================-->
-                       <p class="p_1">
-                           <span>카테고리 명</span>
-                           <input type="text" id="category_name" th:field="*{subTitle}"
-                               placeholder="카테고리를 입력하세요">
-                       </p>
+                        <p class="p_1">
+                            <span>카테고리 명</span>
+                            <input type="text" id="category_name" th:field="*{subTitle}"
+                                   placeholder="카테고리를 입력하세요">
+                        </p>
+                        <span id="alt_1">카테고리를 입력해주세요</span>
+
                         <!--======================-->
                         <!-- 2. 제품명 설정-->
                         <!--======================-->
@@ -739,6 +995,7 @@
                             <span>제품명</span>
                             <input type="text" id="product_name" th:field="*{name}" placeholder="제품명을 입력하세요">
                         </p>
+                        <div id="alt_2">제품명을 입력해주세요</div>
                         <!--======================-->
                         <!-- 3. 색상 관련 이미지 썸네일 설정-->
                         <!--======================-->
@@ -759,29 +1016,36 @@
                         <soan>상품 가격</soan>
                         <input type="number" th:field="*{price}" class="price" id="price" placeholder="가격을 입력하세요">
                     </p>
+                    <div id="alt_3">상품가격을 입력해주세요</div>
+                    <div id="alt_3_1">상품가격은 숫자로만 입력해주세요</div>
                     <div style="clear: both"></div>
                     <!--======================-->
                     <!-- 5. 성별 설정 -->
                     <!--======================-->
                     <div class="select_div">
-                            <p>성별 선택</p>
+                        <p>성별 선택</p>
                     </div>
+
+
                     <div class="table_div">
-                        <div class="gender_table"  id="gender_table">
+                        <div class="gender_table" id="gender_table">
                             <div class="size_cell" id="men"><p>남성</p></div>
                             <div class="size_cell" id="women"><p>여성</p></div>
                             <div class="size_cell" id="kids"><p>아동</p></div>
                             <div class="size_cell" id="unisex"><p>남녀공용</p></div>
                             <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
-                            <input type="hidden" id="gender" name="gender" value="">
+                            <input type="hidden" id="gender" name="gender" value="" style="filter:alpha(opacity=10);">
                         </div>
                     </div>
+
+
                     <div style="clear: both"></div>
+                    <div id="alt_4">성별 선택해주세요</div>
                     <!--======================-->
                     <!-- 6. 품목 설정 -->
                     <!--======================-->
                     <div class="select_div">
-                            <p>품목 선택</p>
+                        <p>품목 선택</p>
                     </div>
                     <div class="table_div">
                         <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
@@ -793,12 +1057,14 @@
                             <input type="hidden" id="category" name="category" value="">
                         </div>
                     </div>
+
                     <div style="clear: both"></div>
+                    <div id="alt_5">품목을 선택해주세요</div>
                     <!--======================-->
                     <!-- 7. 사이즈 설정 -->
                     <!--======================-->
                     <div class="select_div">
-                            <p>사이즈 선택</p>
+                        <p>사이즈 선택</p>
                     </div>
                     <div class="table_div">
                         <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
@@ -841,18 +1107,24 @@
                             <input type="hidden" id="shoes_size" name="shoes_size" value="">
                         </div>
                     </div>
+                    <div style="clear: both"></div>
+                    <div id="alt_6">사이즈를 선택해주세요</div>
                     <!--======================-->
                     <!-- 8. 수량 설정 -->
                     <!--======================-->
-<!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
+                    <!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
                     <div class="count_div">
-                        <div class="count_amount" >수량</div>
+                        <div class="count_amount">수량</div>
                         <div class="count_product">
                             <input type="number" id="amount" th:field="*{stockQuantity}"
-                                    placeholder="재고수량을 입력하세요">
+                                   placeholder="재고수량을 입력하세요">
+                            <div style="clear: both"></div>
+                            <div id="alt_7">수량을 입력해주세요</div>
+                            <div id="alt_7_1">상품가격은 숫자로만 입력해주세요</div>
                         </div>
 
                     </div>
+
 
                     <!--======================-->
                     <!-- 9. 상품 상세 설명 설정 -->
@@ -862,33 +1134,34 @@
                         <textarea th:field="*{description}" id="description"
                                   placeholder="하단에 표시될 상품 설명을 입력하세요">
                         </textarea>
+                        <span id="alt_8">상세설명을 입력해주세요</span>
                         <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
-<!--                        <p th:text="${item.getDescription()}">-->
-<!--                            무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너-->
-<!--                            재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝-->
-<!--                            윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이-->
-<!--                            돋보입니다.-->
-<!--                        </p>-->
+                        <!--                        <p th:text="${item.getDescription()}">-->
+                        <!--                            무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너-->
+                        <!--                            재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝-->
+                        <!--                            윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이-->
+                        <!--                            돋보입니다.-->
+                        <!--                        </p>-->
 
                         <!--======================-->
                         <!-- 10. 상품 등록 버튼 -->
                         <!--======================-->
-                        <button type="submit" class="btn btn-primary">상품 등록</button>
+                        <button type="submit" class="btn btn-primary" id="regist_btn"  onclick="checkItemForm()">상품 등록</button>
                     </div>
                     <!--======================-->
                     <!-- 11. 현재 등록 되어있는 상품 수량 -->
                     <!--======================-->
                     <div class="legistration">
-                    <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
-                    <!--+++++++++++++++++++++++++++++++++++++-->
+                        <span>현재 등록되어 있는 상품의 수 </span><span th:text="${totalCount} + 개"></span>
+                        <!--+++++++++++++++++++++++++++++++++++++-->
                     </div>
 
-                    </div>
                 </div>
-            </form>
+            </div>
+        </form>
 
-        </div>
-    </main>
+    </div>
+</main>
 
 <!--    <footer th:replace="fragments.html :: footer-body">-->
 <!--    </footer>-->
