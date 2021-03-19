@@ -553,9 +553,8 @@
 
 
 
+<!--
 
-
-<!----------------------------------------------------------------------------------------------------
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
@@ -572,26 +571,25 @@
 <form th:action="@{/order/payment}" method="post" th:object="${orderForm}" >
 
     <div>
-
         <div>주소</div>
-&lt;!&ndash;        <input type="text"/>&ndash;&gt;
+<input type="text"/>
     </div>
 
-    <div>-->
-    <!--<div th:text="${item.getName()}"></div>-->
-<!--    <label th:for="itemName">선택한 상품 이름</label>
+    <div>
+    <div th:text="${item.getName()}"></div>
+   <label th:for="itemName">선택한 상품 이름</label>
         <input name="itemName" type="text" th:value="${item.getName()}">
     </div>
     <div>
-        <div>상품가격</div>-->
-<!--        <div th:text="${item.getPrice()}"></div>-->
-<!--<input name="price" type="text" th:value="${item.getPrice()}">
+        <div>상품가격</div>
+        <div th:text="${item.getPrice()}"></div>
+<input name="price" type="text" th:value="${item.getPrice()}">
 
     </div>
     <div>
-        <div>수량</div>-->
-<!--        <div th:text="${amount}"></div>-->
-       <!-- <input name="amount" type="text" th:value="${amount}">
+        <div>수량</div>
+        <div th:text="${amount}"></div>
+        <input name="amount" type="text" th:value="${amount}">
 
     </div>
     <div>

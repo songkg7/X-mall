@@ -116,6 +116,42 @@
   font-size: 25px;
 }
 .board_div table{
-  width:350px;
+  width:650px;
   margin: auto;
+}
+.as_boardform .board_div table a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.as_boardform .board_div{
+  margin-bottom: 40px;
+}
+.as_boardform {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 50px 50px;
+}
+
+.as_boardform h2 {
+  display: block;
+  margin-bottom: 50px;
+  height: 50px;
+  border-bottom: 1px solid black;
+}
+
+.as_boardform div .write_btn a{
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #111111;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.as_boardform div .write_btn {
+  float: right;
+  margin-right: 40px;
 }

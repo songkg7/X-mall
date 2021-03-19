@@ -83,4 +83,11 @@ public class MyPageController {
 
         return "mypage/withdrawal";
     }
+    // 최근주문내역 -> 리뷰 작성
+    @GetMapping("/review")
+    public String review(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+
+        return "mypage/review";
+    }
 }
