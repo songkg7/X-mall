@@ -1,5 +1,6 @@
 package com.xmall.xmall.controller;
 
+import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.board.BoardCreateForm;
 import com.xmall.xmall.board.CsBoardService;
 import com.xmall.xmall.board.Cs_Board;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
@@ -40,12 +42,10 @@ public class CsController {
         return "cs/cs_createForm";}
 
     @PostMapping("/cs/cs_createForm")
-    public String cs_createForm(BoardCreateForm form, Principal principal){
+    public String cs_createForm(@Valid BoardCreateForm form, @CurrentAccount Account account){
+//        account.ifPresent(account -> csBoardService.create(account, form.getSubject(), form.getMainText()));
+        csBoardService.create(account, form.getSubject(), form.getMainText());
 
-        String connectUser = principal.getName();
-        Optional<Account> account = Optional.ofNullable(accountRepository.findByEmail(connectUser));
-
-        account.ifPresent(value -> csBoardService.create(value, form.getSubject(), form.getMainText()));
         return "redirect:/cs/cs_board";
     }
 
