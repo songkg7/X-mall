@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="/css/khs/as.css" />
+</head>
+<body>
+<header th:replace="fragments.html :: nav-bar"></header>
+<div class="categori1">
+    <b>고 객 센 터</b>
+</div>
+<main>
+    <div class="board_div">
+    <table>
+        <tr>
+            <th>번호</th><th>제목</th><th>이름</th><th>작성일</th><th>조회수</th>
+        </tr>
+        <tr th:each="boardList : ${boardLists}">
+            <td th:text="${boardList.id}"></td>
+            <td>
+                <!--                    <a th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
+                <!--                       th:text="${boardList.subject}" class="btn btn-default"></a>-->
+                <a th:href="@{/cs/{id} (id=${boardList.id})}"
+                   th:text="${boardList.subject}" class="btn btn-default"></a>
+            </td>
+            <td th:text="${boardList.account.getName()}"></td>
+            <td th:text="${boardList.getCreateTime()}">
+                <!--                    <a href="#" th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
+                <!--                       class="btn btn-primary" role="button">수정</a>-->
+            </td>
+            <td th:text="${boardList.getViewCount()}"></td>
+        </tr>
+    </table>
+    </div>
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+<footer th:replace="fragments.html :: footer-body"></footer>
+</body>
+</html>

@@ -108,7 +108,14 @@
   color: black;
   text-decoration: none;
 }
-
+.categori1{
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
 .categori1 b{
   font-size: 25px;
+}
+.board_div table{
+  width:350px;
+  margin: auto;
 }
