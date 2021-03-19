@@ -1,5 +1,7 @@
 package com.xmall.xmall.controller;
 
+import com.xmall.xmall.account.CurrentAccount;
+import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
@@ -25,6 +28,7 @@ public class AccountController {
     private final AccountService accountService;
     private final AccountRepository accountRepository;
     private final SignUpFormValidator signUpFormValidator;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * Custom validator
@@ -87,6 +91,43 @@ public class AccountController {
         model.addAttribute("nickname", account.getNickname());
 
         return "account/checkedEmail";
+    }
 
+//    비밀번호 변경
+    @PostMapping("/pwd_change")
+    public String pwd_changeEdit(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+        model.addAttribute(account);
+
+        boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
+        if (!resultPwdCheck) {
+            model.addAttribute("error1", "비밀번호가 일치하지 않습니다.");
+            return "mypage/pwd_change";
+        }
+
+        boolean resultPwdCheck2 = passwordEncoder.matches(checkPwdForm.getNew_pwd_check(), account.getPassword());
+        if (resultPwdCheck2) {
+            model.addAttribute("error2", "변경하려는 비밀번호가 기존 비밀번호와 일치합니다.");
+            return "mypage/pwd_change";
+        }
+
+        accountService.update(account.getNickname(), checkPwdForm);
+
+        return "redirect:/logout";
+    }
+
+//    회원 탈퇴
+    @PostMapping("/withdrawal")
+    public String withdrawalDelete(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+        model.addAttribute(account);
+        boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
+
+        if (!resultPwdCheck) {
+            model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
+            return "mypage/withdrawal";
+        }
+
+        accountService.delete(account.getNickname());
+
+        return "redirect:/logout";
     }
 }

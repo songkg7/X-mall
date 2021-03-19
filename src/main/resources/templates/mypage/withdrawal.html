@@ -98,6 +98,7 @@
         <form name="pwd_change_form" th:method="post" action="#" th:action="@{/withdrawal}"
               th:object="${checkPwdForm}">
             <div>
+
                 <label>기존 비밀번호</label>
                 <div class="info_text">
                     <input
@@ -111,9 +112,9 @@
                     <div class="pwd_need1" id="pwd_need1">
                         필수 입력 항목입니다.
                     </div>
-                </div>
-                <div>
-                    <small th:if="${error}" th:text="${error}">error</small>
+                    <div>
+                        <small class="pwd_error" th:if="${error}" th:text="${error}">error</small>
+                    </div>
                 </div>
 
                 <div class="title">
