@@ -19,7 +19,7 @@ public class MyReviewService {
 
     @Transactional
     public void create(Account account, String subject, String mainText){
-        My_Review my_review = MyReview.createReview(account, subject,mainText);
+        My_Review my_review = My_Review.createReview(account, subject,mainText);
 
         myReviewRepository.save(my_review);
     }
