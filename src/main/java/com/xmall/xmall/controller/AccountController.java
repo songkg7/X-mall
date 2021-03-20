@@ -41,7 +41,6 @@ public class AccountController {
     @GetMapping("/sign-up")
     public String signUp(Model model) {
         model.addAttribute(new SignUpForm());
-
         return "account/sign-up";
     }
 
@@ -54,7 +53,6 @@ public class AccountController {
             model.addAttribute(signUpForm);
             return "account/sign-up";
         }
-
         // 회원가입한 유저 정보 가져오기
         Account account = accountService.signUp(signUpForm);
         // 회원가입 후 바로 로그인 처리
@@ -66,25 +64,19 @@ public class AccountController {
     public String checkEmailToken(String email, String token, Model model){
 //        /check-email-token?token=7647e3be-acd9-4786-a908-6bfd04beb87f&email=songkg7@gmail.com
         Account account = accountRepository.findByEmail(email);
-
         if (account == null) {
             model.addAttribute("error", "wrong.email");
-
             return "account/checkedEmail";
         }
-
         if (!account.getEmailCheckToken().equals(token)) {
             model.addAttribute("error", "wrong.email");
-
             return "account/checkedEmail";
         }
         // 위를 모두 통과하면 정식 회원가입 절차 완료
         accountService.emailVerifiedConfirm(account);
-
         // 인증 뷰로 데이터 보여주기
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
-
         return "account/checkedEmail";
     }
 
@@ -107,9 +99,7 @@ public class AccountController {
 
         accountService.changePwd(account, checkPwdForm);
 
-        String message = "비밀번호가 성공적으로 변경 되었습니다.";
-        redirectAttributes.addFlashAttribute("message",message);
-
+        redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경 되었습니다.");
         return "redirect:/pwd_change";
     }
 
@@ -125,7 +115,6 @@ public class AccountController {
         }
 
         accountService.delete(account);
-
         return "redirect:/logout";
     }
 }

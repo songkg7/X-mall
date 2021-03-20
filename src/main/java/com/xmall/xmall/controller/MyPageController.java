@@ -28,24 +28,16 @@ public class MyPageController {
     // 최근 주문 내역     *url 로 접속해야 함
     @GetMapping("/my_page")
     public String side_mypage(@CurrentAccount Account account, Model model) {
-
-        // FIXME: join table 해서 특정사용자의 주문만 가져올 수 있도록 수정
-//        account.getId();
-//        List<Order> orderLists = orderRepository.findAll();
         List<Order> orderLists = orderRepository.findByAccount(account);
-
         model.addAttribute(account);
         model.addAttribute("orderLists", orderLists);
-
         return "mypage/side_mypage";
     }
 
     @GetMapping("/my_page/side_mypage")
     public String reviewList(Model model){
-
         List<My_Review> reviewList = myReviewRepository.findAll();
         model.addAttribute("reviewLists",reviewList);
-
         return "mypage/side_mypage";
     }
 
@@ -55,7 +47,6 @@ public class MyPageController {
     @GetMapping("/as_infoguide")
     public String as_infoguide(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-
         return "mypage/as_infoguide";
     }
 
@@ -63,7 +54,6 @@ public class MyPageController {
     @GetMapping("/coupon")
     public String coupon(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-
         return "mypage/coupon";
     }
 
@@ -71,7 +61,6 @@ public class MyPageController {
     @GetMapping("/order_delivery")
     public String order_delivery(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-
         return "mypage/order_delivery";
     }
 
@@ -79,18 +68,14 @@ public class MyPageController {
     @GetMapping("/return_cancle")
     public String oreturn_cancle(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-
         return "mypage/return_cancle";
     }
-
-
 
     // 비밀번호 변경
     @GetMapping("/pwd_change")
     public String pwd_change(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
         model.addAttribute(new CheckPwdForm());
-
         return "mypage/pwd_change";
     }
     
@@ -99,14 +84,13 @@ public class MyPageController {
     public String withdrawal(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
         model.addAttribute(new CheckPwdForm());
-
         return "mypage/withdrawal";
     }
+
     // 최근주문내역 -> 리뷰 작성
     @GetMapping("/review")
     public String review(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-
         return "mypage/review";
     }
 }
