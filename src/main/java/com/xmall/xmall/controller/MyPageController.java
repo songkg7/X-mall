@@ -3,6 +3,9 @@ package com.xmall.xmall.controller;
 import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.form.CheckPwdForm;
+import com.xmall.xmall.repository.MyReviewRepository;
+import com.xmall.xmall.review.My_Review;
+import com.xmall.xmall.service.MyReviewService;
 import lombok.RequiredArgsConstructor;
 import com.xmall.xmall.domain.Order;
 import com.xmall.xmall.repository.OrderRepository;
@@ -17,7 +20,36 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MyPageController {
 
+    private final MyReviewService myReviewService;
+    private final MyReviewRepository myReviewRepository;
     private final OrderRepository orderRepository;
+
+
+    // 최근 주문 내역     *url 로 접속해야 함
+    @GetMapping("/my_page")
+    public String side_mypage(@CurrentAccount Account account, Model model) {
+
+        // FIXME: join table 해서 특정사용자의 주문만 가져올 수 있도록 수정
+//        account.getId();
+//        List<Order> orderLists = orderRepository.findAll();
+        List<Order> orderLists = orderRepository.findByAccount(account);
+
+        model.addAttribute(account);
+        model.addAttribute("orderLists", orderLists);
+
+        return "mypage/side_mypage";
+    }
+
+    @GetMapping("/my_page/side_mypage")
+    public String reviewList(Model model){
+
+        List<My_Review> reviewList = myReviewRepository.findAll();
+        model.addAttribute("reviewLists",reviewList);
+
+        return "mypage/side_mypage";
+    }
+
+
 
     // A/S 접수 안내
     @GetMapping("/as_infoguide")
@@ -51,20 +83,7 @@ public class MyPageController {
         return "mypage/return_cancle";
     }
 
-    // 최근 주문 내역     *url 로 접속해야 함
-    @GetMapping("/my_page")
-    public String side_mypage(@CurrentAccount Account account, Model model) {
 
-        // FIXME: join table 해서 특정사용자의 주문만 가져올 수 있도록 수정
-//        account.getId();
-//        List<Order> orderLists = orderRepository.findAll();
-        List<Order> orderLists = orderRepository.findByAccount(account);
-
-        model.addAttribute(account);
-        model.addAttribute("orderLists", orderLists);
-
-        return "mypage/side_mypage";
-    }
 
     // 비밀번호 변경
     @GetMapping("/pwd_change")
