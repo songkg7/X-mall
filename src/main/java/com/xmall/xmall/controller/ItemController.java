@@ -10,10 +10,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -40,14 +38,14 @@ public class ItemController {
     }
 
     @PostMapping("/items/create-item")
-    public String createItem(@Valid ItemForm itemForm, Errors errors, Model model) {
+    public String createItem(@Valid ItemForm itemForm, Errors errors, @RequestParam MultipartFile itemImage2) throws Exception {
         if (errors.hasErrors()) {
             return "items/create-item";
         }
 
 //        ClassPathResource resource = new ClassPathResource();
 
-        itemService.create(itemForm);
+        itemService.create(itemForm ,itemImage2);
 
         return "redirect:/";
     }
@@ -65,8 +63,8 @@ public class ItemController {
     }
 
     @PostMapping("/items/{id}/edit")
-    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm) {
-        itemService.update(id, itemForm);
+    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm, @RequestParam MultipartFile itemImage2) throws Exception {
+        itemService.update(id, itemForm, itemImage2);
 
         return "redirect:/";
     }

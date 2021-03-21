@@ -19,6 +19,7 @@ public class ItemForm {
 
     private int stockQuantity;
 
+
     private String description;
 
     @Lob

@@ -36,6 +36,7 @@ public class Item {
 
     private String subTitle;
 
+
     // 상품 상세설명
     @Lob
     private String description;

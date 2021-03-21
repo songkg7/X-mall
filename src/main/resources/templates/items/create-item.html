@@ -957,7 +957,7 @@
     <!------------------->
     <div class="main">
         <!--------------------- form 태그 선언 --------------------->
-        <form name="itemRegisterForm" th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+        <form name="itemRegisterForm" enctype="multipart/form-data" th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
         <!-------------------------------------------------------->
             <!--+++++++++++++++++++++++++++++-->
             <!-- 화면 분할 1. 좌측 -->
@@ -1125,6 +1125,11 @@
 
                     </div>
 
+                    <!--======================-->
+                    <!--======================-->
+                    <input type="file" name="itemImage2">
+                    <!--======================-->
+                    <!--======================-->
 
                     <!--======================-->
                     <!-- 9. 상품 상세 설명 설정 -->

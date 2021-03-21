@@ -660,7 +660,7 @@
     <!------------------->
         <div class="main">
             <!--------------------- form 태그 선언 --------------------->
-            <form th:action="@{/items/{id}/edit (id=${item.id})}" th:object="${item}" method="post">
+            <form th:action="@{/items/{id}/edit (id=${item.id})}" enctype="multipart/form-data" th:object="${item}" method="post">
 <!--                <input type="hidden" th:field="*{id}">-->
 
                 <!-------------------------------------------------------->
@@ -809,8 +809,20 @@
                             <input type="number" th:field="*{stockQuantity}" th:value="${item.getStockQuantity()}"
                                     placeholder="재고수량을 입력하세요">
                         </div>
-
                     </div>
+
+                    <!--======================-->
+                    <!--======================-->
+                    <span th:if="${item.getItemImage().isEmpty()}">
+                        <input type="hidden" th:field="*{itemImage}">
+                    </span>
+                    <span th:if="${!item.getItemImage().isEmpty()}">
+                        <input type="hidden" th:field="*{itemImage}" th:value="${item.getItemImage()}">
+                        <img th:src="@{/images/item_img/} + ${item.getItemImage()}"/>
+                    </span>
+                    <input type="file" name="itemImage2">
+                    <!--======================-->
+                    <!--======================-->
 
                     <!--======================-->
                     <!-- 9. 상품 상세 설명 설정 -->

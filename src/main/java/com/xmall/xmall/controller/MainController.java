@@ -25,7 +25,6 @@ public class MainController {
         // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
-
         model.addAttribute("account", account);
 
 //        if (account.isEmailVerified()) {
