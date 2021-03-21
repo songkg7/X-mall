@@ -80,6 +80,25 @@ public class AccountController {
         return "account/checkedEmail";
     }
 
+    // TODO: email 재전송 버튼이 있는 간단한 페이지
+    @GetMapping("/check-email")
+    public String checkEmail(@CurrentAccount Account account, Model model) {
+        model.addAttribute("email", account.getEmail());
+        return "account/check-email";
+    }
+
+    @GetMapping("/resend-confirm-email")
+    public String resendConfirmEmail(@CurrentAccount Account account, Model model) {
+        if (!account.canSendConfirmEmail()) {
+            model.addAttribute("error", "인증 이메일은 1시간에 한번만 전송할 수 있습니다.");
+            model.addAttribute("email", account.getEmail());
+            return "account/check-email";
+        }
+
+        accountService.sendSignUpConfirmEmail(account);
+        return "redirect:/";
+    }
+
 //    비밀번호 변경
     @PostMapping("/pwd_change")
     public String pwd_changeEdit(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm, RedirectAttributes redirectAttributes) {

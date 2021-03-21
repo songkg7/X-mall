@@ -1,25 +1,28 @@
 package com.xmall.xmall.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-@Embeddable
+@Entity
+@Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@AllArgsConstructor
+@AllArgsConstructor
 public class Address {
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    public Address(String city, String street, String zipcode) {
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
-    }
+    @NotBlank
+    private String main;
+
+    private String details;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+
 }

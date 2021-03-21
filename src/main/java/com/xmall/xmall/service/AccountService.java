@@ -1,9 +1,12 @@
 package com.xmall.xmall.service;
 
 import com.xmall.xmall.account.UserAccount;
+import com.xmall.xmall.config.AppProperties;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.form.SignUpForm;
 import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.mail.EmailMessage;
+import com.xmall.xmall.mail.EmailService;
 import com.xmall.xmall.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +21,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
@@ -33,6 +38,9 @@ public class AccountService implements UserDetailsService {
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender javaMailSender;
+    private final AppProperties appProperties;
+    private final TemplateEngine templateEngine;
+    private final EmailService emailService;
 
     // NOTE: 초기화
     // Account 가 한명도 없다면, 아래 코드가 실행된다.
@@ -66,43 +74,13 @@ public class AccountService implements UserDetailsService {
                 .phone(signUpForm.getPhone())
                 .build();
 
-        // getter, setter 를 사용하는 전통적인 방법
-//        Account account = new Account();
-//        account.setEmail(signUpForm.getEmail());
-//        account.setNickname(signUpForm.getNickname());
-//        String encodePwd = passwordEncoder.encode(signUpForm.getPassword());
-//        account.setPassword(encodePwd);
+        account.generateEmailCheckToken();
 
         // 회원 저장 후 이메일을 보내주기 위해 저장된 회원의 정보를 가져온다
         Account newAccount = accountRepository.save(account);
-
-        sendEmail(newAccount);
-
+        sendSignUpConfirmEmail(newAccount);
         return newAccount;
 
-    }
-
-    // TODO: email 인증 메일을 다시 받고 싶을 경우 처리하는 로직 필요
-
-    private void sendEmail(Account newAccount) {
-        // TODO: email 보내기
-        // - 가짜 객체(ConsoleMailSender)를 만들어서 토큰을 콘솔에 출력
-        // - 아직 메일서버와 연결되지 않았기 때문에 추후 진짜 메일로 바꾼다.
-
-        // 메일 관련 기능을 이용하기 위한 SimpleMailMessage 생성
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-        // Random token 값을 생성해주는 메소드를 작성해주기
-        newAccount.generateEmailCheckToken();
-
-        // 이메일 내용 작성
-        mailMessage.setSubject("X-mall 회원가입 인증"); // Email 의 제목
-        mailMessage.setTo(newAccount.getEmail()); // 보낼 메일 주소
-        mailMessage.setText("/check-email-token?token=" + newAccount.getEmailCheckToken()
-                + "&email=" + newAccount.getEmail()); // 본문
-
-        // 메일 보내기
-        javaMailSender.send(mailMessage);
     }
 
     // Security Login
@@ -112,6 +90,43 @@ public class AccountService implements UserDetailsService {
                 account.getPassword(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER")));
         SecurityContextHolder.getContext().setAuthentication(token);
+    }
+
+//    회원 탈퇴
+
+    public void delete(Account account) {
+        accountRepository.delete(account);
+    }
+//    비밀번호 변경
+
+    public void changePwd(Account account, CheckPwdForm checkPwdForm) {
+        String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
+        account.setPassword(encodePwd);
+    }
+    public void emailVerifiedConfirm(Account account) {
+        account.completeSignUp();
+        login(account);
+    }
+
+    public void sendSignUpConfirmEmail(Account account) {
+        Context context = new Context();
+        context.setVariable("link", "/check-email-token?token=" +
+                account.getEmailCheckToken() +
+                "&email=" + account.getEmail());
+        context.setVariable("nickname", account.getNickname());
+        context.setVariable("linkName", "이메일 인증하기");
+        context.setVariable("message", "X-mall 온라인매장을 이용하려면 링크를 클릭하세요");
+        context.setVariable("host", appProperties.getHost());
+
+        String message = templateEngine.process("mail/simple-link", context);
+
+        EmailMessage emailMessage = EmailMessage.builder()
+                .to(account.getEmail())
+                .subject("X-mall, 회원가입 인증")
+                .message(message)
+                .build();
+
+        emailService.sendEmail(emailMessage);
     }
 
     @Override
@@ -133,21 +148,5 @@ public class AccountService implements UserDetailsService {
 
         return new UserAccount(account, authority);
 
-    }
-
-//    회원 탈퇴
-    public void delete(Account account) {
-        accountRepository.delete(account);
-    }
-
-//    비밀번호 변경
-    public void changePwd(Account account, CheckPwdForm checkPwdForm) {
-        String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
-        account.setPassword(encodePwd);
-    }
-
-    public void emailVerifiedConfirm(Account account) {
-        account.completeSignUp();
-        login(account);
     }
 }

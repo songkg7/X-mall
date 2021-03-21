@@ -7,9 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -43,8 +41,8 @@ public class Account {
     private List<Order> orders = new ArrayList<>();
 
     // 주소
-    @Embedded
-    private Address address;
+    @OneToMany(mappedBy = "account")
+    private Set<Address> address = new HashSet<>();
 
     @OneToOne
     @JoinColumn(name = "cart_id")
@@ -57,16 +55,31 @@ public class Account {
 
     private boolean emailVerified;
 
+    private LocalDateTime emailCheckTokenGeneratedAt;
+
     // 가입한 날짜
     private LocalDateTime JoinedAt;
 
     // UUID 를 사용하여 랜덤한 값을 생성한 후 Account 에 담는다.
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
+        // 생성시간 정보를 저장해서 연속적으로 메일을 보내지 못하게한다
+        this.emailCheckTokenGeneratedAt = LocalDateTime.now();
     }
 
     public void completeSignUp() {
         this.emailVerified = true;
         this.JoinedAt = LocalDateTime.now();
     }
+
+    // token 값 검증
+    public boolean isValidToken(String token) {
+        return !this.emailCheckToken.equals(token);
+    }
+
+    // email 전송 시간 비교
+    public boolean canSendConfirmEmail() {
+        return this.emailCheckTokenGeneratedAt.isBefore(LocalDateTime.now().minusHours(1));
+    }
+
 }
