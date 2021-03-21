@@ -1,0 +1,248 @@
+.shop_order {
+  font-size: 28px;
+  text-align: center;
+  font-weight: bolder;
+  margin-bottom: 50px;
+}
+.shop_customer {
+  display: inline-block;
+  float: left;
+  width: 60%;
+}
+.shop_customer_sub {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bolder;
+  width: 70%;
+  padding-bottom: 30px;
+}
+.shop_customer_sub_delivery {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bolder;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.shop_agree {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bolder;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+.shop_address {
+  font-size: 20px;
+  text-align: left;
+  font-weight: bolder;
+  width: 47%;
+}
+.shop_float {
+  line-height: 70px;
+  font-size: 20px;
+  text-align: left;
+  font-weight: bolder;
+  width: 100%;
+  background-color: lightgray;
+  height: 70px;
+}
+
+.shop_float p {
+  margin-top: 0;
+  margin-left: 20px;
+}
+.shop_input {
+  text-align: left;
+  width: 100%;
+  margin-top: 20px;
+}
+.shop_input_baseaddress {
+  padding-bottom: 10px;
+  text-align: left;
+  margin-top: 20px;
+}
+.nav1 {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+}
+.nav1_img {
+  width: 8%;
+  height: 10%;
+  display: block;
+  margin-left: 40px;
+}
+.padding_left {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+.sub_line {
+  margin-bottom: 30px;
+  border-bottom: 1px solid black;
+  width: 90%;
+}
+.sub_line1 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  width: 90%;
+}
+.cl_memo {
+  padding-right: 300px;
+}
+.order_list {
+  height: 1000px;
+  /* display: inline-block;*/
+  /* float: right; */
+  position: absolute;
+  top: 140px;
+  left: 1100px;
+  width: 40%;
+  border-width: 2px solid;
+}
+.order_list_base {
+  border: 2px solid black;
+  height: 700px;
+}
+.order_list_img {
+  text-align: left;
+  float: left;
+  width: 30%;
+  height: 200px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.order_list_img img {
+  width: 100%;
+  height: 100%;
+}
+.order_list_DB {
+  width: 60%;
+  height: 200px;
+  float: right;
+  padding-top: 10px;
+  text-align: right;
+  display: inline-block;
+}
+.order_list_text_left {
+  text-align: left;
+}
+.goods_right {
+  text-align: right;
+  width: 50%;
+  float: right;
+  height: 50%;
+  margin-top: 20px;
+}
+.goods_left {
+  text-align: left;
+  float: left;
+  width: 50%;
+  height: 50%;
+  margin-top: 20px;
+}
+.precautions {
+  border-bottom: 2px solid black;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.precautions_sub {
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+}
+.precautions_pro {
+  text-align: left;
+  width: 100%;
+}
+.precautions_sub p {
+  margin-top: 0;
+  margin-left: 20px;
+}
+.payment {
+  display: inline-block;
+  float: left;
+  width: 80%;
+  margin-left: 100px;
+}
+.payment_submit {
+  width: 20%;
+  display: block;
+  margin: 0px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: black;
+  height: 48px;
+  font-size: 15px;
+  border-radius: 50px;
+}
+.payment_submit:hover {
+  background-color: black;
+  opacity: 70%;
+}
+.payment_submit a {
+  text-decoration-line: none;
+  color: white;
+}
+.send {
+  text-align: center;
+  background-color: black;
+  width: 48%;
+  height: 60px;
+  font-size: 15px;
+  margin-top: 30px;
+  border: 1px solid black;
+  margin-bottom: 200px;
+  color: white;
+  border-radius: 50px;
+  margin-left: 100px;
+}
+.send:hover {
+  opacity: 70%;
+  color: white;
+}
+.send a {
+  text-decoration-line: none;
+  color: white;
+}
+.basket {
+  text-align: left;
+  float: left;
+}
+.address1 {
+}
+.address1 .sub2 {
+  margin-left: 10px;
+  margin-right: 30px;
+  width: 89%;
+  height: 40px;
+  margin-top: 10px;
+}
+.address1 .sub1 {
+  margin-left: 10px;
+  width: 43%;
+  height: 40px;
+  margin-top: 10px;
+}
+.select_memo {
+  width: 100%;
+  margin-top: 30px;
+}
+.select_box {
+  width: 400px;
+  height: 50px;
+  float: left;
+}
+.selbox {
+  padding-top: 20px;
+  text-align: left;
+}
+.selbox input {
+  padding-bottom: 100px;
+}
+.text_left {
+  text-align: left;
+}

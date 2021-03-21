@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- head -->
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+    <!-- main css 부분 -->
+    <style>
+
+
+        div {
+            text-align: center;
+        }
+
+        .main .button {
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+            border: none;
+            font-size: 17px;
+            font-weight: normal;
+            width: 120px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: block;
+            margin: auto;
+        }
+
+        .main .product {
+            font-weight: bold;
+            font-size: 43px;
+            margin-top: 40px;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+
+        .main .description {
+            width: 400px;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -1px;
+            padding-top: 5px;
+            padding-bottom: 15px;
+            display: block;
+            margin: auto;
+        }
+
+        .main {
+            overflow: auto;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-top: 200px;
+            margin-top: -200px;
+            margin-bottom: 50px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        /*.footer {*/
+        /*    position: relative;*/
+        /*    left: 0px;*/
+        /*    bottom: 0px;*/
+        /*    height: 500px;*/
+        /*    width: 100%;*/
+        /*    color: white;*/
+        /*    background: black;*/
+        /*}*/
+    </style>
+</head>
+
+<!-- body -->
+<!-- header nav body 수입경로 -->
+<body>
+<header th:replace="fragments.html :: nav-bar"></header>
+<div class="alert alert-warning" role="alert" th:if="${account != null && !account?.emailVerified}">
+    X-mall 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}"
+                        class="alert-link">계정 인증 이메일을 확인</a>하세요.
+</div>
+
+<!-- main body 부분1 -->
+<main th:each="itemList : ${itemLists}">
+    <div class="main">
+        <a href="#" th:href="@{/items/{id} (id=${itemList.id})}">
+            <img th:src="@{/images/item_img/} + ${itemList.getItemImage()}" style="width: 100%; display: block; margin: auto"/>
+        </a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product" th:text="${itemList.getName()}">상품 모델 명 1</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description" th:text="${itemList.getSubTitle()}">상품 추천 설명</p>
+        </div>
+        <div>
+            <a class="button white_atag" th:href="@{/items/{id} (id=${itemList.id})}">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- main body 부분2 -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="#"
+        ><img
+                src="/images/main_img/nikemain2.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 2</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+<!-- --------------------------------- -->
+<!-- main body 부분3 -->
+<!-- --------------------------------- -->
+<main>
+    <div class="main">
+        <a href="http://www.naver.com"
+        ><img
+                src="/images/main_img/nikemain3.png"
+                style="width: 100%; display: block; margin: auto"
+        /></a>
+        <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
+        <p class="product">상품 모델 명 3</p>
+        <div>
+            <!-- <p class="description" >클래식한 에어 맥스 시리즈를 리믹스하여<br> 더욱 볼드해진 나이키 에어 베이퍼맥스 EVO 를 만나보세요. </p> -->
+            <p class="description">상품 추천 설명</p>
+        </div>
+
+        <div>
+            <a class="button white_atag" href="http://www.naver.com">구매하기</a>
+        </div>
+    </div>
+</main>
+
+
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
+</body>
+</html>

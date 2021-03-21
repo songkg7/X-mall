@@ -7,6 +7,8 @@ spring:
 #    password:
 #    driver-class-name: org.h2.Driver
 #  -----
+#  thymeleaf:
+#    cache: false
   profiles:
     active: local
   jpa:
@@ -16,6 +18,12 @@ spring:
       hibernate:
 #        show_sql: true
         format_sql: true
-logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.type: trace
+
+logging:
+  level.org.hibernate.SQL: DEBUG
+  level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+app.host: http://localhost:8080
+
+# 8083 포트 사용 시 활성화
+#server.port: 8083

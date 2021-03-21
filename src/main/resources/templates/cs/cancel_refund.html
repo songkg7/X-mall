@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="/css/khs/as.css">
+    <style>
+        
+      
+    </style>
+
+</head>
+<body>
+
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<header th:replace="fragments.html :: nav-bar"></header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+    <main>
+        
+      
+            <div class="all_Form">
+                <div class="blank" style="background:white;"></div>
+                <div class="as_menuform";>
+                    <ul >
+                        <li class="listyle">
+                            <strong>자주 찾는 내용</strong>
+                            <ul>
+                                <li><a href="/cs/notice">공지사항</a></li>
+                                <li><a href="/cs/member_service" >회원혜택/서비스</a></li>
+                                <li><a href="/cs/asview" >A/S</a></li>
+                                <li><a href="/cs/order_file" >주문결제</a></li>
+                                <li><a href="/cs/member_info" >회원정보</a></li>
+                                <li><a href="/cs/cancel_refund" >취소/반품</a></li>
+                                <li><a href="/cs/delivery" >배송</a></li>
+                            </ul>
+                        </li>
+                          <li class="listyle" >
+                            <strong>나의 정보 조회</strong>
+                            <ul>
+                                <li><a href="" >주문내역 조회</a></li>
+                                <li><a href="" >배송조회</a></li>
+                                <li><a href="" >반품 신청</a></li>
+                                <li><a href="" >아이디 찾기</a></li>
+                                <li><a href="" >패스워드 찾기</a></li>
+                            </ul>                            
+                        </li>
+                        <li class="listyle" >
+                            <strong>서비스 안내</strong>
+                            <ul>
+                                <li><a href="/cs/cs_board" >1:1 문의</a></li>
+                                <li><a href="/cs/member_service" >회원 혜택</a></li>
+                                <li><a href="/cs/refund_service" >무료 반품 서비스</a></li>
+                            </ul>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+                <div class="as_form">
+                    <div style="background-color: white;text-align:left; " >
+                    <h2>취소/반품</h2>
+                    
+                    <h4>취소/반품</h4>
+                    <font size="2em">
+                    <a href="">반품 포장 시 유의사항</a>
+                    
+                    <a href="">여러 개의 상품을 반품하는 경우 어떻게 해야 하나요?</a>
+                    
+                    <a href="">반품신청시 반품 가능한 제품이 없는 경우 어떻게 해야 하나요?</a>
+                    
+                    <a href="">반품이 불가능한 경우는 무엇인가요?</a>
+                    
+                    <h4>주문취소</h4>
+                    <a href="">주문한 상품을 취소하려면 어떻게 하나요?</a>
+                    </font>
+                                        
+                </div>
+        
+            </div>
+            <div class="imgcenter" style="background:white;">         
+                <font size="2em">
+                    <p><img src="/images/icon/phone.jpg"/></p>
+                    <h3>전화 문의</h3>               
+                    <p>000-000-0000</p>               
+                   <p>월~일 오전 9시 ~오후 8시</p>
+                   <p><img src="/images/icon/message.png"/></p>
+                    <h3> 1:1 채팅서비스</h3>
+                    <p><a href="" class="chatmoon">1:1 채팅 문의하기</a></p>
+                    </font>
+                </div>
+
+            <div style="background:white;"></div>
+        </div>
+
+            <div style="background:white;"></div>
+        </div>
+
+        
+    </main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+
+
+<footer th:replace="fragments.html :: footer-body">
+</footer>
+
+    
+    
+    
+</body>
+</html>

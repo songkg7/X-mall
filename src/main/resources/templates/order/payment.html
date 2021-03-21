@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- main 부분 CSS-->
+    <link rel="stylesheet" href="../css/LJH/Order_payment.css">
+    <style>
+    </style>
+    <script>
+
+        //--------------------------------------
+        // 라디오 버튼 안눌린곳은 비활성화
+        //--------------------------------------
+        $(document).ready(function () {
+            // 라디오버튼 클릭시 이벤트 발생
+            $("input:radio[name=delivery]").click(function () {
+
+                if ($("input[name=delivery]:checked").val() == "1") {
+                    $("input:text[name=address_input]").prop("disabled", false);
+                    $("input:text[name=pastAddress_input]").prop("disabled", true);
+                    // radio 버튼의 value 값이 1이라면 활성화
+
+                } else if ($("input[name=delivery]:checked").val() == "0") {
+                    $("input:text[name=pastAddress_input]").prop("disabled", false);
+                    $("input:text[name=address_input]").prop("disabled", true);
+                    // radio 버튼의 value 값이 0이라면 비활성화
+                }
+            });
+            $("[name=delivery]:eq(0)").click();
+        });
+        //--------------------------------------
+        // 주문배송 메모 직접입력하면 나오는 구문
+        //--------------------------------------
+        $(function () {
+//직접입력 인풋박스 기존에는 숨어있다가
+            $("#selboxDirect").hide();
+            $("#memo").change(function () {
+                //직접입력을 누를 때 나타남
+                if ($("#memo").val() == "직접입력") {
+                    $("#selboxDirect").show();
+                } else {
+                    $("#selboxDirect").hide();
+                }
+            })
+        });
+        //주소 유효성 체크
+
+    </script>
+    <!-- header footer css 수입경로-->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+
+
+</head>
+
+<body class="main_font">
+
+<!-- header nav body 수입경로 -->
+<header th:replace="fragments.html :: nav-bar">
+</header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<main>
+    <form action="#" method="post">
+        <div class="padding_left">
+            <div class="shop_order">
+                주문 결제
+            </div>
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="shop_customer">
+
+                <div class="sub_line"></div>
+                <div class="shop_customer_sub">
+                    주문고객
+                </div>
+                <!--DB에서 가져오는 값-->
+                <div class="shop_input">
+                    <p>이름</p>
+                    <p>번호</p>
+                    <p>이메일</p>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div class="sub_line"></div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+
+                <!--                주소 -->
+                <!--                <div>-->
+                <!--                    <div id="address" class="address1 text_left" >-->
+                <!--                        <input type="text"  class="sub1" name="" placeholder="이름">-->
+                <!--                        <input type="text"  class="sub1" name="" placeholder="전화 번호">-->
+                <!--                        <input type="text"  class="sub2" name="" placeholder="주소">-->
+                <!--                        <input type="text"  class="sub2" name="" placeholder="상세주소">-->
+                <!--                    </div>-->
+                <!--                </div>-->
+
+                <div class="sub_line1"></div>
+
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <!--+++++++++++++++++++++++++++++++++++-->
+
+                <div class="sub_line1"></div>
+            </div>
+            <!--++++++++++++++++++++++++++++++++++++++++++++++++-->
+            <!-- 1층 좌측-->
+            <!--++++++++++++++++++++++++++++++++++++++++++++++++-->
+            <div class="order_list">
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div class="order_list_base">
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <!--1층 -->
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="shop_float">
+                        <p>주문내역</p>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <!--2층 -->
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div>
+                        <!--좌측 이미지-->
+                        <div class="order_list_img">
+                            <img src="../images/main_img/nike_m_s_air.jpg">
+                        </div>
+                        <!--우측 설명-->
+                        <div class="order_list_DB">
+                            <!--DB에서 가져오는 값-->
+                            <div class="order_list_text_left">신발명</div>
+                            <div class="order_list_text_left">스타일 코드</div>
+                            <div class="order_list_text_left">사이즈 : 250</div>
+                            <div class="order_list_text_left">수량 : 1개</div>
+                            <!-- 가격은 DB에서 가져오는 값입니다.-->
+                            <div class="order_list_text_left">가격</div>
+                        </div>
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <!--3층 -->
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <div class="pay_info">
+                        <div>
+                            <div class="goods_left">상품 금액</div>
+                            <div class="goods_right">
+                                <strong>189,000 원</strong>
+                            </div>
+                        </div>
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div>
+                            <div class="goods_left">배송비</div>
+                            <div class="goods_right">
+                                <strong>2500 원</strong>
+                            </div>
+                        </div>
+                        <!--+++++++++++++++++++++++++++++++++++-->
+                        <div>
+                            <div class="goods_left">상품 할인 금액</div>
+                            <div class="goods_right">
+                                <strong>0 원</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="goods_left">주문 할인 금액</div>
+                            <div class="goods_right">
+                                <strong>
+                                    0 원
+                                </strong>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="goods_left">총 결제 예정 금액</div>
+                            <div class="goods_right">
+                                <strong>191,500 원</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <!--4층 -->
+                    <!--+++++++++++++++++++++++++++++++++++-->
+                    <!-- 주의사항 -->
+                    <div class="precautions_sub">
+                        <div class="precautions"></div>
+                        <p><span>●</span> 장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+                            보관됩니다.</p>
+                        <p><span>●</span> 프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <!--1층끝-->
+            <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+            <!--  2층      -->
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <div class="payment">
+                <div class="shop_customer_sub">
+                    결제 수단 선택
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div>
+                    <button type="submit" class="payment_submit">
+                        <strong><a href="#">신용카드</a></strong>
+                    </button>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div>
+                    <button type="submit" class="payment_submit">
+                        <strong><a href="#">실시간계좌이체 </a></strong>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="btn_pay">
+            <button type="submit" class="send">주문 완료
+            </button>
+        </div>
+    </form>
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<footer th:replace="fragments.html :: footer-body">
+</footer>
+
+
+</body>
+</html>
