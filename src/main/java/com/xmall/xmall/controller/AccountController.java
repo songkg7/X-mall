@@ -68,10 +68,12 @@ public class AccountController {
             model.addAttribute("error", "wrong.email");
             return "account/checkedEmail";
         }
-        if (!account.getEmailCheckToken().equals(token)) {
+
+        if (account.isValidToken()) {
             model.addAttribute("error", "wrong.email");
             return "account/checkedEmail";
         }
+
         // 위를 모두 통과하면 정식 회원가입 절차 완료
         accountService.emailVerifiedConfirm(account);
         // 인증 뷰로 데이터 보여주기

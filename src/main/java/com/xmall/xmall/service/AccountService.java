@@ -92,17 +92,6 @@ public class AccountService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(token);
     }
 
-//    회원 탈퇴
-
-    public void delete(Account account) {
-        accountRepository.delete(account);
-    }
-//    비밀번호 변경
-
-    public void changePwd(Account account, CheckPwdForm checkPwdForm) {
-        String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
-        account.setPassword(encodePwd);
-    }
     public void emailVerifiedConfirm(Account account) {
         account.completeSignUp();
         login(account);
@@ -127,6 +116,17 @@ public class AccountService implements UserDetailsService {
                 .build();
 
         emailService.sendEmail(emailMessage);
+    }
+
+    //    회원 탈퇴
+    public void delete(Account account) {
+        accountRepository.delete(account);
+    }
+
+    //    비밀번호 변경
+    public void changePwd(Account account, CheckPwdForm checkPwdForm) {
+        String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
+        account.setPassword(encodePwd);
     }
 
     @Override
