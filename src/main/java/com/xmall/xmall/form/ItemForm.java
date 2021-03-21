@@ -25,4 +25,6 @@ public class ItemForm {
     @Lob
     private String itemImage;
 
+    private String genderType;
+
 }

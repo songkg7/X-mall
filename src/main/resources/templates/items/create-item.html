@@ -104,7 +104,7 @@
             /* margin-left: 40px; */
         }
 
-        #alt_1, #alt_2, #alt_4, #alt_5, #alt_6, #alt_7,#alt_7_1, #alt_8 {
+        #alt_1, #alt_2, #alt_4, #alt_5, #alt_6, #alt_7, #alt_7_1, #alt_8 {
             margin-top: 5px;
             color: red;
             font-size: 12px;
@@ -112,7 +112,7 @@
             margin-left: 0;
         }
 
-        #alt_3,#alt_3_1 {
+        #alt_3, #alt_3_1 {
             margin-top: 5px;
             color: red;
             font-size: 12px;
@@ -489,7 +489,8 @@
             cursor: pointer;
             margin-bottom: 30px;
         }
-        .btn-primary:hover{
+
+        .btn-primary:hover {
             background-color: black;
             opacity: 70%;
         }
@@ -498,7 +499,8 @@
         .legistration {
             margin-top: 50px;
         }
-        #category{
+
+        #category {
 
             /*border: none; background-color: transparent;*/
             /*caret-color: transparent;*/
@@ -510,36 +512,47 @@
             //유효성 체크
             //--------------------------
             // 경고창 변수 모음
-            var alt1= $("#alt_1"); var alt2= $("#alt_2"); var alt3= $("#alt_3");
-            var alt4= $("#alt_4"); var alt5= $("#alt_5"); var alt6= $("#alt_6");
-            var alt7= $("#alt_7"); var alt8= $("#alt_8");
+            var alt1 = $("#alt_1");
+            var alt2 = $("#alt_2");
+            var alt3 = $("#alt_3");
+            var alt4 = $("#alt_4");
+            var alt5 = $("#alt_5");
+            var alt6 = $("#alt_6");
+            var alt7 = $("#alt_7");
+            var alt8 = $("#alt_8");
 
             var alt3_1 = $("#alt_3_1");
             var alt7_1 = $("#alt_7_1");
 
             // 경고창 숨기기
-            alt1.hide();alt2.hide();alt3.hide();alt4.hide();
-            alt5.hide();alt6.hide();alt7.hide();alt8.hide();
+            alt1.hide();
+            alt2.hide();
+            alt3.hide();
+            alt4.hide();
+            alt5.hide();
+            alt6.hide();
+            alt7.hide();
+            alt8.hide();
 
-
-            alt3_1.hide(); alt7_1.hide();
+            alt3_1.hide();
+            alt7_1.hide();
 
             //-----------------
             // 1. 카테고리 입력했는지
             //-----------------
-            $("#category_name").keyup(function (){
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink")
+            $("#category_name").keyup(function () {
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink")
                     alt1.show();
-                }else{
-                    $(this).css("border-color","deepskyblue")
+                } else {
+                    $(this).css("border-color", "deepskyblue")
                     alt1.hide();
                 }
             });
             $("#category_name").focusout(function () {
-                if($("#category_name").val().split(" ").join("")===""){
+                if ($("#category_name").val().split(" ").join("") === "") {
                     alt1.show();
-                }else{
+                } else {
                     $("#price").focus();
                     alt3.show();
                     alt1.hide();
@@ -548,19 +561,17 @@
             //-----------------
             // 2. 상품가격 입력했는지
             //-----------------
-            $("#price").keyup(function (){
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink")
+            $("#price").keyup(function () {
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink")
                     alt3.show();
                     alt3_1.hide();
-                }
-                else if(check_price($(this).val())===false){
-                    $(this).css("border-color","deeppink")
+                } else if (check_price($(this).val()) === false) {
+                    $(this).css("border-color", "deeppink")
                     alt3.hide();
                     alt3_1.show();
-                }
-                else{
-                    $(this).css("border-color","deepskyblue")
+                } else {
+                    $(this).css("border-color", "deepskyblue")
                     alt3.hide();
                     alt3_1.hide();
                 }
@@ -569,12 +580,12 @@
             //--------------------------
             // 3. 제품명 입력했는지
             //--------------------------
-            $("#product_name").keyup(function (){
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink");
+            $("#product_name").keyup(function () {
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink");
                     alt2.show();
-                }else{
-                    $(this).css("border-color","deepskyblue");
+                } else {
+                    $(this).css("border-color", "deepskyblue");
                     alt2.hide();
 
                 }
@@ -582,32 +593,32 @@
 
             // 제품명 입력빠져나가면
             $("#product_name").focusout(function () {
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink");
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink");
                     alt2.show();
-                }else{
+                } else {
 
                     alt4.show();
-                    $("#men, #women, #kids, #unisex").css("border-color","deeppink");
+                    $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
                 }
             });
 
             //4 성별입력이 바뀌면
-            $("#gender").change(function(){
+            $("#gender").change(function () {
                 alt5.show();
-                $("#top, #pants, #shoes").css("border-color","deeppink");
+                $("#top, #pants, #shoes").css("border-color", "deeppink");
             });
 
-            $("#men, #women, #kids, #unisex").click(function (){
-                $(this).siblings().css("border-color","deepskyblue");
-                $(this).css("border-color","deepskyblue");
+            $("#men, #women, #kids, #unisex").click(function () {
+                $(this).siblings().css("border-color", "deepskyblue");
+                $(this).css("border-color", "deepskyblue");
                 alt4.hide();
                 alt5.show();
             });
 
             //5 품목을 선택하면
-            $("#top, #pants, #shoes").click(function (){
-                $(this).siblings().css("border-color","deepskyblue");
+            $("#top, #pants, #shoes").click(function () {
+                $(this).siblings().css("border-color", "deepskyblue");
                 alt5.hide();
                 alt6.show();
             });
@@ -619,42 +630,37 @@
             //-----------------
             // 7. 수량 입력했는지
             //-----------------
-            $("#amount").keyup(function (){
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink")
+            $("#amount").keyup(function () {
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink")
                     alt7.show();
                     alt7_1.hide();
-                }
-                else if(check_price($(this).val())===false){
-                    $(this).css("border-color","deeppink")
+                } else if (check_price($(this).val()) === false) {
+                    $(this).css("border-color", "deeppink")
                     alt7.hide();
                     alt7_1.show();
-                }
-                else{
-                    $(this).css("border-color","deepskyblue")
+                } else {
+                    $(this).css("border-color", "deepskyblue")
                     alt7.hide();
                     alt7_1.hide();
                 }
             });
             $("#amount").focusout(function () {
 
-                    $("#description").css("border-color","deeppink");
-                    alt8.show();
+                $("#description").css("border-color", "deeppink");
+                alt8.show();
 
             });
-            $("#description").keyup(function (){
-                if($(this).val().split(" ").join("")===""){
-                    $(this).css("border-color","deeppink");
+            $("#description").keyup(function () {
+                if ($(this).val().split(" ").join("") === "") {
+                    $(this).css("border-color", "deeppink");
                     alt8.show();
-                }else{
-                    $(this).css("border-color","deepskyblue");
+                } else {
+                    $(this).css("border-color", "deepskyblue");
                     alt8.hide();
 
                 }
             });
-
-
-
 
 
             // //갖다 대면 색 변화
@@ -759,6 +765,7 @@
                 });
             });
         });
+
         function checkItemForm() {
             var btn = document.getElementById('btn-regist_btn');
 
@@ -845,11 +852,11 @@
 
             //4 성별입력이 바뀌면
             var gender = $("#gender").val();
-            if(gender.split(" ").join("") === "") {
+            if (gender.split(" ").join("") === "") {
                 $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
                 alt4.show();
                 return;
-            }else{
+            } else {
                 $("#men, #women, #kids, #unisex").siblings().css("border-color", "deepskyblue");
                 $("#men, #women, #kids, #unisex").css("border-color", "deepskyblue");
                 alt4.hide();
@@ -858,11 +865,11 @@
 
             //5 품목을 선택하면
             var category = $("#category").val();
-            if(category.split(" ").join("") === "") {
+            if (category.split(" ").join("") === "") {
                 $("#top, #pants, #shoes").css("border-color", "deeppink");
                 alt5.show();
                 return;
-            }else{
+            } else {
                 $("#top, #pants, #shoes").siblings().css("border-color", "deepskyblue");
                 $("#top, #pants, #shoes").css("border-color", "deepskyblue");
                 alt5.hide();
@@ -873,33 +880,32 @@
             var pants_size = $("#pants_size").val();
             var shoes_size = $("#shoes_size").val();
 
-            if(
-                (top_size.split(" ").join("") === "")&&
-                (pants_size.split(" ").join("") === "")&&
+            if (
+                (top_size.split(" ").join("") === "") &&
+                (pants_size.split(" ").join("") === "") &&
                 (shoes_size.split(" ").join("") === "")
-            ){
+            ) {
                 alt6.show();
                 return;
-            }
-            else if(
-                (top_size.split(" ").join("") === "")&&
-                (pants_size.split(" ").join("") === "")&&
+            } else if (
+                (top_size.split(" ").join("") === "") &&
+                (pants_size.split(" ").join("") === "") &&
                 !(shoes_size.split(" ").join("") === "")
-            ){
+            ) {
                 alt6.hide();
 
-            }else if(
-                (top_size.split(" ").join("") === "")&&
-                !(pants_size.split(" ").join("") === "")&&
+            } else if (
+                (top_size.split(" ").join("") === "") &&
+                !(pants_size.split(" ").join("") === "") &&
                 (shoes_size.split(" ").join("") === "")
-            ){
+            ) {
                 alt6.hide();
 
-            }else if(
-                !(top_size.split(" ").join("") === "")&&
-                (pants_size.split(" ").join("") === "")&&
+            } else if (
+                !(top_size.split(" ").join("") === "") &&
+                (pants_size.split(" ").join("") === "") &&
                 (shoes_size.split(" ").join("") === "")
-            ){
+            ) {
                 alt6.hide();
 
             }
@@ -957,8 +963,9 @@
     <!------------------->
     <div class="main">
         <!--------------------- form 태그 선언 --------------------->
-        <form name="itemRegisterForm" enctype="multipart/form-data" th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
-        <!-------------------------------------------------------->
+        <form name="itemRegisterForm" enctype="multipart/form-data"
+              th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
+            <!-------------------------------------------------------->
             <!--+++++++++++++++++++++++++++++-->
             <!-- 화면 분할 1. 좌측 -->
             <!--+++++++++++++++++++++++++++++-->
@@ -993,7 +1000,8 @@
                         <!--======================-->
                         <p class="p_2">
                             <span>제품명</span>
-                            <input type="text" id="product_name" th:field="*{name}" placeholder="제품명을 입력하세요">
+                            <input type="text" id="product_name" th:field="*{name}"
+                                   placeholder="제품명을 입력하세요">
                         </p>
                         <div id="alt_2">제품명을 입력해주세요</div>
                         <!--======================-->
@@ -1014,7 +1022,8 @@
                     <!-- 4. 가격 설정 -->
                     <p class="price">
                         <soan>상품 가격</soan>
-                        <input type="number" th:field="*{price}" class="price" id="price" placeholder="가격을 입력하세요">
+                        <input type="number" th:field="*{price}" class="price" id="price"
+                               placeholder="가격을 입력하세요">
                     </p>
                     <div id="alt_3">상품가격을 입력해주세요</div>
                     <div id="alt_3_1">상품가격은 숫자로만 입력해주세요</div>
@@ -1034,7 +1043,7 @@
                             <div class="size_cell" id="kids"><p>아동</p></div>
                             <div class="size_cell" id="unisex"><p>남녀공용</p></div>
                             <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
-                            <input type="hidden" id="gender" name="gender" value="">
+                            <input type="hidden" id="genderType" th:name="*{genderType}" value="">
                         </div>
                     </div>
 
@@ -1151,7 +1160,9 @@
                         <!--======================-->
                         <!-- 10. 상품 등록 버튼 -->
                         <!--======================-->
-                        <button type="submit" class="btn btn-primary" id="regist_btn"  onclick="checkItemForm()">상품 등록</button>
+                        <button type="submit" class="btn btn-primary" id="regist_btn"
+                                onclick="checkItemForm()">상품 등록
+                        </button>
                     </div>
                     <!--======================-->
                     <!-- 11. 현재 등록 되어있는 상품 수량 -->

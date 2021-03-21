@@ -39,6 +39,7 @@ public class ItemService {
                 .description(itemForm.getDescription())
                 .itemImage(itemForm.getItemImage())
                 .CreatedAt(LocalDateTime.now())
+                .genderType(itemForm.getGenderType())
                 .build();
 
         itemRepository.save(item);
