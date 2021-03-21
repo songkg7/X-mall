@@ -229,7 +229,7 @@
                     </div>
                 </div>
                 <!---------------------------------------------------->
-                <form>
+                <form th:action="@{/mypage/my_createForm}" th:object="${form}" method="post">
                     <div class="no_item1">
                         <h3>상품을 사용해보셨나요?</h3>
                         <!---------------------------------------------------->
@@ -245,8 +245,8 @@
                         <!---------------------------------------------------->
                         <h3>어떤 점이 좋았나요?</h3>
                         <!---------------------------------------------------->
-
-                        <textarea placeholder="구매한 상품 만족도에 대한 후기를 남겨주세요.(최소 10자 이상)" minlength="10" maxlength="500"></textarea>
+                        <input type="text" th:field="*{subject}" placeholder="제목을 작성해주세요">
+                        <textarea th:field="*{mainText}" placeholder="구매한 상품 만족도에 대한 후기를 남겨주세요.(최소 10자 이상)" minlength="10" maxlength="500"></textarea>
 
                         <!---------------------------------------------------->
                         <div class="parent">

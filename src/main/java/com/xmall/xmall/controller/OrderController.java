@@ -37,14 +37,10 @@ public class OrderController {
 
         // 선택한 상품 갯수 전달
         model.addAttribute("amount", amount);
-
         // 바로구매로 진입하면 선택한 아이템 찾아오기
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute(item));
-
-
         // TODO: 배송지 정보 받아오기
-
         return "order/payment-test";
     }
 
@@ -56,7 +52,6 @@ public class OrderController {
 
         Optional<Item> byId = itemRepository.findById(itemId);
         byId.ifPresent(item -> orderService.order(item, account, amount));
-
         return "redirect:/my_page";
     }
 

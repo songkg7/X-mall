@@ -33,7 +33,6 @@ public class ItemController {
         long totalCount = itemRepository.count();
         model.addAttribute(new ItemForm());
         model.addAttribute("totalCount", totalCount);
-
         return "items/create-item";
     }
 
@@ -56,9 +55,7 @@ public class ItemController {
     @GetMapping("/items/{id}/edit")
     public String updateItem(@PathVariable Long id, Model model) {
         Item item = itemRepository.findById(id).get();
-
         model.addAttribute(item);
-
         return "items/update-item";
     }
 
@@ -83,7 +80,6 @@ public class ItemController {
     public String items(Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
-
         return "items/item-list";
     }
 
@@ -94,13 +90,10 @@ public class ItemController {
     public String itemInfo(@PathVariable Long id, Model model) {
         // null check 필요, Optional 을 사용하는게 좋을수도 있다.
         Item item = itemRepository.findById(id).get();
-
         if (item == null) {
             return "error";
         }
-
         model.addAttribute("item", item);
-
         return "items/item-info";
     }
 }
