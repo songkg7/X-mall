@@ -36,7 +36,7 @@ public class ItemController {
         return "items/create-item";
     }
 
-    @PostMapping(value="/items/create-item", produces="application/json;charset=UTF-8")
+    @PostMapping(value="/items/create-item")
     public String createItem(@Valid ItemForm itemForm, Errors errors, @RequestParam MultipartFile itemImage2) throws Exception {
         if (errors.hasErrors()) {
             return "items/create-item";
@@ -59,7 +59,7 @@ public class ItemController {
         return "items/update-item";
     }
 
-    @PostMapping(value="/items/{id}/edit", produces="application/json;charset=UTF-8")
+    @PostMapping(value="/items/{id}/edit")
     public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm, @RequestParam MultipartFile itemImage2) throws Exception {
         itemService.update(id, itemForm, itemImage2);
 
