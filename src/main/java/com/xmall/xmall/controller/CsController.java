@@ -73,12 +73,12 @@ public class CsController {
 
         if (account!=null) {
             // 로그인한 사용자가 작성자인지 확인
-            if (account.getId().equals(cs_board.getId())) {
+            if (account.getId().equals(cs_board.getAccount().getId())) {
                 // 수정 버튼을 클릭할 경우 표시해줄 value 세팅
                 model.addAttribute("cs_board", cs_board);
                 return "cs/cs_updelForm";
             } else {
-                return "redirect:/cs_board";
+                return "redirect:/cs/cs_board";
             }
         }
 
