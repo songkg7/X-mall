@@ -149,4 +149,25 @@ public class AccountService implements UserDetailsService {
         return new UserAccount(account, authority);
 
     }
+
+    public void sendLoginLink(Account account) {
+        Context context = new Context();
+        context.setVariable("link", "/check-email-token?token=" +
+                account.getEmailCheckToken() +
+                "&email=" + account.getEmail());
+        context.setVariable("nickname", account.getNickname());
+        context.setVariable("linkName", "X-mall Login");
+        context.setVariable("message", "로그인하려면 아래 링크를 클릭하세요");
+        context.setVariable("host", appProperties.getHost());
+
+        String message = templateEngine.process("mail/simple-link", context);
+
+        EmailMessage emailMessage = EmailMessage.builder()
+                .to(account.getEmail())
+                .subject("X-mall, Login link")
+                .message(message)
+                .build();
+
+        emailService.sendEmail(emailMessage);
+    }
 }

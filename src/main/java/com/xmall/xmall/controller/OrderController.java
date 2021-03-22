@@ -60,4 +60,12 @@ public class OrderController {
         return "order/payment-test2";
     }
 
+    @PostMapping("order/{id}/cancel")
+    public String cancelOrder(@CurrentAccount Account account, @PathVariable("id") Long orderId, Model model){
+        model.addAttribute(account);
+        orderService.cancelOrder(orderId);
+        return "redirect:/my_page";
+    }
+
+
 }
