@@ -10,7 +10,9 @@ import javax.persistence.*;
 import com.sun.istack.NotNull;
 import java.time.LocalDateTime;
 
+// table create
 @Entity
+
 @Getter
 @Setter
 public class My_Review {

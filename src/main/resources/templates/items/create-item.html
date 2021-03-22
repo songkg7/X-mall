@@ -710,7 +710,8 @@
             $('#men, #women, #kids, #unisex').click(function () {
                 // $(this).not($(this)).css("background","white");
                 // $(this).css("background","deeppink");
-                $('#gender').val($(this).text());
+                var click_id = $(this).attr('id');
+                $('#gender').val(click_id);
             });
 
             //-----------------------------
@@ -719,36 +720,40 @@
             $('#top, #pants, #shoes').click(function () {
                 // $(this).not($(this)).css("background","white");
                 // $(this).css("background","deeppink");
-                $('#category').val($(this).text());
+                var click_id = $(this).attr('id');
+                $('#category').val(click_id);
             });
 
             //-----------------------------
             // 4. 상의사이즈 클릭시 상의사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').click(function () {
+            $('#85XS, #90S, #95M, #100L, #105XL, #1102XL').click(function () {
                 // $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').css("background","white");
                 // $(this).css("background","deeppink");
-                $('#top_size').val($(this).text());
+                var click_id = $(this).attr('id');
+                $('#top_size').val(click_id);
                 alt6.hide();
                 alt7.show();
             });
             //-----------------------------
             // 5. 하의사이즈 클릭시 하의사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').click(function () {
+            $('#26, #28, #30, #32, #34, #36').click(function () {
                 // $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').css("background","white");
                 // $(this).css("background","deeppink");
-                $('#pants_size').val($(this).text());
+                var click_id = $(this).attr('id');
+                $('#pants_size').val(click_id);
                 alt6.hide();
                 alt7.show();
             });
             //-----------------------------
             // 6. 신발사이즈 클릭시 신발사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290')
+            $('#225, #230, #235, #240, #245, #250, #255, #260, #265, #270, #275, #280, #285, #290')
                 .click(function () {
                     // $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290').css("background","white");
-                    $('#shoes_size').val($(this).text());
+                    var click_id = $(this).attr('id');
+                    $('#shoes_size').val(click_id);
                     alt6.hide();
                     alt7.show();
                 });
@@ -921,14 +926,14 @@
                 $("#amount").val("");
                 $("#amount").focus();
                 return;
-                alert("왜안돼.3");
+
             } else if (check_price(amount.val()) === false) {
                 $("#amount").css("border-color", "deeppink")
                 alt7.hide();
                 alt7_1.show();
                 $("#amount").focus();
                 return;
-                alert("왜안돼.2");
+
             } else {
                 $("#amount").css("border-color", "deepskyblue")
                 alt7.hide();
@@ -941,11 +946,11 @@
                 $("#description").css("border-color", "deeppink");
                 alt8.show();
                 return;
-                alert("왜안돼.1");
+
             } else {
                 $("#description").css("border-color", "deepskyblue");
                 alt8.hide();
-                alert("왜안돼.");
+
                 document.itemRegisterForm.submit();
             }
         }
@@ -1043,7 +1048,7 @@
                             <div class="size_cell" id="kids"><p>아동</p></div>
                             <div class="size_cell" id="unisex"><p>남녀공용</p></div>
                             <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
-                            <input type="hidden" id="genderType" th:name="*{genderType}" value="">
+                            <input type="text" id="gender" name="gender" value="">
                         </div>
                     </div>
 
@@ -1063,7 +1068,7 @@
                             <div class="size_cell" id="pants"><p>하의</p></div>
                             <div class="size_cell" id="shoes"><p>신발</p></div>
                             <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
-                            <input type="hidden" id="category" name="category" value="">
+                            <input type="text" id="category" name="category" value="">
                         </div>
                     </div>
 
@@ -1078,42 +1083,42 @@
                     <div class="table_div">
                         <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                         <div class="size_table" id="top_size_table">
-                            <div class="size_cell" id="85xs"><p>85(XS)</p></div>
-                            <div class="size_cell" id="90s"><p>90(S)</p></div>
-                            <div class="size_cell" id="95m"><p>95(M)</p></div>
-                            <div class="size_cell" id="100l"><p>100(L)</p></div>
-                            <div class="size_cell" id="105xl"><p>105(XL)</p></div>
-                            <div class="size_cell" id="1102xl"><p>110(2XL)</p></div>
+                            <div class="size_cell" id="85(XS)"><p>85XS</p></div>
+                            <div class="size_cell" id="90(S)"><p>90S</p></div>
+                            <div class="size_cell" id="95(M)"><p>95M</p></div>
+                            <div class="size_cell" id="100(L)"><p>100L</p></div>
+                            <div class="size_cell" id="105(XL)"><p>105XL</p></div>
+                            <div class="size_cell" id="110(2XL)"><p>1102XL</p></div>
                             <!--input 타입으로 숨겨서 상의(top_size) 벨류 값 전송-->
-                            <input type="hidden" id="top_size" name="top_size" value="">
+                            <input type="text" id="top_size" name="top_size" value="">
                         </div>
                         <div class="size_table" id="pants_size_table">
-                            <div class="size_cell" id="pnats26"><p>26</p></div>
-                            <div class="size_cell" id="pnats28"><p>28</p></div>
-                            <div class="size_cell" id="pnats30"><p>30</p></div>
-                            <div class="size_cell" id="pnats32"><p>32</p></div>
-                            <div class="size_cell" id="pnats34"><p>34</p></div>
-                            <div class="size_cell" id="pnats36"><p>36</p></div>
+                            <div class="size_cell" id="26"><p>26</p></div>
+                            <div class="size_cell" id="28"><p>28</p></div>
+                            <div class="size_cell" id="30"><p>30</p></div>
+                            <div class="size_cell" id="32"><p>32</p></div>
+                            <div class="size_cell" id="34"><p>34</p></div>
+                            <div class="size_cell" id="36"><p>36</p></div>
                             <!--input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송-->
-                            <input type="hidden" id="pants_size" name="pants_size" value="">
+                            <input type="text" id="pants_size" name="pants_size" value="">
                         </div>
                         <div class="size_table" id="shoes_size_table">
-                            <div class="size_cell" id="shoes225"><p>225</p></div>
-                            <div class="size_cell" id="shoes230"><p>230</p></div>
-                            <div class="size_cell" id="shoes235"><p>235</p></div>
-                            <div class="size_cell" id="shoes240"><p>240</p></div>
-                            <div class="size_cell" id="shoes245"><p>245</p></div>
-                            <div class="size_cell" id="shoes250"><p>250</p></div>
-                            <div class="size_cell" id="shoes255"><p>255</p></div>
-                            <div class="size_cell" id="shoes260"><p>260</p></div>
-                            <div class="size_cell" id="shoes265"><p>265</p></div>
-                            <div class="size_cell" id="shoes270"><p>270</p></div>
-                            <div class="size_cell" id="shoes275"><p>275</p></div>
-                            <div class="size_cell" id="shoes280"><p>280</p></div>
-                            <div class="size_cell" id="shoes285"><p>285</p></div>
-                            <div class="size_cell" id="shoes290"><p>290</p></div>
+                            <div class="size_cell" id="225"><p>225</p></div>
+                            <div class="size_cell" id="230"><p>230</p></div>
+                            <div class="size_cell" id="235"><p>235</p></div>
+                            <div class="size_cell" id="240"><p>240</p></div>
+                            <div class="size_cell" id="245"><p>245</p></div>
+                            <div class="size_cell" id="250"><p>250</p></div>
+                            <div class="size_cell" id="255"><p>255</p></div>
+                            <div class="size_cell" id="260"><p>260</p></div>
+                            <div class="size_cell" id="265"><p>265</p></div>
+                            <div class="size_cell" id="270"><p>270</p></div>
+                            <div class="size_cell" id="275"><p>275</p></div>
+                            <div class="size_cell" id="280"><p>280</p></div>
+                            <div class="size_cell" id="285"><p>285</p></div>
+                            <div class="size_cell" id="290"><p>290</p></div>
                             <!--input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송-->
-                            <input type="hidden" id="shoes_size" name="shoes_size" value="">
+                            <input type="text" id="shoes_size" name="shoes_size" value="">
                         </div>
                     </div>
                     <div style="clear: both"></div>
