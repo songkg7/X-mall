@@ -39,4 +39,11 @@ public class OrderService {
         // 주문 생성
         orderRepository.save(order);
     }
+
+    // 취소
+    public void cancelOrder(Long orderId){
+        // 주문 엔테티 조회
+        Optional<Order> orderList = orderRepository.findById(orderId);
+        orderList.ifPresent(Order::cancel);
+    }
 }

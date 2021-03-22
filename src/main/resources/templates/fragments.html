@@ -1095,7 +1095,7 @@
 
 <div class="bottom_line" th:fragment="userId">
     <img class="user_img" src="../images/icon/user.png"/>
-    <h4 th:text="|${account.getNickname()} 님|">사용자</h4>
+    <h4 th:text="|${account?.getNickname()} 님|">사용자</h4>
 </div>
 
 
