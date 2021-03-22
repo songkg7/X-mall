@@ -90,7 +90,7 @@ public class CsController {
     public String updelForm(@PathVariable Long boardId, @ModelAttribute("cs_board") BoardCreateForm form) {
 
         csBoardService.update(boardId, form.getSubject(), form.getMainText());
-        return "redirect:/cs_board";
+        return "redirect:/cs/cs_board";
     }
 
 
