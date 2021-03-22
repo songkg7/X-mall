@@ -2,6 +2,7 @@ package com.xmall.xmall.domain;
 
 import com.xmall.xmall.exception.NotEnoughStockException;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -48,10 +49,12 @@ public class Item {
 
 
     // 상품 상세설명
-    @Lob
+//    @Lob
+    @Column(columnDefinition="TEXT")
     private String description;
 
-    @Lob
+//    @Lob
+    @Column(columnDefinition="TEXT")
     private String itemImage;
 
     // 상품 등록일
