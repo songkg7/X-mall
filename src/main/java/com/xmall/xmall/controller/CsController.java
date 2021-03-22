@@ -93,7 +93,12 @@ public class CsController {
         return "redirect:/cs/cs_board";
     }
 
-
+    // board delete
+    @GetMapping("/cs/{boardId}/delete")
+    public String delete(@PathVariable Long boardId) {
+        csBoardService.delete(boardId);
+        return "redirect:/cs/cs_board";
+    }
 
 
 
