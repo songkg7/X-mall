@@ -27,4 +27,6 @@ public class ItemForm {
 
     private String genderType;
 
+    private String categoryType;
+
 }

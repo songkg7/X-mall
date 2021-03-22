@@ -37,15 +37,17 @@ public class Item {
     // TODO: ENUM type 으로 받을지 고민해보기
     private String genderType;
 
+    private String categoryType;
+
 
     // TODO: Size 선택 옵션에 대해서 생각해보기
     // 사이즈
 //    private List<Size> sizes = new ArrayList<>();
-    private String topSize;
-
-    private String shoesSize;
-
-    private String pantsSize;
+//    private String topSize;
+//
+//    private String shoesSize;
+//
+//    private String pantsSize;
 
 
     // 상품 상세설명

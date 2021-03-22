@@ -40,6 +40,7 @@ public class ItemService {
                 .itemImage(itemForm.getItemImage())
                 .CreatedAt(LocalDateTime.now())
                 .genderType(itemForm.getGenderType())
+                .categoryType(itemForm.getCategoryType())
                 .build();
 
         itemRepository.save(item);
@@ -57,14 +58,14 @@ public class ItemService {
         new FileUpload().delete(fileUploadDir + itemImageName);
     }
 
-    public void update(Long id, ItemForm itemForm, MultipartFile itemImage2) throws Exception {
-        FileUpload fileUpload = null;
-
-        if (itemImage2 != null && !itemImage2.isEmpty()) {
-            fileUpload = new FileUpload(itemImage2, fileUploadDir, itemForm.getItemImage());
-
-            itemForm.setItemImage(fileUpload.getNewFileName());
-        }
+    public void update(Long id, ItemForm itemForm) {
+//        FileUpload fileUpload = null;
+//
+//        if (itemImage2 != null && !itemImage2.isEmpty()) {
+//            fileUpload = new FileUpload(itemImage2, fileUploadDir, itemForm.getItemImage());
+//
+//            itemForm.setItemImage(fileUpload.getNewFileName());
+//        }
 
         Item item = itemRepository.findById(id).get();
 
@@ -74,9 +75,11 @@ public class ItemService {
         item.setStockQuantity(itemForm.getStockQuantity());
         item.setItemImage(itemForm.getItemImage());
         item.setDescription(itemForm.getDescription());
+        item.setGenderType(itemForm.getGenderType());
+        item.setCategoryType(itemForm.getCategoryType());
 
-        if (itemImage2 != null && !itemImage2.isEmpty()) {
-            fileUpload.upLoadFile();
-        }
+//        if (itemImage2 != null && !itemImage2.isEmpty()) {
+//            fileUpload.upLoadFile();
+//        }
     }
 }
