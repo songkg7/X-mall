@@ -586,6 +586,33 @@
                 $('#shoes_size_table').show();
             });
 
+
+            var cate = $(".thisCate").val();
+            var gender = $(".thisGender").val();
+
+            if (gender === "men") {
+                $("#men").addClass("selected");
+            }
+            else if (gender === "women") {
+                $("#women").addClass("selected");
+            }
+            else if (gender === "kids") {
+                $("#kids").addClass("selected");
+            }
+            else {
+                $("#unisex").addClass("selected");
+            }
+
+            if (cate === "top") {
+                $("#top").addClass("selected");
+            }
+            else if (cate === "pants") {
+                $("#pants").addClass("selected");
+            }
+            else {
+                $("#shoes").addClass("selected");
+            }
+
             //-----------------------------
             // 2. 성별 클릭시 성별값을 히든 input text에 담기
             //-----------------------------
@@ -659,6 +686,10 @@
     <main>
     <!------------------->
         <div class="main">
+<!--            수정 처음 성별, 카테고리를 체크하기 위한 hidden value-->
+            <input type="hidden" class="thisGender" th:value="${item.getGenderType()}">
+            <input type="hidden" class="thisCate" th:value="${item.getCategoryType()}">
+
             <!--------------------- form 태그 선언 --------------------->
             <form th:action="@{/items/{id}/edit (id=${item.id})}" enctype="multipart/form-data" th:object="${item}" method="post">
 <!--                <input type="hidden" th:field="*{id}">-->
@@ -732,7 +763,7 @@
                             <div class="size_cell" id="kids"><p>아동</p></div>
                             <div class="size_cell" id="unisex"><p>남녀공용</p></div>
                             <!--input 타입으로 숨겨서 성별(gender) 벨류 값 전송-->
-                            <input type="text" id="gender" name="gender" th:field="*{genderType}" th:value="${item.getGenderType()}">
+                            <input type="hidden" id="gender" name="gender" th:field="*{genderType}" th:value="${item.getGenderType()}">
                         </div>
                     </div>
                     <div style="clear: both"></div>
@@ -749,7 +780,7 @@
                             <div class="size_cell" id="pants"><p>하의</p></div>
                             <div class="size_cell" id="shoes"><p>신발</p></div>
                             <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
-                            <input type="text" id="category" name="category" th:field="*{categoryType}" th:value="${item.getCategoryType()}">
+                            <input type="hidden" id="category" name="category" th:field="*{categoryType}" th:value="${item.getCategoryType()}">
                         </div>
                     </div>
                     <div style="clear: both"></div>
