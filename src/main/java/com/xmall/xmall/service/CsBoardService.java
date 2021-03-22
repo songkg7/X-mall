@@ -21,4 +21,24 @@ public class CsBoardService {
 
     }
 
+    @Transactional
+    public void updateViewCount(Long board_id) {
+
+        Cs_Board cs_board = csBoardRespository.findById(board_id).get();
+
+        cs_board.setViewCount(cs_board.getViewCount() + 1);
+    }
+
+    // 게시물 수정
+    @Transactional
+    public void update(Long boardId, String subject, String mainText) {
+        Cs_Board cs_board = csBoardRespository.findById(boardId).get();
+        cs_board.setSubject(subject);
+        cs_board.setMainText(mainText);
+
+        // save 명령은 불필요하다
+//        boardRepository.save(board);
+
+    }
+
 }
