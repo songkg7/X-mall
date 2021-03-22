@@ -10,7 +10,6 @@ import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.OrderRepository;
 import com.xmall.xmall.repository.MyReviewRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -98,7 +97,7 @@ public class MyPageController {
     @GetMapping("/return_cancle")
     public String oreturn_cancle(@CurrentAccount Account account, Model model) {
         model.addAttribute(account);
-        return "mypage/return_cancle";
+        return "return_cancel";
     }
 
     // 비밀번호 변경

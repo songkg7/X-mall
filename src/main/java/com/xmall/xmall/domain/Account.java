@@ -74,7 +74,7 @@ public class Account {
 
     // token 값 검증
     public boolean isValidToken(String token) {
-        return !this.emailCheckToken.equals(token);
+        return this.emailCheckToken.equals(token);
     }
 
     // email 전송 시간 비교

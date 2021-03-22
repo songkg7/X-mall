@@ -69,7 +69,7 @@ public class AccountController {
             return "account/checkedEmail";
         }
 
-        if (account.isValidToken(token)) {
+        if (!account.isValidToken(token)) {
             model.addAttribute("error", "wrong.email");
             return "account/checkedEmail";
         }
@@ -99,6 +99,32 @@ public class AccountController {
 
         accountService.sendSignUpConfirmEmail(account);
         return "redirect:/";
+    }
+
+    // Password 없이 로그인 기능
+    @GetMapping("email-login")
+    public String emailLoginForm() {
+        return "account/email-login";
+    }
+
+    @PostMapping("email-login")
+    public String sendEmailLoginLink(String email, Model model, RedirectAttributes attributes) {
+        Account findAccount = accountRepository.findByEmail(email);
+
+        if (findAccount == null) {
+            model.addAttribute("error", "유효한 이메일 주소가 아닙니다.");
+            return "account/email-login";
+        }
+
+        // email 반복 전송 방지
+        if (!findAccount.canSendConfirmEmail()) {
+            model.addAttribute("error", "이메일은 1시간에 한 번만 보낼 수 있습니다.");
+            return "account/email-login";
+        }
+
+        accountService.sendLoginLink(findAccount);
+        attributes.addFlashAttribute("message", "이메일 인증 메일을 발송했습니다.");
+        return "redirect:/email-login";
     }
 
 //    비밀번호 변경
