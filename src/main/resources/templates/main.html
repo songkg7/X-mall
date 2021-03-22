@@ -82,7 +82,7 @@
 <!-- header nav body 수입경로 -->
 <body>
 <header th:replace="fragments.html :: nav-bar"></header>
-<div class="alert alert-warning" role="alert" th:if="${account != null && !account?.emailVerified}">
+<div class="alert alert-warning" role="alert" th:if="${account != null && !account.emailVerified}">
     X-mall 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}"
                         class="alert-link">계정 인증 이메일을 확인</a>하세요.
 </div>
