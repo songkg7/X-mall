@@ -1,10 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="/css/khs/as.css" />
 </head>
 <body>
+<header th:replace="fragments.html :: nav-bar"></header>
+<main>
+    <div class="all_Form">
+        <div class="blank"></div>
+        <div class="as_menuform">
+            <ul >
+                <li class="listyle">
+                    <strong>자주 찾는 내용</strong>
+                    <ul>
+                        <li><a href="/cs/notice">공지사항</a></li>
+                        <li><a href="/cs/member_service" >회원혜택/서비스</a></li>
+                        <li><a href="/cs/asview" >A/S</a></li>
+                        <li><a href="/cs/order_file" >주문결제</a></li>
+                        <li><a href="/cs/member_info" >회원정보</a></li>
+                        <li><a href="/cs/cancel_refund" >취소/반품</a></li>
+                        <li><a href="/cs/delivery" >배송</a></li>
+                    </ul>
+                </li>
+                <li class="listyle" >
+                    <strong>나의 정보 조회</strong>
+                    <ul>
+                        <li><a href="" >주문내역 조회</a></li>
+                        <li><a href="" >배송조회</a></li>
+                        <li><a href="" >반품 신청</a></li>
+                        <li><a href="" >아이디 찾기</a></li>
+                        <li><a href="" >패스워드 찾기</a></li>
+                    </ul>
+                </li>
+                <li class="listyle" >
+                    <strong>서비스 안내</strong>
+                    <ul>
+                        <li><a href="/cs/cs_board" >1:1 문의</a></li>
+                        <li><a href="/cs/member_service" >회원 혜택</a></li>
+                        <li><a href="/cs/refund_service" >무료 반품 서비스</a></li>
+                    </ul>
+                </li>
 
+
+            </ul>
+        </div>
+        <div class="as_boardform">
+            <div style="background-color: white;text-align:left; " >
+                <h2>1:1 문의</h2>
+                <form  th:action="@{/cs/{id}/edit (id=${cs_board.id})}" th:object="${cs_board}" method="post">
+
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="form-group">
+                        <label th:for="subject">제목</label>
+                        <input type="text" th:field="*{subject}" class="form-control"
+                               th:value="${cs_board.getSubject()}">
+                    </div>
+
+                    <div class="form-group">
+                        <label th:for="mainText">본문</label>
+                        <textarea cols="80" type="" th:field="*{mainText}" class="form-control" th:text="${cs_board.getMainText()}"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <div class="write_btn">
+                    <a href="/cs/cs_createForm">글쓰기</a>
+                    <a href="#" th:href="@{/cs/{id}/edit (id=${cs_board.id})}"
+                       class="btn btn-primary" role="button">수정</a>
+                    <a href="#" th:href="@{/cs/{id}/delete (id=${cs_board.id})}"
+                       class="btn btn-danger" role="button">삭제</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="imgcenter" style="background:white;">
+            <font size="2em">
+                <p><img src="/images/icon/phone.jpg"/></p>
+                <h3>전화 문의</h3>
+                <p>000-000-0000</p>
+                <p>월~일 오전 9시 ~오후 8시</p>
+                <p><img src="/images/icon/message.png"/></p>
+                <h3> 1:1 채팅서비스</h3>
+                <p><a href="" class="chatmoon">1:1 채팅 문의하기</a></p>
+            </font>
+        </div>
+
+        <div style="background:white;"></div>
+    </div>
+
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+<footer th:replace="fragments.html :: footer-body"></footer>
 </body>
 </html>
