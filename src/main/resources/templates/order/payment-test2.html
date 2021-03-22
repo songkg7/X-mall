@@ -269,9 +269,10 @@
                 <div>
                   <label>수량: </label><span th:text="${amount}"></span>
                 </div>
-                <div>
-                  <label>사이즈: </label><span th:text="${item.getTopSize()}"></span>
-                </div>
+                <!--<div>
+                사이즈 받는 데이터 값 있어야함
+                  <label>사이즈: </label><span th:text="${item.getName()}"></span>
+                </div>-->
                 <div>
                   <label>총 결제 금액: </label><span th:text="${item.getPrice() * amount} + 원"></span>
                 </div>
@@ -317,7 +318,6 @@
           <!--+++++++++++++++++++++++++++++++++++-->
           <!-- 주의사항 -->
           <div class="precautions_sub">
-            <div class="precautions"></div>
             <p><span>●</span> 장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
               보관됩니다.</p>
             <p><span>●</span> 프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</p>
