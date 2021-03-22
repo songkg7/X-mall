@@ -69,7 +69,7 @@ public class AccountController {
             return "account/checkedEmail";
         }
 
-        if (account.isValidToken(token)) {
+        if (!account.isValidToken(token)) {
             model.addAttribute("error", "wrong.email");
             return "account/checkedEmail";
         }
