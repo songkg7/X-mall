@@ -60,8 +60,8 @@ public class ItemController {
     }
 
     @PostMapping(value="/items/{id}/edit")
-    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm, @RequestParam MultipartFile itemImage2) throws Exception {
-        itemService.update(id, itemForm, itemImage2);
+    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm)  {
+        itemService.update(id, itemForm);
 
         return "redirect:/";
     }

@@ -41,4 +41,12 @@ public class CsBoardService {
 
     }
 
+    // 게시물 삭제
+    @Transactional
+    public void delete(Long boardId) {
+        Cs_Board cs_board = csBoardRespository.findById(boardId).get();
+
+        csBoardRespository.delete(cs_board);
+    }
+
 }
