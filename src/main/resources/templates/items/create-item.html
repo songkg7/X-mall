@@ -994,11 +994,11 @@
                         <!-- 1. 제품 카테고리 설정-->
                         <!--======================-->
                         <p class="p_1">
-                            <span>카테고리 명</span>
+                            <span>제품 소제목</span>
                             <input type="text" id="category_name" th:field="*{subTitle}"
-                                   placeholder="카테고리를 입력하세요">
+                                   placeholder="제품 소제목을 입력하세요">
                         </p>
-                        <span id="alt_1">카테고리를 입력해주세요</span>
+                        <span id="alt_1">제품 소제목을 입력해주세요</span>
 
                         <!--======================-->
                         <!-- 2. 제품명 설정-->
@@ -1068,7 +1068,7 @@
                             <div class="size_cell" id="pants"><p>하의</p></div>
                             <div class="size_cell" id="shoes"><p>신발</p></div>
                             <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
-                            <input type="text" id="category" name="category" value="">
+                            <input type="hidden" id="category" name="category" th:field="*{categoryType}">
                         </div>
                     </div>
 
@@ -1077,52 +1077,52 @@
                     <!--======================-->
                     <!-- 7. 사이즈 설정 -->
                     <!--======================-->
-                    <div class="select_div">
-                        <p>사이즈 선택</p>
-                    </div>
-                    <div class="table_div">
-                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
-                        <div class="size_table" id="top_size_table">
-                            <div class="size_cell" id="85XS"><p>85XS</p></div>
-                            <div class="size_cell" id="90S"><p>90S</p></div>
-                            <div class="size_cell" id="95M"><p>95M</p></div>
-                            <div class="size_cell" id="100L"><p>100L</p></div>
-                            <div class="size_cell" id="105XL"><p>105XL</p></div>
-                            <div class="size_cell" id="1102XL"><p>1102XL</p></div>
-                            <!--input 타입으로 숨겨서 상의(top_size) 벨류 값 전송-->
-                            <input type="text" id="top_size" name="top_size" value="">
-                        </div>
-                        <div class="size_table" id="pants_size_table">
-                            <div class="size_cell" id="26"><p>26</p></div>
-                            <div class="size_cell" id="28"><p>28</p></div>
-                            <div class="size_cell" id="30"><p>30</p></div>
-                            <div class="size_cell" id="32"><p>32</p></div>
-                            <div class="size_cell" id="34"><p>34</p></div>
-                            <div class="size_cell" id="36"><p>36</p></div>
-                            <!--input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송-->
-                            <input type="text" id="pants_size" name="pants_size" value="">
-                        </div>
-                        <div class="size_table" id="shoes_size_table">
-                            <div class="size_cell" id="225"><p>225</p></div>
-                            <div class="size_cell" id="230"><p>230</p></div>
-                            <div class="size_cell" id="235"><p>235</p></div>
-                            <div class="size_cell" id="240"><p>240</p></div>
-                            <div class="size_cell" id="245"><p>245</p></div>
-                            <div class="size_cell" id="250"><p>250</p></div>
-                            <div class="size_cell" id="255"><p>255</p></div>
-                            <div class="size_cell" id="260"><p>260</p></div>
-                            <div class="size_cell" id="265"><p>265</p></div>
-                            <div class="size_cell" id="270"><p>270</p></div>
-                            <div class="size_cell" id="275"><p>275</p></div>
-                            <div class="size_cell" id="280"><p>280</p></div>
-                            <div class="size_cell" id="285"><p>285</p></div>
-                            <div class="size_cell" id="290"><p>290</p></div>
-                            <!--input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송-->
-                            <input type="text" id="shoes_size" name="shoes_size" value="">
-                        </div>
-                    </div>
-                    <div style="clear: both"></div>
-                    <div id="alt_6">사이즈를 선택해주세요</div>
+<!--                    <div class="select_div">-->
+<!--                        <p>사이즈 선택</p>-->
+<!--                    </div>-->
+<!--                    <div class="table_div">-->
+<!--                        &lt;!&ndash;  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기&ndash;&gt;-->
+<!--                        <div class="size_table" id="top_size_table">-->
+<!--                            <div class="size_cell" id="85XS"><p>85XS</p></div>-->
+<!--                            <div class="size_cell" id="90S"><p>90S</p></div>-->
+<!--                            <div class="size_cell" id="95M"><p>95M</p></div>-->
+<!--                            <div class="size_cell" id="100L"><p>100L</p></div>-->
+<!--                            <div class="size_cell" id="105XL"><p>105XL</p></div>-->
+<!--                            <div class="size_cell" id="1102XL"><p>1102XL</p></div>-->
+<!--                            &lt;!&ndash;input 타입으로 숨겨서 상의(top_size) 벨류 값 전송&ndash;&gt;-->
+<!--                            <input type="text" id="top_size" name="top_size" value="">-->
+<!--                        </div>-->
+<!--                        <div class="size_table" id="pants_size_table">-->
+<!--                            <div class="size_cell" id="26"><p>26</p></div>-->
+<!--                            <div class="size_cell" id="28"><p>28</p></div>-->
+<!--                            <div class="size_cell" id="30"><p>30</p></div>-->
+<!--                            <div class="size_cell" id="32"><p>32</p></div>-->
+<!--                            <div class="size_cell" id="34"><p>34</p></div>-->
+<!--                            <div class="size_cell" id="36"><p>36</p></div>-->
+<!--                            &lt;!&ndash;input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송&ndash;&gt;-->
+<!--                            <input type="text" id="pants_size" name="pants_size" value="">-->
+<!--                        </div>-->
+<!--                        <div class="size_table" id="shoes_size_table">-->
+<!--                            <div class="size_cell" id="225"><p>225</p></div>-->
+<!--                            <div class="size_cell" id="230"><p>230</p></div>-->
+<!--                            <div class="size_cell" id="235"><p>235</p></div>-->
+<!--                            <div class="size_cell" id="240"><p>240</p></div>-->
+<!--                            <div class="size_cell" id="245"><p>245</p></div>-->
+<!--                            <div class="size_cell" id="250"><p>250</p></div>-->
+<!--                            <div class="size_cell" id="255"><p>255</p></div>-->
+<!--                            <div class="size_cell" id="260"><p>260</p></div>-->
+<!--                            <div class="size_cell" id="265"><p>265</p></div>-->
+<!--                            <div class="size_cell" id="270"><p>270</p></div>-->
+<!--                            <div class="size_cell" id="275"><p>275</p></div>-->
+<!--                            <div class="size_cell" id="280"><p>280</p></div>-->
+<!--                            <div class="size_cell" id="285"><p>285</p></div>-->
+<!--                            <div class="size_cell" id="290"><p>290</p></div>-->
+<!--                            &lt;!&ndash;input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송&ndash;&gt;-->
+<!--                            <input type="text" id="shoes_size" name="shoes_size" value="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div style="clear: both"></div>-->
+<!--                    <div id="alt_6">사이즈를 선택해주세요</div>-->
                     <!--======================-->
                     <!-- 8. 수량 설정 -->
                     <!--======================-->

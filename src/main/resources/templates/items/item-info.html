@@ -15,6 +15,21 @@
     <script>
         $(document).ready(function () {
 
+            $('#top_size_table').hide();
+            $('#pants_size_table').hide();
+            $('#shoes_size_table').hide();
+
+            var cate = $(".thisCate").val();
+            if (cate === "top") {
+                $('#top_size_table').show();
+            }
+            else if (cate === "pants") {
+                $('#pants_size_table').show();
+            }
+            else {
+                $('#shoes_size_table').show();
+            }
+
             //-----------------------------------------
             // 셀 개수만큼 반복하면서 셀을 클릭했을때 클릭한 셀에
             // 클릭한 셀의 css 클레스.sekected{background-color:black}추가
@@ -26,13 +41,15 @@
                     $(this).siblings().removeClass("selected");          //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
                 });
             });
-            //-----------------------------------------
-            // 사이즈 선택시 선택한 밸류값 input type text에 담기
-            //-----------------------------------------
-            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').click(function(){
+
+            //-----------------------------
+            // 4. 사이즈 클릭시 상의사이즈 값을 히든 input text로 담기
+            //-----------------------------
+            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl, #26, #28, #30, #32, #34, #36, #225, #230, #235, #240, #245, #250, #255, #260, #265, #270, #275, #280, #285, #290').click(function () {
                 // $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').css("background","white");
                 // $(this).css("background","deeppink");
-                $('#top_size').val($(this).text());
+                var click_id = $(this).attr('id');
+                $('#orderItemSize').val(click_id);
             });
 
         });
@@ -608,6 +625,10 @@
                         <p>사이즈 가이드</p>
                     </div>
                 </div>
+
+<!--                카테고리별 사이즈를 바꾸기 위한 hidden value-->
+                <input type="hidden" class="thisCate" th:value="${item.getCategoryType()}">
+
                 <div class="table_div">
                     <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                     <div  class="size_table" id="top_size_table">
@@ -618,41 +639,40 @@
                         <div class="size_cell" id="105xl"><p>105(XL)</p></div>
                         <div class="size_cell" id="1102xl"><p>110(2XL)</p></div>
                         <!--input 타입으로 숨겨서 상의(top_size) 벨류 값 전송-->
-                        <input type="text" id="top_size" name="top_size" value="">
                     </div>
-                    <div class="size_table" id="pants_size_table" style="display: none">
-                        <div class="size_cell" id="pnats26"><p>26</p></div>
-                        <div class="size_cell" id="pnats28"><p>28</p></div>
-                        <div class="size_cell" id="pnats30"><p>30</p></div>
-                        <div class="size_cell" id="pnats32"><p>32</p></div>
-                        <div class="size_cell" id="pnats34"><p>34</p></div>
-                        <div class="size_cell" id="pnats36"><p>36</p></div>
+                    <div class="size_table" id="pants_size_table">
+                        <div class="size_cell" id="26"><p>26</p></div>
+                        <div class="size_cell" id="28"><p>28</p></div>
+                        <div class="size_cell" id="30"><p>30</p></div>
+                        <div class="size_cell" id="32"><p>32</p></div>
+                        <div class="size_cell" id="34"><p>34</p></div>
+                        <div class="size_cell" id="36"><p>36</p></div>
                         <!--input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송-->
-                        <input type="text" id="pants_size" name="pants_size" value="">
                     </div>
-                    <div class="size_table" id="shoes_size_table" style="display: none">
-                        <div class="size_cell" id="shoes225"><p>225</p></div>
-                        <div class="size_cell" id="shoes230"><p>230</p></div>
-                        <div class="size_cell" id="shoes235"><p>235</p></div>
-                        <div class="size_cell" id="shoes240"><p>240</p></div>
-                        <div class="size_cell" id="shoes245"><p>245</p></div>
-                        <div class="size_cell" id="shoes250"><p>250</p></div>
-                        <div class="size_cell" id="shoes255"><p>255</p></div>
-                        <div class="size_cell" id="shoes260"><p>260</p></div>
-                        <div class="size_cell" id="shoes265"><p>265</p></div>
-                        <div class="size_cell" id="shoes270"><p>270</p></div>
-                        <div class="size_cell" id="shoes275"><p>275</p></div>
-                        <div class="size_cell" id="shoes280"><p>280</p></div>
-                        <div class="size_cell" id="shoes285"><p>285</p></div>
-                        <div class="size_cell" id="shoes290"><p>290</p></div>
+                    <div class="size_table" id="shoes_size_table">
+                        <div class="size_cell" id="225"><p>225</p></div>
+                        <div class="size_cell" id="230"><p>230</p></div>
+                        <div class="size_cell" id="235"><p>235</p></div>
+                        <div class="size_cell" id="240"><p>240</p></div>
+                        <div class="size_cell" id="245"><p>245</p></div>
+                        <div class="size_cell" id="250"><p>250</p></div>
+                        <div class="size_cell" id="255"><p>255</p></div>
+                        <div class="size_cell" id="260"><p>260</p></div>
+                        <div class="size_cell" id="265"><p>265</p></div>
+                        <div class="size_cell" id="270"><p>270</p></div>
+                        <div class="size_cell" id="275"><p>275</p></div>
+                        <div class="size_cell" id="280"><p>280</p></div>
+                        <div class="size_cell" id="285"><p>285</p></div>
+                        <div class="size_cell" id="290"><p>290</p></div>
                         <!--input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송-->
-                        <input type="text" id="shoes_size" name="shoes_size" value="">
                     </div>
                 </div>
                 <!--======================-->
                 <!-- 3. 수량 -->
                 <!--======================-->
                 <form method="get" th:action="@{/order/{id} (id=${item.id})}">
+                    <input type="hidden" id="orderItemSize" name="orderItemSize" value="">
+
                     <div class="count_div">
                         <div class="count_amount">수량</div>
                         <input

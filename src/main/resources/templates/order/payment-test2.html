@@ -44,7 +44,10 @@
           }
         });
       });
+      //------------------------------------------
       //주소 유효성 체크
+      //------------------------------------------
+
     </script>
   <!-- header footer css 수입경로-->
   <div th:replace="fragments.html :: fragment-footer-css"></div>
@@ -61,8 +64,12 @@
     <!-- main 부분 -->
     <!--+++++++++++++++++++++++++++++++++++-->
     <main>
-      <form>
+      <form th:action="@{/order/payment}" method="post" th:object="${item}">
+        <input type="hidden" th:name="itemId" th:value="${item.id}">
         <div class="padding_left">
+          <!--+++++++++++++++++++++++++++++++++++-->
+          <!--주문결제 확인 파트-->
+          <!--+++++++++++++++++++++++++++++++++++-->
           <div class="shop_order">주문 결제</div>
           <!--+++++++++++++++++++++++++++++++++++-->
           <div class="shop_customer">
@@ -78,6 +85,9 @@
             <div class="sub_line"></div>
             <!--+++++++++++++++++++++++++++++++++++-->
 
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <!--배송지 정보 파트-->
+            <!--+++++++++++++++++++++++++++++++++++-->
             <div class="shop_customer_sub_delivery">배송지 정보</div>
             <div class="text_left;">
               <input
@@ -88,7 +98,9 @@
                 checked="checked"
               />기존 배송지
             </div>
-            <!-- 기존 배송지 -->
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <!-- 기존 배송지 입력양식 -->
+            <!--+++++++++++++++++++++++++++++++++++-->
             <div>
               <div id="address" class="address1 text_left">
                 <input
@@ -116,9 +128,10 @@
                 />
               </div>
             </div>
-
             <div class="sub_line1"></div>
-            <!-- 신규 배송지 -->
+            <!--+++++++++++++++++++++++++++++++++++-->
+            <!--신규 배송지 입력 양식 -->
+            <!--+++++++++++++++++++++++++++++++++++-->
             <div class="shop_input">
               <input
                 type="radio"
@@ -151,6 +164,10 @@
                   placeholder="상세주소"
                 />
               </div>
+
+              <!--+++++++++++++++++++++++++++++++++++-->
+              <!--배송메모 입력양식 에 관한 파트-->
+              <!--+++++++++++++++++++++++++++++++++++-->
               <div class="select_memo">
                 <select name="memo" id="memo" class="select_box">
                   <option value="배송 메모를 선택해주세요.">
@@ -177,6 +194,9 @@
             <!--+++++++++++++++++++++++++++++++++++-->
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
+              <!--+++++++++++++++++++++++++++++++++++-->
+              <!--배송방식 공지 에 관한 파트 -->
+              <!--+++++++++++++++++++++++++++++++++++-->
               <div class="shop_agree">
                 <div class="sub_line"></div>
                 배송방식
@@ -199,6 +219,8 @@
         <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 
         <!--+++++++++++++++++++++++++++++++++++-->
+        <!--결제 방법 파트 -->
+        <!--+++++++++++++++++++++++++++++++++++-->
         <div class="payment">
           <div class="shop_customer_sub">결제 수단 선택</div>
           <!--+++++++++++++++++++++++++++++++++++-->
@@ -218,8 +240,11 @@
         </div>
         <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-        <button type="submit" class="send">주문 완료</button>
+        <button type="submit" class="send"  onclick="checkForm();">주문 완료</button>
       </form>
+      <!--+++++++++++++++++++++++++++++++++++-->
+      <!-- 주문 내역 확인 파트 -->
+      <!--+++++++++++++++++++++++++++++++++++-->
       <div class="order_list">
         <!--+++++++++++++++++++++++++++++++++++-->
         <div class="order_list_base">
@@ -233,14 +258,24 @@
               <div class="order_list_img">
                 <img src="./images/main_img/nike_m_s_air.jpg" />
               </div>
-              <div class="order_list_DB">
+              <div class="order_list_DB order_list_text_left">
                 <!--DB에서 가져오는 값-->
-                <div class="order_list_text_left">신발명</div>
-                <div class="order_list_text_left">스타일 코드</div>
-                <div class="order_list_text_left">사이즈 : 250</div>
-                <div class="order_list_text_left">수량 : 1개</div>
-                <!-- 가격은 DB에서 가져오는 값입니다.-->
-                <div class="order_list_text_left">가격</div>
+                <div>
+                  <label>선택한 상품 이름: </label><span th:text="${item.getName()}"></span>
+                </div>
+                <div>
+                  <label>상품가격: </label><span th:text="${item.getPrice()}"></span>
+                </div>
+                <div>
+                  <label>수량: </label><span th:text="${amount}"></span>
+                </div>
+                <!--<div>
+                사이즈 받는 데이터 값 있어야함
+                  <label>사이즈: </label><span th:text="${item.getName()}"></span>
+                </div>-->
+                <div>
+                  <label>총 결제 금액: </label><span th:text="${item.getPrice() * amount} + 원"></span>
+                </div>
               </div>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
@@ -283,22 +318,9 @@
           <!--+++++++++++++++++++++++++++++++++++-->
           <!-- 주의사항 -->
           <div class="precautions_sub">
-            <div class="precautions"></div>
-            <p>
-              <strong
-                >●장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과
-                혜택이 변동 될 수 있으며, 최대 30일 보관됩니다.</strong
-              >
-            </p>
-          </div>
-          <!--+++++++++++++++++++++++++++++++++++-->
-          <div class="precautions_pro">
-            <p>
-              <strong
-                >●프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수
-                있습니다.</strong
-              >
-            </p>
+            <p><span>●</span> 장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일
+              보관됩니다.</p>
+            <p><span>●</span> 프로모션 코드 사용에 따라 최종 결제 금액이 달라 질 수 있습니다.</p>
           </div>
         </div>
       </div>
