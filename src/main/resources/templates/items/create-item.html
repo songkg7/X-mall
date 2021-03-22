@@ -1247,7 +1247,8 @@
                         $currentItemImage.hide();
 
                         let $newImage = $(img);
-                        $newImage.cropper({aspectRatio: 1});
+                        // $newImage.cropper({aspectRatio: 1}); 다양한 옵션을 키벨류 값으로 적어줄 수 있다.
+                        $newImage.cropper({aspectRatio: NaN});
                         cropper = $newImage.data('cropper');
 
                         $cutBtn.show();
