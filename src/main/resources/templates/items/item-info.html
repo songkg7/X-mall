@@ -45,7 +45,7 @@
             //-----------------------------
             // 4. 사이즈 클릭시 상의사이즈 값을 히든 input text로 담기
             //-----------------------------
-            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl, #26, #28, #30, #32, #34, #36, #225, #230, #235, #240, #245, #250, #255, #260, #265, #270, #275, #280, #285, #290').click(function () {
+            $("#85XS, #90S, #95M, #100L, #105XL, #110XXL, #26, #28, #30, #32, #34, #36, #225, #230, #235, #240, #245, #250, #255, #260, #265, #270, #275, #280, #285, #290").click(function () {
                 // $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').css("background","white");
                 // $(this).css("background","deeppink");
                 var click_id = $(this).attr('id');
@@ -632,13 +632,12 @@
                 <div class="table_div">
                     <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                     <div  class="size_table" id="top_size_table">
-                        <div class="size_cell" id="85xs"><p>85(XS)</p></div>
-                        <div class="size_cell" id="90s"><p>90(S)</p></div>
-                        <div class="size_cell" id="95m"><p>95(M)</p></div>
-                        <div class="size_cell" id="100l"><p>100(L)</p></div>
-                        <div class="size_cell" id="105xl"><p>105(XL)</p></div>
-                        <div class="size_cell" id="1102xl"><p>110(2XL)</p></div>
-                        <!--input 타입으로 숨겨서 상의(top_size) 벨류 값 전송-->
+                        <div class="size_cell" id="85XS"><p>85(XS)</p></div>
+                        <div class="size_cell" id="90S"><p>90(S)</p></div>
+                        <div class="size_cell" id="95M"><p>95(M)</p></div>
+                        <div class="size_cell" id="100L"><p>100(L)</p></div>
+                        <div class="size_cell" id="105XL"><p>105(XL)</p></div>
+                        <div class="size_cell" id="110XXL"><p>110(2XL)</p></div>
                     </div>
                     <div class="size_table" id="pants_size_table">
                         <div class="size_cell" id="26"><p>26</p></div>
@@ -647,7 +646,6 @@
                         <div class="size_cell" id="32"><p>32</p></div>
                         <div class="size_cell" id="34"><p>34</p></div>
                         <div class="size_cell" id="36"><p>36</p></div>
-                        <!--input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송-->
                     </div>
                     <div class="size_table" id="shoes_size_table">
                         <div class="size_cell" id="225"><p>225</p></div>
@@ -664,7 +662,6 @@
                         <div class="size_cell" id="280"><p>280</p></div>
                         <div class="size_cell" id="285"><p>285</p></div>
                         <div class="size_cell" id="290"><p>290</p></div>
-                        <!--input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송-->
                     </div>
                 </div>
                 <!--======================-->
