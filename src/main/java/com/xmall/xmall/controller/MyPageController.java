@@ -1,18 +1,22 @@
 package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
+import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.domain.Order;
+import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.review.ReviewCreateForm;
 import com.xmall.xmall.service.MyReviewService;
-import com.xmall.xmall.review.My_Review;
+import com.xmall.xmall.review.MyReview;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.OrderRepository;
 import com.xmall.xmall.repository.MyReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -26,6 +30,8 @@ public class MyPageController {
     private final MyReviewService myReviewService;
     private final MyReviewRepository myReviewRepository;
     private final OrderRepository orderRepository;
+    private final ItemRepository itemRepository;
+
 
 
     // 최근 주문 내역     *url 로 접속해야 함
@@ -44,26 +50,32 @@ public class MyPageController {
 
     @GetMapping("/side_mypage")
     public String reviewList(Model model){
-        List<My_Review> reviewList = myReviewRepository.findAll();
+        List<MyReview> reviewList = myReviewRepository.findAll();
         model.addAttribute("reviewLists",reviewList);
         return "mypage/side_mypage";
     }
 
+    // 리뷰 작성
+    @GetMapping("/my_createForm/{itemId}/create")
+    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("itemId") Long itemId, Model model){
+        Item item = itemRepository.findById(itemId).get();
 
-    @GetMapping("/my_createForm")
-    public String my_createProc(@CurrentAccount Account account, Model model){
-        List<Order> orderLists = orderRepository.findByAccount(account);
         model.addAttribute(account);
-        model.addAttribute("orderLists", orderLists);
-        model.addAttribute("form",new ReviewCreateForm());
+        model.addAttribute(item);
+        model.addAttribute(new ReviewCreateForm());
+
         return "mypage/my_createForm";
     }
 
+    @PostMapping("/my_createForm/{itemId}/create")
+    public String reviewCreate(@CurrentAccount Account account, @PathVariable("itemId") Long itemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
+        Item item = itemRepository.findById(itemId).get();
 
-    @PostMapping("/my_createForm")
-    public String my_createForm(@Valid ReviewCreateForm form, @CurrentAccount Account account) {
-        myReviewService.create(account, form.getSubject(),form.getMainText());
-        return "redirect:/mypage/side_mypage";
+        myReviewService.create(account, form);
+
+        model.addAttribute(item);
+        model.addAttribute(account);
+        return "redirect:/my_page";
     }
 
 

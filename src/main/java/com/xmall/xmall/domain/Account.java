@@ -1,5 +1,6 @@
 package com.xmall.xmall.domain;
 
+import com.xmall.xmall.review.MyReview;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -56,6 +57,9 @@ public class Account {
     private boolean emailVerified;
 
     private LocalDateTime emailCheckTokenGeneratedAt;
+
+    @OneToMany(mappedBy = "account")
+    private List<MyReview> reviews = new ArrayList<>();
 
     // 가입한 날짜
     private LocalDateTime JoinedAt;
