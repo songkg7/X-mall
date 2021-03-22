@@ -12,18 +12,16 @@ import java.time.LocalDateTime;
 
 // table create
 @Entity
-
 @Getter
 @Setter
-public class My_Review {
+public class MyReview {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name="review_id")
     private Long id;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="account_id")
+    @ManyToOne
     private Account account; // 작성자
 
     @NotNull
@@ -38,15 +36,15 @@ public class My_Review {
     @Column(columnDefinition = "bigint default 0")
     private Long viewCount; // 조회수
 
-    public static My_Review createReview(Account account, String subject, String mainText) {
-        My_Review my_review = new My_Review();
-        my_review.setAccount(account);
-        my_review.setSubject(subject);
-        my_review.setMainText(mainText);
-        my_review.setCreateTime(LocalDateTime.now());
-        my_review.setViewCount(0L);
+    public static MyReview createReview(Account account, ReviewCreateForm form) {
+        MyReview myReview = new MyReview();
+        myReview.setAccount(account);
+        myReview.setSubject(form.getSubject());
+        myReview.setMainText(form.getMainText());
+        myReview.setCreateTime(LocalDateTime.now());
+        myReview.setViewCount(0L);
 
-        return my_review;
+        return myReview;
     }
 }
 

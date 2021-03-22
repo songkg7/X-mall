@@ -1,5 +1,7 @@
 package com.xmall.xmall.controller;
 
+import com.xmall.xmall.account.CurrentAccount;
+import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.form.ItemForm;
 import com.xmall.xmall.form.OrderForm;
@@ -37,16 +39,14 @@ public class ItemController {
         return "items/create-item";
     }
 
-    @PostMapping(value="/items/create-item")
-    public String createItem(@Valid ItemForm itemForm, Errors errors, @RequestParam MultipartFile itemImage2) throws Exception {
+    @PostMapping("/items/create-item")
+    public String createItem(@CurrentAccount Account account, @Valid ItemForm itemForm, Errors errors
+            , Model model) {
         if (errors.hasErrors()) {
             return "items/create-item";
         }
-
-//        ClassPathResource resource = new ClassPathResource();
-
-        itemService.create(itemForm ,itemImage2);
-
+        model.addAttribute(account);
+        itemService.create(itemForm);
         return "redirect:/";
     }
 
@@ -60,17 +60,12 @@ public class ItemController {
         return "items/update-item";
     }
 
-    @PostMapping(value="/items/{id}/edit")
-    public String updateItemProcess(@PathVariable Long id, @ModelAttribute("item") ItemForm itemForm)  {
-        itemService.update(id, itemForm);
-
-        return "redirect:/";
-    }
+    // TODO: PostMapping
 
     /**
      * 상품 삭제
      */
-    @GetMapping(value="/items/{id}/delete")
+    @GetMapping("/items/{id}/delete")
     public String deleteItem(@PathVariable Long id) {
         itemService.delete(id);
         return "redirect:/";

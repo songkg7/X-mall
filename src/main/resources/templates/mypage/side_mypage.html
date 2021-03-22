@@ -157,15 +157,17 @@
                                     <div th:text="|수량 : ${orderList.orderItems[0].amount}|"></div>
                                     <div th:text="${orderList.orderItems[0].orderPrice}"></div>
                                     <div th:text="|총결제금액 : ${orderList.getTotalPrice()}원|"></div>
-                                    <div th:text="${orderList.status}"></div>
+
                                 </div>
                                 <div class="item_review">
                                     <!--<a href="#" th:href="@{/items/{id} (id=${itemList.id})}">-->
                                     <!--                                    @{/items/{id} (id=${itemList.id})}-->
-                                    <a href="my_createForm">리뷰 쓰기</a><br>
+                                    <a th:href="@{/my_createForm/} + ${orderList.orderItems[0].item.id} + @{/create}">리뷰 쓰기</a><br>
+
                                     <a th:if="${orderList.status.name()=='ORDER'}" href="#"
                                        th:href="'javascript:cancel('+${orderList.id}+')'"
                                        class="orderCancel">주문 취소</a>
+                                    <div th:text="${orderList.status}"></div>
                                 </div>
                                 <div class="item_result">
                                     <p>배송완료</p>

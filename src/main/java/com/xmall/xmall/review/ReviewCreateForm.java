@@ -17,5 +17,4 @@ public class ReviewCreateForm {
     @NotEmpty(message = "본문 내용을 입력해주세요")
     private String mainText;
 
-
 }
