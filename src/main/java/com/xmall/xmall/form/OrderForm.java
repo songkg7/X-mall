@@ -11,6 +11,8 @@ public class OrderForm {
 
     private int amount;
 
+    private String orderItemSize;
+
     private String mainAddress;
 
     private String detailAddress;

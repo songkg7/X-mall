@@ -1,5 +1,6 @@
 package com.xmall.xmall.domain;
 
+import com.xmall.xmall.form.OrderForm;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,16 +29,18 @@ public class OrderItem {
 
     private int orderPrice; // 주문 당시 가격
     private int amount; // 주문 당시 수량
+    private String orderItemSize;
 
     // 생성 메서드
-    public static OrderItem createOrderItem(Item item, int orderPrice, int amount) {
+    public static OrderItem createOrderItem(Item item, int orderPrice, OrderForm orderForm) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrderPrice(orderPrice);
-        orderItem.setAmount(amount);
+        orderItem.setAmount(orderForm.getAmount());
+        orderItem.setOrderItemSize(orderForm.getOrderItemSize());
 
         // 주문한 수량만큼 재고를 감소
-        item.removeStock(amount);
+        item.removeStock(orderForm.getAmount());
 
         return orderItem;
     }

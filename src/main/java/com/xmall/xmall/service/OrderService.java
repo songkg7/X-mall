@@ -26,13 +26,13 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final AccountRepository accountRepository;
 
-    public void order(Item item, Account account, int amount) {
+    public void order(Item item, Account account, OrderForm orderForm) {
         log.info(account.getNickname());
 
         // detach 상태인 회원을 다시 찾아오면서 영속성 관리 상태로 만든다.
         Account findAccount = accountRepository.findById(account.getId()).get();
         // 주문 아이템 생성
-        OrderItem orderItem = createOrderItem(item, item.getPrice(), amount);
+        OrderItem orderItem = createOrderItem(item, item.getPrice(), orderForm);
 
         Order order = createOrder(findAccount, orderItem);
 

@@ -28,15 +28,32 @@ public class OrderController {
     private final OrderService orderService;
 
     // 바로 구매로 상품 하나 구매
-    @GetMapping("/order/{id}")
+//    @PostMapping("/order/{id}")
+//    public String orderPayment(@CurrentAccount Account account,
+//                               @PathVariable Long id, Model model,
+//                               @RequestParam int amount) {
+//
+//        model.addAttribute(account);
+//
+//        // 선택한 상품 갯수 전달
+//        model.addAttribute("amount", amount);
+//        // 바로구매로 진입하면 선택한 아이템 찾아오기
+//        Optional<Item> byId = itemRepository.findById(id);
+//        byId.ifPresent(item -> model.addAttribute("item", item));
+//        // TODO: 배송지 정보 받아오기
+//        return "order/payment-test";
+//    }
+
+    // 바로 구매로 상품 하나 구매
+    @PostMapping("/order/{id}")
     public String orderPayment(@CurrentAccount Account account,
                                @PathVariable Long id, Model model,
-                               @RequestParam int amount) {
+                               OrderForm orderForm) {
 
         model.addAttribute(account);
 
-        // 선택한 상품 갯수 전달
-        model.addAttribute("amount", amount);
+        // 선택한 상품 갯수, 상품 사이즈 전달
+        model.addAttribute("orderForm", orderForm);
         // 바로구매로 진입하면 선택한 아이템 찾아오기
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute("item", item));
@@ -45,13 +62,24 @@ public class OrderController {
     }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
+//    @PostMapping("/order/payment")
+//    public String orderPaymentProcess(@CurrentAccount Account account,
+//                                      @RequestParam Long itemId,
+//                                      @RequestParam int amount) {
+//
+//        Optional<Item> byId = itemRepository.findById(itemId);
+//        byId.ifPresent(item -> orderService.order(item, account, amount));
+//        return "redirect:/my_page";
+//    }
+
+    // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
     @PostMapping("/order/payment")
     public String orderPaymentProcess(@CurrentAccount Account account,
                                       @RequestParam Long itemId,
-                                      @RequestParam int amount) {
+                                      OrderForm orderForm) {
 
         Optional<Item> byId = itemRepository.findById(itemId);
-        byId.ifPresent(item -> orderService.order(item, account, amount));
+        byId.ifPresent(item -> orderService.order(item, account, orderForm));
         return "redirect:/my_page";
     }
 

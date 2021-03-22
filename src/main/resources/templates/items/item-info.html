@@ -670,8 +670,8 @@
                 <!--======================-->
                 <!-- 3. 수량 -->
                 <!--======================-->
-                <form method="get" th:action="@{/order/{id} (id=${item.id})}">
-                    <input type="hidden" id="orderItemSize" name="orderItemSize" value="">
+                <form th:action="@{/order/{id} (id=${item.id})}" th:object="${orderForm}" method="post">
+                    <input type="hidden" id="orderItemSize" name="orderItemSize" th:field="*{orderItemSize}">
 
                     <div class="count_div">
                         <div class="count_amount">수량</div>
@@ -679,6 +679,7 @@
                                 type="text"
                                 class="count_product"
                                 name="amount"
+                                th:field="*{amount}"
                                 value="1"
                                 readonly
                         />

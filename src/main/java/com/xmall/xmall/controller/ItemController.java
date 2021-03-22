@@ -2,6 +2,7 @@ package com.xmall.xmall.controller;
 
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.form.ItemForm;
+import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -94,6 +95,8 @@ public class ItemController {
             return "error";
         }
         model.addAttribute("item", item);
+        model.addAttribute("orderForm", new OrderForm());
+
         return "items/item-info";
     }
 }
