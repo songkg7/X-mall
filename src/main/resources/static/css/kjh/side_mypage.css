@@ -11,8 +11,7 @@
   border-bottom: 1px solid #bcbcbc;
 }
 
-.side_mypage,
-.recent_order_history {
+.side_mypage, .recent_order_history {
   text-align: left;
   margin-top: 0px;
   display: block;
@@ -37,8 +36,7 @@
   text-decoration: none;
   color: black;
 }
-.oder_lisytle,
-.wish_lisytle {
+.oder_lisytle, .wish_lisytle {
   text-align: left;
   display: block;
   width: 100%;

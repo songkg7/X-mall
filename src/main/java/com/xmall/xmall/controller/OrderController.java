@@ -79,8 +79,9 @@ public class OrderController {
                                       OrderForm orderForm) {
 
         Optional<Item> byId = itemRepository.findById(itemId);
+
         byId.ifPresent(item -> orderService.order(item, account, orderForm));
-        return "redirect:/my_page";
+        return "redirect:/myPage/side_mypage";
     }
 
     @GetMapping("1")
@@ -92,7 +93,7 @@ public class OrderController {
     public String cancelOrder(@CurrentAccount Account account, @PathVariable("id") Long orderId, Model model){
         model.addAttribute(account);
         orderService.cancelOrder(orderId);
-        return "redirect:/my_page";
+        return "redirect:/myPage/side_mypage";
     }
 
 

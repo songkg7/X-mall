@@ -153,9 +153,8 @@
                                 </div>
                                 <div class="item_description">
                                     <div th:text="${orderList.orderItems[0].item.name}"></div>
-<!--                                    <div>사이즈 : 250</div>-->
+                                    <div>사이즈 : 250</div>
                                     <div th:text="|수량 : ${orderList.orderItems[0].amount}|"></div>
-                                    <div th:text="|사이즈 : ${orderList.orderItems[0].orderItemSize}|"></div>
                                     <div th:text="${orderList.orderItems[0].orderPrice}"></div>
                                     <div th:text="|총결제금액 : ${orderList.getTotalPrice()}원|"></div>
 

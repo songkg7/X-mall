@@ -259,7 +259,7 @@
             background-color: rgb(240, 240, 240);
             border-style: none;
             /*FIXME: url 을 대체하여 직접 삽입하는게 좋을듯 */
-            background-image: url(../images/icon/dod.png);
+            background-image: url(/images/icon/dod.png);
             /*background-position: 10px;*/
             background-size: 36px;
             background-position: 10px;
@@ -663,7 +663,7 @@
             </span>
 
             <span sec:authorize="isAuthenticated()" >
-                <a class="gray_atag" href="#" th:href="@{/my_page}" style="cursor: hand">&nbsp;마이페이지&nbsp;&nbsp;|</a>
+                <a class="gray_atag" href="#" th:href="@{/myPage/side_mypage}" style="cursor: hand">&nbsp;마이페이지&nbsp;&nbsp;|</a>
             </span>
 
             <span>
@@ -1094,7 +1094,7 @@
 </footer>
 
 <div class="bottom_line" th:fragment="userId">
-    <img class="user_img" src="../images/icon/user.png"/>
+    <img class="user_img" src="/images/icon/user.png"/>
     <h4 th:text="|${account?.getNickname()} 님|">사용자</h4>
 </div>
 
