@@ -28,6 +28,7 @@ public class ItemService {
                 .itemImage(itemForm.getItemImage())
                 .stockQuantity(itemForm.getStockQuantity())
                 .categoryType(itemForm.getCategoryType())
+                .subTitle((itemForm.getSubTitle()))
                 .build();
 
         itemRepository.save(item);
