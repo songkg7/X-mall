@@ -57,6 +57,7 @@ public class Item {
 
 //    @Lob
     @Column(columnDefinition="TEXT")
+    @Basic(fetch = FetchType.EAGER)
     private String itemImage;
 
     // 상품 등록일

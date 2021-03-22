@@ -2,6 +2,7 @@ package com.xmall.xmall.form;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,7 +23,7 @@ public class ItemForm {
 
     private String description;
 
-    @Lob
+    @Column(columnDefinition="TEXT")
     private String itemImage;
 
     private String genderType;
