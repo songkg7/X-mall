@@ -122,8 +122,8 @@
   height: 200px;
   float: right;
   padding-top: 10px;
-  text-align: right;
   display: inline-block;
+  text-align: left;
 }
 .order_list_text_left {
   text-align: left;
