@@ -61,6 +61,7 @@ public class MyPageController {
     public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("itemId") Long itemId, Model model){
         Item item = itemRepository.findById(itemId).get();
 
+
         model.addAttribute(account);
         model.addAttribute(item);
         model.addAttribute(new ReviewCreateForm());
