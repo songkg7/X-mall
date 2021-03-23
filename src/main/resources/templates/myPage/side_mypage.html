@@ -153,10 +153,11 @@
                                 </div>
                                 <div class="item_description">
                                     <div th:text="${orderList.orderItems[0].item.name}"></div>
-                                    <div>사이즈 : 250</div>
-                                    <div th:text="|수량 : ${orderList.orderItems[0].amount}|"></div>
-                                    <div th:text="${orderList.orderItems[0].orderPrice}"></div>
-                                    <div th:text="|총결제금액 : ${orderList.getTotalPrice()}원|"></div>
+<!--                                    <div>사이즈 : 250</div>-->
+                                    <div th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
+                                    <div th:text="|사이즈 : ${orderList.orderItems[0].orderItemSize}|"></div>
+                                    <div th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
+                                    <div th:text="|총 결제 금액 : ${#numbers.formatInteger(orderList.getTotalPrice(), 0, 'COMMA')}원|"></div>
 
                                 </div>
                                 <div class="item_review">
