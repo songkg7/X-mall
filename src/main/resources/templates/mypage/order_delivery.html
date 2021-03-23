@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- header nav css 수입경로-->
+  <div th:replace="fragments.html :: fragment-header-navbar"></div>
+  <!-- footer css 수입경로 -->
+  <div th:replace="fragments.html :: fragment-footer-css"></div>
+  <link rel="stylesheet" href="/css/kjh/side_mypage.css">
+  <link rel="stylesheet" href="/css/kjh/order_delivery.css">
+  <style></style>
+  </head>
+
+  <script>
+
+    $(document).ready(function () {
+      $(".dark").hide(); //팝업창 숨김화면
+      $(".pop_up").hide(); //팝업창 숨김화면
+      $(".date_wrap").hide();
+      $(".plus_minus_btn").click(function () {
+        this.classList.toggle("active");
+        if ($(".aaa").val() == "p") {
+          $(".date_wrap").show();
+          $(".aaa").val("m");
+        } else {
+          $(".date_wrap").hide();
+          $(".aaa").val("p");
+        }
+      });
+      // 날짜 유효성 검사 (시작날짜가 종료날짜보다 크면 팝업창 나오고 / 맞다면 리턴)
+      $(".search_btn").click(function () {
+        var start_date = $("#start_date").val();
+        var start_dateArr = start_date.split("-");
+
+        var end_date = $("#end_date").val();
+        var end_dateArr = end_date.split("-");
+
+        var start_dateCompare = new Date(
+          start_dateArr[0],
+          parseInt(start_dateArr[1]) - 1,
+          start_dateArr[2]
+        );
+        var end_dateCompare = new Date(
+          end_dateArr[0],
+          parseInt(end_dateArr[1]) - 1,
+          end_dateArr[2]
+        );
+
+        if (start_dateCompare.getTime() > end_dateCompare.getTime()) {
+          $(".pop_up").show().animate({ top: "180px" }, 400);
+          $(".dark").show();
+          $(".btn_close").click(function () {
+            $(".pop_up").show().animate({ top: "0" });
+            $(".pop_up").hide();
+            $(".dark").hide();
+          });
+
+          return;
+        }
+
+        $("#frmSearch").submit();
+      });
+    });
+  </script>
+
+  <body class="jb_font-1">
+    <!--+++++++++++++++++++++++++++++++++++-->
+    <!-- main 부분 -->
+    <!--+++++++++++++++++++++++++++++++++++-->
+    <header th:replace="fragments.html :: nav-bar"></header>
+    <!--+++++++++++++++++++++++++++++++++++-->
+    <!-- main 부분 -->
+    <!--+++++++++++++++++++++++++++++++++++-->
+    <main>
+      <div class="all_form">
+        <!--왼쪽여백-->
+        <div></div>
+        <!-- 왼쪽 카테고리 바-->
+        <div class="side_mypage">
+          <h2><a th:href="@{/myPage/side_mypage}">My PAGE</a></h2>
+
+          <div class="bottom_line"></div>
+          <div th:replace="fragments :: userId"></div>
+          <ul>
+            <li class="listyle">
+              <h4>쇼핑정보</h4>
+              <ul>
+                <li><a href="/myPage/coupon">쿠폰</a></li>
+                <li><a href="/myPage/order_delivery">주문배송</a></li>
+                <li><a href="/myPage/return_cancle">취소/반품</a></li>
+              </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+              <h4>나의정보</h4>
+              <ul>
+                <li><a href="/myPage/pwd_change">비밀번호 변경</a></li>
+                <li><a href="/myPage/withdrawal">회원탈퇴</a></li>
+              </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+              <h4>A/S 신청.조회</h4>
+              <ul>
+                <li><a href="/myPage/as_infoguide">접수 안내</a></li>
+                <li><a href="/cs/asview">as 신청</a></li>
+              </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <li class="listyle">
+              <h4>고객센터</h4>
+              <ul>
+                <li>
+                  <a href="">1:1 채팅 문의</a>
+                </li>
+                <li><a href="">1:1 E-mail 문의</a></li>
+              </ul>
+            </li>
+            <div class="bottom_line"></div>
+            <h4>나이키닷컴고객센터</h4>
+            <h3>080-022-0182</h3>
+            <p>월~일:오전 9시 ~ 오후 8시</p>
+            <div class="bottom_line"></div>
+          </ul>
+        </div>
+        <!-- 카테고리 메인 -->
+        <div class="order_delivery_status">
+          <div class="title">
+            <h2>주문내역</h2>
+          </div>
+          <div class="s_title">
+            <div class="label">
+              상품의 출고지가 여러 곳이거나 온라인 물류센터 보관 장소에 따라
+              분리 배송될 수 있습니다.
+            </div>
+            <div class="label">
+              분리 배송된 상품별로 운송장이 발급되어 다른 날짜에 받으실 수
+              있으며, 마이페이지에서 배송 조회가 가능합니다.
+            </div>
+          </div>
+          <div class="order_wrap">
+            <div>
+              <a class="total_order_btn" href="#">전체</a>
+              <a class="plus_minus_btn" href="#"></a>
+              <input type="hidden" class="aaa" value="p" />
+            </div>
+          </div>
+          <div class="date_wrap">
+            <div style="float: left">
+              <input type="date" class="start_date" id="start_date" />~
+              <input type="date" class="end_date" id="end_date" />
+            </div>
+            <div>
+              <input
+                type="button"
+                class="search_btn"
+                id="search_btn"
+                value="검색"
+              />
+              <input
+                type="button"
+                class="reset_btn"
+                id="reset_btn"
+                value="검색"
+              />
+            </div>
+            <div class="pop_up">
+              <span class="pop_up_title"
+                >시작날짜와 종료날짜가 맞지 않습니다.</span
+              >
+              <a class="btn_close" href="#"></a>
+            </div>
+          </div>
+          <!--  -->
+          <div class="no_item1">
+            <!--  아래 글이 사라지면서 주문/배송 상품 불러오기 -->
+            현재 진행중인 주문 상품이 없습니다.
+            <!---------------------------------------------->
+          </div>
+        </div>
+        <div class="dark"></div>
+        <!--오른쪽 여백-->
+        <div></div>
+      </div>
+    </main>
+    <!--+++++++++++++++++++++++++++++++++++-->
+    <!-- footer 부분 -->
+    <!--+++++++++++++++++++++++++++++++++++-->
+
+    <footer th:replace="fragments.html :: footer-body">
+    </footer>
+  </body>
+</html>
