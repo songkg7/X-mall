@@ -54,32 +54,32 @@ public class MyPageController {
 
     @GetMapping("/myPage/side_myPage")
     public String reviewList(Model model){
-        List<MyReview> reviewList = myReviewRepository.findAll();
-        model.addAttribute("reviewLists",reviewList);
+        List<MyReview> reviewLists = myReviewRepository.findAll();
+        model.addAttribute("reviewLists",reviewLists);
         return "myPage/side_mypage";
     }
 
     // 리뷰 작성
-
     @GetMapping("/myPage/my_createForm/{orderItemId}/create")
-    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Model model){
+    public String reviewCreateProc(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Model model){
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
 
         model.addAttribute(account);
         model.addAttribute(orderItem);
-        model.addAttribute(new ReviewCreateForm());
+        model.addAttribute("form", new ReviewCreateForm());
 
         return "myPage/my_createForm";
     }
 
-    @PostMapping("/myPage/my_createForm/{itemId}/create")
-    public String reviewCreate(@CurrentAccount Account account, @PathVariable("itemId") Long itemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
-        Item item = itemRepository.findById(itemId).get();
-        myReviewService.create(account, form);
+    @PostMapping("/myPage/my_createForm/{orderItemId}/create")
+    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
+//        Item item = itemRepository.findById(itemId).get();
+        OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
 
-        model.addAttribute(item);
-        model.addAttribute(account);
-        return "redirect:/my_page";
+        myReviewService.create(account, form.getSubject(), form.getMainText());
+
+        model.addAttribute(orderItem);
+        return "redirect:/myPage/side_mypage";
     }
 
 

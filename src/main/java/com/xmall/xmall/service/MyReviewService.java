@@ -17,9 +17,12 @@ public class MyReviewService {
 
     private final MyReviewRepository myReviewRepository;
 
-    public void create(Account account, ReviewCreateForm form){
-        MyReview myReview = MyReview.createReview(account, form);
+    @Transactional
+    public void create(Account account, String subject, String mainText){
+        MyReview myReview = MyReview.createReview(account, subject, mainText);
+
         myReviewRepository.save(myReview);
+
     }
 
 

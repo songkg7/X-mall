@@ -168,7 +168,6 @@
                                        th:href="'javascript:cancel('+${orderList.id}+')'"
                                        class="orderCancel">주문 취소</a>
                                     <div th:text="${orderList.status}"></div>
-                                    <div th:text="${orderList.status}"></div>
                                 </div>
                                 <div class="item_result">
                                     <p>배송완료</p>
@@ -194,13 +193,14 @@
                 <h2>리뷰</h2>
                 <div class="bottom_line1"></div>
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
-                <div class="review_1" th:each="reviewLists: ${reviewLists}">
-                    <h3 th:text="${reviewLists.subject}">제목</h3>
+                <div class="review_1" th:each="reviewList : ${reviewLists}">
+                    <h3 th:text="${reviewList.subject}">제목</h3>
                     <h4>★ ★ ★ ★ ★</h4>
-                    <span th:text="${reviewLists.account?.getName()}">이름</span>
-                    <span th:text="${reviewLists.getCreateTime()}">등록일</span>
-                    <span>색상</span>
-                    <p th:text="${reviewLists.mainText}">내용</p>
+                    <span th:text="${reviewList.account?.getName()}">이름</span>
+                    <span th:text="${reviewList.getCreateTime()}">등록일</span>
+                    <span th:text="${ord}">사이즈</span>
+                    <span >상품명</span>
+                    <p th:text="${reviewList.mainText}">내용</p>
                     <div class="bottom_line1"></div>
                 </div>
 

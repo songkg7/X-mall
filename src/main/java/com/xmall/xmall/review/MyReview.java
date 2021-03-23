@@ -22,6 +22,7 @@ public class MyReview {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "account_id")
     private Account account; // 작성자
 
     @NotNull
@@ -36,11 +37,11 @@ public class MyReview {
     @Column(columnDefinition = "bigint default 0")
     private Long viewCount; // 조회수
 
-    public static MyReview createReview(Account account, ReviewCreateForm form) {
+    public static MyReview createReview(Account account, String subject, String mainText) {
         MyReview myReview = new MyReview();
         myReview.setAccount(account);
-        myReview.setSubject(form.getSubject());
-        myReview.setMainText(form.getMainText());
+        myReview.setSubject(subject);
+        myReview.setMainText(mainText);
         myReview.setCreateTime(LocalDateTime.now());
         myReview.setViewCount(0L);
 
