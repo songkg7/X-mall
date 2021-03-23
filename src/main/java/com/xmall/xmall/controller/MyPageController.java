@@ -60,9 +60,11 @@ public class MyPageController {
     }
 
     // 리뷰 작성
+
     @GetMapping("/myPage/my_createForm/{orderItemId}/create")
     public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Model model){
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
+
         model.addAttribute(account);
         model.addAttribute(orderItem);
         model.addAttribute(new ReviewCreateForm());
