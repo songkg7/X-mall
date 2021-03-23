@@ -100,16 +100,24 @@
   width: 100%;
   height: 150px;
 }
+.item_img img{
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .my_buy_item .item_img{
   /*background-color: blueviolet;*/
-  width: 20%;
+  width: 200px;
   height: 150px;
   float: left;
+  overflow: hidden;
 }
 .my_buy_item .item_description{
   /*background-color: darkolivegreen;*/
-  width: 50%;
+  width: 30%;
   height: 150px;
+  margin-left: 10px;
   float: left;
 }
 .my_buy_item .item_description div{
@@ -119,15 +127,15 @@
 
 .my_buy_item .item_review{
   /*background-color: cornflowerblue;*/
-  width: 15%;
+  width: 14%;
   height: 150px;
-  float: left;
+  float: right;
 }
 .my_buy_item .item_result{
   /*background-color: chartreuse;*/
-  width: 15%;
+  width: 10%;
   height: 150px;
-  float: left;
+  float: right;
 }
 .item_img img{
   width: 80%;

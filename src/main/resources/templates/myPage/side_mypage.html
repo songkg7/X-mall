@@ -57,6 +57,43 @@
         .orderCancel {
             color: black;
         }
+
+        .item_description .item_subject{
+            height: 30px;
+            font-size: 18px;
+            font-weight: 900;
+            margin-bottom: 10px;
+
+        }
+        .item_description .item_size{
+
+            font-size: 16px;
+            font-weight: 100;
+            color: #606060;
+            margin-bottom: 0;
+        }
+        .item_description .item_quantity{
+            padding-top: -10px;
+            font-size: 16px;
+            font-weight: 100;
+            color: #606060;
+        }
+        .item_description .item_price {
+
+            padding-top: -10px;
+            font-size: 16px;
+            font-weight: 100;
+
+        }
+        .item_description .item_totAmount {
+            padding-top: -20px;
+            font-size: 17px;
+            font-weight: 100;
+            color: #fb5306;
+        }
+        .reviewWrite{
+            color: #777777;
+        }
     </style>
 </head>
 <body>
@@ -149,29 +186,30 @@
                         <div class="no_item">
                             <div class="my_buy_item">
                                 <div class="item_img">
-                                    <img src="../images/main_img/nike_w_s_eoi.png">
+                                    <img src="/images/main_img/nike_w_s_eoi.png">
                                 </div>
                                 <div class="item_description">
-                                    <div th:text="${orderList.orderItems[0].item.name}"></div>
-                                    <div th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
-                                    <div th:text="|사이즈 : ${orderList.orderItems[0].orderItemSize}|"></div>
-                                    <div th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
-                                    <div th:text="|총 결제 금액 : ${#numbers.formatInteger(orderList.getTotalPrice(), 0, 'COMMA')}원|"></div>
+                                    <div class="item_subject" th:text="${orderList.orderItems[0].item.name}"></div>
+                                    <div class="item_size" th:text="|사이즈 : ${orderList.orderItems[0].orderItemSize}|"></div>
+                                    <div class="item_quantity" th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
+                                    <div class="item_price" th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
+                                    <div class="item_totAmount" th:text="|총 결제 금액 : ${#numbers.formatInteger(orderList.getTotalPrice(), 0, 'COMMA')}원|"></div>
 
+                                </div>
+                                <div class="item_result">
+                                    <p>결제완료</p>
                                 </div>
                                 <div class="item_review">
                                     <!--<a href="#" th:href="@{/items/{id} (id=${itemList.id})}">-->
                                     <!--                                    @{/items/{id} (id=${itemList.id})}-->
-                                    <a th:href="@{/myPage/my_createForm/} + ${orderList.orderItems[0].getId()} + @{/create}">리뷰 쓰기</a><br>
+                                    <a class="reviewWrite" th:href="@{/myPage/my_createForm/} + ${orderList.orderItems[0].getId()} + @{/create}">리뷰 쓰기</a><br>
 
                                     <a th:if="${orderList.status.name()=='ORDER'}" href="#"
                                        th:href="'javascript:cancel('+${orderList.id}+')'"
                                        class="orderCancel">주문 취소</a>
                                     <div th:text="${orderList.status}"></div>
                                 </div>
-                                <div class="item_result">
-                                    <p>배송완료</p>
-                                </div>
+
                             </div>
                         </div>
                     </div>
