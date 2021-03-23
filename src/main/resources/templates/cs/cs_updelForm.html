@@ -54,13 +54,13 @@
                 <form th:action="@{/cs/{id}/edit (id=${cs_board.id})}" th:object="${cs_board}" method="post">
 
                     <input type="hidden" th:field="*{id}"/>
-                    <div class="form-group">
+                    <div class="boardSub">
                         <label th:for="subject">제목</label>
                         <input type="text" th:field="*{subject}" class="form-control"
                                th:value="${cs_board.getSubject()}">
                     </div>
 
-                    <div class="form-group">
+                    <div class="boardContent">
                         <label th:for="mainText">본문</label>
                         <textarea cols="80" type="" th:field="*{mainText}" class="form-control" th:text="${cs_board.getMainText()}"></textarea>
                     </div>

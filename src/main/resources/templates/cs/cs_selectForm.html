@@ -52,20 +52,12 @@
             <div style="background-color: white;text-align:left; " >
                 <h2>1:1 문의</h2>
                 <div class="board_div">
-                    <table class="table table-primary">
-                        <thead>
-                        <tr>
-                            <!--                <th>#</th>-->
-                            <th th:text="${cs_board.getSubject()}"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td th:text="${cs_board.getMainText()}"></td>
-                        </tr>
-                        </tbody>
-
-                    </table>
+                    <div class="subRead">제목 : </div>
+                    <div class="boardSub_read" th:text="${cs_board.getSubject()}">
+                    </div>
+                    <div class="conRead">문의 내용 : </div>
+                    <div class="boardContent_read" th:text="${cs_board.getMainText()}">
+                    </div>
                 </div>
                 <div class="write_btn">
                     <a href="/cs/cs_createForm">글쓰기</a>

@@ -140,6 +140,23 @@
   border-bottom: 1px solid black;
 }
 
+.as_boardform div .write_btn button{
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #111111;
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  border-color: #111111;
+  font-size:15px;
+  border-bottom-width: 1px;
+  border-top-width: 3px;
+}
+
 .as_boardform div .write_btn a{
   display: block;
   text-decoration: none;
@@ -150,8 +167,48 @@
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  cursor: pointer;
+  border-color: #111111;
 }
 .as_boardform div .write_btn {
   float: right;
   margin-right: 40px;
 }
+.as_boardform div .boardSub input{
+  margin-bottom: 25px;
+  width:550px;
+  height: 30px;
+}
+
+.as_boardform div .boardContent textarea{
+  margin-bottom: 25px;
+  width:550px;
+  height: 500px;
+  resize: none;
+}
+
+.as_boardform div .boardContent label {
+  position: relative;
+  top: -510px;
+}
+
+.as_boardform div .boardSub_read{
+  margin-bottom: 25px;
+  width:150px;
+  text-align: left;
+}
+
+.as_boardform div .subRead{
+  float: left;
+  margin-right: 10px;
+}
+
+.as_boardform div .boardContent_read{
+  margin-bottom: 25px;
+  text-align: left;
+}
+.as_boardform div .conRead{
+  float: left;
+  margin-right: 10px;
+}
+
