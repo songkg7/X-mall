@@ -681,7 +681,7 @@
         <div th:replace="fragments :: nav-bar"></div>
     </div>
     <div class="create_item">
-        <p>상품 등록</p>
+        <p>상품 수정</p>
     </div>
     <main>
     <!------------------->
@@ -718,9 +718,9 @@
                         <!-- 1. 제품 카테고리 설정-->
                         <!--======================-->
                        <p class="p_1">
-                           <span>카테고리 명</span>
-                           <input type="text" th:field="*{subTitle}"
-                               placeholder="카테고리를 입력하세요">
+                           <span>제품 소제목</span>
+                           <input type="text" th:field="*{subTitle}" th:value="${item.getSubTitle()}"
+                               placeholder="제품 소제목을 입력하세요">
                        </p>
                         <!--======================-->
                         <!-- 2. 제품명 설정-->
