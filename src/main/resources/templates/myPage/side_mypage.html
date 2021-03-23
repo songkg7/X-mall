@@ -153,7 +153,6 @@
                                 </div>
                                 <div class="item_description">
                                     <div th:text="${orderList.orderItems[0].item.name}"></div>
-<!--                                    <div>사이즈 : 250</div>-->
                                     <div th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
                                     <div th:text="|사이즈 : ${orderList.orderItems[0].orderItemSize}|"></div>
                                     <div th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
@@ -163,7 +162,7 @@
                                 <div class="item_review">
                                     <!--<a href="#" th:href="@{/items/{id} (id=${itemList.id})}">-->
                                     <!--                                    @{/items/{id} (id=${itemList.id})}-->
-                                    <a th:href="@{/myPage/my_createForm/} + ${orderList.orderItems[0].item.id} + @{/create}">리뷰 쓰기</a><br>
+                                    <a th:href="@{/myPage/my_createForm/} + ${orderList.orderItems[0].getId()} + @{/create}">리뷰 쓰기</a><br>
 
                                     <a th:if="${orderList.status.name()=='ORDER'}" href="#"
                                        th:href="'javascript:cancel('+${orderList.id}+')'"

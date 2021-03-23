@@ -2,9 +2,11 @@ package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.Item;
+import com.xmall.xmall.domain.OrderItem;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.domain.Order;
 import com.xmall.xmall.repository.ItemRepository;
+import com.xmall.xmall.repository.OrderItemRepository;
 import com.xmall.xmall.review.ReviewCreateForm;
 import com.xmall.xmall.service.MyReviewService;
 import com.xmall.xmall.review.MyReview;
@@ -32,6 +34,7 @@ public class MyPageController {
     private final MyReviewRepository myReviewRepository;
     private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
+    private final OrderItemRepository orderItemRepository;
 
 
 
@@ -57,12 +60,11 @@ public class MyPageController {
     }
 
     // 리뷰 작성
-    @GetMapping("/myPage/my_createForm/{itemId}/create")
-    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("itemId") Long itemId, Model model){
-        Item item = itemRepository.findById(itemId).get();
-
+    @GetMapping("/myPage/my_createForm/{orderItemId}/create")
+    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Model model){
+        OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
         model.addAttribute(account);
-        model.addAttribute(item);
+        model.addAttribute(orderItem);
         model.addAttribute(new ReviewCreateForm());
 
         return "myPage/my_createForm";
