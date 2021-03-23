@@ -3,8 +3,7 @@ package com.xmall.xmall.service;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.MyReviewRepository;
 
-import com.xmall.xmall.review.MyReview;
-import com.xmall.xmall.review.ReviewCreateForm;
+import com.xmall.xmall.domain.MyReview;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +19,8 @@ public class MyReviewService {
     @Transactional
     public void create(Account account, String subject, String mainText){
         MyReview myReview = MyReview.createReview(account, subject, mainText);
-
         myReviewRepository.save(myReview);
+
 
     }
 

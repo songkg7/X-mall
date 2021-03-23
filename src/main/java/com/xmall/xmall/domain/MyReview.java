@@ -1,8 +1,6 @@
-package com.xmall.xmall.review;
+package com.xmall.xmall.domain;
 
 
-
-import com.xmall.xmall.domain.Account;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +14,21 @@ import java.time.LocalDateTime;
 @Setter
 public class MyReview {
 
+
     @Id
     @GeneratedValue
     @Column(name="review_id")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="item_id")
+    private Item item;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    private String orderItemSize; // 주문 당시 사이즈
 
     @ManyToOne
     @JoinColumn(name = "account_id")
@@ -29,7 +38,6 @@ public class MyReview {
     private String subject; // 제목
 
     @NotNull
-    @Lob
     private String mainText; // 본문
 
     private LocalDateTime createTime; // 등록일
@@ -44,6 +52,7 @@ public class MyReview {
         myReview.setMainText(mainText);
         myReview.setCreateTime(LocalDateTime.now());
         myReview.setViewCount(0L);
+
 
         return myReview;
     }

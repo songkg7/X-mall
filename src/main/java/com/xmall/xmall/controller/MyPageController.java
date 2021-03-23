@@ -1,7 +1,6 @@
 package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
-import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.domain.OrderItem;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.domain.Order;
@@ -9,12 +8,11 @@ import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderItemRepository;
 import com.xmall.xmall.review.ReviewCreateForm;
 import com.xmall.xmall.service.MyReviewService;
-import com.xmall.xmall.review.MyReview;
+import com.xmall.xmall.domain.MyReview;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.OrderRepository;
 import com.xmall.xmall.repository.MyReviewRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -46,6 +44,7 @@ public class MyPageController {
         List<Order> orderLists = orderRepository.findByAccount(account);
 
         List<MyReview> reviewLists = myReviewRepository.findAll();
+
         model.addAttribute("reviewLists",reviewLists);
         // 계정을 모델에 담고
         model.addAttribute(account);
@@ -75,6 +74,7 @@ public class MyPageController {
     }
 
     @PostMapping("/myPage/my_createForm/{orderItemId}/create")
+//    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
     public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
 //        Item item = itemRepository.findById(itemId).get();
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
