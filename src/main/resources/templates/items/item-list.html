@@ -3,17 +3,13 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>main1</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <!------------------------------ -->
-    <!-- header.css header.js 수입 -->
-    <!------------------------------ -->
-    <link rel="stylesheet" href="css/header.css"/>
-    <script src="js/header.js"></script>
-    <!-- regular 400 -->
+    <!--  header nav bar 수입경로  -->
+    <div th:replace="fragments.html :: fragment-header-navbar">
+    </div>
+
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
     <script>
         // main1 자스 코딩
         $(document).ready(function () {
@@ -42,9 +38,6 @@
         });
     </script>
     <style>
-        .main_font {
-            font-family: "Noto Sans KR", sans-serif;
-        }
 
         /* ---------------------------- */
         /*  body CSS 영역                   */
@@ -306,7 +299,7 @@
             <!-- 오른쪽-->
             <div>
                 <div class="filter_text">
-                    <img src="img/icon/filter.png" width="30px" height="30px"/>
+                    <img src="/images/icon/filter.png" width="30px" height="30px"/>
                 </div>
                 <div class="select_box">
                     <!-- 첫번쨰 목록 -->
@@ -387,7 +380,7 @@
                 <div class="product_thum">
                     <div class="img_div">
                         <img
-                                src="./img/main_img/nike_detail1.png"
+                                src="/img/main_img/nike_detail1.png"
                                 width="100%"
                                 height="auto"
                                 overflow="hidden"
@@ -649,7 +642,8 @@
 </main>
 
 <!-- --------------------footer-------------------- -->
-<div class="footer"></div>
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 <!-- --------------------footer-------------------- -->
 </body>
 </html>

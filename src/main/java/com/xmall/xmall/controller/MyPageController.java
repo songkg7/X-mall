@@ -44,6 +44,9 @@ public class MyPageController {
     public String side_mypage(@CurrentAccount Account account, Model model) {
         // 주문리스트 리포지토리에서 내계정에 관련된 주문 리스트를 배열로 가져온다.
         List<Order> orderLists = orderRepository.findByAccount(account);
+
+        List<MyReview> reviewLists = myReviewRepository.findAll();
+        model.addAttribute("reviewLists",reviewLists);
         // 계정을 모델에 담고
         model.addAttribute(account);
         // 주문리스트를 모델에 담는다.
@@ -51,13 +54,13 @@ public class MyPageController {
         // 최근주문내역 페이지에 보여준다.
         return "myPage/side_mypage";
     }
-
-    @GetMapping("/myPage/side_myPage")
-    public String reviewList(Model model){
-        List<MyReview> reviewLists = myReviewRepository.findAll();
-        model.addAttribute("reviewLists",reviewLists);
-        return "myPage/side_mypage";
-    }
+//
+//    @GetMapping("/myPage/side_mypage")
+//    public String reviewList(Model model){
+//        List<MyReview> reviewLists = myReviewRepository.findAll();
+//        model.addAttribute("reviewLists",reviewLists);
+//        return "myPage/side_mypage";
+//    }
 
     // 리뷰 작성
     @GetMapping("/myPage/my_createForm/{orderItemId}/create")
