@@ -53,20 +53,21 @@
                 <h2>1:1 문의</h2>
                 <div>
                     <form th:action="@{/cs/cs_createForm}" th:object="${form}" method="post">
-                        <div>
+                        <div class="boardSub">
                             <label th:for="subject">제목</label>
                             <input type="text" th:field="*{subject}" class="form-control"
-                                   placeholder=""></div>
+                                   placeholder="제목을 입력해 주세요"></div>
 
-                        <div>
-                            <label th:for="mainText">본문</label>
+                        <div class="boardContent">
+                            <label th:for="mainText">문의</label>
                             <textarea cols="80" type="" th:field="*{mainText}" class="form-control" placeholder=""></textarea>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="write_btn">
+                            <button type="submit" >등록</button>
+                            <a href="/cs/cs_board">취소</a>
+                        </div>
                     </form>
                 </div>
-                <input type="button" value="글 목록 보기">
 
         </div>
         </div>
