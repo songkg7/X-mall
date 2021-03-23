@@ -147,7 +147,7 @@ public class AccountController {
         accountService.changePwd(account, checkPwdForm);
 
         redirectAttributes.addFlashAttribute("message", "비밀번호가 성공적으로 변경 되었습니다.");
-        return "redirect:/pwd_change";
+        return "redirect:/myPage/pwd_change";
     }
 
 //    회원 탈퇴

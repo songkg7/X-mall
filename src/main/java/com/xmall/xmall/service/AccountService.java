@@ -37,7 +37,6 @@ public class AccountService implements UserDetailsService {
 
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
-    private final JavaMailSender javaMailSender;
     private final AppProperties appProperties;
     private final TemplateEngine templateEngine;
     private final EmailService emailService;
