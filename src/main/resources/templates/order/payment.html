@@ -64,7 +64,7 @@
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
 <main>
-    <form th:action="@{/order/payment}" method="post" th:object="${item}">
+    <form th:action="@{/order/payment}" th:object="${orderForm}" method="post">
         <input type="hidden" th:name="itemId" th:value="${item.id}">
         <div class="padding_left">
             <!--+++++++++++++++++++++++++++++++++++-->
@@ -77,9 +77,9 @@
                 <div class="shop_customer_sub">주문고객</div>
                 <!--DB에서 가져오는 값-->
                 <div class="shop_input">
-                    <p>이름</p>
-                    <p>번호</p>
-                    <p>이메일</p>
+                    <p th:text="${account?.getName()}"></p>
+                    <p th:text="${account?.getPhone()}"></p>
+                    <p th:text="${account?.getEmail()}"></p>
                 </div>
                 <!--+++++++++++++++++++++++++++++++++++-->
                 <div class="sub_line"></div>
@@ -241,7 +241,6 @@
         <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
         <button type="submit" class="send"  onclick="checkForm();">주문 완료</button>
-    </form>
     <!--+++++++++++++++++++++++++++++++++++-->
     <!-- 주문 내역 확인 파트 -->
     <!--+++++++++++++++++++++++++++++++++++-->
@@ -261,16 +260,16 @@
                     <div class="order_list_DB order_list_text_left">
                         <!--DB에서 가져오는 값-->
                         <div>
-                            <label>선택한 상품 이름: </label><span th:text="${item.getName()}"></span>
+                            <label th:for="itemName">선택한 상품 이름: </label><input name="itemName" type="text" th:value="${item.getName()}">
                         </div>
                         <div>
-                            <label>상품가격: </label><span th:text="${item.getPrice()}"></span>
+                            <label th:for="price">상품가격: </label><input name="price" type="text" th:value="${item.getPrice()}">
                         </div>
                         <div>
-                            <label>수량: </label><span th:text="${orderForm.getAmount()}"></span>
+                            <label th:for="amount">수량: </label><input name="amount" type="text" th:field="*{amount}" th:value="${orderForm.getAmount()}">
                         </div>
                         <div>
-                            <label>사이즈: </label><span th:text="${orderForm.getOrderItemSize()}"></span>
+                            <label th:for="orderItemSize">사이즈: </label><input name="orderItemSize" type="text" th:field="*{orderItemSize}" th:value="${orderForm.getOrderItemSize()}">
                         </div>
                         <div>
                             <label>결제 금액: </label><span th:text="${item.getPrice() * orderForm.getAmount()} + 원"></span>
@@ -307,7 +306,7 @@
                 </div>
                 <div>
                     <div class="goods_left">총 결제 예정 금액</div>
-                    <strong><div class="goods_right"  th:text="${item.getPrice() * orderForm.getAmount() + 2500} + 원"></div></strong>
+                    <strong><div class="goods_right"  th:text="${item.getPrice() * orderForm.getAmount()} + 원"></div></strong>
                 </div>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
@@ -319,6 +318,7 @@
             </div>
         </div>
     </div>
+    </form>
 </main>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- footer 부분 -->
