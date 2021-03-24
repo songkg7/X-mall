@@ -29,7 +29,10 @@ public class OrderItem {
 
     private int orderPrice; // 주문 당시 가격
     private int amount; // 주문 당시 수량
-    private String orderItemSize;
+    private String orderItemSize; // 주문 당시 사이즈
+
+    private String postCode;
+    private String address;
 
     // 생성 메서드
     public static OrderItem createOrderItem(Item item, int orderPrice, OrderForm orderForm) {
@@ -38,6 +41,8 @@ public class OrderItem {
         orderItem.setOrderPrice(orderPrice);
         orderItem.setAmount(orderForm.getAmount());
         orderItem.setOrderItemSize(orderForm.getOrderItemSize());
+        orderItem.setPostCode(orderForm.getPostCode());
+        orderItem.setAddress(orderForm.getAddress());
 
         // 주문한 수량만큼 재고를 감소
         item.removeStock(orderForm.getAmount());

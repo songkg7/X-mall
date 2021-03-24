@@ -14,8 +14,13 @@
 <form th:action="@{/order/payment}" th:object="${orderForm}" method="post">
     <input type="hidden" th:name="itemId" th:value="${item.id}">
     <div>
-        <div>주소</div>
-        <input type="text"/>
+        <label th:for="postCode">우편번호</label>
+        <input name="postCode" type="text" th:field="*{postCode}" placeholder="우편번호를 입력하세요">
+    </div>
+
+    <div>
+        <label th:for="address">배송주소</label>
+        <input name="address" type="text" th:field="*{address}" placeholder="배송주소를 입력하세요">
     </div>
 
     <div>
@@ -24,20 +29,17 @@
     </div>
 
     <div>
-        <div>상품가격</div>
-        <div th:text="${item.getPrice()}"></div>
+        <label th:for="price">상품가격</label>
         <input name="price" type="text" th:value="${item.getPrice()}">
     </div>
 
     <div>
-        <div>수량</div>
-        <div th:text="${orderForm.getAmount()}"></div>
+        <label th:for="amount">수량</label>
         <input name="amount" type="text" th:field="*{amount}" th:value="${orderForm.getAmount()}">
     </div>
 
     <div>
-        <div>상품 사이즈</div>
-        <div th:text="${orderForm.getOrderItemSize()}"></div>
+        <label th:for="orderItemSize">상품 사이즈</label>
         <input name="orderItemSize" type="text" th:field="*{orderItemSize}" th:value="${orderForm.getOrderItemSize()}">
     </div>
 
