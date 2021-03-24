@@ -243,7 +243,7 @@
                     </div>
                 </div>
 
-                <h2>리뷰</h2>
+                <h2>내가 작성한 리뷰</h2>
                 <div class="bottom_line1"></div>
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
                 <div class="review_1" th:each="reviewList : ${reviewLists}">
@@ -251,8 +251,8 @@
                     <h4>★ ★ ★ ★ ★</h4>
                     <span th:text="${reviewList.account?.getName()}">이름</span>
                     <span th:text="${reviewList.getCreateTime()}">등록일</span>
-                    <span th:text="${reviewList.getOrderItemSize()}">사이즈</span>
-                    <span th:text="${reviewList.item.name}">상품명</span>
+<!--                    <span th:text="${reviewList.orderItemSize}">사이즈</span>-->
+<!--                    <span th:text="${reviewList.item.name}">상품명</span>-->
                     <p th:text="${reviewList.mainText}">내용</p>
                     <div class="bottom_line1"></div>
                 </div>

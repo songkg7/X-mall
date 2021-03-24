@@ -4,6 +4,7 @@ import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.OrderItem;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.domain.Order;
+import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderItemRepository;
 import com.xmall.xmall.review.ReviewCreateForm;
@@ -42,15 +43,12 @@ public class MyPageController {
     public String side_mypage(@CurrentAccount Account account, Model model) {
         // 주문리스트 리포지토리에서 내계정에 관련된 주문 리스트를 배열로 가져온다.
         List<Order> orderLists = orderRepository.findByAccount(account);
+        model.addAttribute("orderLists", orderLists);
 
         List<MyReview> reviewLists = myReviewRepository.findAll();
-
         model.addAttribute("reviewLists",reviewLists);
         // 계정을 모델에 담고
         model.addAttribute(account);
-        // 주문리스트를 모델에 담는다.
-        model.addAttribute("orderLists", orderLists);
-        // 최근주문내역 페이지에 보여준다.
         return "myPage/side_mypage";
     }
 //
@@ -75,13 +73,14 @@ public class MyPageController {
 
     @PostMapping("/myPage/my_createForm/{orderItemId}/create")
 //    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
-    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
-//        Item item = itemRepository.findById(itemId).get();
+    public String reviewCreateForm(@Valid ReviewCreateForm form, @CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Errors errors, Model model) {
+////        Item item = itemRepository.findById(itemId).get();
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
 
-        myReviewService.create(account, form.getSubject(), form.getMainText());
 
         model.addAttribute(orderItem);
+        myReviewService.create(account, form.getSubject(), form.getMainText());
+
         return "redirect:/myPage/side_mypage";
     }
 

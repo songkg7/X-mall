@@ -1,6 +1,7 @@
 package com.xmall.xmall.domain;
 
 
+import com.xmall.xmall.form.OrderForm;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,6 +53,7 @@ public class MyReview {
         myReview.setMainText(mainText);
         myReview.setCreateTime(LocalDateTime.now());
         myReview.setViewCount(0L);
+//        myReview.setOrderItemSize();
 
 
         return myReview;
