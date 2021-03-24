@@ -99,10 +99,10 @@ public class ItemController {
         return "items/item-list";
     }
 
-    @GetMapping("/items/shoes")
-    public String itemsAllShoes(Model model) {
-        List<Item> itemLists = itemRepository.findByCategoryType("shoes");
-        model.addAttribute(itemLists);
+    @GetMapping("/items/category/{categoryType}")
+    public String itemsAllShoes(Model model, @PathVariable String categoryType) {
+        List<Item> itemLists = itemRepository.findByCategoryType(categoryType);
+        model.addAttribute("itemLists", itemLists);
         return "items/item-list";
     }
     /**
