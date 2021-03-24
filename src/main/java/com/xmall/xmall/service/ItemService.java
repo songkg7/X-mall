@@ -38,4 +38,15 @@ public class ItemService {
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(itemRepository::delete);
     }
+
+    public void update(Long id, ItemForm itemForm) {
+        Item item = itemRepository.findById(id).orElseThrow();
+        item.setSubTitle(itemForm.getSubTitle());
+        item.setDescription(itemForm.getDescription());
+        item.setItemImage(itemForm.getItemImage());
+        item.setStockQuantity(itemForm.getStockQuantity());
+        item.setCategoryType(itemForm.getCategoryType());
+        item.setGenderType(itemForm.getGenderType());
+        item.setPrice(itemForm.getPrice());
+    }
 }
