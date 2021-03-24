@@ -68,7 +68,7 @@
                                    th:text="${boardList.subject}" class="btn btn-default"></a>
                             </td>
                             <td th:text="${boardList.account?.getName()}"></td>
-                            <td th:text="${boardList.getCreateTime()}">
+                            <td th:text="${#temporals.format(boardList.getCreateTime(), 'yyyy-MM-dd HH:mm')}">
                                 <!--                    <a href="#" th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
                                 <!--                       class="btn btn-primary" role="button">수정</a>-->
                             </td>
