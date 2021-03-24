@@ -968,6 +968,33 @@
     <!------------------->
     <div class="main">
         <!--------------------- form 태그 선언 --------------------->
+            <div class="product_img">
+                <div class="col-sm-6">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            대표 상품 이미지
+                        </div>
+                        <div id="current-item-image" class="mt-3">
+                            <img th:if="${!#strings.isEmpty(itemForm.itemImage)}" class="rounded"
+                                 th:src="${itemForm.itemImage}"
+                                 width="125" height="125" alt="name" th:alt="${account.nickname}"/>
+                        </div>
+                        <div id="new-item-image" class="mt-3"></div>
+                        <div class="card-body">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="item-image-file">
+                                <label class="custom-file-label" for="item-image-file">상품 이미지 변경</label>
+                            </div>
+                            <div id="new-item-image-control" class="mt-3">
+                                <button class="btn btn-outline-primary btn-block" id="cut-button">자르기</button>
+                                <button class="btn btn-outline-success btn-block" id="confirm-button">확인</button>
+                                <button class="btn btn-outline-warning btn-block" id="reset-button">취소</button>
+                            </div>
+                            <div id="cropped-new-item-image" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <form name="itemRegisterForm" enctype="multipart/form-data"
               th:action="@{/items/create-item}" th:object="${itemForm}" method="post">
             <!-------------------------------------------------------->
@@ -977,12 +1004,6 @@
             <!--======================-->
             <!-- 0. 사진 등록 -->
             <!--======================-->
-            <div class="product_img">
-                <img class="product_img1" src="../images/icon/photo1.png"/>
-                <img class="product_img2" src="../images/icon/photo1.png"/>
-                <img class="product_img3" src="../images/icon/photo1.png"/>
-                <img class="product_img4" src="../images/icon/photo1.png"/>
-            </div>
             <!--+++++++++++++++++++++++++++++-->
             <!-- 화면 분할 2. 우측(content) -->
             <!--+++++++++++++++++++++++++++++-->
@@ -1179,31 +1200,7 @@
             </div>
         </form>
 
-        <div class="col-sm-6">
-            <div class="card text-center">
-                <div class="card-header">
-                    대표 상품 이미지
-                </div>
-                <div id="current-item-image" class="mt-3">
-                    <img th:if="${!#strings.isEmpty(itemForm.itemImage)}" class="rounded"
-                         th:src="${itemForm.itemImage}"
-                         width="125" height="125" alt="name" th:alt="${account.nickname}"/>
-                </div>
-                <div id="new-item-image" class="mt-3"></div>
-                <div class="card-body">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="item-image-file">
-                        <label class="custom-file-label" for="item-image-file">상품 이미지 변경</label>
-                    </div>
-                    <div id="new-item-image-control" class="mt-3">
-                        <button class="btn btn-outline-primary btn-block" id="cut-button">자르기</button>
-                        <button class="btn btn-outline-success btn-block" id="confirm-button">확인</button>
-                        <button class="btn btn-outline-warning btn-block" id="reset-button">취소</button>
-                    </div>
-                    <div id="cropped-new-item-image" class="mt-3"></div>
-                </div>
-            </div>
-        </div>
+
 
 
     </div>

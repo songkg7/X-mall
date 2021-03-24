@@ -204,7 +204,7 @@
                                     <!--                                    @{/items/{id} (id=${itemList.id})}-->
                                     <a class="reviewWrite" th:href="@{/myPage/my_createForm/} + ${orderList.orderItems[0].getId()} + @{/create}">리뷰 쓰기</a><br>
 
-                                    <a th:if="${orderList.status.name()=='ORDER'}" href="#"
+                                    <a th:if="${orderList.status==T(com.xmall.xmall.domain.OrderStatus).ORDER}" href="#"
                                        th:href="'javascript:cancel('+${orderList.id}+')'"
                                        class="orderCancel">주문 취소</a>
                                     <div th:text="${orderList.status}"></div>
