@@ -406,7 +406,8 @@
                     </div>
                     <div class="prd_price">
                         <div class="prd_money">
-                            <p th:text="|${itemList.price}원|">49,000 원</p>
+                            <p th:text="|${#numbers.formatInteger(itemList.price, 0, 'COMMA')}원|">49,000 원</p>
+
                         </div>
                     </div>
                 </div>

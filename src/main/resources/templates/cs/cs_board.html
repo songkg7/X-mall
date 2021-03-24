@@ -60,7 +60,8 @@
                         </thead>
                         <tbody>
                         <tr th:each="boardList : ${boardLists}">
-                            <td th:text="${boardList.id}"></td>
+<!--                            <td th:text="${boardList.id}"></td>-->
+                            <td th:text="${boardListStat.index + 1}"></td>
                             <td>
                                 <!--                    <a th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
                                 <!--                       th:text="${boardList.subject}" class="btn btn-default"></a>-->
