@@ -388,11 +388,13 @@
             <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
             <div class="product_thum">
                 <div class="img_div">
-                    <img
-                            th:src="${itemList.itemImage}"
-                            width="100%"
-                            height="auto"
-                    />
+                    <a th:href="@{/items/{id} (id=${itemList.id})}">
+                        <img
+                                th:src="${itemList.itemImage}"
+                                width="100%"
+                                height="auto"
+                        />
+                    </a>
                 </div>
                 <div class="product_div">
                     <div class="prd_description">
