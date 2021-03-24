@@ -694,11 +694,11 @@
         <div class="nav2_category">
             <ul class="li-inline">
                 <li>
-                    <a id="at1" class="atag1 black_atag" href="#">New Releases</a>
+                    <a id="at1" class="atag1 black_atag" href="#" th:href="@{/items/category/}">New Releases</a>
                 </li>
-                <li><a id="at2" class="atag2 black_atag" href="#">Men</a></li>
-                <li><a id="at3" class="atag3 black_atag" href="#">Women</a></li>
-                <li><a id="at4" class="atag4 black_atag" href="#">Kids</a></li>
+                <li><a id="at2" class="atag2 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">Men</a></li>
+                <li><a id="at3" class="atag3 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = women)}">Women</a></li>
+                <li><a id="at4" class="atag4 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = kids)}">Kids</a></li>
                 <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
             </ul>
         </div>
