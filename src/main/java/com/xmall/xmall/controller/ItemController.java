@@ -99,6 +99,12 @@ public class ItemController {
         return "items/item-list";
     }
 
+    @GetMapping("/items/shoes")
+    public String itemsAllShoes(Model model) {
+        List<Item> itemLists = itemRepository.findByCategoryType("shoes");
+        model.addAttribute(itemLists);
+        return "items/item-list";
+    }
     /**
      * Item 상세 정보 페이지
      */
