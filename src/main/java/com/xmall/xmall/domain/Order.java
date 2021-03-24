@@ -34,10 +34,6 @@ public class Order {
     @JoinColumn(name="account_id")
     private Account account;
 
-    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
-
     @OneToMany(mappedBy="order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
