@@ -75,6 +75,24 @@
         /*    color: white;*/
         /*    background: black;*/
         /*}*/
+
+
+        .alert{
+
+            width: 100%;
+            height: 50px;
+            font-size: 14px;
+            color: dodgerblue;
+            background-color: #111111;
+            line-height: 50px;
+            margin-bottom: 15px;
+
+        }
+        .alert a{
+            font-size: 15px;
+            color: #e5e5e5;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -84,7 +102,7 @@
 <header th:replace="fragments.html :: nav-bar"></header>
 <div class="alert alert-warning" role="alert" th:if="${account != null && !account.emailVerified}">
     X-mall 가입을 완료하려면 <a href="#" th:href="@{/check-email(email=${account.email})}"
-                        class="alert-link">계정 인증 이메일을 확인</a>하세요.
+                        class="alert-link"> 계정 인증 이메일 </a>을 확인하세요.
 </div>
 
 <!-- main body 부분1 -->
@@ -92,6 +110,7 @@
     <div class="main">
         <a href="#" th:href="@{/items/{id} (id=${itemList.id})}">
 <!--            FIXME: 사진 높이 섬세한 조정 필요합니다. -->
+
             <img th:src="${itemList.itemImage}" style="width: 100%; height:600px; object-fit: cover;"/>
         </a>
         <!-- <p class="product">나이키 에어 베이퍼 맥스 EVO</p> -->
