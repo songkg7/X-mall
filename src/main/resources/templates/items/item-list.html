@@ -382,266 +382,36 @@
         <!-- ---------------------- -->
         <!-- ------하단 우측측 메인----- -->
         <!-- ---------------------- -->
-        <div class="right_List">
+        <div class="right_List" th:each="itemList : ${itemLists}">
             <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
             <!-- 1번 상품 -->
             <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
             <div class="product_thum">
                 <div class="img_div">
                     <img
-                            src="/images/main_img/nike_detail1.png"
+                            th:src="${itemList.itemImage}"
                             width="100%"
                             height="auto"
-                            overflow="hidden"
                     />
                 </div>
                 <div class="product_div">
                     <div class="prd_description">
                         <div class="prd_name">
-                            <p>스포츠웨어 아이콘 클래쉬 메쉬 AOP</p>
+                            <p th:text="${itemList.name}">스포츠웨어 아이콘 클래쉬 메쉬 AOP</p>
                         </div>
                         <div class="prd_des">
-                            <p style="margin-bottom: -10px">남성 반팔 티셔츠 AS</p>
+                            <p style="margin-bottom: -10px" th:text="${itemList.subTitle}">남성 반팔 티셔츠 AS</p>
                             <p style="margin-bottom: -10px">1컬러</p>
                         </div>
                     </div>
                     <div class="prd_price">
                         <div class="prd_money">
-                            <p>49,000 원</p>
+                            <p th:text="|${itemList.price}원|">49,000 원</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 2번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_eoi.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
 
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 90 EOI</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>159,000원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 에어맥스 베로나 VDAY(여성 신발 라이프스타일)1컬러 159,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 3번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_vday.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 베로나 VDAY</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>159,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 스포츠웨어 프리미엄 에센셜 니트(남성 반팔 티셔츠 AS)1컬러 65,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 4번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_m_t_nit.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>
-                                나이키 스포츠웨어 프리미엄 에센셜 니트
-                            </p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">남성 반팔 티셔츠 AS</p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>65,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 5번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_react.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 270 리액트</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>179,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 5번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_react.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 270 리액트</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>179,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 5번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_react.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 270 리액트</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>179,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 나이키 에어맥스 270 리액트(여성 신발 라이프스타일)1컬러 179,000원 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <!-- 5번 상품 -->
-            <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <img
-                            src="/images/main_img/nike_w_s_react.png"
-                            width="100%"
-                            height="auto"
-                            overflow="hidden"
-                    />
-                </div>
-
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p>나이키 에어맥스 270 리액트</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px">
-                                여성 신발 라이프스타일
-                            </p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
-                    </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p>179,000 원</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
