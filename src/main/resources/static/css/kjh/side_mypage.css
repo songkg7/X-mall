@@ -116,13 +116,13 @@
 .my_buy_item .item_description{
   /*background-color: darkolivegreen;*/
   /*width: 30%;*/
-  height: 150px;
+  height: 170px;
   margin-left: 10px;
   float: left;
 }
 .my_buy_item .item_description div{
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .my_buy_item .item_review{
