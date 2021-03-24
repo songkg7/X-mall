@@ -99,12 +99,6 @@ public class ItemController {
         return "items/item-list";
     }
 
-    @GetMapping("/items/category/{categoryType}")
-    public String itemsAllShoes(Model model, @PathVariable String categoryType) {
-        List<Item> itemLists = itemRepository.findByCategoryType(categoryType);
-        model.addAttribute("itemLists", itemLists);
-        return "items/item-list";
-    }
     /**
      * Item 상세 정보 페이지
      */
@@ -120,4 +114,21 @@ public class ItemController {
 
         return "items/item-info";
     }
+
+    @GetMapping("/items/category/{categoryType}")
+    public String itemsAllCategory(Model model, @PathVariable String categoryType) {
+        List<Item> itemLists = itemRepository.findByCategoryType(categoryType);
+        model.addAttribute("itemLists", itemLists);
+        return "items/item-list";
+    }
+
+    @GetMapping("/items/category/gender/{gender}")
+    public String itemsGender(Model model, @PathVariable String gender) {
+        List<Item> itemLists = itemRepository.findByGenderType(gender);
+        model.addAttribute("itemLists", itemLists);
+        return "items/item-list";
+    }
+
+    // TODO: 정렬
+
 }

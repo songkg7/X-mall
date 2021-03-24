@@ -58,7 +58,7 @@ public class OrderController {
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute("item", item));
         // TODO: 배송지 정보 받아오기
-        return "order/payment";
+        return "order/payment-test";
     }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
@@ -86,7 +86,7 @@ public class OrderController {
 
     @GetMapping("1")
     public String test() {
-        return "order/payment-test2";
+        return "order/payment-test5";
     }
 
     @PostMapping("order/{id}/cancel")
