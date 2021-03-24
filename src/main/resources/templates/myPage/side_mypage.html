@@ -250,7 +250,8 @@
                     <h3 th:text="${reviewList.subject}">제목</h3>
                     <h4>★ ★ ★ ★ ★</h4>
                     <span th:text="${reviewList.account?.getName()}">이름</span>
-                    <span th:text="${reviewList.getCreateTime()}">등록일</span>
+                    <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd HH:mm')}">등록일</span>
+
 <!--                    <span th:text="${reviewList.orderItemSize}">사이즈</span>-->
 <!--                    <span th:text="${reviewList.item.name}">상품명</span>-->
                     <p th:text="${reviewList.mainText}">내용</p>
