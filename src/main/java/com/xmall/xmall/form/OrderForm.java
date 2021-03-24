@@ -13,8 +13,8 @@ public class OrderForm {
 
     private String orderItemSize;
 
-    private String mainAddress;
+    private String postCode;    // 우편번호
 
-    private String detailAddress;
+    private String address;     // 배송주소
 
 }

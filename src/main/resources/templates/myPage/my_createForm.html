@@ -269,6 +269,7 @@
                             <div class="item_subject" th:text="${orderItem.item.name}"></div>
                             <div class="item_size" th:text="|사이즈 : ${orderItem.getOrderItemSize()}|"></div>
                             <div class="item_quantity" th:text="|수량 : ${orderItem.getAmount()}개|"></div>
+                            <div class="item_address" th:utext="|배송주소 : (${orderItem.getPostCode()}) ${orderItem.getAddress()}|"></div>
                             <div class="item_totAmount" th:text="|총 결제 금액 : ${#numbers.formatInteger(orderItem.getTotalPrice(), 0, 'COMMA')}원|"></div>
                         </div>
                         <div class="item_review">
