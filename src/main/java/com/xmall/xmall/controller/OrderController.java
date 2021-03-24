@@ -58,7 +58,7 @@ public class OrderController {
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute("item", item));
         // TODO: 배송지 정보 받아오기
-        return "order/payment-test";
+        return "order/payment";
     }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
