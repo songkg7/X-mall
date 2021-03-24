@@ -45,7 +45,7 @@ public class MyPageController {
         List<Order> orderLists = orderRepository.findByAccount(account);
         model.addAttribute("orderLists", orderLists);
 
-        List<MyReview> reviewLists = myReviewRepository.findAll();
+        List<MyReview> reviewLists = myReviewRepository.findByAccount(account);
         model.addAttribute("reviewLists",reviewLists);
         // 계정을 모델에 담고
         model.addAttribute(account);

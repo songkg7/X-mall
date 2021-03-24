@@ -728,20 +728,23 @@
                     <hr/>
 
                 </form>
-                <h3>관리자 모드</h3>
-                <hr/>
-                <div class="update_delete">
-                    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
-                       class="btn btn-primary" role="button"><div class="update_btn">
-                        상품 수정
-                    </div></a>
-                    <a href="#" th:href="@{/items/{id}/delete (id=${item.id})}"
-                       class="btn btn-primary" role="button"><div class="delete_btn">
-                        상품 삭제
-                    </div></a>
-                </div>
 
-                <hr/>
+                <span sec:authorize="hasRole('ROLE_ADMIN')">
+                    <h3>관리자 모드</h3>
+                    <hr/>
+                    <div class="update_delete">
+                        <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+                           class="btn btn-primary" role="button"><div class="update_btn">
+                            상품 수정
+                        </div></a>
+                        <a href="#" th:href="@{/items/{id}/delete (id=${item.id})}"
+                           class="btn btn-primary" role="button"><div class="delete_btn">
+                            상품 삭제
+                        </div></a>
+                    </div>
+                    <hr/>
+                </span>
+
                 <div class="detail_description_div">
 <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
                     <p th:text="${item.getDescription()}">
