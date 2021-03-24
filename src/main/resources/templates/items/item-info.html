@@ -234,7 +234,7 @@
         }
 
         .product_img1 {
-            width: 48%;
+            width: 47%;
             margin-right: 12px;
             margin-bottom: 8px;
             height: unset;
@@ -252,15 +252,18 @@
         }
 
         .product_img2 {
-            width: 48%;
+            width: 47%;
             margin-right: 12px;
             margin-bottom: 8px;
             height: unset;
             object-fit: cover;
+            float: left;
+
         }
 
         .product_img3 {
-            width: 48%;
+            width: 47%;
+
             margin-right: 12px;
             margin-bottom: 8px;
             height: unset;
@@ -269,11 +272,13 @@
         }
 
         .product_img4 {
-            width: 48%;
+            width: 47%;
+
             margin-right: 12px;
             margin-bottom: 8px;
             height: unset;
             object-fit: cover;
+            float: left;
         }
 
         /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
@@ -559,27 +564,39 @@
         <!-- 화면 분할 1. 좌측(product_img) -->
         <!--+++++++++++++++++++++++++++++-->
         <div class="product_img">
-            <img
-                    class="product_img1"
-                    src="/images/main_img/nike_detail1.png"
-                    th:src="${item.itemImage}"
-                    width="100%"
-            />
-            <img
-                    class="product_img2"
-                    src="/images/main_img/nike_detail2.png"
-                    width="100%"
-            />
-            <img
-                    class="product_img3"
-                    src="/images/main_img/nike_detail3.png"
-                    width="100%"
-            />
-            <img
-                    class="product_img4"
-                    src="/images/main_img/nike_detail4.png"
-                    width="100%"
-            />
+            <div class="product_img1">
+                <img
+                        class="left_1"
+                        src="/images/main_img/nike_detail1.png"
+                        th:src="${item.itemImage}"
+                        width="100%"
+                        height="100%"
+                />
+            </div>
+            <div class="product_img2">
+                <img
+                        class="left_2"
+                        src="/images/main_img/nike_detail2.png"
+                        width="100%"
+                        height="100%"
+                />
+            </div>
+            <div class="product_img3">
+                <img
+                        class="left_3"
+                        src="/images/main_img/nike_detail3.png"
+                        width="100%"
+                        height="100%"
+                />
+            </div>
+            <div class="product_img4">
+                <img
+                        class="left_4"
+                        src="/images/main_img/nike_detail4.png"
+                        width="100%"
+                        height="100%"
+                />
+            </div>
         </div>
         <!--+++++++++++++++++++++++++++++-->
         <!-- 화면 분할 2. 우측(content) -->
