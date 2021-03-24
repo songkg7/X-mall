@@ -54,13 +54,33 @@ public class ItemController {
      * 상품 수정
      */
     @GetMapping("/items/{id}/edit")
-    public String updateItem(@PathVariable Long id, Model model) {
-        Item item = itemRepository.findById(id).get();
+    public String updateItemForm(@CurrentAccount Account account, @PathVariable Long id, Model model) {
+        Item item = itemRepository.findById(id).orElseThrow();
+        ItemForm itemForm = new ItemForm();
+        itemForm.setSubTitle(item.getSubTitle());
+        itemForm.setCategoryType(item.getCategoryType());
+        itemForm.setDescription(item.getDescription());
+        itemForm.setGenderType(item.getGenderType());
+        itemForm.setItemImage(item.getItemImage());
+        itemForm.setName(item.getName());
+        itemForm.setPrice(item.getPrice());
+        itemForm.setStockQuantity(item.getStockQuantity());
+
+        model.addAttribute(account);
         model.addAttribute(item);
+        model.addAttribute(itemForm);
         return "items/update-item";
     }
 
     // TODO: PostMapping
+    @PostMapping("/items/{id}/edit")
+    public String updateItem(@CurrentAccount Account account, @PathVariable Long id, Model model,
+                             @Valid ItemForm itemForm, Errors errors) {
+
+        itemService.update(id, itemForm);
+        return "redirect:/";
+    }
+
 
     /**
      * 상품 삭제
