@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter
 @Setter
@@ -31,6 +33,10 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="account_id")
     private Account account;
+
+    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
 
     @OneToMany(mappedBy="order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
