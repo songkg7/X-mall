@@ -267,14 +267,13 @@
                   <label>상품가격: </label><span th:text="${item.getPrice()}"></span>
                 </div>
                 <div>
-                  <label>수량: </label><span th:text="${amount}"></span>
+                  <label>수량: </label><span th:text="${orderForm.getAmount()}"></span>
                 </div>
-                <!--<div>
-                사이즈 받는 데이터 값 있어야함
-                  <label>사이즈: </label><span th:text="${item.getName()}"></span>
-                </div>-->
                 <div>
-                  <label>총 결제 금액: </label><span th:text="${item.getPrice() * amount} + 원"></span>
+                  <label>사이즈: </label><span th:text="${orderForm.getOrderItemSize()}"></span>
+                </div>
+                <div>
+                  <label>총 결제 금액: </label><span th:text="${item.getPrice() * orderForm.getAmount()} + 원"></span>
                 </div>
               </div>
             </div>
@@ -284,9 +283,7 @@
           <div>
             <div>
               <div class="goods_left">상품 금액</div>
-              <div class="goods_right">
-                <strong>189,000 원</strong>
-              </div>
+              <strong><div class="goods_right" th:text="${item.getPrice()}"></div></strong>
             </div>
             <!--+++++++++++++++++++++++++++++++++++-->
             <div>
@@ -310,9 +307,7 @@
             </div>
             <div>
               <div class="goods_left">총 결제 예정 금액</div>
-              <div class="goods_right">
-                <strong>191,500 원</strong>
-              </div>
+              <strong><div class="goods_right"  th:text="${item.getPrice() * orderForm.getAmount() + 2500} + 원"></div></strong>
             </div>
           </div>
           <!--+++++++++++++++++++++++++++++++++++-->
