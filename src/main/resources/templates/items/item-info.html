@@ -712,21 +712,21 @@
                     <!--======================-->
                     <!-- 4. 구매 -->
                     <!--======================-->
-                    <input type="submit" class="buy_button" value="바로구매"/>
+<!--                    <button type="submit">바로구매</button>-->
+                        <input type="submit" class="buy_button" value="바로구매"/>
 
-                    <div class="kart_wish_div">
-                        <a href="#"
-                        ><input type="submit" class="kart_button" value="장바구니"
-                        /></a>
-                        <a href="#"
-                        ><input
-                                type="submit"
-                                class="wishList_button"
-                                value="위시리스트"
-                        /></a>
-                    </div>
+                        <div class="kart_wish_div">
+                            <a href="#"
+                            ><input type="submit" class="kart_button" value="장바구니"
+                            /></a>
+                            <a href="#"
+                            ><input
+                                    type="submit"
+                                    class="wishList_button"
+                                    value="위시리스트"
+                            /></a>
+                        </div>
                     <hr/>
-
                 </form>
 
                 <span sec:authorize="hasRole('ROLE_ADMIN')">

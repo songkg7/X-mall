@@ -26,9 +26,6 @@ public class MainController {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
         model.addAttribute("account", account);
-//        if (account.isEmailVerified()) {
-//            model.addAttribute("message", "이메일 인증이 완료되지 않았습니다.")
-//        }
 
         return "main";
     }

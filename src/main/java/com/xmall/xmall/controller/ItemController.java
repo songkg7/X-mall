@@ -9,16 +9,13 @@ import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,19 +31,23 @@ public class ItemController {
     @GetMapping("/items/create-item")
     public String createItemForm(Model model) {
         long totalCount = itemRepository.count();
+
         model.addAttribute(new ItemForm());
         model.addAttribute("totalCount", totalCount);
+
         return "items/create-item";
     }
 
+
     @PostMapping("/items/create-item")
-    public String createItem(@CurrentAccount Account account, @Valid ItemForm itemForm, Errors errors
-            , Model model) {
+    public String createItem(@CurrentAccount Account account, @Valid ItemForm itemForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "items/create-item";
         }
+
         model.addAttribute(account);
         itemService.create(itemForm);
+
         return "redirect:/";
     }
 
@@ -69,6 +70,7 @@ public class ItemController {
         model.addAttribute(account);
         model.addAttribute(item);
         model.addAttribute(itemForm);
+
         return "items/update-item";
     }
 
@@ -81,21 +83,21 @@ public class ItemController {
         return "redirect:/";
     }
 
-
     /**
      * 상품 삭제
      */
     @GetMapping("/items/{id}/delete")
     public String deleteItem(@PathVariable Long id) {
         itemService.delete(id);
+
         return "redirect:/";
     }
-
 
     @GetMapping("/items")
     public String items(Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
+
         return "items/item-list";
     }
 
@@ -109,6 +111,7 @@ public class ItemController {
         if (item == null) {
             return "error";
         }
+
         model.addAttribute("item", item);
         model.addAttribute("orderForm", new OrderForm());
 
@@ -119,6 +122,7 @@ public class ItemController {
     public String itemsAllCategory(Model model, @PathVariable String categoryType) {
         List<Item> itemLists = itemRepository.findByCategoryType(categoryType);
         model.addAttribute("itemLists", itemLists);
+
         return "items/item-list";
     }
 
@@ -126,6 +130,7 @@ public class ItemController {
     public String itemsGender(Model model, @PathVariable String gender) {
         List<Item> itemLists = itemRepository.findByGenderType(gender);
         model.addAttribute("itemLists", itemLists);
+
         return "items/item-list";
     }
 
@@ -133,6 +138,7 @@ public class ItemController {
     public String itemsGenderCategory(Model model, @PathVariable String gender, @PathVariable String categoryType) {
         List<Item> itemLists = itemRepository.findByGenderTypeAndCategoryType(gender, categoryType);
         model.addAttribute("itemLists", itemLists);
+
         return "items/item-list";
     }
 

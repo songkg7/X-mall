@@ -169,4 +169,10 @@ public class AccountService implements UserDetailsService {
 
         emailService.sendEmail(emailMessage);
     }
+
+    public boolean checkEmailVerified(Account account) {
+        Account findAccount = accountRepository.findById(account.getId()).orElseThrow();
+        return findAccount.isEmailVerified();
+
+    }
 }
