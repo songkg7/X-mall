@@ -148,7 +148,7 @@
 
         font-size: 16px;
         font-weight: 100;
-        color: #a5a5a5;
+        color: #606060;
         margin-bottom: 0;
     }
     .item_description .item_quantity{
@@ -156,7 +156,7 @@
         font-size: 16px;
         font-weight: 100;
 
-        color: #a5a5a5;
+        color: #606060;
     }
     .item_description .item_totAmount {
         height: 30px;
@@ -236,7 +236,7 @@
                     </ul>
                 </li>
                 <div class="bottom_line"></div>
-                <h4>나이키닷컴고객센터</h4>
+                <h4>엑스몰닷컴고객센터</h4>
                 <h3>080-022-0182</h3>
                 <p>월~일:오전 9시 ~ 오후 8시</p>
                 <div class="bottom_line"></div>
@@ -250,7 +250,7 @@
                 <div class="review_title">
                     <h2>리뷰 작성</h2>
                     <sub
-                    >나이키에서 구매한 상품 리뷰 작성하고 포인트 적립 혜택 받으세요!</sub
+                    >X-mall에서 구매한 상품 리뷰 작성하고 포인트 적립 혜택 받으세요!</sub
                     >
 
                 </div>
@@ -269,7 +269,8 @@
                             <div class="item_subject" th:text="${orderItem.item.name}"></div>
                             <div class="item_size" th:text="|사이즈 : ${orderItem.getOrderItemSize()}|"></div>
                             <div class="item_quantity" th:text="|수량 : ${orderItem.getAmount()}개|"></div>
-                            <div class="item_address" th:utext="|배송주소 : (${orderItem.getPostCode()}) ${orderItem.getAddress()}|"></div>
+<!--                            리뷰에선 굳이 ......-->
+<!--                            <div class="item_address" th:utext="|배송주소 : (${orderItem.getPostCode()}) ${orderItem.getAddress()}|"></div>-->
                             <div class="item_totAmount" th:text="|총 결제 금액 : ${#numbers.formatInteger(orderItem.getTotalPrice(), 0, 'COMMA')}원|"></div>
                         </div>
                         <div class="item_review">
