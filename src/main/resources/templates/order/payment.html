@@ -109,7 +109,7 @@
                     <div id="pastAddress" class="address1 text_left">
                         <input type="text"  class="sub1" th:field="*{postCode}" placeholder="우편번호">
                         <!--                            <input type="text"  class="sub1"  placeholder="우편번호">-->
-                        <input type="text"  class="sub2" th:field="*{address}"placeholder="배주소">
+                        <input type="text"  class="sub2" th:field="*{address}" placeholder="배주소">
                         <!--                            <input type="text"  class="sub2" placeholder="상세주소">-->
                     </div>
 
@@ -134,7 +134,7 @@
                         배송방식
                     </div>
                     <div class="shop_input">
-                        <p><strong>일반배송 : 배송비 2500원</strong></p>
+                        <p><strong>일반배송 : 배송비 무료</strong></p>
                         <p><strong>배송지역 : 전국(일부 도서산간 지역 제외)</strong></p>
                         <p><strong>배송안내 : 상품의 출고지 또는 물류센터 보관장소에 따라 분리 배송</strong></p>
                     </div>
@@ -161,19 +161,21 @@
                     <div>
                         <!--좌측 이미지-->
                         <div class="order_list_img">
-                            <img src="/images/main_img/nike_w_s_react.png">
+                            <img th:src="${item.itemImage}">
                         </div>
                         <!--우측 설명-->
                         <div class="order_list_DB">
-                            <!--DB에서 가져오는 값-->
-                            <input class="order_list_text_left1" type="text" th:value="${item.getName()}">
+                            <div class="order_list_text_left1" th:text="${item.getName()}"></div>
+
                             <div class="order_list_text_left2">스타일 코드</div>
 
-                            <input class="order_list_text_left2" type="text" th:field="*{orderItemSize}" th:value="${orderForm.getOrderItemSize()}">
+                            <div class="order_list_text_left2" th:text="|사이즈 : ${orderForm.getOrderItemSize()}|"></div>
+                            <input type="hidden" th:field="*{orderItemSize}">
 
-                            <input class="order_list_text_left2" type="text" th:field="*{amount} " th:value="${orderForm.getAmount()}">
-                            <!-- 가격은 DB에서 가져오는 값입니다.-->
-                            <div class="order_list_text_left3" th:text="${item.getPrice()} + 원">가격</div>
+                            <div class="order_list_text_left2" th:text="|수량 : ${orderForm.getAmount()} 개|"></div>
+                            <input type="hidden" th:field="*{amount}">
+
+                            <div class="order_list_text_left3" th:text="|${#numbers.formatInteger(item.getPrice(), 0, 'COMMA')} 원|">가격</div>
                         </div>
                     </div>
 
@@ -186,7 +188,7 @@
                         <div>
                             <div class="goods_left" >상품 금액</div>
                             <div class="goods_right">
-                                <strong  th:text="${item.getPrice()} + 원"></strong>
+                                <strong  th:text="|${#numbers.formatInteger(item.getPrice(), 0, 'COMMA')} 원|"></strong>
                             </div>
                         </div>
                         <!--+++++++++++++++++++++++++++++++++++-->
@@ -214,10 +216,9 @@
                         <div>
                             <div class="goods_left1">총 결제 예정 금액</div>
                             <div class="goods_right1">
-                                <strong th:text="${item.getPrice()*orderForm.getAmount()} + 원"></strong>
+                                <strong th:text="|${#numbers.formatInteger(item.getPrice()*orderForm.getAmount(), 0, 'COMMA')} 원|"></strong>
                             </div>
                         </div>
-
                     </div>
                     <!--+++++++++++++++++++++++++++++++++++-->
                     <!--4층 -->
