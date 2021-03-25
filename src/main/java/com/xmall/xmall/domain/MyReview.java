@@ -22,6 +22,11 @@ public class MyReview {
     @JoinColumn(name = "order_id")
     private Order order;
 
+
+    private String itemName; // 아이템명
+
+    private String orderItemSize; // 주문 사이즈
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account; // 작성자
@@ -37,13 +42,15 @@ public class MyReview {
     @Column(columnDefinition = "bigint default 0")
     private Long viewCount; // 조회수
 
-    public static MyReview createReview(Account account, String subject, String mainText) {
+    public static MyReview createReview(Account account, String subject, String mainText, String itemName, String orderItemSize) {
         MyReview myReview = new MyReview();
         myReview.setAccount(account);
         myReview.setSubject(subject);
         myReview.setMainText(mainText);
         myReview.setCreateTime(LocalDateTime.now());
         myReview.setViewCount(0L);
+        myReview.setItemName(itemName);
+        myReview.setOrderItemSize(orderItemSize);
         return myReview;
     }
 }

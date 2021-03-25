@@ -252,36 +252,35 @@
                     <sub
                     >X-mall에서 구매한 상품 리뷰 작성하고 포인트 적립 혜택 받으세요!</sub
                     >
-
                 </div>
                 <div class="no_item1">
                     <h2>☆☆☆☆☆</h2>
                     <h2 class="wish_line">0개의 reviews/0.0</h2>
                 </div>
 
-                <!--   글이 사라지면서 최근 구매 상품 불러오기 -->
-                <div class="no_item1">
-                    <div class="my_buy_item">
-                        <div class="item_img">
-                            <img th:src="${orderItem.item.itemImage}">
-                        </div>
-                        <div class="item_description">
-                            <div class="item_subject" th:text="${orderItem.item.name}"></div>
-                            <div class="item_size" th:text="|사이즈 : ${orderItem.getOrderItemSize()}|"></div>
-                            <div class="item_quantity" th:text="|수량 : ${orderItem.getAmount()}개|"></div>
-<!--                            리뷰에선 굳이 ......-->
-<!--                            <div class="item_address" th:utext="|배송주소 : (${orderItem.getPostCode()}) ${orderItem.getAddress()}|"></div>-->
-                            <div class="item_totAmount" th:text="|총 결제 금액 : ${#numbers.formatInteger(orderItem.getTotalPrice(), 0, 'COMMA')}원|"></div>
-                        </div>
-                        <div class="item_review">
-                        </div>
-                        <div class="item_result">
+                <form th:action="@{/myPage/my_createForm/} + ${orderItemId} + @{/create}" th:object="${form}" method="post">
+                    <div class="no_item1">
+                        <div class="my_buy_item">
+                            <div class="item_img">
+                                <img th:src="${orderItem.item.itemImage}">
+                            </div>
+                            <div class="item_description">
+                                <div class="item_subject" th:text="${orderItem.item.name}"></div>
+                                <input class="item_subject" type="hidden" th:field="*{itemName}">
+                                <div class="item_size" th:text="|사이즈 : ${orderItem.getOrderItemSize()}|"></div>
+                                <div class="item_quantity" th:text="|수량 : ${orderItem.getAmount()}개|"></div>
+    <!--                            리뷰에선 굳이 ......-->
+    <!--                            <div class="item_address" th:utext="|배송주소 : (${orderItem.getPostCode()}) ${orderItem.getAddress()}|"></div>-->
+                                <div class="item_totAmount" th:text="|총 결제 금액 : ${#numbers.formatInteger(orderItem.getTotalPrice(), 0, 'COMMA')}원|"></div>
+                            </div>
+                            <div class="item_review">
+                            </div>
+                            <div class="item_result">
+                            </div>
                         </div>
                     </div>
-                </div>
 <!--                @{/myPage/my_createForm/} + ${orderList.orderItems[0].getId()} + @{/create}-->
                 <!---------------------------------------------------->
-                <form th:action="@{/myPage/my_createForm/} + ${orderItemId} + @{/create}" th:object="${form}" method="post">
                     <div class="no_item1">
                         <h3>상품을 사용해보셨나요?</h3>
                         <!---------------------------------------------------->
