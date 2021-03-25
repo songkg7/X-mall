@@ -19,7 +19,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 
 @Controller
 @RequiredArgsConstructor
@@ -66,12 +65,12 @@ public class AccountController {
         Account account = accountRepository.findByEmail(email);
         if (account == null) {
             model.addAttribute("error", "wrong.email");
-            return "account/checkedEmail";
+            return "account/checked-email";
         }
 
         if (!account.isValidToken(token)) {
             model.addAttribute("error", "wrong.email");
-            return "account/checkedEmail";
+            return "account/checked-email";
         }
 
         // 위를 모두 통과하면 정식 회원가입 절차 완료
@@ -79,7 +78,7 @@ public class AccountController {
         // 인증 뷰로 데이터 보여주기
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
-        return "account/checkedEmail";
+        return "account/checked-email";
     }
 
     // TODO: email 재전송 버튼이 있는 간단한 페이지
@@ -135,13 +134,13 @@ public class AccountController {
         boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
         if (!resultPwdCheck) {
             model.addAttribute("error1", "비밀번호가 일치하지 않습니다.");
-            return "mypage/pwd_change";
+            return "myPage/pwd_change";
         }
 
         boolean resultPwdCheck2 = passwordEncoder.matches(checkPwdForm.getNew_pwd_check(), account.getPassword());
         if (resultPwdCheck2) {
             model.addAttribute("error2", "변경하려는 비밀번호가 기존 비밀번호와 일치합니다.");
-            return "mypage/pwd_change";
+            return "myPage/pwd_change";
         }
 
         accountService.changePwd(account, checkPwdForm);
@@ -158,7 +157,7 @@ public class AccountController {
 
         if (!resultPwdCheck) {
             model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
-            return "mypage/withdrawal";
+            return "myPage/withdrawal";
         }
 
         accountService.delete(account);
