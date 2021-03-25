@@ -336,14 +336,15 @@
                         <!-- option.2 높은 가격순 -->
                         <li>
                             <div class="option high_price">
-                                <p>높은 가격순</p>
+                                <p><a th:href="@{/items/category/new-releases/(orderBy=desc)}">높은 가격순</a></p>
                             </div>
                         </li>
                         <!-- option.3 낮은 가격순 -->
                         <li>
                             <div class="option low_price">
                                 <p>
-                                    <a th:href="@{/items(orderBy=asc)}">낮은 가격순</a>
+<!--                                    <a th:href="@{/items/asc}">낮은 가격순</a>-->
+                                    <a th:href="@{/items/category/asc}">낮은 가격순</a>
                                 </p>
                             </div>
                         </li>

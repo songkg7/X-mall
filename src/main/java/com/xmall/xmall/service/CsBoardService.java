@@ -1,6 +1,7 @@
 package com.xmall.xmall.board;
 
 import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.repository.CommentRepository;
 import com.xmall.xmall.repository.CsBoardRespository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CsBoardService {
 
     private final CsBoardRespository csBoardRespository;
+    private final CommentRepository commentRepository;
     // 게시물 작성
     @Transactional
     public void create(Account account, String subject, String mainText) {
@@ -23,9 +25,9 @@ public class CsBoardService {
 
     @Transactional
     public void create(String commentText){
-        Cs_Board comment = Cs_Board.createComment(commentText);
+        Comment comment = Comment.createComment(commentText);
 
-        csBoardRespository.save(comment);
+        commentRepository.save(comment);
     }
 
     @Transactional

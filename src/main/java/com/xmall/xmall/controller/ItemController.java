@@ -151,5 +151,11 @@ public class ItemController {
 //    }
 
     // TODO: 정렬
+    @GetMapping("/items/category/asc")
+    public String itemsPriceAsc(Model model) {
+        List<Item> itemLists = itemRepository.findByOrderByPriceAsc();
+        model.addAttribute("itemLists", itemLists);
+        return "items/item-list";
+    }
 
 }

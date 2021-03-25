@@ -94,8 +94,97 @@
         .text-muted1 {
             text-align: center;
         }
-    </style>
 
+        input::-webkit-input-placeholder {
+            font-size: 90%;
+        }
+
+        input::-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input:-ms-input-placeholder {
+            font-size: 90%;
+        }
+
+        input:-moz-placeholder {
+            font-size: 90%;
+        }
+
+        input::placeholder {
+            font-size: 90%;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .login_need1,
+        .login_need2 {
+            padding-left: 0px;
+            font-size: 8px;
+            color: red;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+           let login_need1 = $("#login_need1");
+           let login_need2 = $("#login_need2");
+            login_need1.hide();
+            login_need2.hide();
+
+            $("#username").keyup(function () {
+                if ($("#username").val().split(" ").join("") === "") {
+                    $("#username").css("border-color", "red");
+                    login_need1.show();
+                } else {
+                    login_need1.hide();
+                    $("#username").css("border", "1px solid black");
+                }
+            });
+
+            $("#password").keyup(function () {
+                    if ($("#password").val().split(" ").join("") === "") {
+                        $("#password").css("border-color", "red");
+                        login_need2.show();
+                    } else {
+                        login_need2.hide();
+                        $("#password").css("border", "1px solid black");
+                    }
+            });
+
+
+            });
+        function checkForm(){
+            let login_need1 = $("#login_need1");
+            let login_need2 = $("#login_need2");
+            if ($("#username").val().split(" ").join("") === "") {
+                $("#username").css("border-color", "red");
+                login_need1.show();
+                $("#username").val("");
+                $("#username").focus();
+                return;
+            }else {
+                login_need1.hide();
+                $("#username").css("border", "1px solid black");
+
+            }
+
+            if ($("#password").val().split(" ").join("") === "") {
+                $("#password").css("border-color", "red");
+                login_need2.show();
+                $("#password").val("");
+                $("#password").focus();
+                return;
+            } else {
+                login_need2.hide();
+                $("#password").css("border", "1px solid black");
+            }
+
+            document.loginForm.submit();
+        }
+
+    </script>
 </head>
 <body>
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -118,7 +207,7 @@
             <p>X-mall 로그인</p>
 
         </div>
-        <form action="#" th:action="@{/login}" method="post" novalidate>
+        <form action="#" th:action="@{/login}" method="post" name="loginForm"  >
             <div class="form-group">
 
 
@@ -126,15 +215,20 @@
                 <!--이이디 혹은 이메일-->
                 <input id="username" type="text" name="username" class="form-control"
                        placeholder="아이디 또는 이메일" aria-describedby="emailHelp" required>
-
+                <span class="login_need1" id="login_need1"
+                >필수 입력 항목입니다.</span
+                >
                 <!--비밀번호-->
                 <input id="password" type="password" name="password" class="form-control"
                        placeholder="비밀번호" aria-describedby="passwordHelp" required>
+                <span class="login_need2" id="login_need2"
+                >필수 입력 항목입니다.</span
+                >
                 <div id="passwordHelp" class="form-text text-muted">
                     패스워드가 기억나지 않는다면, <a href="#" th:href="@{/email-login}">패스워드 없이 로그인하기</a>
                 </div>
                 <button class="loginBtn" type="submit"
-                        aria-describedby="submitHelp">로그인</button>
+                        aria-describedby="submitHelp" id="loginBtn" onclick="checkForm();">로그인</button>
                 <div id="submitHelp" class="form-text text-muted1">
                     X-mall에 처음 오신거라면 <a href="#" th:href="@{/sign-up}">계정을 먼저 만드세요.</a>
                 </div>
