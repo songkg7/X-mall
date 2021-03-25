@@ -129,6 +129,21 @@ public class ItemController {
         return "items/item-list";
     }
 
+    @GetMapping("/items/category/{gender}/{categoryType}")
+    public String itemsGenderCategory(Model model, @PathVariable String gender, @PathVariable String categoryType) {
+        List<Item> itemLists = itemRepository.findByGenderTypeAndCategoryType(gender, categoryType);
+        model.addAttribute("itemLists", itemLists);
+        return "items/item-list";
+    }
+
+    // TODO: 성별/의류전체 수정 중
+//    @GetMapping("/items/category/{gender}/{categoryType1}/{categoryType2}")
+//    public String itemsGenderCategory(Model model, @PathVariable String gender, @PathVariable String categoryType1, @PathVariable String categoryType2) {
+//        List<Item> itemLists = itemRepository.findByGenderTypeAndCategoryType1ORCategoryType2(gender, categoryType1, categoryType2);
+//        model.addAttribute("itemLists", itemLists);
+//        return "items/item-list";
+//    }
+
     // TODO: 정렬
 
 }
