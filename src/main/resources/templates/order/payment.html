@@ -104,19 +104,11 @@
                 <!-- 신규 배송지 -->
                 <div class="shop_input2 ">
                     <div class="shop_customer_sub_delivery">배송지 정보</div>
-                    <!--                    <input type="radio" name="delivery" id="delivery_new" value="0"  >신규 배송지-->
                     <p>신규 배송지</p>
                     <div id="pastAddress" class="address1 text_left">
                         <input type="text"  class="sub1" th:field="*{postCode}" placeholder="우편번호">
-                        <!--                            <input type="text"  class="sub1"  placeholder="우편번호">-->
-
-                        <input type="text"  class="sub2" th:field="*{address}"placeholder="배송주소">
-
-
-                        <!--                            <input type="text"  class="sub2" placeholder="상세주소">-->
+                        <input type="text"  class="sub2" th:field="*{address}" placeholder="배송주소">
                     </div>
-
-
 
                     <select id="memo" class="select_box" >
                         <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
@@ -125,13 +117,10 @@
                         <option value="직접입력">직접입력</option>
                     </select>
                     <input type="text" id="selboxDirect" class="selbox_text"/>
-
-
                 </div>
                 <!--+++++++++++++++++++++++++++++++++++-->
                 <!--+++++++++++++++++++++++++++++++++++-->
                 <div>
-
                     <div class="shop_agree">
                         <div class="sub_line"></div>
                         배송방식
@@ -271,8 +260,5 @@
 <!--+++++++++++++++++++++++++++++++++++-->
 <footer th:replace="fragments.html :: footer-body">
 </footer>
-
-
-
 </body>
 </html>

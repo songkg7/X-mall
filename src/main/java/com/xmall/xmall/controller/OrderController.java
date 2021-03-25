@@ -6,6 +6,7 @@ import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.CartRepository;
 import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderRepository;
+import com.xmall.xmall.service.AccountService;
 import com.xmall.xmall.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -26,6 +28,7 @@ public class OrderController {
     private final ItemRepository itemRepository;
     private final CartRepository cartRepository;
     private final OrderService orderService;
+    private final AccountService accountService;
 
     // 바로 구매로 상품 하나 구매
 //    @PostMapping("/order/{id}")
@@ -48,7 +51,12 @@ public class OrderController {
     @PostMapping("/order/{id}")
     public String orderPayment(@CurrentAccount Account account,
                                @PathVariable Long id, Model model,
-                               OrderForm orderForm) {
+                               OrderForm orderForm, RedirectAttributes attributes) {
+
+        if (!accountService.checkEmailVerified(account)) {
+            attributes.addFlashAttribute("message", "이메일 인증 후 이용해주세요.");
+            return "redirect:/";
+        }
 
         model.addAttribute(account);
 
@@ -86,7 +94,7 @@ public class OrderController {
 
     @GetMapping("1")
     public String test() {
-        return "order/payment-test5";
+        return "error";
     }
 
     @PostMapping("order/{id}/cancel")
