@@ -30,7 +30,8 @@ public class Cs_Board {
     @Lob
     private String mainText; // 본문
 
-    private String commentText;
+    @OneToOne
+    private Comment comment;
 
     private LocalDateTime createTime;
 
@@ -46,11 +47,6 @@ public class Cs_Board {
         cs_board.setViewCount(0L);
 
         return cs_board;
-    }
-    public static Cs_Board createComment(String commentText){
-        Cs_Board comment = new Cs_Board();
-        comment.setCommentText(commentText);
-        return comment;
     }
 
 }

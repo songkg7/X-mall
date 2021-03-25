@@ -5,6 +5,7 @@ import com.xmall.xmall.board.*;
 import com.xmall.xmall.board.CsBoardService;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
+import com.xmall.xmall.repository.CommentRepository;
 import com.xmall.xmall.repository.CsBoardRespository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ public class CsController {
     private final CsBoardService csBoardService;
     private final CsBoardRespository csBoardRespository;
     private final AccountRepository accountRepository;
+    private final CommentRepository commentRepository;
 
     @GetMapping("/cs/cs_board")
     public String boardList(Model model)  {
@@ -49,16 +51,19 @@ public class CsController {
         return "redirect:/cs/cs_board";
     }
 
-    @GetMapping("/cs/cs_commentForm")
-    public String commentProc(Model model){
+    @GetMapping("/cs/cs_commentForm/{id}")
+    public String commentProc(@PathVariable Long boardId, Model model){
+        Comment comment = commentRepository.findById(boardId).get();
+        model.addAttribute("comment", comment);
         model.addAttribute("commentform",new CommentForm());
         return "/cs/cs_commentForm";
     }
 
-    @PostMapping("/cs/cs_commentForm")
-    public String cs_commentForm(@Valid CommentForm commentform){
-
+    @PostMapping("/cs/cs_commentForm/{id}")
+    public String cs_commentForm(CommentForm commentform, Long commentId, Model model){
+        Comment comment = commentRepository.findById(commentId).get();
         csBoardService.create(commentform.getCommentText());
+        model.addAttribute("comment", comment);
         return "redirect:/cs/cs_selectForm";
     }
 
@@ -68,17 +73,9 @@ public class CsController {
        Cs_Board cs_board = csBoardRespository.findById(boardId).get();
         // 조회수 증가
         csBoardService.updateViewCount(boardId);
-
-      List<Cs_Board> cs_comment = csBoardRespository.findAll();
-
         model.addAttribute("cs_board", cs_board);
-       model.addAttribute("cs_comment",cs_comment);
         return "cs/cs_selectForm";
     }
-//    @GetMapping("/cs/cs_selectForm")
-//    public String commentView(Model model){
-//
-//    }
 
     @GetMapping("/cs/{boardId}/edit")
     public String updateBoardForm(@PathVariable Long boardId, Model model, @CurrentAccount Account account) {
