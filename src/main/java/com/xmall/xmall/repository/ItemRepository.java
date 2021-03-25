@@ -16,6 +16,6 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findByGenderTypeAndCategoryType(String gender, String categoryType);
 
-    List<Item> findByGenderTypeAndCategoryType1ORCategoryType2(String gender, String categoryType1, String categoryType2);
+//    List<Item> findByGenderTypeAndCategoryType1ORCategoryType2(String gender, String categoryType1, String categoryType2);
 
 }
