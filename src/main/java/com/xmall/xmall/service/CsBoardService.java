@@ -22,6 +22,13 @@ public class CsBoardService {
     }
 
     @Transactional
+    public void create(String commentText){
+        Cs_Board comment = Cs_Board.createComment(commentText);
+
+        csBoardRespository.save(comment);
+    }
+
+    @Transactional
     public void updateViewCount(Long board_id) {
 
         Cs_Board cs_board = csBoardRespository.findById(board_id).get();

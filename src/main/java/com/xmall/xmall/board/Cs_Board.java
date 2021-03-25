@@ -30,6 +30,8 @@ public class Cs_Board {
     @Lob
     private String mainText; // 본문
 
+    private String commentText;
+
     private LocalDateTime createTime;
 
     @Column(columnDefinition = "bigint default 0")
@@ -45,4 +47,10 @@ public class Cs_Board {
 
         return cs_board;
     }
+    public static Cs_Board createComment(String commentText){
+        Cs_Board comment = new Cs_Board();
+        comment.setCommentText(commentText);
+        return comment;
+    }
+
 }

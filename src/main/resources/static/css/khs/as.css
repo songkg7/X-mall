@@ -194,8 +194,8 @@
 
 .as_boardform div .boardSub_read{
   margin-bottom: 25px;
-  width:150px;
   text-align: left;
+  word-break: break-all;
 }
 
 .as_boardform div .subRead{
