@@ -4,10 +4,9 @@ import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.OrderItem;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.domain.Order;
-import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderItemRepository;
-import com.xmall.xmall.review.ReviewCreateForm;
+import com.xmall.xmall.form.ReviewCreateForm;
 import com.xmall.xmall.service.MyReviewService;
 import com.xmall.xmall.domain.MyReview;
 import com.xmall.xmall.domain.Account;
@@ -66,20 +65,24 @@ public class MyPageController {
 
         model.addAttribute(account);
         model.addAttribute(orderItem);
-        model.addAttribute("form", new ReviewCreateForm());
+        ReviewCreateForm reviewCreateForm = new ReviewCreateForm();
+        reviewCreateForm.setItemName(orderItem.getItem().getName());
+        reviewCreateForm.setOrderItemSize(orderItem.getOrderItemSize());
+
+        model.addAttribute("reviewCreateForm", reviewCreateForm);
 
         return "myPage/my_createForm";
     }
 
     @PostMapping("/myPage/my_createForm/{orderItemId}/create")
 //    public String reviewCreateForm(@CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, @Valid ReviewCreateForm form, Errors errors, Model model) {
-    public String reviewCreateForm(@Valid ReviewCreateForm form, @CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Errors errors, Model model) {
+    public String reviewCreateForm(@Valid ReviewCreateForm reviewCreateForm, @CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Errors errors, Model model) {
 ////        Item item = itemRepository.findById(itemId).get();
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
 
 
         model.addAttribute(orderItem);
-        myReviewService.create(account, form.getSubject(), form.getMainText());
+        myReviewService.create(account, reviewCreateForm.getSubject(), reviewCreateForm.getMainText(), reviewCreateForm.getItemName(), reviewCreateForm.getOrderItemSize());
 
         return "redirect:/myPage/side_mypage";
     }

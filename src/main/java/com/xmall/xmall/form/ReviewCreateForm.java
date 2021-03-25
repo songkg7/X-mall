@@ -1,4 +1,4 @@
-package com.xmall.xmall.review;
+package com.xmall.xmall.form;
 
 
 
@@ -19,5 +19,10 @@ public class ReviewCreateForm {
     @NotEmpty(message = "본문 내용을 입력해주세요")
     @Column(columnDefinition="TEXT")
     private String mainText;
+
+    
+    private String itemName; // 아이템명
+
+    private String orderItemSize; // 주문 사이즈
 
 }

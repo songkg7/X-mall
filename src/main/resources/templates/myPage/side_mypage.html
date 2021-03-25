@@ -68,7 +68,7 @@
 
         .item_description .item_size {
 
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 100;
             color: #777777;
             margin-bottom: 0;
@@ -76,20 +76,20 @@
 
         .item_description .item_quantity {
 
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 100;
             color: #777777;
         }
 
         .item_description .item_price {
-            color: #606060;
-            font-size: 16px;
+            color: black;
+            font-size: 15px;
             font-weight: 100;
 
         }
         .item_description .item_address {
-            color: #606060;
-            font-size: 16px;
+            color: #777777;
+            font-size: 15px;
             font-weight: 100;
 
         }
@@ -253,10 +253,13 @@
                 <div class="bottom_line1"></div>
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
                 <div class="review_1" th:each="reviewList : ${reviewLists}">
-                    <h3 th:text="${reviewList.subject}">제목</h3>
+                    <h3 th:text="${reviewList.subject}">글제목</h3>
                     <h4>★ ★ ★ ★ ★</h4>
                     <span th:text="${reviewList.account?.getName()}">이름</span>
-                    <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd HH:mm')}">등록일</span>
+
+                    <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd')}">등록일</span>
+                    <span th:text="|상품명 : ${reviewList.itemName}|">상품명</span>
+                    <span th:text="|size : ${reviewList.orderItemSize}|">사이즈</span>
 
 <!--                    <span th:text="${reviewList.orderItemSize}">사이즈</span>-->
 <!--                    <span th:text="${reviewList.item.name}">상품명</span>-->
