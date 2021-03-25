@@ -2,8 +2,13 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
+    <!-- header nav css 수입경로-->
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
+
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
     <style>
         .container{
             margin: 0 auto;
@@ -20,29 +25,32 @@
         .mail p span{
             color: midnightblue;
         }
-        .mail p{
+        .container p{
+            color: #606060;
             font-size: 16px;
             margin: 4px 0px 4px 0px;
         }
         .sendEmail{
             width: 200px;
             height: 60px;
-            background-color: midnightblue;
+            background-color: black;
             margin-top: 50px;
-            margin-left: auto;
             margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 150px;
 
         }
         .sendEmail a{
             color: white;
             line-height: 60px;
             text-decoration: none;
+            margin-bottom: 100px;
         }
         .loginLogo {
 
             width: 100px;
             height: 100px;
-            padding-top: 100px;
+            padding-top: 120px;
             margin: 0 auto;
             cursor: pointer;
         }
@@ -50,14 +58,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        .signUp{
-            margin-top: 10px;
-            font-size: 16px;
-        }
-        .account{
-            font-size: 14px;
-            color: #606060;
         }
     </style>
 </head>
@@ -68,19 +68,21 @@
 
 
 
-    <div class="loginLogo"><img src="/images/icon/error.png" alt=""/></div>
+        <div class="loginLogo"><img src="/images/icon/error.png" alt=""/></div>
 
 
-    <h1><span>요청하신 페이지</span>를 찾을 수 없습니다. </h1>
-    <p>페에지 주소가 잘못 입력되었거나 변경되어 페이지를 찾을 수 없습니.</p>
-    <p>주소를 다시 확인하여주시기 바랍니다.</p>
-    <div>
+        <h1><span>요청하신 페이지</span>를 찾을 수 없습니다. </h1>
+        <p>페에지 주소가 잘못 입력되었거나 변경되어 페이지를 찾을 수 없습니다.</p>
+        <p>주소를 다시 확인하여주시기 바랍니다.</p>
+        <div class="container2">
 
-        <div class="sendEmail"><a class="btn btn-outline-info" th:href="/main.html">메인으로 이동</a></div>
+            <div class="sendEmail"><a class="btn btn-outline-info" th:href="@{/}">메인으로 이동</a></div>
 
-    </div>
+        </div>
 
 </div>
 
+<footer th:replace="fragments.html :: footer-body">
+</footer>
 </body>
 </html>
