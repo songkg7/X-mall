@@ -1,7 +1,8 @@
 .all_Form {
   display: grid;
-  grid-template-columns: 18% 200px 800px 200px 18%;
+  grid-template-columns: 5% 15% 60% 15% 5%;
 }
+
 .blank {
   height: 800px;
 }
@@ -90,6 +91,7 @@
 .as_menuform {
   border: 1px solid #e5e5e5;
   padding: 0px 0px 0px 5px;
+  margin-bottom: 50px;
 }
 
 .listyle {
@@ -108,7 +110,13 @@
 }
 .imgcenter {
   border: 1px solid #e5e5e5;
-  height: 100%;
+  margin-bottom: 50px;
+}
+.msg_img{
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+
 }
 
 .testform {
@@ -154,6 +162,7 @@
   border-collapse: collapse;
   width:100%;
   margin: auto;
+  font-size: 14px;
 }
 .as_boardform .board_div table a {
   display: block;
