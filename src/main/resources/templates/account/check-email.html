@@ -7,7 +7,7 @@
     <div th:replace="fragments.html :: fragment-footer-css"></div>
     <style>
         .container{
-            margin-bottom: 150px;
+            margin-bottom: 50px;
         }
         .lead{
             margin-top: 200px;
@@ -16,10 +16,10 @@
             margin-bottom: 7px;
         }
         .mail h1 span{
-            color: midnightblue;
+            color: deeppink;
         }
         .mail p span{
-            color: midnightblue;
+            color: deeppink;
         }
         .mail p{
             font-size: 16px;
@@ -28,7 +28,7 @@
         .sendEmail{
             width: 200px;
             height: 60px;
-            background-color: midnightblue;
+            background-color: black;
             margin-top: 50px;
             margin-left: auto;
             margin-right: auto;
@@ -57,8 +57,13 @@
             font-size: 16px;
         }
         .account{
+            font-weight: lighter;
             font-size: 14px;
-            color: #606060;
+            color: deeppink;
+        }
+        .account1{
+            font-weight: lighter;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -74,7 +79,7 @@
 
         <div class="py-5 text-center mail" th:if="${error == null}">
             <div class="loginLogo"><img src="/images/icon/logo.png" alt=""/></div>
-            <p class="signUp">X-mall 가입</p>
+
 
             <h1><span>메일인증</span> 안내입니다. </h1>
             <p>안녕하세요.</p>
@@ -85,7 +90,7 @@
             <div>
 
                 <div class="sendEmail"><a class="btn btn-outline-info" th:href="@{/resend-confirm-email}">메일 인증</a></div>
-                <p class="account" th:text="|${email} 계정에서 확인해주세요.|">your@email.com</p>
+                <span class="account" th:text="${email}">your@email.com</span><span class="account1">계정에서 확인해주세요.</span>
             </div>
         </div>
     </div>
