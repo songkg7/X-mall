@@ -54,22 +54,27 @@
                 <div class="board_div">
                     <table>
                         <thead>
-                        <tr>
-                            <th>번호</th><th>제목</th><th>이름</th><th>작성일</th><th>조회수</th>
+                        <tr class="subject_table">
+                            <th class="th_no">번호</th>
+                            <th class="th_sbject">제목</th>
+                            <th class="th_name">작성자</th>
+                            <th class="th_date">등록일</th>
+                            <th class="th_count">조회수</th>
                         </tr>
                         </thead>
+
                         <tbody>
-                        <tr th:each="boardList : ${boardLists}">
+                        <tr class="text_table" th:each="boardList : ${boardLists}">
 <!--                            <td th:text="${boardList.id}"></td>-->
                             <td th:text="${boardListStat.index + 1}"></td>
-                            <td>
+                            <td class="text_subject">
                                 <!--                    <a th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
                                 <!--                       th:text="${boardList.subject}" class="btn btn-default"></a>-->
                                 <a th:href="@{/cs/{id} (id=${boardList.id})}"
                                    th:text="${boardList.subject}" class="btn btn-default"></a>
                             </td>
                             <td th:text="${boardList.account?.getName()}"></td>
-                            <td th:text="${#temporals.format(boardList.getCreateTime(), 'yyyy-MM-dd HH:mm')}">
+                            <td th:text="${#temporals.format(boardList.getCreateTime(), 'yyyy-MM-dd')}">
                                 <!--                    <a href="#" th:href="@{/board/{id}/edit (id=${boardList.id})}"-->
                                 <!--                       class="btn btn-primary" role="button">수정</a>-->
                             </td>
