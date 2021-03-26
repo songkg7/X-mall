@@ -175,8 +175,44 @@
                 //on의 색을 입히는 과정
                 $(this).addClass("on").prevAll("a").addClass("on");
 
+                var rating = $(this).attr('value');
+
+                var ratingBlack = ""
+                var ratingGray = ""
+                if(rating=="1"){
+                    ratingBlack = "★"
+                    ratingGray = "★★★★"
+                }else if(rating=="2"){
+                    ratingBlack = "★★"
+                    ratingGray = "★★★"
+                } else if(rating=="3"){
+                    ratingBlack = "★★★"
+                    ratingGray = "★★"
+                } else if(rating=="4"){
+                    ratingBlack = "★★★★"
+                    ratingGray = "★"
+                } else if(rating=="5"){
+                    ratingBlack = "★★★★★"
+                    ratingGray = ""
+                }
+
+                $('#star_db').val(rating);
+                $('#starBlack_db').val(ratingBlack);
+                $('#starGray_db').val(ratingGray);
                 return false;
             });
+            // <p id="star">
+            //     <a href="#" value="1">★</a>
+            //     <a href="#" value="2">★</a>
+            //     <a href="#" value="3">★</a>
+            //     <a href="#" value="4">★</a>
+            //     <a href="#" value="5">★</a>
+            //     <input type="hidden" id="star_db">
+            // </p>
+
+
+
+
         });
 
     </script>
@@ -290,6 +326,10 @@
                             <a href="#" value="4">★</a>
                             <a href="#" value="5">★</a>
                         </p>
+
+                        <input type="text" id="star_db" th:field="*{starRate}">
+                        <input type="text" id="starBlack_db" th:field="*{starBlack}">
+                        <input type="text" id="starGray_db" th:field="*{starGray}">
                         <p style="color: #cccccc">선택하세요.</p>
 
                         <div class="bottom_line1"></div>

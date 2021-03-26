@@ -20,9 +20,16 @@ public class ReviewCreateForm {
     @Column(columnDefinition="TEXT")
     private String mainText;
 
+
+    @NotEmpty(message = "별점을 선택해주세요")
+    @Column(columnDefinition="TEXT")
+    private String starRate; // 별점 숫자
     
     private String itemName; // 아이템명
 
     private String orderItemSize; // 주문 사이즈
 
+    private String starBlack; // 별점 검정색
+
+    private String starGray; // 별점 흰색
 }

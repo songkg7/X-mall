@@ -50,13 +50,6 @@ public class MyPageController {
         model.addAttribute(account);
         return "myPage/side_mypage";
     }
-//
-//    @GetMapping("/myPage/side_mypage")
-//    public String reviewList(Model model){
-//        List<MyReview> reviewLists = myReviewRepository.findAll();
-//        model.addAttribute("reviewLists",reviewLists);
-//        return "myPage/side_mypage";
-//    }
 
     // 리뷰 작성
     @GetMapping("/myPage/my_createForm/{orderItemId}/create")
@@ -82,7 +75,16 @@ public class MyPageController {
 
 
         model.addAttribute(orderItem);
-        myReviewService.create(account, reviewCreateForm.getSubject(), reviewCreateForm.getMainText(), reviewCreateForm.getItemName(), reviewCreateForm.getOrderItemSize());
+        myReviewService.create(
+                 account,
+                 reviewCreateForm.getSubject(),
+                 reviewCreateForm.getMainText(),
+                 reviewCreateForm.getItemName(),
+                 reviewCreateForm.getOrderItemSize(),
+                 reviewCreateForm.getStarRate(),
+                 reviewCreateForm.getStarBlack(),
+                reviewCreateForm.getStarGray()
+        );
 
         return "redirect:/myPage/side_mypage";
     }

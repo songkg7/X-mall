@@ -26,7 +26,7 @@
         }
 
         .review_1 h3 {
-            margin-bottom: 0;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
@@ -104,7 +104,39 @@
         .reviewWrite {
             color: #777777;
         }
+        .starGray{
+            color: #999999;
+        }
+        .starRate{
+            font-size: 16px;
+            color: black;
+            margin-top: 0;
+        }
     </style>
+    <script>
+        $(document).ready(function () {
+            // var starpoint = $('#starRate').text();
+            //
+            //
+            // if(starpoint=="1"){
+            //     $('#starRate').html('<p>★☆☆☆☆</p>');
+            // }
+            // else if (starpoint=="2"){
+            //     $('#starRate').html('<p>★★☆☆☆</p>');
+            // }
+            // else if (starpoint=="3"){
+            //     $('#starRate').html('<p>★★★☆☆</p>');
+            // }
+            // else if (starpoint=="4"){
+            //     $('#starRate').html('<p>★★★★☆</p>');
+            // }
+            // else if (starpoint=="5"){
+            //     $('#starRate').html('<p>★★★★★</p>');
+            // }else {
+            //     return
+            // }
+        });
+    </script>
 </head>
 <body>
 <!--+++++++++++++++++++++++++++++++++++-->
@@ -254,12 +286,13 @@
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
                 <div class="review_1" th:each="reviewList : ${reviewLists}">
                     <h3 th:text="${reviewList.subject}">글제목</h3>
-                    <h4>★ ★ ★ ★ ★</h4>
+                    <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;" th:text="${reviewList.starBlack}"></span><span style="color: #bcbcbc; font-size: 16px;margin-top:0;" th:text="${reviewList.starGray}"></span>
+                    <p></p>
                     <span th:text="${reviewList.account?.getName()}">이름</span>
-
                     <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd')}">등록일</span>
                     <span th:text="|상품명 : ${reviewList.itemName}|">상품명</span>
                     <span th:text="|size : ${reviewList.orderItemSize}|">사이즈</span>
+                    <span style="color: white;" id="starRate" th:text="${reviewList.starRate}"></span>
 
 <!--                    <span th:text="${reviewList.orderItemSize}">사이즈</span>-->
 <!--                    <span th:text="${reviewList.item.name}">상품명</span>-->

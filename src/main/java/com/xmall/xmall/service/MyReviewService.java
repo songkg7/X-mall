@@ -18,8 +18,8 @@ public class MyReviewService {
     private final MyReviewRepository myReviewRepository;
 
     @Transactional
-    public void create(Account account, String subject, String mainText, String itemName, String orderItemSize){
-        MyReview myReview = MyReview.createReview(account, subject, mainText, itemName, orderItemSize);
+    public void create(Account account, String subject, String mainText, String itemName, String orderItemSize, String starRate,String starBlack, String starGray){
+        MyReview myReview = MyReview.createReview(account, subject, mainText, itemName, orderItemSize, starRate, starBlack,starGray);
         myReviewRepository.save(myReview);
 
 
