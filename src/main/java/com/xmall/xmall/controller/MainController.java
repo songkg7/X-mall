@@ -36,4 +36,12 @@ public class MainController {
         return "account/login";
     }
 
+    @GetMapping("/search/items")
+    public String searchItem(String keyword, Model model) {
+        List<Item> itemLists = itemRepository.findByKeyword(keyword);
+        model.addAttribute("itemLists", itemLists);
+//        model.addAttribute("keyword", keyword);
+
+        return "items/item-list";
+    }
 }

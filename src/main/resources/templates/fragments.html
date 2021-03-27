@@ -99,6 +99,7 @@
             margin-left: 25%;
             cursor: pointer;
         }
+
         .nav1_logo a img {
             margin-top: 5px;
             width: 30px;
@@ -121,7 +122,7 @@
 
         .nav2 {
 
-            position:relative;
+            position: relative;
             width: 100%;
             height: 70px;
             background-color: white;
@@ -272,9 +273,11 @@
         .searchBar:hover {
             background-color: rgb(220, 220, 220);
         }
-        input:focus{
+
+        input:focus {
             outline: none;
         }
+
         input::placeholder {
             color: gray;
             font-size: 16px;
@@ -340,6 +343,7 @@
 
             /* display: none; */
         }
+
         .detail_category6 {
             overflow: hidden;
             position: absolute;
@@ -425,27 +429,27 @@
 
         @media all and (max-width: 1200px) {
             .detail_category1 {
-                position:absolute;
+                position: absolute;
                 visibility: hidden;
             }
 
             .detail_category2 {
-                position:absolute;
+                position: absolute;
                 visibility: hidden;
             }
 
             .detail_category3 {
-                position:absolute;
+                position: absolute;
                 visibility: hidden;
             }
 
             .detail_category4 {
-                position:absolute;
+                position: absolute;
                 visibility: hidden;
             }
 
             .detail_category5 {
-                position:absolute;
+                position: absolute;
                 visibility: hidden;
             }
         }
@@ -487,6 +491,7 @@
             text-decoration: none;
             color: rgb(32, 32, 32);
         }
+
         /*.nav2_scroll{*/
         /*    position:fixed;*/
         /*    !*top:2px;*!*/
@@ -653,16 +658,17 @@
 <header th:fragment="nav-bar">
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
-        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a></div>
+        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a>
+        </div>
         <div class="nav1_text">
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">관리자 권한으로 페이지를 실행 중..&nbsp;&nbsp;</span>
 
-            <span sec:authorize="isAuthenticated()" >
+            <span sec:authorize="isAuthenticated()">
                 <span sec:authentication="name">Username</span>&nbsp;&nbsp;님&nbsp;&nbsp;|
             </span>
 
-            <span sec:authorize="isAuthenticated()" >
+            <span sec:authorize="isAuthenticated()">
                 <a class="gray_atag" href="#" th:href="@{/myPage/side_mypage}" style="cursor: hand">&nbsp;마이페이지&nbsp;&nbsp;|</a>
             </span>
 
@@ -679,7 +685,8 @@
             </span>
 
             <span sec:authorize="isAuthenticated()">
-                <a class="gray_atag" href="#" th:href="@{/logout}" style="cursor: hand">&nbsp;로그아웃</a>
+                <a class="gray_atag" href="#" th:href="@{/logout}"
+                   style="cursor: hand">&nbsp;로그아웃</a>
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
@@ -696,19 +703,25 @@
                 <li>
                     <a id="at1" class="atag1 black_atag" href="#">New Releases</a>
                 </li>
-                <li><a id="at2" class="atag2 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">Men</a></li>
-                <li><a id="at3" class="atag3 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = women)}">Women</a></li>
-                <li><a id="at4" class="atag4 black_atag" href="#" th:href="@{/items/category/gender/{gender} (gender = kids)}">Kids</a></li>
+                <li><a id="at2" class="atag2 black_atag" href="#"
+                       th:href="@{/items/category/gender/{gender} (gender = men)}">Men</a></li>
+                <li><a id="at3" class="atag3 black_atag" href="#"
+                       th:href="@{/items/category/gender/{gender} (gender = women)}">Women</a></li>
+                <li><a id="at4" class="atag4 black_atag" href="#"
+                       th:href="@{/items/category/gender/{gender} (gender = kids)}">Kids</a></li>
                 <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
             </ul>
         </div>
         <div class="nav2_search position">
-            <input
-                    class="searchBar"
-                    type="text"
-                    name="search"
-                    placeholder="검색"
-            />
+            <form th:action="@{/search/items}" method="get">
+                <input
+                        class="searchBar"
+                        type="search"
+                        name="keyword"
+                        placeholder="검색"
+                        aria-label="Search"
+                />
+            </form>
         </div>
         <div class="nav2_wishlist position1">
             <div class="btn1">
@@ -782,7 +795,9 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = men, category = shoes)}">신발 전체</a></p>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category} (gender = men, category = shoes)}">신발
+                    전체</a></p>
                 <p><a href="#">러닝화</a></p>
                 <p><a href="#">축구화</a></p>
                 <p><a href="#">농구화</a></p>
@@ -828,7 +843,9 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = women, category = shoes)}">신발 전체</a></p>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category} (gender = women, category = shoes)}">신발
+                    전체</a></p>
                 <p><a href="#">러닝화</a></p>
                 <p><a href="#">축구화</a></p>
                 <p><a href="#">농구화</a></p>
@@ -840,7 +857,9 @@
         <div class="detail_list">
             <p>의류</p>
             <div class="gray_font">
-                <p><a href="#" th:href="@{/items/category/{gender}/{category1}/{category2} (gender = women, category1 = top, category2 = pants)}">의류 전체</a></p>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = women, category1 = top, category2 = pants)}">의류
+                    전체</a></p>
                 <p><a href="#">아우터웨어</a></p>
                 <p><a href="#">후드티</a></p>
                 <p><a href="#">팬츠/타이츠</a></p>
@@ -923,7 +942,8 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#" th:href="@{/items/category/{category} (category = shoes)}">신발 전체</a></p>
+                <p><a href="#" th:href="@{/items/category/{category} (category = shoes)}">신발 전체</a>
+                </p>
                 <p><a href="#" th:href="@{/items/category/shoes(category=running)}">러닝화</a></p>
                 <p><a href="#">축구화</a></p>
                 <p><a href="#">농구화</a></p>
@@ -1045,15 +1065,17 @@
             font-size: 10px;
             text-align: left;
         }
-        .footer_navi2 span{
+
+        .footer_navi2 span {
             font-weight: lighter;
             margin-left: 5px;
-            color: rgba(265,265,265,0.5);
+            color: rgba(265, 265, 265, 0.5);
         }
-        .footer_navi2 span{
+
+        .footer_navi2 span {
             font-weight: lighter;
             margin-left: 5px;
-            color: rgba(265,265,265,0.5);
+            color: rgba(265, 265, 265, 0.5);
         }
 
     </style>
@@ -1065,14 +1087,14 @@
 
     <div class="footer">
         <div class="footer_navi1">
-            <span sec:authorize="!isAuthenticated()" >
+            <span sec:authorize="!isAuthenticated()">
                 <div class="footer_menu_1">
                     <p><a href="/login">로그인</a></p>
                     <p><a href="/sign-up">회원가입</a></p>
                 </div>
             </span>
 
-            <span sec:authorize="isAuthenticated()" >
+            <span sec:authorize="isAuthenticated()">
                 <div class="footer_menu_1">
                     <p><a href="/logout">로그아웃</a></p>
                 </div>
@@ -1099,7 +1121,7 @@
             </div>
         </div>
         <div class="footer_navi2">
-            <p>대한민국  <span> © 2021 X-mall. Inc. All Rights Reserved</span></p>
+            <p>대한민국 <span> © 2021 X-mall. Inc. All Rights Reserved</span></p>
         </div>
     </div>
 </footer>
