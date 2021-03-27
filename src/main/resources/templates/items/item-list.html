@@ -425,6 +425,33 @@
 
         </div>
 
+<!--        NOTE: 부트스트랩 페이지 번호 적용 -->
+        <div class="row justify-content-center">
+            <div class="col-sm-10">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:classappend="${!itemLists.hasPrevious()}? disabled">
+                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() - 1}}"
+                               class="page-link" tabindex="-1" aria-disabled="true">
+                                Previous
+                            </a>
+                        </li>
+                        <li class="page-item" th:classappend="${i == itemLists.getNumber()}? active"
+                            th:each="i: ${#numbers.sequence(0, itemLists.getTotalPages() - 1)}">
+                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${i}}"
+                               class="page-link" href="#" th:text="${i + 1}">1</a>
+                        </li>
+                        <li class="page-item" th:classappend="${!itemLists.hasNext()}? disabled">
+                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() + 1}}"
+                               class="page-link">
+                                Next
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
     </div>
 </main>
 

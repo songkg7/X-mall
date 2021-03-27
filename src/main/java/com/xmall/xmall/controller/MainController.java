@@ -5,6 +5,9 @@ import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,11 +39,20 @@ public class MainController {
         return "account/login";
     }
 
+    /**
+     * 검색
+     * - 아이템의 name, 및 subtitle 에 keyword 가 포함되어 있는지를 기준으로 데이터를 검색한다.
+     */
     @GetMapping("/search/items")
-    public String searchItem(String keyword, Model model) {
-        List<Item> itemLists = itemRepository.findByKeyword(keyword);
+    public String searchItem(String keyword, Model model,
+                             @PageableDefault(size = 6) Pageable pageable) {
+        Page<Item> itemLists = itemRepository.findByKeyword(keyword, pageable);
         model.addAttribute("itemLists", itemLists);
-//        model.addAttribute("keyword", keyword);
+
+        // TODO: search page 를 따로 만드는것이 좋을 것 같다.
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("sortProperty", "1");
+
 
         return "items/item-list";
     }
