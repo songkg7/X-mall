@@ -111,7 +111,7 @@ public class ItemController {
         // null check 필요, Optional 을 사용하는게 좋을수도 있다.
         Item item = itemRepository.findById(id).get();
         if (item == null) {
-            return "error";
+            return "error-test";
         }
 
         model.addAttribute("item", item);

@@ -7,6 +7,7 @@ import com.xmall.xmall.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +46,7 @@ public class MainController {
      */
     @GetMapping("/search/items")
     public String searchItem(String keyword, Model model,
-                             @PageableDefault(size = 6) Pageable pageable) {
+                             @PageableDefault(size = 6, sort = "createdAt", direction= Sort.Direction.DESC) Pageable pageable) {
         Page<Item> itemLists = itemRepository.findByKeyword(keyword, pageable);
         model.addAttribute("itemLists", itemLists);
 

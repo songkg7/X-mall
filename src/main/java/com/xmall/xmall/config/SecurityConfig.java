@@ -38,9 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login").permitAll();
 
+//        http.csrf().disable();
         // logout
         http.logout()
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true);
 
         // 로그인 정보 기억
         http.rememberMe()
