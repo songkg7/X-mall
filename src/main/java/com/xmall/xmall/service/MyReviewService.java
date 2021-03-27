@@ -19,7 +19,7 @@ public class MyReviewService {
 
     @Transactional
     public void create(Account account, String subject, String mainText, String itemName, String orderItemSize, String starRate,String starBlack, String starGray){
-        MyReview myReview = MyReview.createReview(account, subject, mainText, itemName, orderItemSize, starRate, starBlack,starGray);
+        MyReview myReview = MyReview.createReview(account, subject, mainText, itemName, orderItemSize, starRate, starBlack, starGray);
         myReviewRepository.save(myReview);
 
 

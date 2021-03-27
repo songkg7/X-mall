@@ -6,6 +6,7 @@ import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.form.ItemForm;
 import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.ItemRepository;
+import com.xmall.xmall.repository.MyReviewRepository;
 import com.xmall.xmall.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,7 @@ public class ItemController {
 
     private final ItemService itemService;
     private final ItemRepository itemRepository;
+    private final MyReviewRepository myReviewRepository;
 
     /**
      * 상품 등록

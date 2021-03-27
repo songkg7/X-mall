@@ -23,7 +23,6 @@ public class MyReview {
     private Order order;
 
 
-
     private String itemName; // 아이템명
 
     private String orderItemSize; // 주문 사이즈
@@ -55,6 +54,7 @@ public class MyReview {
     public static MyReview createReview(Account account, String subject, String mainText, String itemName, String orderItemSize, String starRate,String starBlack, String starGray) {
         MyReview myReview = new MyReview();
         myReview.setAccount(account);
+
         myReview.setSubject(subject);
         myReview.setMainText(mainText);
         myReview.setCreateTime(LocalDateTime.now());

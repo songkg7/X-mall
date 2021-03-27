@@ -101,9 +101,8 @@
         /* -------------------- */
         .content {
             width: 500px;
-            height: 1000px;
             background-color: white;
-            float: right;
+            float: left;
         }
 
         /* 우측 분할화면의 마진주기  */
@@ -303,16 +302,13 @@
         body {
             margin: 0;
         }
-        main{
-            padding-left: 5%;
-            padding-right: 5%;
-        }
 
-        .main {
+        main{
             overflow: auto;
+            margin-left: 50px;
+            margin-right: 50px;
             margin-top: 50px;
             background-color: white;
-            margin-bottom: 100px;
         }
 
 
@@ -490,7 +486,11 @@
             color: white;
         }
 
-
+        .review_div{
+            margin-top: 10px;
+            width: 100%;
+            background-color: white;
+        }
         .detail_description_div {
             margin-top: 10px;
             font-weight: 300;
@@ -559,7 +559,7 @@
 
 <!-- --------------------------------- -->
 <main>
-    <div class="main">
+
         <!--+++++++++++++++++++++++++++++-->
         <!-- 화면 분할 1. 좌측(product_img) -->
         <!--+++++++++++++++++++++++++++++-->
@@ -758,11 +758,28 @@
                     <p>스타일 : DA2493-010</p>
                     <p><a href="#">더 보기</a></p>
                 </div>
+                <div class="review_div">
+                    <hr/>
+                    <p>리뷰</p>
+                    <div class="review_1" th:each="reviewList : ${reviewLists}">
+                        <h3 th:text="${reviewList.subject}">글제목</h3>
+                        <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;" th:text="${reviewList.starBlack}"></span><span style="color: #bcbcbc; font-size: 16px;margin-top:0;" th:text="${reviewList.starGray}"></span>
+                        <p></p>
+                        <span th:text="${reviewList.account?.getName()}">이름</span>
+                        <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd')}">등록일</span>
+                        <span th:text="|상품명 : ${reviewList.itemName}|">상품명</span>
+                        <span th:text="|size : ${reviewList.orderItemSize}|">사이즈</span>
+                        <span style="color: white;" id="starRate" th:text="${reviewList.starRate}"></span>
+                        <p th:text="${reviewList.mainText}">내용</p>
+                        <div class="bottom_line1"></div>
+                    </div>
+                </div>
             </div>
             <!--+++++++++++++++++++++++++++++++++++++-->
         </div>
-    </div>
+
 </main>
+
 <!-- --------------------------------- -->
 <!--+++++++++++++++++++++++++++++++++++-->
 <!-- footer 부분 -->

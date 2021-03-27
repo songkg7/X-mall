@@ -83,7 +83,7 @@ public class MyPageController {
                  reviewCreateForm.getOrderItemSize(),
                  reviewCreateForm.getStarRate(),
                  reviewCreateForm.getStarBlack(),
-                reviewCreateForm.getStarGray()
+                 reviewCreateForm.getStarGray()
         );
 
         return "redirect:/myPage/side_mypage";
