@@ -111,12 +111,13 @@
 .imgcenter {
   border: 1px solid #e5e5e5;
   margin-bottom: 50px;
-  width: 100%;
 }
-.imgcenter font p img{
+.msg_img{
   width: 100%;
-}
+  margin-left: 0;
+  margin-right: 0;
 
+}
 
 .testform {
   margin-block: 50px;
@@ -256,17 +257,3 @@
   margin-right: 10px;
 }
 
-.msg_img{
-  margin-left: 20px;
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
-
-}
-.msg_img2{
-  margin-left: 20px;
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
-
-}
