@@ -20,6 +20,134 @@
           crossorigin="anonymous"/>
     <!--  header css  -->
     <style>
+        .black-background{
+            background-color: rgba(0,0,0,0.7);
+            position: fixed;
+            z-index: 4;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        .right-menu{
+            padding-top: 40px;
+            background-color: white;
+            width: 350px;
+            height: 100%;
+            color: black;
+            position: fixed;
+            right: 0px;
+            margin-right: -350px;
+            z-index: 5;
+        }
+        .right-menu a{
+            width: 100%;
+            text-decoration: none;
+        }
+        .right-menu a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        .right-menu a .div1 {
+            font-weight: bolder;
+            font-size: 25px;
+            color: black;
+            width: 60%;
+
+            text-align: left;
+            padding-left: 40px;
+            margin-bottom: 20px;
+            float: left;
+        }
+        .right-menu a .div2 {
+            float:right;
+            width: 10%;
+            padding-right: 30px;
+            font-size: 25px;
+            font-weight: bolder;
+            margin-bottom: -10px;
+
+            color: black;
+        }
+        .right-menu-logo{
+            clear: both;
+            width: 100%;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+        .right-menu-logo img{
+
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .right-menu-logo p{
+
+            margin-top: 50px;
+        }
+
+        .login-div{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+
+        }
+        .marg{
+            margin-bottom: 250px;
+        }
+        .right-menu p{
+            margin-left: 40px;
+            margin-right: 40px;
+            text-align: left;
+        }
+        .right-menu .button-div{
+            width: 100%;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .right-menu .button-div span a .sign-up-btn{
+            float: left;
+            width: 120px;
+            height: 40px;
+            border-radius: 50px;
+            margin-left: 40px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            line-height: 40px;
+        }
+        .right-menu .button-div span a .login-btn{
+            float: left;
+            width: 90px;
+            height: 40px;
+            border-radius: 50px;
+            margin-left: 10px;
+            background-color: white;
+            color: black;
+            border: 1px solid #bcbcbc;
+            font-size: 16px;
+            line-height: 40px;
+        }
+        .bottom-div{
+            margin-top: 100px;
+            width: 100%;
+
+        }
+        .bottom-div p a img{
+            width: 25px;
+            height: 25px;
+            object-fit: cover;
+            padding-right: 20px;
+            position: relative;
+            top:5px;
+        }
         body {
             font-family: "Noto Sans KR", sans-serif;
             margin: 0;
@@ -209,6 +337,13 @@
             right: 80px;
             /* z-index: 1; */
         }
+        .position3 {
+            display: none;
+            position: absolute;
+            top: 14px;
+            right: 31px;
+            /* z-index: 1; */
+        }
 
         .btn1 img {
             width: 25px;
@@ -217,6 +352,13 @@
         }
 
         .btn2 img {
+            width: 25px;
+            height: 25px;
+            margin-top: 6px;
+
+            object-fit: cover;
+        }
+        .btn3 img {
             width: 25px;
             height: 25px;
             margin-top: 6px;
@@ -251,9 +393,22 @@
         .btn2:hover {
             background-color: rgb(220, 220, 220);
         }
+        .btn3 {
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+            border-radius: 50%;
+
+        }
+
+        .btn3:hover {
+            background-color: rgb(220, 220, 220);
+        }
 
         .searchBar {
-            width: 110px;
+            width: 160px;
             font-size: 16px;
             height: 40px;
             border-radius: 50px;
@@ -425,6 +580,9 @@
             .detail_category5 .detail_list {
                 display: none;
             }
+            .position3{
+                display: block;
+            }
         }
 
         @media all and (max-width: 1200px) {
@@ -492,6 +650,7 @@
             color: rgb(32, 32, 32);
         }
 
+
         /*.nav2_scroll{*/
         /*    position:fixed;*/
         /*    !*top:2px;*!*/
@@ -503,6 +662,7 @@
         /*    top:2px;*/
         /*    display: flex;  !*수정 *!*/
         /*}*/
+
 
     </style>
     <!-- nav 바 제이쿼리 -->
@@ -633,6 +793,17 @@
                 nav_5.slideUp(180);
                 blur.hide();
             });
+            $("#btn3").click(function () {
+                $('#black-background').css({display:'block'});
+                $('#right-menu').animate({marginRight:'0px'});
+
+            });
+
+            $("#black-background").click(function () {
+                $('#black-background').css({display:'none'});
+                $('#right-menu').animate({marginRight:'-350px'});
+
+            });
         });
 
     </script>
@@ -656,6 +827,40 @@
 
 <!-- 화면 전체에 적용할 header의 nav바s body 부분 -->
 <header th:fragment="nav-bar">
+    <div class="black-background"id="black-background">
+    </div>
+    <div class="right-menu" id="right-menu">
+        <a href="#"><div class="div1">New Releases</div><div class="div2">〉</div></a>
+        <a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}"><div class="div1">Men</div><div class="div2">〉</div></a>
+        <a href="#" th:href="@{/items/category/gender/{gender} (gender = women)}"><div class="div1">Women</div><div class="div2">〉</div></a>
+        <a href="#" th:href="@{/items/category/gender/{gender} (gender = kids)}"><div class="div1 marg">Kids</div><div class="div2">〉</div></a>
+        <div style="clear: both;"></div>
+        <div class="right-menu-logo">
+            <img src="/images/icon/logo.png">
+            <h2>X-mall</h2>
+
+        </div>
+        <div class="login-div">
+            <p>'X-mall 멤버만을 위한 특별한 혜택을 알아보세요.'</p>
+            <div class="button-div" >
+                <span sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/sign-up}"><button class="sign-up-btn">멤버 가입</button></a>
+                </span>
+                <span sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}"><button class="login-btn">로그인</button></a>
+                </span>
+            </div>
+        </div>
+        <div class="bottom-div">
+            <p><a href="#"><img src="/images/icon/shoppingbag.png">장바구니</a></p>
+            <p sec:authorize="!isAuthenticated()">
+                <a href="#" th:href="@{/myPage/side_mypage}"><img src="/images/icon/delivery.png">주문배송</a>
+            </p>
+            <p><a href="#" th:href="@{/cs/notice}"><img src="/images/icon/cscenter.png">고객센터</a></p>
+        </div>
+
+    </div>
+
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
         <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a>
@@ -731,6 +936,11 @@
         <div class="nav2_bag position2">
             <div class="btn2">
                 <img src="/images/icon/shoppingbag.png" alt=""/>
+            </div>
+        </div>
+        <div class="position3">
+            <div class="btn3" id="btn3">
+                <img src="/images/icon/hamburger.png" alt=""/>
             </div>
         </div>
         <!-- ******************************* -->
@@ -979,9 +1189,7 @@
 <div th:fragment="fragment-footer-css">
     <style>
         .footer {
-            position: relative;
-            left: 0px;
-            bottom: 0px;
+            clear: both;
             height: 500px;
             width: 100%;
             color: white;
@@ -992,7 +1200,7 @@
 
         .footer_navi1 {
             padding-bottom: 300px;
-            width: 1000px;
+            width: 100%;
             border-color: #999999;
 
             font-size: 14px;
@@ -1010,8 +1218,10 @@
         }
 
         .footer_menu_1 {
+            margin-left: 250px;
             text-align: left;
-            width: 300px;
+
+            width: 20%;
             float: left;
         }
 
@@ -1024,7 +1234,7 @@
         .footer_menu_2 {
             color: #e5e5e5;
             text-align: left;
-            width: 300px;
+            width: 20%;
             float: left;
         }
 
@@ -1037,7 +1247,7 @@
 
             color: #e5e5e5;
             text-align: left;
-            width: 300px;
+            width: 20%;
             float: left;
         }
 
@@ -1048,7 +1258,7 @@
         .footer_menu_4 {
             color: #e5e5e5;
             text-align: left;
-            width: 100px;
+            width: 20%;
             float: left;
         }
 
