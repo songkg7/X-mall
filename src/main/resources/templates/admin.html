@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>X-mall ADMIN</title>
+</head>
+<body>
+<div>
+    <p>회원</p>
+    <div th:text="|${accountCount}명|">total Account</div>
+    <div th:each="member : ${accountList}">
+        <div th:text="${member.name}">이름</div>
+    </div>
+</div>
+<hr>
+<div>
+    <p>현재 주문수</p>
+    <div th:text="|${orderCount}건|">total order</div>
+</div>
+<hr>
+<div>
+    <p>
+        현재 총매출
+    </p>
+    <div th:text="|${#numbers.formatInteger(totalSales, 0, 'COMMA')}원|"></div>
+</div>
+<hr>
+<div>
+    <p>
+        가장 많이 팔린 상품
+    </p>
+    <div>Best item</div>
+</div>
+</body>
+</html>

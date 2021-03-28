@@ -3,7 +3,11 @@ package com.xmall.xmall.controller;
 import com.xmall.xmall.account.CurrentAccount;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
+import com.xmall.xmall.domain.Order;
+import com.xmall.xmall.repository.AccountRepository;
 import com.xmall.xmall.repository.ItemRepository;
+import com.xmall.xmall.repository.OrderRepository;
+import com.xmall.xmall.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,14 +19,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-/**
- * Login 관련 컨트롤러
- */
 @Controller
 @RequiredArgsConstructor
 public class MainController {
 
     private final ItemRepository itemRepository;
+    private final AdminService adminService;
+    private final AccountRepository accountRepository;
+    private final OrderRepository orderRepository;
 
     @GetMapping("/")
     public String home(@CurrentAccount Account account, Model model) {
@@ -46,7 +50,7 @@ public class MainController {
      */
     @GetMapping("/search/items")
     public String searchItem(String keyword, Model model,
-                             @PageableDefault(size = 6, sort = "createdAt", direction= Sort.Direction.ASC) Pageable pageable) {
+                             @PageableDefault(size = 6, sort = "createdAt", direction = Sort.Direction.ASC) Pageable pageable) {
         Page<Item> itemLists = itemRepository.findByKeyword(keyword, pageable);
         model.addAttribute("itemLists", itemLists);
 
@@ -55,5 +59,28 @@ public class MainController {
         model.addAttribute("sortProperty", pageable.getSort().toString().contains("createdAt") ? "createdAt" : "price");
 
         return "items/item-list";
+    }
+
+    @GetMapping("/admin")
+    public String adminPage(@CurrentAccount Account account, Model model) {
+
+        // 전체 회원 조회
+        List<Account> accountList = adminService.findAllAccount();
+        model.addAttribute("accountCount", accountRepository.count());
+        model.addAttribute("accountList", accountList);
+
+        // 현재 주문의 수
+        List<Order> orderList = adminService.findAllOrder();
+        model.addAttribute("orderCount", orderRepository.count());
+        model.addAttribute("orderList", orderList);
+
+        // 총매출
+        model.addAttribute("totalSales",adminService.getTotalSales());
+
+        // 가장 많이 팔린 상품
+
+
+        model.addAttribute(account);
+        return "admin";
     }
 }
