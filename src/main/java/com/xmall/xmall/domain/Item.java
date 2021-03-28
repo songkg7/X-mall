@@ -61,7 +61,8 @@ public class Item {
     private String itemImage;
 
     // 상품 등록일
-    private LocalDateTime CreatedAt;
+    // FIXME: createdAt
+    private LocalDateTime createdAt;
 
     /*
     stock 증가

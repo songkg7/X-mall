@@ -52,7 +52,7 @@ public class MainController {
 
         // TODO: search page 를 따로 만드는것이 좋을 것 같다.
         model.addAttribute("keyword", keyword);
-        model.addAttribute("sortProperty", "1");
+        model.addAttribute("sortProperty", pageable.getSort().toString().contains("createdAt") ? "createdAt" : "price");
 
 
         return "items/item-list";

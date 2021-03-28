@@ -38,7 +38,7 @@ public class ItemServiceRemain {
                 .itemImage(itemForm.getItemImage())
                 .description(itemForm.getDescription())
                 .itemImage(itemForm.getItemImage())
-                .CreatedAt(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .genderType(itemForm.getGenderType())
                 .categoryType(itemForm.getCategoryType())
                 .build();

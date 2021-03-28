@@ -23,7 +23,7 @@ public class ItemService {
                 .name(itemForm.getName())
                 .price(itemForm.getPrice())
                 .description(itemForm.getDescription())
-                .CreatedAt(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .genderType(itemForm.getGenderType())
                 .itemImage(itemForm.getItemImage())
                 .stockQuantity(itemForm.getStockQuantity())
