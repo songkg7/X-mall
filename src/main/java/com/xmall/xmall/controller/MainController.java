@@ -24,9 +24,6 @@ import java.util.List;
 public class MainController {
 
     private final ItemRepository itemRepository;
-    private final AdminService adminService;
-    private final AccountRepository accountRepository;
-    private final OrderRepository orderRepository;
 
     @GetMapping("/")
     public String home(@CurrentAccount Account account, Model model) {
@@ -61,29 +58,4 @@ public class MainController {
         return "items/item-list";
     }
 
-    @GetMapping("/admin")
-    public String adminPage(@CurrentAccount Account account, Model model) {
-
-        // 전체 회원 조회
-        List<Account> accountList = adminService.findAllAccount();
-        model.addAttribute("accountCount", accountRepository.count());
-        model.addAttribute("accountList", accountList);
-
-        // 현재 주문의 수
-        List<Order> orderList = adminService.findAllOrder();
-        model.addAttribute("orderCount", orderRepository.count());
-        model.addAttribute("orderList", orderList);
-
-        // 총매출
-        model.addAttribute("totalSales",adminService.getTotalSales());
-
-        // 가장 많이 팔린 상품
-        Item bestItem = adminService.getBestItem();
-        model.addAttribute("bestItem", bestItem);
-
-        // 재고
-
-        model.addAttribute(account);
-        return "admin-test";
-    }
 }
