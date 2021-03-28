@@ -2,6 +2,27 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!------------------------------------->
+<!--이건 아님-->
+<head th:fragment="fragment-header">
+    <title>X-mall</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous"/>
+</head>
+<!--이건 아님-->
+<!------------------------------------->
+
+
 
 <!-- 화면 전체 헤더의 nav head부분 -->
 <head th:fragment="fragment-header-navbar">
@@ -15,9 +36,9 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
             rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-          crossorigin="anonymous"/>
+<!--    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"-->
+<!--          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"-->
+<!--          crossorigin="anonymous"/>-->
     <!--  header css  -->
 
     <style>
@@ -37,6 +58,7 @@
             width: 100%;
             height: 100%;
             display: none;
+            backdrop-filter: blur(10px);
         }
 
         .right-menu {
@@ -263,11 +285,11 @@
         }
 
         .nav1_logo {
+            position: absolute;
             width: 40px;
             height: 40px;
 
-            float: left;
-            margin-left: 50px;
+            left: 5%;
             cursor: pointer;
         }
 
@@ -389,11 +411,19 @@
             right: 31px;
             /* z-index: 1; */
         }
+        /*이미지일때 position4*/
+        /*.position4 {*/
+        /*    position: absolute;*/
+        /*    top: 15px;*/
+        /*    left: 50px;*/
+        /*}*/
+        /*글자일때*/
         .position4 {
             position: absolute;
-            top: 15px;
-            left: 50px;
+            top: -15px;
+            left: 5%;
         }
+
         .btn4 img {
             width: 100%;
             height: 100%;
@@ -581,10 +611,11 @@
 
             width: 100%;
             height: 2000px;
-            background-color: black;
-            opacity: 70%;
+            background:rgba(0,0,0,0.7);
+
             z-index: 1;
             display: none;
+            backdrop-filter: blur(10px);
         }
 
         .detail_list {
@@ -716,7 +747,12 @@
             color: rgb(32, 32, 32);
         }
 
-
+        @font-face {
+            font-family: 'MaplestoryOTFBold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
 
         /*.nav2_scroll{*/
@@ -734,6 +770,7 @@
 
     </style>
     <!-- nav 바 제이쿼리 -->
+
     <script>
         // // 스크롤바를 내리면..
         // $(window).on('scroll',function(){
@@ -777,7 +814,7 @@
                     nav_5.hide();
                     // 보여줄것
                     nav_1.slideDown(180);
-                    blur.fadeIn();
+                    blur.fadeIn(1000);
                 }
                 // ,function(){nav_1.hide(); blur.hide()}
             );
@@ -791,7 +828,7 @@
                     nav_5.hide();
                     // 보여줄것
                     nav_2.slideDown(180);
-                    blur.fadeIn();
+                    blur.fadeIn(1000);
                 }
                 // ,function(){nav_2.hide(); blur.hide()}
             );
@@ -805,7 +842,7 @@
                     nav_5.hide();
                     // 보여줄것
                     nav_3.slideDown(180);
-                    blur.fadeIn();
+                    blur.fadeIn(1000);
                 }
                 // ,function(){nav_3.hide(); blur.hide()}
             );
@@ -819,7 +856,7 @@
                     nav_5.hide();
                     // 보여줄것
                     nav_4.slideDown(180);
-                    blur.fadeIn();
+                    blur.fadeIn(1000);
                 }
                 // ,function(){nav_4.hide(); blur.hide()}
             );
@@ -833,7 +870,7 @@
                     nav_4.hide();
                     // 보여줄것
                     nav_5.slideDown(180);
-                    blur.fadeIn();
+                    blur.fadeIn(1000);
                 }
                 // ,function(){nav_5.hide(); blur.hide()}
             );
@@ -865,7 +902,9 @@
                 $('#black-background').css({display: 'block'});
                 $('#right-menu').animate({marginRight: '0px'});
 
+
             });
+
 
             $("#black-background").click(function () {
                 $('#black-background').css({display: 'none'});
@@ -877,24 +916,11 @@
     </script>
 </head>
 
-<head th:fragment="fragment-header">
-    <title>X-mall</title>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com"/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-            rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-          crossorigin="anonymous"/>
-</head>
+
 
 <!-- 화면 전체에 적용할 header의 nav바s body 부분 -->
 <header th:fragment="nav-bar">
+
     <div class="black-background" id="black-background">
     </div>
     <div class="right-menu" id="right-menu">
@@ -988,9 +1014,12 @@
     <!-- 헤더 2. 네비게이션바 -->
     <div class="nav2">
         <div class="position4">
-            <div class="btn4">
-                <img src="/images/icon/logo-textlogo.png" alt=""/>
-            </div>
+<!--            <div class="btn4">-->
+<!--                <img src="/images/icon/logo-textlogo.png" alt=""/>-->
+<!--                -->
+<!--            </div>-->
+            <p style="font-family: 'MaplestoryOTFBold'; font-size: 30px; color: #202020; "><i>엑스몰</i></p>
+
         </div>
         <!-- 중앙 카테고리 -->
         <div class="nav2_category">
