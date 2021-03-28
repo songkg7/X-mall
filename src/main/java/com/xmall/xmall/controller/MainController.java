@@ -81,7 +81,9 @@ public class MainController {
         Item bestItem = adminService.getBestItem();
         model.addAttribute("bestItem", bestItem);
 
+        // 재고
+
         model.addAttribute(account);
-        return "admin";
+        return "admin-test";
     }
 }

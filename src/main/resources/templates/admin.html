@@ -4,33 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>X-mall ADMIN</title>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
 </head>
 <body>
-<div>
-    <p>회원</p>
-    <div th:text="|${accountCount}명|">total Account</div>
-    <div th:each="member : ${accountList}">
-        <div th:text="${member.name}">이름</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <p>회원</p>
+            <div th:text="|${accountCount}명|">total Account</div>
+            <div th:each="member : ${accountList}">
+                <div th:text="${member.name}">이름</div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <p>현재 주문수</p>
+            <div th:text="|${orderCount}건|">total order</div>
+        </div>
+        <div class="col-sm">
+            <p>
+                현재 총매출
+            </p>
+            <div th:text="|${#numbers.formatInteger(totalSales, 0, 'COMMA')}원|"></div>
+        </div>
+        <div class="col-sm">
+            <p>
+                가장 많이 팔린 상품
+            </p>
+            <div th:text="${bestItem.name}">Best item</div>
+        </div>
     </div>
 </div>
-<hr>
-<div>
-    <p>현재 주문수</p>
-    <div th:text="|${orderCount}건|">total order</div>
-</div>
-<hr>
-<div>
-    <p>
-        현재 총매출
-    </p>
-    <div th:text="|${#numbers.formatInteger(totalSales, 0, 'COMMA')}원|"></div>
-</div>
-<hr>
-<div>
-    <p>
-        가장 많이 팔린 상품
-    </p>
-    <div th:text="${bestItem.name}">Best item</div>
-</div>
+
+
 </body>
 </html>
