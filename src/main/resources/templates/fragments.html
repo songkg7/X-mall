@@ -267,7 +267,7 @@
             height: 40px;
 
             float: left;
-            margin-left: 25%;
+            margin-left: 50px;
             cursor: pointer;
         }
 
@@ -278,6 +278,7 @@
             object-fit: cover;
 
         }
+
 
         .nav1_text {
             display: table-cell;
@@ -388,6 +389,23 @@
             right: 31px;
             /* z-index: 1; */
         }
+        .position4 {
+            position: absolute;
+            top: 15px;
+            left: 50px;
+        }
+        .btn4 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .btn4 {
+            margin-left: 0;
+            width: 120px;
+            height: 35px;
+            border: none;
+
+        }
 
         .btn1 img {
             width: 25px;
@@ -410,6 +428,7 @@
 
             object-fit: cover;
         }
+
 
         .btn1 {
             width: 40px;
@@ -897,7 +916,7 @@
         </a>
         <div style="clear: both;"></div>
         <div class="right-menu-logo">
-            <img src="/images/icon/logo.png">
+            <img src="/images/icon/xmall-logo.png">
             <h2>X-mall</h2>
 
         </div>
@@ -928,7 +947,7 @@
 
     <!-- 헤더 1. 로그인바 -->
     <div class="nav1">
-        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/logo.png" alt=""/></a>
+        <div class="nav1_logo"><a href="#" th:href="@{/}"><img src="/images/icon/xmall-logo.png" alt=""/></a>
         </div>
         <div class="nav1_text">
 
@@ -968,6 +987,11 @@
 
     <!-- 헤더 2. 네비게이션바 -->
     <div class="nav2">
+        <div class="position4">
+            <div class="btn4">
+                <img src="/images/icon/logo-textlogo.png" alt=""/>
+            </div>
+        </div>
         <!-- 중앙 카테고리 -->
         <div class="nav2_category">
             <ul class="li-inline">
