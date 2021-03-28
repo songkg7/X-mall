@@ -46,14 +46,13 @@ public class MainController {
      */
     @GetMapping("/search/items")
     public String searchItem(String keyword, Model model,
-                             @PageableDefault(size = 6, sort = "createdAt", direction= Sort.Direction.DESC) Pageable pageable) {
+                             @PageableDefault(size = 6, sort = "createdAt", direction= Sort.Direction.ASC) Pageable pageable) {
         Page<Item> itemLists = itemRepository.findByKeyword(keyword, pageable);
         model.addAttribute("itemLists", itemLists);
 
         // TODO: search page 를 따로 만드는것이 좋을 것 같다.
         model.addAttribute("keyword", keyword);
         model.addAttribute("sortProperty", pageable.getSort().toString().contains("createdAt") ? "createdAt" : "price");
-
 
         return "items/item-list";
     }
