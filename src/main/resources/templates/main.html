@@ -153,7 +153,7 @@
 
 <!-- main body 부분1 -->
 <main th:each="itemList : ${itemLists}">
-    <div class="main">
+    <div class="main" th:if="${itemListStat.count < 4}">
         <a href="#" th:href="@{/items/{id} (id=${itemList.id})}">
 <!--            FIXME: 사진 높이 섬세한 조정 필요합니다. -->
 
