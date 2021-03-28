@@ -1,6 +1,7 @@
 package com.xmall.xmall.service;
 
 import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.domain.Order;
 import com.xmall.xmall.domain.OrderItem;
 import com.xmall.xmall.repository.AccountRepository;
@@ -39,5 +40,11 @@ public class AdminService {
             sales += orderItem.getTotalPrice();
         }
         return sales;
+    }
+
+
+    public Item getBestItem() {
+        Long itemId = itemRepository.findByBestItem();
+        return itemRepository.findById(itemId).orElseThrow();
     }
 }

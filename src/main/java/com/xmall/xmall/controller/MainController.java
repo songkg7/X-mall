@@ -78,7 +78,8 @@ public class MainController {
         model.addAttribute("totalSales",adminService.getTotalSales());
 
         // 가장 많이 팔린 상품
-
+        Item bestItem = adminService.getBestItem();
+        model.addAttribute("bestItem", bestItem);
 
         model.addAttribute(account);
         return "admin";
