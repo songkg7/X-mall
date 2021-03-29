@@ -89,10 +89,6 @@
         /* ------------------------------------- */
         /* 상딘 오른쪽 필터(기능) */
         /* ------------------------------------- */
-        .right_List {
-            width: 100%;
-            background-color: white;
-        }
 
         .filter_text {
             font-size: 20px;
@@ -123,6 +119,7 @@
             list-style: none;
             padding-left: 30px;
             margin-top: 10px;
+            top:0;
         }
 
         .select_box .default_option .option:hover {
@@ -138,7 +135,7 @@
         .select_box .default_option::before {
             content: "";
             position: absolute;
-            top: 18px;
+            top: 28px;
             right: 18px;
             width: 6px;
             height: 6px;
@@ -150,7 +147,7 @@
 
         .select_box .select_ul {
             position: absolute;
-            top: 45px;
+            top: 65px;
             left: 0px;
             width: 100%;
             background: white;
@@ -161,16 +158,18 @@
         }
 
         .select_box .select_ul li {
-            padding-left: 40px;
+            position: relative;
+            padding-left: 30px;
             cursor: pointer;
+            top:-10px;
         }
 
-        .select_box .select_ul li:hover {
-            color: lightgray;
-        }
+
 
         .select_box .option {
+            position: relative;
             display: flex;
+            top:20px;
             align-items: center;
         }
 
@@ -179,7 +178,7 @@
         }
 
         .select_box.active .default_option::before {
-            top: 23px;
+            top: 33px;
             transform: rotate(-225deg);
         }
 
@@ -204,10 +203,16 @@
         .left_list_title {
             width: 200px;
             background-color: white;
-            margin-top: -9999px;
-            margin-bottom: -9999px;
-            padding-top: 9999px;
-            padding-bottom: 9999px;
+
+            float: left;
+        }
+        .right_List{
+            width: 100%;
+            margin-left: -200px;
+            padding-left: 200px;
+            box-sizing: border-box;
+            float: left;
+
         }
 
         .left_list_div {
@@ -224,9 +229,6 @@
             margin-left: 0px;
         }
 
-        .left_list_title, .product_thum {
-            float: left;
-        }
 
         /* 하단 우측 상품 */
 
@@ -238,11 +240,12 @@
             background-color: white;
             float: left;
             margin-bottom: 100px;
+
         }
 
         .img_div {
             width: 100%;
-
+            margin-bottom: 10px;
             height: auto;
         }
 
@@ -261,6 +264,12 @@
             float: left;
             text-align: left;
         }
+        .prd_description div p{
+            font-size: 14px;
+        }
+        .prd_price div p{
+            font-size: 14px;
+        }
 
         .prd_price {
             background-color: white;
@@ -274,6 +283,7 @@
             text-align: left;
             margin-left: 10px;
             font-weight: 500;
+
         }
 
         .prd_des {
@@ -328,12 +338,44 @@
         }
         .btn1 img {
             width: 25px;
-            height: 32px;
+            height: 33px;
             padding-top: 8px;
         }
         .left_list_div strong{
             font-weight: 700;
             padding-bottom: 20px;
+        }
+        /* 화면크기가 1230보다 작아지면 사진크기 키우기 */
+        @media all and (max-width: 1230px) {
+
+
+            .product_thum {
+                width: 33vw;
+                height: 40vw;
+            }
+            .main{
+                margin-right: 10px;
+            }
+        }
+        /* 화면크기가 825보다 작아지면 사진크기 키우기 */
+        @media all and (max-width: 825px) {
+
+
+            .product_thum {
+                width: 53vw;
+                height: 67vw;
+            }
+            .main{
+                margin-right: 10px;
+            }
+
+        }
+        .select_ul li div p a {
+            text-decoration: none;
+            color: black;
+        }
+        .select_box .select_ul li div p a:hover {
+            color: lightgray;
         }
     </style>
 </head>
@@ -407,7 +449,7 @@
 
         <div class="left_list_title">
             <div class="left_list_div">
-                <strong>의류 전체</strong>
+                <h6 style="padding-bottom: 15px"><strong>의류 전체</strong></h6>
 
                 <p>아우터웨어</p>
                 <p>후드티</p>
@@ -420,7 +462,7 @@
             </div>
 
             <div class="left_list_div">
-                <strong>스포츠</strong>
+                <h6 style="padding-bottom: 15px"><strong>스포츠</strong></h6>
 
                 <p>아우터웨어</p>
                 <p>후드티</p>
@@ -436,76 +478,79 @@
         <!-- ---------------------- -->
         <!-- ------하단 우측측 메인----- -->
         <!-- ---------------------- -->
-        <div class="right_List" th:each="itemList : ${itemLists}">
+        <div class="right_List" >
+            <div class="right_List_img" th:each="itemList : ${itemLists}">
             <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
             <!-- 1번 상품 -->
             <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM -->
-            <div class="product_thum">
-                <div class="img_div">
-                    <a th:href="@{/items/{id} (id=${itemList.id})}">
-                        <img
-                                th:src="${itemList.itemImage}"
-                                width="100%"
-                                height="auto"
-                        />
-                    </a>
-                </div>
-                <div class="product_div">
-                    <div class="prd_description">
-                        <div class="prd_name">
-                            <p th:text="${itemList.name}">스포츠웨어 아이콘 클래쉬 메쉬 AOP</p>
-                        </div>
-                        <div class="prd_des">
-                            <p style="margin-bottom: -10px" th:text="${itemList.subTitle}">남성 반팔 티셔츠
-                                AS</p>
-                            <p style="margin-bottom: -10px">1컬러</p>
-                        </div>
+                <div class="product_thum">
+                    <div class="img_div">
+                        <a th:href="@{/items/{id} (id=${itemList.id})}">
+                            <img
+                                    th:src="${itemList.itemImage}"
+                                    width="100%"
+                                    height="auto"
+                            />
+                        </a>
                     </div>
-                    <div class="prd_price">
-                        <div class="prd_money">
-                            <p th:text="|${#numbers.formatInteger(itemList.price, 0, 'COMMA')}원|">
-                                49,000 원</p>
+                    <div class="product_div">
+                        <div class="prd_description">
+                            <div class="prd_name">
+                                <p style="font-weight: bold" th:text="${itemList.name}">스포츠웨어 아이콘 클래쉬 메쉬 AOP</p>
+                            </div>
+                            <div class="prd_des">
+                                <p style="margin-bottom: -10px" th:text="${itemList.subTitle}">남성 반팔 티셔츠
+                                    AS</p>
+                            <!--<p style="margin-bottom: -10px">1컬러</p>-->
+                            </div>
+                        </div>
+                        <div class="prd_price">
+                            <div class="prd_money">
+                                <p style="font-weight: bold" th:text="|${#numbers.formatInteger(itemList.price, 0, 'COMMA')}원|">
+                                    49,000 원</p>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
 <!--        NOTE: 부트스트랩 페이지 번호 적용 -->
-    </div>
-        <div class="row justify-content-center">
-            <div class="col-sm-10">
-                <nav>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item" th:classappend="${!itemLists.hasPrevious()}? disabled">
-                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() - 1}}"
-                               class="page-link" tabindex="-1" aria-disabled="true">
-                                Previous
-                            </a>
-                        </li>
-                        <li class="page-item" th:classappend="${i == itemLists.getNumber()}? active"
-                            th:each="i: ${#numbers.sequence(0, itemLists.getTotalPages() - 1)}">
-                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${i}}"
-                               class="page-link" href="#" th:text="${i + 1}">1</a>
-                        </li>
-                        <li class="page-item" th:classappend="${!itemLists.hasNext()}? disabled">
-                            <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() + 1}}"
-                               class="page-link">
-                                Next
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+</div>
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${!itemLists.hasPrevious()}? disabled">
+                        <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() - 1}}"
+                           class="page-link" tabindex="-1" aria-disabled="true">
+                            Previous
+                        </a>
+                    </li>
+                    <li class="page-item" th:classappend="${i == itemLists.getNumber()}? active"
+                        th:each="i: ${#numbers.sequence(0, itemLists.getTotalPages() - 1)}">
+                        <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${i}}"
+                           class="page-link" href="#" th:text="${i + 1}">1</a>
+                    </li>
+                    <li class="page-item" th:classappend="${!itemLists.hasNext()}? disabled">
+                        <a th:href="@{'/search/items?keyword=' + ${keyword} + '&sort=' + ${sortProperty} + ',desc&page=' + ${itemLists.getNumber() + 1}}"
+                           class="page-link">
+                            Next
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </div>
+
 </main>
 
 <!-- --------------------footer-------------------- -->
 <footer th:replace="fragments.html :: footer-body">
 </footer>
 <!-- --------------------footer-------------------- -->
+
 </body>
 </html>
 <!--  -->
