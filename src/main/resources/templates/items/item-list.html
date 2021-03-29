@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-
-
     <!-- footer css 수입경로 -->
     <div th:replace="fragments.html :: fragment-footer-css"></div>
     <script>
@@ -47,6 +45,7 @@
         /* ---------------------------- */
         body {
             margin: 0;
+            font-family: 'IBMPlexSansKR-Regular';
         }
 
         /* ---------------------------- */
@@ -290,9 +289,55 @@
             margin-right: 10px;
             font-weight: 500;
         }
+        .position4 {
+            position: absolute;
+            /*top: -15px;*/
+            top: 10px;
+            left: 5%;
+        }
+        .detail_list {
+            position: relative;
+            vertical-align: top;
+            padding-left: 10px;
+            /*----*/
+            padding-top: 25px;
+            /*----*/
+            text-align: left;
+            width: 180px;
+            height: 450px;
+            background-color: white;
+            display: inline-block;
+            zoom: 1;
+            color: rgb(46, 46, 46);
+            font-weight: 500;
+            margin-left: -4px;
+            margin-right: -4px;
+        }
+        .nav2_category a:hover::after {
+            width: 100%;
+            color: black;
+        }
+        .btn1 {
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: white;
+            margin-top: 1px;
+        }
+        .btn1 img {
+            width: 25px;
+            height: 32px;
+            padding-top: 8px;
+        }
+        .left_list_div strong{
+            font-weight: 700;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
-<body>
+<body margin="0" >
 <!-- --------------------header html-------------------- -->
 <header th:replace="fragments.html :: nav-bar">
 </header>
