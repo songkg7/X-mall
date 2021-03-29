@@ -51,19 +51,15 @@ public class CsController {
         return "redirect:/cs/cs_board";
     }
 
-    @GetMapping("/cs/cs_commentForm/{id}")
-    public String commentProc(@PathVariable Long boardId, Model model){
-        Comment comment = commentRepository.findById(boardId).get();
-        model.addAttribute("comment", comment);
+    @GetMapping("/cs/cs_commentForm")
+    public String commentProc( Model model){
         model.addAttribute("commentform",new CommentForm());
         return "/cs/cs_commentForm";
     }
 
-    @PostMapping("/cs/cs_commentForm/{id}")
-    public String cs_commentForm(CommentForm commentform, Long commentId, Model model){
-        Comment comment = commentRepository.findById(commentId).get();
+    @PostMapping("/cs/cs_commentForm")
+    public String cs_commentForm(CommentForm commentform, Model model){
         csBoardService.create(commentform.getCommentText());
-        model.addAttribute("comment", comment);
         return "redirect:/cs/cs_selectForm";
     }
 
