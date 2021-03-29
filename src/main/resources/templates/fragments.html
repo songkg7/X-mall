@@ -154,7 +154,20 @@
             margin-right: auto;
         }
 
-        .right-menu .button-div a .sign-up-btn {
+        .right-menu .button-div span a .sign-up-btn {
+            float: left;
+            width: 120px;
+            height: 40px;
+            border-radius: 50px;
+            margin-left: 40px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+            line-height: 40px;
+
+        }
+        .right-menu .button-div span form .logout-btn {
             float: left;
             width: 120px;
             height: 40px;
@@ -168,7 +181,7 @@
 
         }
 
-        .right-menu .button-div a .login-btn {
+        .right-menu .button-div span a .login-btn {
             float: left;
             width: 90px;
             height: 40px;
@@ -182,19 +195,25 @@
 
         }
 
-        .right-menu .button-div a .sign-up-btn:hover {
+        .right-menu .button-div span a .sign-up-btn:hover {
+            cursor: pointer;
+        }
+        .right-menu .button-div span form  .logout-btn:hover {
             cursor: pointer;
         }
 
-        .right-menu .button-div a .login-btn:hover {
+        .right-menu .button-div span a .login-btn:hover {
             cursor: pointer;
         }
-
-        .right-menu .button-div a .sign-up-btn:focus {
+        .right-menu .button-div span form  .logout-btn:focus {
             outline: none;
         }
 
-        .right-menu .button-div a .login-btn:focus {
+        .right-menu .button-div span a .sign-up-btn:focus {
+            outline: none;
+        }
+
+        .right-menu .button-div span a .login-btn:focus {
             outline: none;
         }
 
@@ -204,7 +223,7 @@
 
         }
 
-        .bottom-div p a img {
+        .bottom-div span p a img {
             width: 25px;
             height: 25px;
             object-fit: cover;
@@ -949,24 +968,38 @@
         <div class="login-div">
             <p>'X-mall 멤버만을 위한 특별한 혜택을 알아보세요.'</p>
             <div class="button-div">
-
-                <a>
-                    <button class="sign-up-btn">멤버 가입</button>
-                </a>
-
-
-                <a>
-                    <button class="login-btn">로그인</button>
-                </a>
+                <span sec:authorize="!isAuthenticated()">
+                    <a href="#"  th:href="@{/sign-up}">
+                        <button class="sign-up-btn">멤버 가입</button>
+                    </a>
+                </span>
+                <span sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}">
+                        <button class="login-btn">로그인</button>
+                    </a>
+                </span>
+                <span sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="logout-btn" type="submit">로그아웃</button>
+                    </form>
+                </span>
 
             </div>
         </div>
         <div class="bottom-div">
-            <p><a href="#"><img src="/images/icon/shoppingbag.png">장바구니</a></p>
-
-            <p><a href="#"><img src="/images/icon/delivery.png">주문배송</a></p>
-
-            <p><a href="#" th:href="@{/cs/notice}"><img src="/images/icon/cscenter.png">고객센터</a></p>
+            <span >
+                <p>
+                    <a href="#"><img src="/images/icon/shoppingbag.png">장바구니</a>
+                </p>
+            </span>
+            <span sec:authorize="isAuthenticated()">
+                <p><a href="#" th:href="@{/myPage/side_mypage}" >
+                    <img src="/images/icon/delivery.png">주문배송</a>
+                </p>
+            </span>
+            <span>
+                <p><a href="#" th:href="@{/cs/notice}"><img src="/images/icon/cscenter.png">고객센터</a></p>
+            </span>
         </div>
 
     </div>
