@@ -1008,6 +1008,10 @@
             <span sec:authorize="hasRole('ROLE_ADMIN')">
                 <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록</a>
             </span>
+
+            <span sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{/admin}">관리</a>
+            </span>
         </div>
     </div>
 
