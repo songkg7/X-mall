@@ -1070,7 +1070,8 @@
                        th:href="@{/items/category/gender/{gender} (gender = women)}">Women</a></li>
                 <li><a id="at4" class="atag4 black_atag" href="#"
                        th:href="@{/items/category/gender/{gender} (gender = kids)}">Kids</a></li>
-                <li><a id="at5" class="atag5 black_atag" href="#">Sale</a></li>
+                <li><a id="at5" class="atag5 black_atag" href="#"
+                       th:href="@{/items/category/gender/{gender} (gender = unisex)}">Unisex</a></li>
             </ul>
         </div>
         <div class="nav2_search position">
@@ -1259,6 +1260,9 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category} (gender = kids, category = shoes)}">신발
+                    전체</a></p>
                 <p><a href="#">베이비(160mm 이하)</a></p>
                 <p><a href="#">리틀키즈(165-220mm 이하)</a></p>
                 <p><a href="#">베이비(225-250mm 이하)</a></p>
@@ -1308,9 +1312,11 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#" th:href="@{/items/category/{category} (category = shoes)}">신발 전체</a>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category} (gender = unisex, category = shoes)}">신발
+                    전체</a></p>
                 </p>
-                <p><a href="#" th:href="@{/items/category/shoes(category=running)}">러닝화</a></p>
+                <p><a href="#">러닝화</a></p>
                 <p><a href="#">축구화</a></p>
                 <p><a href="#">농구화</a></p>
                 <p><a href="#">조던</a></p>
