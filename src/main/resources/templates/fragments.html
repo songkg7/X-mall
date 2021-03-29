@@ -1180,7 +1180,8 @@
         <div class="detail_list">
             <p>의류</p>
             <div class="gray_font">
-                <p><a href="#">의류 전체</a></p>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = men, category1 = top, category2 = pants)}">의류 전체</a></p>
                 <p><a href="#">아우터웨어</a></p>
                 <p><a href="#">후드티</a></p>
                 <p><a href="#">팬츠/타이츠</a></p>
@@ -1280,6 +1281,8 @@
         <div class="detail_list">
             <p>의류</p>
             <div class="gray_font">
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = kids, category1 = top, category2 = pants)}">의류 전체</a></p>
                 <p><a href="#">베이비 (0-4세)</a></p>
                 <p><a href="#">리틀키즈 (4-7세)</a></p>
                 <p><a href="#">주니어 (8-13세)</a></p>
@@ -1300,7 +1303,7 @@
         </div>
     </div>
     <!-- ******************************* -->
-    <!-- 세일 카테고리 -->
+    <!-- 남여공용 카테고리 -->
     <!-- ******************************* -->
     <!----------------------------------------->
     <div class="detail_category5">
@@ -1331,7 +1334,8 @@
         <div class="detail_list">
             <p>의류</p>
             <div class="gray_font">
-                <p><a href="#">의류 전체</a></p>
+                <p><a href="#"
+                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = unisex, category1 = top, category2 = pants)}">의류 전체</a></p>
                 <p><a href="#">아우터웨어</a></p>
                 <p><a href="#">후드티</a></p>
                 <p><a href="#">팬츠/타이츠</a></p>
