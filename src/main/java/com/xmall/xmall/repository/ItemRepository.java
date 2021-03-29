@@ -21,6 +21,4 @@ public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositor
 
     List<Item> findByOrderByPriceDesc();
 
-//    List<Item> findByGenderTypeAndCategoryType1ORCategoryType2(String gender, String categoryType1, String categoryType2);
-
 }
