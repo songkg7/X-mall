@@ -506,383 +506,6 @@
             /*caret-color: transparent;*/
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            //--------------------------
-            //유효성 체크
-            //--------------------------
-            // 경고창 변수 모음
-            var alt1 = $("#alt_1");
-            var alt2 = $("#alt_2");
-            var alt3 = $("#alt_3");
-            var alt4 = $("#alt_4");
-            var alt5 = $("#alt_5");
-            var alt6 = $("#alt_6");
-            var alt7 = $("#alt_7");
-            var alt8 = $("#alt_8");
-
-            var alt3_1 = $("#alt_3_1");
-            var alt7_1 = $("#alt_7_1");
-
-            // 경고창 숨기기
-            alt1.hide();
-            alt2.hide();
-            alt3.hide();
-            alt4.hide();
-            alt5.hide();
-            alt6.hide();
-            alt7.hide();
-            alt8.hide();
-
-            alt3_1.hide();
-            alt7_1.hide();
-
-            //-----------------
-            // 1. 카테고리 입력했는지
-            //-----------------
-            $("#category_name").keyup(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink")
-                    alt1.show();
-                } else {
-                    $(this).css("border-color", "deepskyblue")
-                    alt1.hide();
-                }
-            });
-            $("#category_name").focusout(function () {
-                if ($("#category_name").val().split(" ").join("") === "") {
-                    alt1.show();
-                } else {
-                    $("#price").focus();
-                    alt3.show();
-                    alt1.hide();
-                }
-            });
-            //-----------------
-            // 2. 상품가격 입력했는지
-            //-----------------
-            $("#price").keyup(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink")
-                    alt3.show();
-                    alt3_1.hide();
-                } else if (check_price($(this).val()) === false) {
-                    $(this).css("border-color", "deeppink")
-                    alt3.hide();
-                    alt3_1.show();
-                } else {
-                    $(this).css("border-color", "deepskyblue")
-                    alt3.hide();
-                    alt3_1.hide();
-                }
-            });
-
-            //--------------------------
-            // 3. 제품명 입력했는지
-            //--------------------------
-            $("#product_name").keyup(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink");
-                    alt2.show();
-                } else {
-                    $(this).css("border-color", "deepskyblue");
-                    alt2.hide();
-                }
-            });
-
-            // 제품명 입력빠져나가면
-            $("#product_name").focusout(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink");
-                    alt2.show();
-                } else {
-                    alt4.show();
-                    $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
-                }
-            });
-
-            //4 성별입력이 바뀌면
-            $("#gender").change(function () {
-                alt5.show();
-                $("#top, #pants, #shoes, #acce").css("border-color", "deeppink");
-            });
-
-            $("#men, #women, #kids, #unisex").click(function () {
-                $(this).siblings().css("border-color", "deepskyblue");
-                $(this).css("border-color", "deepskyblue");
-                alt4.hide();
-                alt5.show();
-            });
-
-            //5 품목을 선택하면
-            $("#top, #pants, #shoes, #acce").click(function () {
-                $(this).siblings().css("border-color", "deepskyblue");
-                alt5.hide();
-                alt6.show();
-            });
-
-            //-----------------
-            // 7. 수량 입력했는지
-            //-----------------
-            $("#amount").keyup(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink")
-                    alt7.show();
-                    alt7_1.hide();
-                } else if (check_price($(this).val()) === false) {
-                    $(this).css("border-color", "deeppink")
-                    alt7.hide();
-                    alt7_1.show();
-                } else {
-                    $(this).css("border-color", "deepskyblue")
-                    alt7.hide();
-                    alt7_1.hide();
-                }
-            });
-            $("#amount").focusout(function () {
-
-                $("#description").css("border-color", "deeppink");
-                alt8.show();
-
-            });
-            $("#description").keyup(function () {
-                if ($(this).val().split(" ").join("") === "") {
-                    $(this).css("border-color", "deeppink");
-                    alt8.show();
-                } else {
-                    $(this).css("border-color", "deepskyblue");
-                    alt8.hide();
-
-                }
-            });
-
-            //-----------------------------
-            // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
-            //-----------------------------
-            $('#top_detail_table').hide();
-            $('#pants_detail_table').hide();
-            $('#shoes_detail_table').hide();
-            $('#acce_detail_table').hide();
-
-            $('#acce').click(function () {
-                $('#acce_detail_table').show();
-                $('#top_detail_table').hide();
-                $('#pants_detail_table').hide();
-                $('#shoes_detail_table').hide();
-            });
-            $('#top').click(function () {
-                $('#acce_detail_table').hide();
-                $('#top_detail_table').show();
-                $('#pants_detail_table').hide();
-                $('#shoes_detail_table').hide();
-            });
-            $('#pants').click(function () {
-                $('#acce_detail_table').hide();
-                $('#top_detail_table').hide();
-                $('#pants_detail_table').show();
-                $('#shoes_detail_table').hide();
-            });
-            $('#shoes').click(function () {
-                $('#acce_detail_table').hide();
-                $('#top_detail_table').hide();
-                $('#pants_detail_table').hide();
-                $('#shoes_detail_table').show();
-            });
-
-            //-----------------------------
-            // 2. 성별 클릭시 성별값을 히든 input text에 담기
-            //-----------------------------
-            $('#men, #women, #kids, #unisex').click(function () {
-                var click_id = $(this).attr('id');
-                $('#gender').val(click_id);
-            });
-
-            //-----------------------------
-            // 3. 품목 클릭시 품목값을 히든 input text로 담기
-            //-----------------------------
-            $('#top, #pants, #shoes, #acce').click(function () {
-                var click_id = $(this).attr('id');
-                $('#category').val(click_id);
-            });
-
-            //-----------------------------
-            // 4. 잡화 디테일 카테고리 클릭시 디테일 값을 히든 input text로 담기
-            //-----------------------------
-            $('#cap, #bag, #shortT, #longT, #shortP, #longP, #running, #soccer').click(function () {
-                var click_id = $(this).attr('id');
-                $('#category_detail').val(click_id);
-                alt6.hide();
-                alt7.show();
-            });
-
-            //-----------------------------------------
-            // 클릭시 이벤트 적용시키고 클릭 안된 다른 부분 이벤트 해제
-            //-----------------------------------------
-            $('.size_cell').each(function () {
-                $(this).click(function () {
-                    $(this).addClass("selected");                      //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
-                    $(this).siblings().removeClass("selected");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
-                });
-            });
-        });
-
-        function checkItemForm() {
-            //--------------------------
-            //유효성 체크
-            //--------------------------
-            // 경고창 변수 모음
-            var alt1 = $("#alt_1");
-            var alt2 = $("#alt_2");
-            var alt3 = $("#alt_3");
-            var alt4 = $("#alt_4");
-            var alt5 = $("#alt_5");
-            var alt6 = $("#alt_6");
-            var alt7 = $("#alt_7");
-            var alt8 = $("#alt_8");
-
-            var alt3_1 = $("#alt_3_1");
-            var alt7_1 = $("#alt_7_1");
-
-            // 경고창 숨기기
-            alt1.hide();
-            alt2.hide();
-            alt3.hide();
-            alt4.hide();
-            alt5.hide();
-            alt6.hide();
-            alt7.hide();
-            alt8.hide();
-
-
-            alt3_1.hide();
-            alt7_1.hide();
-
-            //-----------------
-            // 1. 카테고리 입력했는지
-            //-----------------
-            var category_name = $("#category_name").val();
-            if (category_name.split(" ").join("") === "") {
-                $("#category_name").css("border-color", "deeppink");
-                alt1.show();
-                $("#category_name").val("");
-                $("#category_name").focus();
-                return;
-            } else {
-                $("#category_name").css("border-color", "deepskyblue");
-                alt1.hide();
-            }
-            // 2.가격
-            var price = $("#price").val();
-            if (price.split(" ").join("") === "") {
-                $("#price").css("border-color", "deeppink");
-                alt3.show();
-                alt3_1.hide();
-
-                $("#price").val("");
-                $("#price").focus();
-                return;
-            } else if (check_price(price) === false) {
-                $("#price").css("border-color", "deeppink");
-                alt3.hide();
-                alt3_1.show();
-                $("#price").focus();
-                return;
-            } else {
-                $("#price").css("border-color", "deepskyblue");
-                alt3.hide();
-                alt3_1.hide();
-            }
-
-            //--------------------------
-            // 3. 제품명 입력했는지
-            //--------------------------
-            var product_name = $("#product_name").val();
-            if (product_name.split(" ").join("") === "") {
-                $("#product_name").css("border-color", "deeppink");
-                alt2.show();
-                $("#product_name").val("");
-                $("#product_name").focus();
-                return;
-            } else {
-                alt2.hide();
-            }
-
-            //4 성별입력이 바뀌면
-            var gender = $("#gender").val();
-            if (gender.split(" ").join("") === "") {
-                $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
-                alt4.show();
-                return;
-            } else {
-                $("#men, #women, #kids, #unisex").siblings().css("border-color", "deepskyblue");
-                $("#men, #women, #kids, #unisex").css("border-color", "deepskyblue");
-                alt4.hide();
-            }
-
-            //5 품목을 선택하면
-            var category = $("#category").val();
-            if (category.split(" ").join("") === "") {
-                $("#top, #pants, #shoes, #acce").css("border-color", "deeppink");
-                alt5.show();
-                return;
-            } else {
-                $("#top, #pants, #shoes, #acce").siblings().css("border-color", "deepskyblue");
-                $("#top, #pants, #shoes, #acce").css("border-color", "deepskyblue");
-                alt5.hide();
-            }
-
-            var itemDetail = $("#category_detail").val();
-            if (itemDetail.split(" ").join("") === "") {
-                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
-                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deeppink");
-                alt6.show();
-                return;
-            } else {
-                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
-                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deepskyblue");
-                alt6.hide();
-            }
-
-            //-----------------
-            // 7. 수량 입력했는지
-            //-----------------
-            var amount = $("#amount").val();
-            if (amount.split(" ").join("") === "") {
-                $("#amount").css("border-color", "deeppink");
-                alt7.show();
-                alt7_1.hide();
-                $("#amount").val("");
-                $("#amount").focus();
-                return;
-            } else if (check_price(amount.val()) === false) {
-                $("#amount").css("border-color", "deeppink");
-                alt7.hide();
-                alt7_1.show();
-                $("#amount").focus();
-                return;
-            } else {
-                $("#amount").css("border-color", "deepskyblue");
-                alt7.hide();
-                alt7_1.hide();
-            }
-
-            //-----------------
-            // 8. 상품 상세설명을 입력했는지
-            //-----------------
-            var description = $("#description").val();
-            if (description.split(" ").join("") === "") {
-                $("#description").css("border-color", "deeppink");
-                alt8.show();
-                return;
-            } else {
-                $("#description").css("border-color", "deepskyblue");
-                alt8.hide();
-
-                document.itemRegisterForm.submit();
-            }
-        }
-
-    </script>
 </head>
 <body>
 <div class="container">
@@ -1264,5 +887,383 @@
 </script>
 <!--    <footer th:replace="fragments.html :: footer-body">-->
 <!--    </footer>-->
+<script>
+    $(document).ready(function () {
+        //--------------------------
+        //유효성 체크
+        //--------------------------
+        // 경고창 변수 모음
+        var alt1 = $("#alt_1");
+        var alt2 = $("#alt_2");
+        var alt3 = $("#alt_3");
+        var alt4 = $("#alt_4");
+        var alt5 = $("#alt_5");
+        var alt6 = $("#alt_6");
+        var alt7 = $("#alt_7");
+        var alt8 = $("#alt_8");
+
+        var alt3_1 = $("#alt_3_1");
+        var alt7_1 = $("#alt_7_1");
+
+        // 경고창 숨기기
+        alt1.hide();
+        alt2.hide();
+        alt3.hide();
+        alt4.hide();
+        alt5.hide();
+        alt6.hide();
+        alt7.hide();
+        alt8.hide();
+
+        alt3_1.hide();
+        alt7_1.hide();
+
+        //-----------------
+        // 1. 카테고리 입력했는지
+        //-----------------
+        $("#category_name").keyup(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink")
+                alt1.show();
+            } else {
+                $(this).css("border-color", "deepskyblue")
+                alt1.hide();
+            }
+        });
+        $("#category_name").focusout(function () {
+            if ($("#category_name").val().split(" ").join("") === "") {
+                alt1.show();
+            } else {
+                $("#price").focus();
+                alt3.show();
+                alt1.hide();
+            }
+        });
+        //-----------------
+        // 2. 상품가격 입력했는지
+        //-----------------
+        $("#price").keyup(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink")
+                alt3.show();
+                alt3_1.hide();
+            } else if (check_price($(this).val()) === false) {
+                $(this).css("border-color", "deeppink")
+                alt3.hide();
+                alt3_1.show();
+            } else {
+                $(this).css("border-color", "deepskyblue")
+                alt3.hide();
+                alt3_1.hide();
+            }
+        });
+
+        //--------------------------
+        // 3. 제품명 입력했는지
+        //--------------------------
+        $("#product_name").keyup(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink");
+                alt2.show();
+            } else {
+                $(this).css("border-color", "deepskyblue");
+                alt2.hide();
+            }
+        });
+
+        // 제품명 입력빠져나가면
+        $("#product_name").focusout(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink");
+                alt2.show();
+            } else {
+                alt4.show();
+                $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
+            }
+        });
+
+        //4 성별입력이 바뀌면
+        $("#gender").change(function () {
+            alt5.show();
+            $("#top, #pants, #shoes, #acce").css("border-color", "deeppink");
+        });
+
+        $("#men, #women, #kids, #unisex").click(function () {
+            $(this).siblings().css("border-color", "deepskyblue");
+            $(this).css("border-color", "deepskyblue");
+            alt4.hide();
+            alt5.show();
+        });
+
+        //5 품목을 선택하면
+        $("#top, #pants, #shoes, #acce").click(function () {
+            $(this).siblings().css("border-color", "deepskyblue");
+            alt5.hide();
+            alt6.show();
+        });
+
+        //-----------------
+        // 7. 수량 입력했는지
+        //-----------------
+        $("#amount").keyup(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink")
+                alt7.show();
+                alt7_1.hide();
+            } else if (check_price($(this).val()) === false) {
+                $(this).css("border-color", "deeppink")
+                alt7.hide();
+                alt7_1.show();
+            } else {
+                $(this).css("border-color", "deepskyblue")
+                alt7.hide();
+                alt7_1.hide();
+            }
+        });
+        $("#amount").focusout(function () {
+
+            $("#description").css("border-color", "deeppink");
+            alt8.show();
+
+        });
+        $("#description").keyup(function () {
+            if ($(this).val().split(" ").join("") === "") {
+                $(this).css("border-color", "deeppink");
+                alt8.show();
+            } else {
+                $(this).css("border-color", "deepskyblue");
+                alt8.hide();
+
+            }
+        });
+
+        //-----------------------------
+        // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
+        //-----------------------------
+        $('#top_detail_table').hide();
+        $('#pants_detail_table').hide();
+        $('#shoes_detail_table').hide();
+        $('#acce_detail_table').hide();
+
+        $('#acce').click(function () {
+            $('#acce_detail_table').show();
+            $('#top_detail_table').hide();
+            $('#pants_detail_table').hide();
+            $('#shoes_detail_table').hide();
+        });
+        $('#top').click(function () {
+            $('#acce_detail_table').hide();
+            $('#top_detail_table').show();
+            $('#pants_detail_table').hide();
+            $('#shoes_detail_table').hide();
+        });
+        $('#pants').click(function () {
+            $('#acce_detail_table').hide();
+            $('#top_detail_table').hide();
+            $('#pants_detail_table').show();
+            $('#shoes_detail_table').hide();
+        });
+        $('#shoes').click(function () {
+            $('#acce_detail_table').hide();
+            $('#top_detail_table').hide();
+            $('#pants_detail_table').hide();
+            $('#shoes_detail_table').show();
+        });
+
+        //-----------------------------
+        // 2. 성별 클릭시 성별값을 히든 input text에 담기
+        //-----------------------------
+        $('#men, #women, #kids, #unisex').click(function () {
+            var click_id = $(this).attr('id');
+            $('#gender').val(click_id);
+        });
+
+        //-----------------------------
+        // 3. 품목 클릭시 품목값을 히든 input text로 담기
+        //-----------------------------
+        $('#top, #pants, #shoes, #acce').click(function () {
+            var click_id = $(this).attr('id');
+            $('#category').val(click_id);
+        });
+
+        //-----------------------------
+        // 4. 잡화 디테일 카테고리 클릭시 디테일 값을 히든 input text로 담기
+        //-----------------------------
+        $('#cap, #bag, #shortT, #longT, #shortP, #longP, #running, #soccer').click(function () {
+            var click_id = $(this).attr('id');
+            $('#category_detail').val(click_id);
+            alt6.hide();
+            alt7.show();
+        });
+
+        //-----------------------------------------
+        // 클릭시 이벤트 적용시키고 클릭 안된 다른 부분 이벤트 해제
+        //-----------------------------------------
+        $('.size_cell').each(function () {
+            $(this).click(function () {
+                $(this).addClass("selected");                      //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
+                $(this).siblings().removeClass("selected");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
+            });
+        });
+    });
+
+    function checkItemForm() {
+        //--------------------------
+        //유효성 체크
+        //--------------------------
+        // 경고창 변수 모음
+        var alt1 = $("#alt_1");
+        var alt2 = $("#alt_2");
+        var alt3 = $("#alt_3");
+        var alt4 = $("#alt_4");
+        var alt5 = $("#alt_5");
+        var alt6 = $("#alt_6");
+        var alt7 = $("#alt_7");
+        var alt8 = $("#alt_8");
+
+        var alt3_1 = $("#alt_3_1");
+        var alt7_1 = $("#alt_7_1");
+
+        // 경고창 숨기기
+        alt1.hide();
+        alt2.hide();
+        alt3.hide();
+        alt4.hide();
+        alt5.hide();
+        alt6.hide();
+        alt7.hide();
+        alt8.hide();
+
+
+        alt3_1.hide();
+        alt7_1.hide();
+
+        //-----------------
+        // 1. 카테고리 입력했는지
+        //-----------------
+        var category_name = $("#category_name").val();
+        if (category_name.split(" ").join("") === "") {
+            $("#category_name").css("border-color", "deeppink");
+            alt1.show();
+            $("#category_name").val("");
+            $("#category_name").focus();
+            return;
+        } else {
+            $("#category_name").css("border-color", "deepskyblue");
+            alt1.hide();
+        }
+        // 2.가격
+        var price = $("#price").val();
+        if (price.split(" ").join("") === "") {
+            $("#price").css("border-color", "deeppink");
+            alt3.show();
+            alt3_1.hide();
+
+            $("#price").val("");
+            $("#price").focus();
+            return;
+        } else if (check_price(price) === false) {
+            $("#price").css("border-color", "deeppink");
+            alt3.hide();
+            alt3_1.show();
+            $("#price").focus();
+            return;
+        } else {
+            $("#price").css("border-color", "deepskyblue");
+            alt3.hide();
+            alt3_1.hide();
+        }
+
+        //--------------------------
+        // 3. 제품명 입력했는지
+        //--------------------------
+        var product_name = $("#product_name").val();
+        if (product_name.split(" ").join("") === "") {
+            $("#product_name").css("border-color", "deeppink");
+            alt2.show();
+            $("#product_name").val("");
+            $("#product_name").focus();
+            return;
+        } else {
+            alt2.hide();
+        }
+
+        //4 성별입력이 바뀌면
+        var gender = $("#gender").val();
+        if (gender.split(" ").join("") === "") {
+            $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
+            alt4.show();
+            return;
+        } else {
+            $("#men, #women, #kids, #unisex").siblings().css("border-color", "deepskyblue");
+            $("#men, #women, #kids, #unisex").css("border-color", "deepskyblue");
+            alt4.hide();
+        }
+
+        //5 품목을 선택하면
+        var category = $("#category").val();
+        if (category.split(" ").join("") === "") {
+            $("#top, #pants, #shoes, #acce").css("border-color", "deeppink");
+            alt5.show();
+            return;
+        } else {
+            $("#top, #pants, #shoes, #acce").siblings().css("border-color", "deepskyblue");
+            $("#top, #pants, #shoes, #acce").css("border-color", "deepskyblue");
+            alt5.hide();
+        }
+
+        var itemDetail = $("#category_detail").val();
+        if (itemDetail.split(" ").join("") === "") {
+            $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
+            $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deeppink");
+            alt6.show();
+            return;
+        } else {
+            $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
+            $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deepskyblue");
+            alt6.hide();
+        }
+
+        //-----------------
+        // 7. 수량 입력했는지
+        //-----------------
+        var amount = $("#amount").val();
+        if (amount.split(" ").join("") === "") {
+            $("#amount").css("border-color", "deeppink");
+            alt7.show();
+            alt7_1.hide();
+            $("#amount").val("");
+            $("#amount").focus();
+            return;
+        } else if (check_price(amount) === false) {
+            $("#amount").css("border-color", "deeppink");
+            alt7.hide();
+            alt7_1.show();
+            $("#amount").focus();
+            return;
+        } else {
+            $("#amount").css("border-color", "deepskyblue");
+            alt7.hide();
+            alt7_1.hide();
+        }
+
+        //-----------------
+        // 8. 상품 상세설명을 입력했는지
+        //-----------------
+        var description = $("#description").val();
+        if (description.split(" ").join("") === "") {
+            $("#description").css("border-color", "deeppink");
+            alt8.show();
+            return;
+        } else {
+            $("#description").css("border-color", "deepskyblue");
+            alt8.hide();
+
+            document.itemRegisterForm.submit();
+        }
+    }
+
+</script>
+
 </body>
 </html>
