@@ -4,7 +4,7 @@ function checkPattern(str, regExpObj) {
 }
 
 function checkID(str) {
-  return checkPattern(str, new RegExp(/^[a-zA-Z0-9_@]{5,14}$/));
+  return checkPattern(str, new RegExp(/^[가-힣a-zA-Z0-9_@]{5,14}$/));
 }
 
 // email 유효성 체크
