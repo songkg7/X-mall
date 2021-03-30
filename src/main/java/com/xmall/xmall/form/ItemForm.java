@@ -30,4 +30,6 @@ public class ItemForm {
 
     private String categoryType;
 
+    private String categoryDetail;
+
 }

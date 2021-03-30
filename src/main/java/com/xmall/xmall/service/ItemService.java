@@ -28,6 +28,7 @@ public class ItemService {
                 .itemImage(itemForm.getItemImage())
                 .stockQuantity(itemForm.getStockQuantity())
                 .categoryType(itemForm.getCategoryType())
+                .categoryDetail(itemForm.getCategoryDetail())
                 .subTitle((itemForm.getSubTitle()))
                 .build();
 
@@ -47,6 +48,7 @@ public class ItemService {
         item.setStockQuantity(itemForm.getStockQuantity());
         item.setCategoryType(itemForm.getCategoryType());
         item.setGenderType(itemForm.getGenderType());
+        item.setCategoryDetail(itemForm.getCategoryDetail());
         item.setPrice(itemForm.getPrice());
     }
 }

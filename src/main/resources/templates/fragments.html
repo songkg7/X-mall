@@ -1164,10 +1164,10 @@
             </div>
         </div>
     </div>
+
     <!-- ******************************* -->
     <!-- 남성 카테고리 -->
     <!-- ******************************* -->
-
     <div class="detail_category2">
         <div class="detail_list">
             <p>New & Featured</p>
@@ -1181,42 +1181,40 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category} (gender = men, category = shoes)}">신발
-                    전체</a></p>
-                <p><a href="#">러닝화</a></p>
-                <p><a href="#">축구화</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">조던</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">샌들 & 슬리퍼</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = men, category = shoes)}">신발 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = running)}">런닝화</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = soccer)}">축구화</a></p>
             </div>
         </div>
         <div class="detail_list">
-            <p>의류</p>
+            <p>상의</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = men, category1 = top, category2 = pants)}">의류 전체</a></p>
-                <p><a href="#">아우터웨어</a></p>
-                <p><a href="#">후드티</a></p>
-                <p><a href="#">팬츠/타이츠</a></p>
-                <p><a href="#">탑/티셔츠</a></p>
-                <p><a href="#">양말</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = men, category = top)}">상의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = shortT)}">반팔티</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = longT)}">긴팔티</a></p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>하의</p>
+            <div class="gray_font">
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = men, category = pants)}">하의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = shortP)}">반바지</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = longP)}">긴바지</a></p>
             </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
             <div class="gray_font">
-                <p><a href="#">모자</a></p>
-                <p><a href="#">가방</a></p>
-                <p><a href="#">넥타이/헤어밴드</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = men, category = acce)}">잡화 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = cap)}">모자</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = men, detail = bag)}">가방</a></p>
             </div>
         </div>
     </div>
+
     <!-- ******************************* -->
     <!-- 여성 카테고리 -->
     <!-- ******************************* -->
-    <!----------------------------------------->
     <div class="detail_category3">
         <div class="detail_list">
             <p>New & Featured</p>
@@ -1230,43 +1228,40 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category} (gender = women, category = shoes)}">신발
-                    전체</a></p>
-                <p><a href="#">러닝화</a></p>
-                <p><a href="#">축구화</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">조던</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">샌들 & 슬리퍼</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = women, category = shoes)}">신발 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = running)}">런닝화</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = soccer)}">축구화</a></p>
             </div>
         </div>
         <div class="detail_list">
-            <p>의류</p>
+            <p>상의</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = women, category1 = top, category2 = pants)}">의류
-                    전체</a></p>
-                <p><a href="#">아우터웨어</a></p>
-                <p><a href="#">후드티</a></p>
-                <p><a href="#">팬츠/타이츠</a></p>
-                <p><a href="#">탑/티셔츠</a></p>
-                <p><a href="#">양말</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = women, category = top)}">상의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = shortT)}">반팔티</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = longT)}">긴팔티</a></p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>하의</p>
+            <div class="gray_font">
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = women, category = pants)}">하의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = shortP)}">반바지</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = longP)}">긴바지</a></p>
             </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
             <div class="gray_font">
-                <p><a href="#">모자</a></p>
-                <p><a href="#">가방</a></p>
-                <p><a href="#">넥타이/헤어밴드</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = women, category = acce)}">잡화 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = cap)}">모자</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = women, detail = bag)}">가방</a></p>
             </div>
         </div>
     </div>
+
     <!-- ******************************* -->
     <!-- 아동용 카테고리 -->
     <!-- ******************************* -->
-    <!----------------------------------------->
     <div class="detail_category4">
         <div class="detail_list">
             <p>New & Featured</p>
@@ -1280,47 +1275,40 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category} (gender = kids, category = shoes)}">신발
-                    전체</a></p>
-                <p><a href="#">베이비(160mm 이하)</a></p>
-                <p><a href="#">리틀키즈(165-220mm 이하)</a></p>
-                <p><a href="#">베이비(225-250mm 이하)</a></p>
-                <p><a href="#">라이프스타일</a></p>
-                <p><a href="#">러닝</a></p>
-                <p><a href="#">축구</a></p>
-                <p><a href="#">농구</a></p>
-                <p><a href="#">샌들 & 슬리퍼</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = kids, category = shoes)}">신발 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = running)}">런닝화</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = soccer)}">축구화</a></p>
             </div>
         </div>
         <div class="detail_list">
-            <p>의류</p>
+            <p>상의</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = kids, category1 = top, category2 = pants)}">의류 전체</a></p>
-                <p><a href="#">베이비 (0-4세)</a></p>
-                <p><a href="#">리틀키즈 (4-7세)</a></p>
-                <p><a href="#">주니어 (8-13세)</a></p>
-                <p><a href="#">아우터웨어</a></p>
-                <p><a href="#">후드티</a></p>
-                <p><a href="#">팬츠</a></p>
-                <p><a href="#">탑/티셔츠</a></p>
-                <p><a href="#">스커트/드레스</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = kids, category = top)}">상의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = shortT)}">반팔티</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = longT)}">긴팔티</a></p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>하의</p>
+            <div class="gray_font">
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = kids, category = pants)}">하의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = shortP)}">반바지</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = longP)}">긴바지</a></p>
             </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
             <div class="gray_font">
-                <p><a href="#">모자</a></p>
-                <p><a href="#">가방</a></p>
-                <p><a href="#">용품</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = kids, category = acce)}">잡화 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = cap)}">모자</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = kids, detail = bag)}">가방</a></p>
             </div>
         </div>
     </div>
+
     <!-- ******************************* -->
     <!-- 남여공용 카테고리 -->
     <!-- ******************************* -->
-    <!----------------------------------------->
     <div class="detail_category5">
         <div class="detail_list">
             <p>New & Featured</p>
@@ -1334,36 +1322,33 @@
         <div class="detail_list">
             <p>신발</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category} (gender = unisex, category = shoes)}">신발
-                    전체</a></p>
-                </p>
-                <p><a href="#">러닝화</a></p>
-                <p><a href="#">축구화</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">조던</a></p>
-                <p><a href="#">농구화</a></p>
-                <p><a href="#">샌들 & 슬리퍼</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = unisex, category = shoes)}">신발 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = running)}">런닝화</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = soccer)}">축구화</a></p>
             </div>
         </div>
         <div class="detail_list">
-            <p>의류</p>
+            <p>상의</p>
             <div class="gray_font">
-                <p><a href="#"
-                      th:href="@{/items/category/{gender}/{category1}/{category2} (gender = unisex, category1 = top, category2 = pants)}">의류 전체</a></p>
-                <p><a href="#">아우터웨어</a></p>
-                <p><a href="#">후드티</a></p>
-                <p><a href="#">팬츠/타이츠</a></p>
-                <p><a href="#">탑/티셔츠</a></p>
-                <p><a href="#">양말</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = unisex, category = top)}">상의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = shortT)}">반팔티</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = longT)}">긴팔티</a></p>
+            </div>
+        </div>
+        <div class="detail_list">
+            <p>하의</p>
+            <div class="gray_font">
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = unisex, category = pants)}">하의 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = shortP)}">반바지</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = longP)}">긴바지</a></p>
             </div>
         </div>
         <div class="detail_list">
             <p>잡화</p>
             <div class="gray_font">
-                <p><a href="#">모자</a></p>
-                <p><a href="#">가방</a></p>
-                <p><a href="#">넥타이/헤어밴드</a></p>
+                <p><a href="#" th:href="@{/items/category/{gender}/{category} (gender = unisex, category = acce)}">잡화 전체</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = cap)}">모자</a></p>
+                <p><a href="#" th:href="@{/items/{gender}/{detail} (gender = unisex, detail = bag)}">가방</a></p>
             </div>
         </div>
     </div>
