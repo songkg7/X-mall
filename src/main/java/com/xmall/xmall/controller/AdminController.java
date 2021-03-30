@@ -36,7 +36,7 @@ public class AdminController {
         model.addAttribute("orderList", orderList);
 
         // 총매출
-        model.addAttribute("totalSales",adminService.getTotalSales());
+        model.addAttribute("totalSales", adminService.getTotalSales());
 
         // 가장 많이 팔린 상품
         Item bestItem = adminService.getBestItem();
@@ -46,5 +46,10 @@ public class AdminController {
 
         model.addAttribute(account);
         return "admin";
+    }
+
+    @GetMapping("/admin/customers")
+    public String adminCustomers(Model model) {
+        return "admin-customers";
     }
 }

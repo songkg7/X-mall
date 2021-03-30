@@ -8,15 +8,16 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav th:replace="fragments-admin::sidebarMenu (currentMenu = 'dashboard')"></nav>
+        <nav th:replace="fragments-admin::sidebarMenu (currentMenu = 'customers')"></nav>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div th:replace="fragments-admin::dashboard"></div>
+            <h3>회원수 현황</h3>
 
-<!--            Graph -->
+            <!--            Graph -->
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-            <h2>Section title</h2>
+            <h2>Customer Info</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
