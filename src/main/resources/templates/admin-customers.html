@@ -14,6 +14,7 @@
             <div th:replace="fragments-admin::dashboard"></div>
             <h3>회원수 현황</h3>
             <h4>전체 회원 수 : <span th:text="|${totalAccount}명|"></span></h4>
+            <h5 th:text="${graphData}">$</h5>
 
             <!--            Graph -->
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
