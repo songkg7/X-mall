@@ -34,8 +34,7 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
                         LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
                                 .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
-                        LocalDateTime.now().truncatedTo(ChronoUn
-                                it.SECONDS)))
+                        LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)))
                 .groupBy(account.JoinedAt)
                 .orderBy(account.JoinedAt.asc())
                 .select(account.JoinedAt.count())
