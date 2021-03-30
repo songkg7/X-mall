@@ -48,7 +48,7 @@ public class AdminService {
         return itemRepository.findById(itemId).orElseThrow();
     }
 
-//    public List<Account> getSignUpAccountPerDay() {
-////        return accountRepository.findA();
-//    }
+    public List<Long> getSignUpAccountPerDay() {
+        return accountRepository.findAccountPerDay();
+    }
 }

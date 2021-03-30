@@ -56,7 +56,7 @@ class AccountRepositoryExtensionImplTest {
                 .phone("01011111111")
                 .build();
 
-        account1.setJoinedAt(LocalDateTime.of(2021, 3, 23, 0, 0));
+        account1.setJoinedAt(LocalDateTime.of(2021, 3, 28, 0, 0));
 
         accountRepository.save(account1);
 
@@ -142,7 +142,7 @@ class AccountRepositoryExtensionImplTest {
 //                        .between(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).minusDays(10),
 //                                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).plusDays(2)))
                 .where(QAccount.account.JoinedAt
-                .between(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)
+                .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
                         .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
                         .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                         LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)))

@@ -51,11 +51,15 @@ public class AdminController {
     @GetMapping("/admin/customers")
     public String adminCustomers(Model model) {
         List<Account> accountList = adminService.findAllAccount();
-//        List<Account> graphData = adminService.getSignUpAccountPerDay();
+        List<Long> graphData = adminService.getSignUpAccountPerDay();
+
+        for (int i = 0; i < graphData.size(); i++) {
+            model.addAttribute("graphData" + i, graphData.get(i));
+        }
+
 
         model.addAttribute("accountList", accountList);
         model.addAttribute("totalAccount", accountRepository.count());
-//        model.addAttribute("graphData", graphData);
         return "admin-customers";
     }
 
