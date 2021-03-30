@@ -47,4 +47,8 @@ public class AdminService {
         Long itemId = itemRepository.findByBestItem();
         return itemRepository.findById(itemId).orElseThrow();
     }
+
+//    public List<Account> getSignUpAccountPerDay() {
+////        return accountRepository.findA();
+//    }
 }

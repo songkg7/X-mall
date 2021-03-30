@@ -34,7 +34,7 @@ public class Account {
     private String password;
 
     // ----
-    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account")
     private List<Order> orders = new ArrayList<>();
 
     // 주소
@@ -58,10 +58,10 @@ public class Account {
     private List<MyReview> reviews = new ArrayList<>();
 
     // 가입한 날짜
-
+//    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private LocalDateTime JoinedAt;
-    // UUID 를 사용하여 랜덤한 값을 생성한 후 Account 에 담는다.
 
+    // UUID 를 사용하여 랜덤한 값을 생성한 후 Account 에 담는다.
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
         // 생성시간 정보를 저장해서 연속적으로 메일을 보내지 못하게한다

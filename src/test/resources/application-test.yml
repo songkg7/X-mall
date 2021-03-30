@@ -1,11 +1,16 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         #        show_sql: true
         format_sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/xmalldb
+    username: admin
+    password: testpass
 
 logging:
   level.org.hibernate.SQL: DEBUG
