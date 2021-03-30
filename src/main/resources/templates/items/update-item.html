@@ -306,7 +306,7 @@
             background-color: white;
         }
 
-        .size_table {
+        .detail_table {
             /* position: absolute; */
 
             background-color: rgb(255, 255, 255);
@@ -565,30 +565,14 @@
             //-----------------------------
             // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
             //-----------------------------
-            $('#top_size_table').hide();
-            $('#pants_size_table').hide();
-            $('#shoes_size_table').hide();
-
-            $('#top').click(function (){
-                $('#pants_size_table').hide();
-                $('#shoes_size_table').hide();
-                $('#top_size_table').show();
-
-            });
-            $('#pants').click(function (){
-                $('#top_size_table').hide();
-                $('#shoes_size_table').hide();
-                $('#pants_size_table').show();
-            });
-            $('#shoes').click(function (){
-                $('#top_size_table').hide();
-                $('#pants_size_table').hide();
-                $('#shoes_size_table').show();
-            });
-
+            $('#top_detail_table').hide();
+            $('#pants_detail_table').hide();
+            $('#shoes_detail_table').hide();
+            $('#acce_detail_table').hide();
 
             var cate = $(".thisCate").val();
             var gender = $(".thisGender").val();
+            var cateDetail = $(".thisCateDetail").val();
 
             if (gender === "men") {
                 $("#men").addClass("selected");
@@ -604,58 +588,87 @@
             }
 
             if (cate === "top") {
+                $('#top_detail_table').show();
                 $("#top").addClass("selected");
             }
             else if (cate === "pants") {
+                $('#pants_detail_table').show();
                 $("#pants").addClass("selected");
             }
+            else if (cate === "acce") {
+                $('#acce_detail_table').show();
+                $("#acce").addClass("selected");
+            }
             else {
+                $('#shoes_detail_table').show();
                 $("#shoes").addClass("selected");
             }
 
-            //-----------------------------
-            // 2. 성별 클릭시 성별값을 히든 input text에 담기
-            //-----------------------------
+            if (cateDetail === "running") {
+                $("#running").addClass("selected");
+            }
+            else if (cateDetail === "soccer") {
+                $("#soccer").addClass("selected");
+            }
+            else if (cateDetail === "shortT") {
+                $("#shortT").addClass("selected");
+            }
+            else if (cateDetail === "longT") {
+                $("#longT").addClass("selected");
+            }
+            else if (cateDetail === "shortP") {
+                $("#shortP").addClass("selected");
+            }
+            else if (cateDetail === "longP") {
+                $("#longP").addClass("selected");
+            }
+            else if (cateDetail === "cap") {
+                $("#cap").addClass("selected");
+            }
+            else if (cateDetail === "bag") {
+                $("#bag").addClass("selected");
+            }
+
+
+            $('#acce').click(function () {
+                $('#acce_detail_table').show();
+                $('#top_detail_table').hide();
+                $('#pants_detail_table').hide();
+                $('#shoes_detail_table').hide();
+            });
+            $('#top').click(function () {
+                $('#acce_detail_table').hide();
+                $('#top_detail_table').show();
+                $('#pants_detail_table').hide();
+                $('#shoes_detail_table').hide();
+            });
+            $('#pants').click(function () {
+                $('#acce_detail_table').hide();
+                $('#top_detail_table').hide();
+                $('#pants_detail_table').show();
+                $('#shoes_detail_table').hide();
+            });
+            $('#shoes').click(function () {
+                $('#acce_detail_table').hide();
+                $('#top_detail_table').hide();
+                $('#pants_detail_table').hide();
+                $('#shoes_detail_table').show();
+            });
+
+
             $('#men, #women, #kids, #unisex').click(function() {
-                // $(this).not($(this)).css("background","white");
-                // $(this).css("background","deeppink");
                 var click_id = $(this).attr('id');
                 $('#gender').val(click_id);
             });
 
-            //-----------------------------
-            // 3. 품목 클릭시 품목값을 히든 input text로 담기
-            //-----------------------------
-            $('#top, #pants, #shoes').click(function() {
-                // $(this).not($(this)).css("background","white");
-                // $(this).css("background","deeppink");
+            $('#top, #pants, #shoes, #acce').click(function() {
                 var click_id = $(this).attr('id');
                 $('#category').val(click_id);
             });
 
-            //-----------------------------
-            // 4. 상의사이즈 클릭시 상의사이즈 값을 히든 input text로 담기
-            //-----------------------------
-            $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').click(function(){
-                // $('#85xs, #90s, #95m, #100l, #105xl, #1102xl').css("background","white");
-                // $(this).css("background","deeppink");
-                $('#top_size').val($(this).text());
-            });
-            //-----------------------------
-            // 5. 하의사이즈 클릭시 하의사이즈 값을 히든 input text로 담기
-            //-----------------------------
-            $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').click(function(){
-                // $('#pnats26, #pnats28, #pnats30, #pnats32, #pnats34, #pnats36').css("background","white");
-                // $(this).css("background","deeppink");
-                $('#pants_size').val($(this).text());
-            });
-            //-----------------------------
-            // 6. 신발사이즈 클릭시 신발사이즈 값을 히든 input text로 담기
-            //-----------------------------
-            $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290')
-            .click(function(){
-                // $('#shoes225, #shoes230, #shoes235, #shoes240, #shoes245, #shoes250, #shoes255, #shoes260, #shoes265, #shoes270, #shoes275, #shoes280, #shoes285, #shoes290').css("background","white");
-                $('#shoes_size').val($(this).text());
+            $('#cap, #bag, #shortT, #longT, #shortP, #longP, #running, #soccer').click(function () {
+                var click_id = $(this).attr('id');
+                $('#category_detail').val(click_id);
             });
 
             //-----------------------------------------
@@ -668,12 +681,13 @@
                 });
             });
 
+            $(".detail_table").each(function() {
+                let detailTable = $(this);
+                $(this).find(".size_cell").click(function() {
+                    detailTable.siblings().children("div").removeClass("selected");
+                });
+            });
         })
-
-        //
-        function show_topsize(){
-            $('#top_size').css("display","show");
-        }
     </script>
 </head>
 <body>
@@ -689,6 +703,7 @@
 <!--            수정 처음 성별, 카테고리를 체크하기 위한 hidden value-->
             <input type="hidden" class="thisGender" th:value="${item.getGenderType()}">
             <input type="hidden" class="thisCate" th:value="${item.getCategoryType()}">
+            <input type="hidden" class="thisCateDetail" th:value="${item.getCategoryDetail()}">
 
             <!--------------------- form 태그 선언 --------------------->
 <!--                <input type="hidden" th:field="*{id}">-->
@@ -801,6 +816,7 @@
                             <div class="size_cell" id="top"><p>상의</p></div>
                             <div class="size_cell" id="pants"><p>하의</p></div>
                             <div class="size_cell" id="shoes"><p>신발</p></div>
+                            <div class="size_cell" id="acce"><p>잡화</p></div>
                             <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
                             <input type="hidden" id="category" name="category" th:field="*{categoryType}">
                         </div>
@@ -809,50 +825,32 @@
                     <!--======================-->
                     <!-- 7. 사이즈 설정 -->
                     <!--======================-->
-<!--                    <div class="select_div">-->
-<!--                            <p>사이즈 선택</p>-->
-<!--                    </div>-->
-<!--                    <div class="table_div">-->
-<!--                        &lt;!&ndash;  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기&ndash;&gt;-->
-<!--                        <div class="size_table" id="top_size_table">-->
-<!--                            <div class="size_cell" id="85xs"><p>85(XS)</p></div>-->
-<!--                            <div class="size_cell" id="90s"><p>90(S)</p></div>-->
-<!--                            <div class="size_cell" id="95m"><p>95(M)</p></div>-->
-<!--                            <div class="size_cell" id="100l"><p>100(L)</p></div>-->
-<!--                            <div class="size_cell" id="105xl"><p>105(XL)</p></div>-->
-<!--                            <div class="size_cell" id="1102xl"><p>110(2XL)</p></div>-->
-<!--                            &lt;!&ndash;input 타입으로 숨겨서 상의(top_size) 벨류 값 전송&ndash;&gt;-->
-<!--                            <input type="text" id="top_size" name="top_size" value="">-->
-<!--                        </div>-->
-<!--                        <div class="size_table" id="pants_size_table">-->
-<!--                            <div class="size_cell" id="pnats26"><p>26</p></div>-->
-<!--                            <div class="size_cell" id="pnats28"><p>28</p></div>-->
-<!--                            <div class="size_cell" id="pnats30"><p>30</p></div>-->
-<!--                            <div class="size_cell" id="pnats32"><p>32</p></div>-->
-<!--                            <div class="size_cell" id="pnats34"><p>34</p></div>-->
-<!--                            <div class="size_cell" id="pnats36"><p>36</p></div>-->
-<!--                            &lt;!&ndash;input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송&ndash;&gt;-->
-<!--                            <input type="text" id="pants_size" name="pants_size" value="">-->
-<!--                        </div>-->
-<!--                        <div class="size_table" id="shoes_size_table">-->
-<!--                            <div class="size_cell" id="shoes225"><p>225</p></div>-->
-<!--                            <div class="size_cell" id="shoes230"><p>230</p></div>-->
-<!--                            <div class="size_cell" id="shoes235"><p>235</p></div>-->
-<!--                            <div class="size_cell" id="shoes240"><p>240</p></div>-->
-<!--                            <div class="size_cell" id="shoes245"><p>245</p></div>-->
-<!--                            <div class="size_cell" id="shoes250"><p>250</p></div>-->
-<!--                            <div class="size_cell" id="shoes255"><p>255</p></div>-->
-<!--                            <div class="size_cell" id="shoes260"><p>260</p></div>-->
-<!--                            <div class="size_cell" id="shoes265"><p>265</p></div>-->
-<!--                            <div class="size_cell" id="shoes270"><p>270</p></div>-->
-<!--                            <div class="size_cell" id="shoes275"><p>275</p></div>-->
-<!--                            <div class="size_cell" id="shoes280"><p>280</p></div>-->
-<!--                            <div class="size_cell" id="shoes285"><p>285</p></div>-->
-<!--                            <div class="size_cell" id="shoes290"><p>290</p></div>-->
-<!--                            &lt;!&ndash;input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송&ndash;&gt;-->
-<!--                            <input type="text" id="shoes_size" name="shoes_size" value="">-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="select_div">
+                        <p>디테일 선택</p>
+                    </div>
+                    <div class="table_div">
+                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
+                        <div class="detail_table" id="acce_detail_table">
+                            <div class="size_cell" id="cap"><p>모자</p></div>
+                            <div class="size_cell" id="bag"><p>가방</p></div>
+                        </div>
+
+                        <div class="detail_table" id="top_detail_table">
+                            <div class="size_cell" id="shortT"><p>반팔티</p></div>
+                            <div class="size_cell" id="longT"><p>긴팔티</p></div>
+                        </div>
+
+                        <div class="detail_table" id="pants_detail_table">
+                            <div class="size_cell" id="shortP"><p>반바지</p></div>
+                            <div class="size_cell" id="longP"><p>긴바지</p></div>
+                        </div>
+
+                        <div class="detail_table" id="shoes_detail_table">
+                            <div class="size_cell" id="running"><p>런닝화</p></div>
+                            <div class="size_cell" id="soccer"><p>축구화</p></div>
+                        </div>
+                        <input type="text" id="category_detail" name="category_detail" th:field="*{categoryDetail}">
+                    </div>
                     <!--======================-->
                     <!-- 8. 수량 설정 -->
                     <!--======================-->

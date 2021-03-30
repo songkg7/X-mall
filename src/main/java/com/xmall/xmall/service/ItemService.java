@@ -42,6 +42,7 @@ public class ItemService {
 
     public void update(Long id, ItemForm itemForm) {
         Item item = itemRepository.findById(id).orElseThrow();
+        item.setName(itemForm.getName());
         item.setSubTitle(itemForm.getSubTitle());
         item.setDescription(itemForm.getDescription());
         item.setItemImage(itemForm.getItemImage());
