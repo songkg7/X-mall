@@ -23,7 +23,8 @@ public class Account {
 
     @Column(unique = true)
     private String email;
-    @Column(unique = true, name = "account_id")
+
+    @Column(unique = true, name = "nickname")
     private String nickname;
 
     private String name;
