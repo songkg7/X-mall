@@ -50,6 +50,28 @@ public class AdminController {
 
     @GetMapping("/admin/customers")
     public String adminCustomers(Model model) {
+        List<Account> accountList = adminService.findAllAccount();
+        model.addAttribute("accountList", accountList);
         return "admin-customers";
+    }
+
+    @GetMapping("/admin/integrations")
+    public String adminIntegration(Model model) {
+        return "admin-integrations";
+    }
+
+    @GetMapping("/admin/orders")
+    public String adminOrders(Model model) {
+        return "admin-orders";
+    }
+
+    @GetMapping("/admin/products")
+    public String adminProducts(Model model) {
+        return "admin-products";
+    }
+
+    @GetMapping("/admin/reports")
+    public String adminReport(Model model) {
+        return "admin-reports";
     }
 }
