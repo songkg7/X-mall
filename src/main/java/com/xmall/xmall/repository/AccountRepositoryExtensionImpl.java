@@ -20,8 +20,6 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 
-    String date = sdf.format(new Date());
-    int week = getWeekOfYear(date);
 
     public AccountRepositoryExtensionImpl() {
         super(Account.class);
@@ -29,6 +27,10 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
 
     @Override
     public List<Long> findAccountPerDay() {
+        // 날짜 계산
+        String date = sdf.format(new Date());
+        int week = getWeekOfYear(date);
+
         return from(account)
                 .where(account.JoinedAt.between(
                         LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
