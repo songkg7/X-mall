@@ -39,6 +39,8 @@ public class Item {
 
     private String categoryType;
 
+    private String categoryDetail;
+
 
     // TODO: Size 선택 옵션에 대해서 생각해보기
     // 사이즈

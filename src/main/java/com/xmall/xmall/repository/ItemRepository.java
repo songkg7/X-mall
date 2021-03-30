@@ -17,6 +17,8 @@ public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositor
 
     List<Item> findByGenderTypeAndCategoryType(String gender, String categoryType);
 
+    List<Item> findByGenderTypeAndCategoryDetail(String gender, String detail);
+
     List<Item> findByOrderByPriceAsc();
 
     List<Item> findByOrderByPriceDesc();
