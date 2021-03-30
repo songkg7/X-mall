@@ -29,6 +29,8 @@ public class OrderItem {
 
     private int orderPrice; // 주문 당시 가격
     private int amount; // 주문 당시 수량
+    
+    @Column(nullable = false)
     private String orderItemSize; // 주문 당시 사이즈
 
     private String postCode;

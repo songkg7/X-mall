@@ -12,11 +12,11 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div th:replace="fragments-admin::dashboard"></div>
-
+            <h3>Sales Per Days</h3>
 <!--            Graph -->
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-            <h2>Section title</h2>
+            <h2>Sales Rank</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -158,6 +158,6 @@
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         crossorigin="anonymous"></script>
 <!--<script src="/dashboard/dashboard.js"></script>-->
-<div th:include="fragments-admin::graphs(${totalSales}, 1450000,3,4,5, 6, 7)"></div>
+<div th:include="fragments-admin::graphs(${graphData0}, ${graphData1}, ${graphData2}, ${graphData3}, ${graphData4}, ${graphData5}, ${graphData6})"></div>
 </body>
 </html>

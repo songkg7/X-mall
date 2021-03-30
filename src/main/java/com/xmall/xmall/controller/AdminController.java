@@ -25,10 +25,9 @@ public class AdminController {
     @GetMapping("/admin")
     public String adminPage(@CurrentAccount Account account, Model model) {
 
-        // 전체 회원 조회
-        List<Account> accountList = adminService.findAllAccount();
-        model.addAttribute("accountCount", accountRepository.count());
-        model.addAttribute("accountList", accountList);
+        // 요일별 매출
+        // TODO: Order - OrderItem Join 해서 데이터를 가져와야한다.
+
 
         // 현재 주문의 수
         List<Order> orderList = adminService.findAllOrder();
