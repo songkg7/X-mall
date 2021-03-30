@@ -587,7 +587,6 @@
                 } else {
                     $(this).css("border-color", "deepskyblue");
                     alt2.hide();
-
                 }
             });
 
@@ -597,7 +596,6 @@
                     $(this).css("border-color", "deeppink");
                     alt2.show();
                 } else {
-
                     alt4.show();
                     $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
                 }
@@ -622,7 +620,6 @@
                 alt5.hide();
                 alt6.show();
             });
-
 
             //-----------------
             // 7. 수량 입력했는지
@@ -658,8 +655,6 @@
 
                 }
             });
-
-
 
             //-----------------------------
             // 1. 품목(상의/하의/신발) 선택시 size(상의/하의/신발) 테이블 변경
@@ -698,8 +693,6 @@
             // 2. 성별 클릭시 성별값을 히든 input text에 담기
             //-----------------------------
             $('#men, #women, #kids, #unisex').click(function () {
-                // $(this).not($(this)).css("background","white");
-                // $(this).css("background","deeppink");
                 var click_id = $(this).attr('id');
                 $('#gender').val(click_id);
             });
@@ -708,8 +701,6 @@
             // 3. 품목 클릭시 품목값을 히든 input text로 담기
             //-----------------------------
             $('#top, #pants, #shoes, #acce').click(function () {
-                // $(this).not($(this)).css("background","white");
-                // $(this).css("background","deeppink");
                 var click_id = $(this).attr('id');
                 $('#category').val(click_id);
             });
@@ -723,33 +714,6 @@
                 alt6.hide();
                 alt7.show();
             });
-            //-----------------------------
-            // 5. 상의 디테일 카테고리 클릭시 디테일 값을 히든 input text로 담기
-            //-----------------------------
-            // $('#shortT, #longT').click(function () {
-            //     var click_id = $(this).attr('id');
-            //     $('#top_detail').val(click_id);
-            //     alt6.hide();
-            //     alt7.show();
-            // });
-            // //-----------------------------
-            // // 6. 하의 디테일 카테고리 클릭시 디테일 값을 히든 input text로 담기
-            // //-----------------------------
-            // $('#shortP, #longP').click(function () {
-            //     var click_id = $(this).attr('id');
-            //     $('#pants_detail').val(click_id);
-            //     alt6.hide();
-            //     alt7.show();
-            // });
-            // //-----------------------------
-            // // 6. 신발 디테일 카테고리 클릭시 디테일 값을 히든 input text로 담기
-            // //-----------------------------
-            // $('#running, #soccer').click(function () {
-            //     var click_id = $(this).attr('id');
-            //     $('#shoes_detail').val(click_id);
-            //     alt6.hide();
-            //     alt7.show();
-            // });
 
             //-----------------------------------------
             // 클릭시 이벤트 적용시키고 클릭 안된 다른 부분 이벤트 해제
@@ -763,8 +727,6 @@
         });
 
         function checkItemForm() {
-            var btn = document.getElementById('btn-regist_btn');
-
             //--------------------------
             //유효성 체크
             //--------------------------
@@ -800,19 +762,19 @@
             //-----------------
             var category_name = $("#category_name").val();
             if (category_name.split(" ").join("") === "") {
-                $("#category_name").css("border-color", "deeppink")
+                $("#category_name").css("border-color", "deeppink");
                 alt1.show();
                 $("#category_name").val("");
                 $("#category_name").focus();
                 return;
             } else {
-                $("#category_name").css("border-color", "deepskyblue")
+                $("#category_name").css("border-color", "deepskyblue");
                 alt1.hide();
             }
             // 2.가격
             var price = $("#price").val();
             if (price.split(" ").join("") === "") {
-                $("#price").css("border-color", "deeppink")
+                $("#price").css("border-color", "deeppink");
                 alt3.show();
                 alt3_1.hide();
 
@@ -820,13 +782,13 @@
                 $("#price").focus();
                 return;
             } else if (check_price(price) === false) {
-                $("#price").css("border-color", "deeppink")
+                $("#price").css("border-color", "deeppink");
                 alt3.hide();
                 alt3_1.show();
                 $("#price").focus();
                 return;
             } else {
-                $("#price").css("border-color", "deepskyblue")
+                $("#price").css("border-color", "deepskyblue");
                 alt3.hide();
                 alt3_1.hide();
             }
@@ -842,8 +804,7 @@
                 $("#product_name").focus();
                 return;
             } else {
-                alt4.show();
-                $("#men, #women, #kids, #unisex").css("border-color", "deeppink");
+                alt2.hide();
             }
 
             //4 성별입력이 바뀌면
@@ -856,7 +817,6 @@
                 $("#men, #women, #kids, #unisex").siblings().css("border-color", "deepskyblue");
                 $("#men, #women, #kids, #unisex").css("border-color", "deepskyblue");
                 alt4.hide();
-                alt5.show();
             }
 
             //5 품목을 선택하면
@@ -869,42 +829,18 @@
                 $("#top, #pants, #shoes, #acce").siblings().css("border-color", "deepskyblue");
                 $("#top, #pants, #shoes, #acce").css("border-color", "deepskyblue");
                 alt5.hide();
-                alt6.show();
             }
 
-            var top_size = $("#top_size").val();
-            var pants_size = $("#pants_size").val();
-            var shoes_size = $("#shoes_size").val();
-            var acce_size = $("#acce_size").val();
-
-            if (
-                (top_size.split(" ").join("") === "") &&
-                (pants_size.split(" ").join("") === "") &&
-                (shoes_size.split(" ").join("") === "")
-            ) {
+            var itemDetail = $("#category_detail").val();
+            if (itemDetail.split(" ").join("") === "") {
+                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
+                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deeppink");
                 alt6.show();
                 return;
-            } else if (
-                (top_size.split(" ").join("") === "") &&
-                (pants_size.split(" ").join("") === "") &&
-                !(shoes_size.split(" ").join("") === "")
-            ) {
+            } else {
+                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").siblings().css("border-color", "deepskyblue");
+                $("#running, #soccer, #shortT, #longT, #shortP, #longP, #cap, #bag").css("border-color", "deepskyblue");
                 alt6.hide();
-
-            } else if (
-                (top_size.split(" ").join("") === "") &&
-                !(pants_size.split(" ").join("") === "") &&
-                (shoes_size.split(" ").join("") === "")
-            ) {
-                alt6.hide();
-
-            } else if (
-                !(top_size.split(" ").join("") === "") &&
-                (pants_size.split(" ").join("") === "") &&
-                (shoes_size.split(" ").join("") === "")
-            ) {
-                alt6.hide();
-
             }
 
             //-----------------
@@ -912,33 +848,32 @@
             //-----------------
             var amount = $("#amount").val();
             if (amount.split(" ").join("") === "") {
-                $("#amount").css("border-color", "deeppink")
+                $("#amount").css("border-color", "deeppink");
                 alt7.show();
                 alt7_1.hide();
                 $("#amount").val("");
                 $("#amount").focus();
                 return;
-
             } else if (check_price(amount.val()) === false) {
-                $("#amount").css("border-color", "deeppink")
+                $("#amount").css("border-color", "deeppink");
                 alt7.hide();
                 alt7_1.show();
                 $("#amount").focus();
                 return;
-
             } else {
-                $("#amount").css("border-color", "deepskyblue")
+                $("#amount").css("border-color", "deepskyblue");
                 alt7.hide();
                 alt7_1.hide();
             }
 
-
+            //-----------------
+            // 8. 상품 상세설명을 입력했는지
+            //-----------------
             var description = $("#description").val();
             if (description.split(" ").join("") === "") {
                 $("#description").css("border-color", "deeppink");
                 alt8.show();
                 return;
-
             } else {
                 $("#description").css("border-color", "deepskyblue");
                 alt8.hide();
@@ -1022,6 +957,7 @@
                                    placeholder="제품명을 입력하세요">
                         </p>
                         <div id="alt_2">제품명을 입력해주세요</div>
+
                         <!--======================-->
                         <!-- 3. 색상 관련 이미지 썸네일 설정-->
                         <!--======================-->
@@ -1037,6 +973,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!-- 4. 가격 설정 -->
                     <p class="price">
                         <soan>상품 가격</soan>
@@ -1046,14 +983,13 @@
                     <div id="alt_3">상품가격을 입력해주세요</div>
                     <div id="alt_3_1">상품가격은 숫자로만 입력해주세요</div>
                     <div style="clear: both"></div>
+
                     <!--======================-->
                     <!-- 5. 성별 설정 -->
                     <!--======================-->
                     <div class="select_div">
                         <p>성별 선택</p>
                     </div>
-
-
                     <div class="table_div">
                         <div class="gender_table" id="gender_table">
                             <div class="size_cell" id="men"><p>남성</p></div>
@@ -1065,9 +1001,9 @@
                         </div>
                     </div>
 
-
                     <div style="clear: both"></div>
                     <div id="alt_4">성별 선택해주세요</div>
+
                     <!--======================-->
                     <!-- 6. 품목 설정 -->
                     <!--======================-->
@@ -1081,13 +1017,13 @@
                             <div class="size_cell" id="pants"><p>하의</p></div>
                             <div class="size_cell" id="shoes"><p>신발</p></div>
                             <div class="size_cell" id="acce"><p>잡화</p></div>
-                            <!--input 타입으로 숨겨서 품목(category) 벨류 값 전송-->
                             <input type="hidden" id="category" name="category" th:field="*{categoryType}">
                         </div>
                     </div>
 
                     <div style="clear: both"></div>
                     <div id="alt_5">품목을 선택해주세요</div>
+
                     <!--======================-->
                     <!-- 7. 사이즈 설정 -->
                     <!--======================-->
@@ -1115,43 +1051,15 @@
                             <div class="size_cell" id="running"><p>런닝화</p></div>
                             <div class="size_cell" id="soccer"><p>축구화</p></div>
                         </div>
-                        <input type="text" id="category_detail" name="category_detail" th:field="*{categoryDetail}">
+                        <input type="hidden" id="category_detail" name="category_detail" th:field="*{categoryDetail}">
                     </div>
-<!--                        <div class="size_table" id="pants_size_table">-->
-<!--                            <div class="size_cell" id="26"><p>26</p></div>-->
-<!--                            <div class="size_cell" id="28"><p>28</p></div>-->
-<!--                            <div class="size_cell" id="30"><p>30</p></div>-->
-<!--                            <div class="size_cell" id="32"><p>32</p></div>-->
-<!--                            <div class="size_cell" id="34"><p>34</p></div>-->
-<!--                            <div class="size_cell" id="36"><p>36</p></div>-->
-<!--                            &lt;!&ndash;input 타입으로 숨겨서 하의(pants_size) 벨류 값 전송&ndash;&gt;-->
-<!--                            <input type="text" id="pants_size" name="pants_size" value="">-->
-<!--                        </div>-->
-<!--                        <div class="size_table" id="shoes_size_table">-->
-<!--                            <div class="size_cell" id="225"><p>225</p></div>-->
-<!--                            <div class="size_cell" id="230"><p>230</p></div>-->
-<!--                            <div class="size_cell" id="235"><p>235</p></div>-->
-<!--                            <div class="size_cell" id="240"><p>240</p></div>-->
-<!--                            <div class="size_cell" id="245"><p>245</p></div>-->
-<!--                            <div class="size_cell" id="250"><p>250</p></div>-->
-<!--                            <div class="size_cell" id="255"><p>255</p></div>-->
-<!--                            <div class="size_cell" id="260"><p>260</p></div>-->
-<!--                            <div class="size_cell" id="265"><p>265</p></div>-->
-<!--                            <div class="size_cell" id="270"><p>270</p></div>-->
-<!--                            <div class="size_cell" id="275"><p>275</p></div>-->
-<!--                            <div class="size_cell" id="280"><p>280</p></div>-->
-<!--                            <div class="size_cell" id="285"><p>285</p></div>-->
-<!--                            <div class="size_cell" id="290"><p>290</p></div>-->
-<!--                            &lt;!&ndash;input 타입으로 숨겨서 신발(shoes_size) 벨류 값 전송&ndash;&gt;-->
-<!--                            <input type="text" id="shoes_size" name="shoes_size" value="">-->
-<!--                        </div>-->
 
                     <div style="clear: both"></div>
-                    <div id="alt_6">사이즈를 선택해주세요</div>
+                    <div id="alt_6">디테일을 선택해주세요</div>
+
                     <!--======================-->
                     <!-- 8. 수량 설정 -->
                     <!--======================-->
-                    <!--                <form method="get" th:action="@{/order-payment/{id} (id=${item.id})}">-->
                     <div class="count_div">
                         <div class="count_amount">수량</div>
                         <div class="count_product">
@@ -1161,7 +1069,6 @@
                             <div id="alt_7">수량을 입력해주세요</div>
                             <div id="alt_7_1">상품가격은 숫자로만 입력해주세요</div>
                         </div>
-
                     </div>
 
                     <!--======================-->
@@ -1173,21 +1080,13 @@
                                   placeholder="하단에 표시될 상품 설명을 입력하세요">
                         </textarea>
                         <span id="alt_8">상세설명을 입력해주세요</span>
-                        <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
-                        <!--                        <p th:text="${item.getDescription()}">-->
-                        <!--                            무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너-->
-                        <!--                            재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝-->
-                        <!--                            윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이-->
-                        <!--                            돋보입니다.-->
-                        <!--                        </p>-->
 
                         <!--======================-->
                         <!-- 10. 상품 등록 버튼 -->
                         <!--======================-->
-                        <button type="submit" class="btn btn-primary" id="regist_btn"
-                                onclick="checkItemForm()">상품 등록
-                        </button>
+                        <input type="button" class="btn btn-primary" id="regist_btn" onclick="checkItemForm()" value="상품 등록">
                     </div>
+
                     <!--======================-->
                     <!-- 11. 현재 등록 되어있는 상품 수량 -->
                     <!--======================-->
@@ -1199,14 +1098,9 @@
                     <div class="form-group">
                         <input id="itemImage" type="hidden" th:field="*{itemImage}" class="form-control" />
                     </div>
-
                 </div>
             </div>
         </form>
-
-
-
-
     </div>
 </main>
 <link  href="/node_modules/cropper/dist/cropper.min.css" rel="stylesheet">
