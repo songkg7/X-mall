@@ -234,58 +234,42 @@
             margin-bottom: 20px;
         }
 
-        .product_img1 {
-            width: 47%;
-            margin-right: 12px;
+        .product_img1,.product_img2,.product_img3,.product_img4 {
+
+            width: 30vw;
+            height: 30vw;
+            margin-left: 12px;
             margin-bottom: 8px;
             position: relative;
             /*padding-bottom: 27%;*/
             float: left;
+            overflow: hidden;
         }
-        .product_img2 {
-            width: 47%;
-            margin-right: 12px;
-            margin-bottom: 8px;
-            position: relative;
-            /*padding-bottom: 27%;*/
-            float: left;
-        }
-        .product_img3 {
-            width: 47%;
-            margin-right: 12px;
-            margin-bottom: 8px;
-            position: relative;
-            /*padding-bottom: 27%;*/
-            float: left;
-        }
-        .product_img4 {
-            width: 47%;
-            margin-right: 12px;
-            margin-bottom: 8px;
-            position: relative;
-            /*padding-bottom: 27%;*/
-            float: left;
-        }
+
 
         .product_img1 img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            overflow: hidden;
         }
         .product_img2 img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            overflow: hidden;
         }
         .product_img3 img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            overflow: hidden;
         }
         .product_img4 img{
             width: 100%;
             height: 100%;
             object-fit: cover;
+            overflow: hidden;
         }
 
         .img_bigger {
@@ -297,27 +281,7 @@
             object-fit: cover;
         }
 
-        /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
-        @media all and (max-width: 1220px) {
-            .product_img1 {
-                width: 96%;
-            }
 
-            .product_img2 {
-                width: 96%;
-            }
-
-            .product_img3 {
-                width: 96%;
-            }
-
-            .product_img4 {
-                width: 96%;
-            }
-            .product_img {
-                clear: both;
-            }
-        }
 
         body {
             margin: 0;
@@ -325,7 +289,7 @@
 
         main{
             overflow: auto;
-            margin-left: 50px;
+            /*margin-left: 50px;*/
             margin-right: 50px;
             margin-top: 50px;
             background-color: white;
@@ -570,6 +534,21 @@
             font-size: 16px;
             cursor: pointer;
         }
+        /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
+        @media all and (max-width: 1420px) {
+            main{
+                margin-left: 0;
+            }
+            .product_img1,.product_img2,.product_img3,.product_img4 {
+                margin-left: 0;
+                width: 100%;
+                height: 50%;
+
+            }
+            .product_img {
+                clear: both;
+            }
+        }
     </style>
 </head>
 
@@ -591,6 +570,7 @@
                         th:src="${item.itemImage}"
                         width="100%"
                         height="100%"
+
                 />
             </div>
             <div class="product_img2">

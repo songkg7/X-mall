@@ -82,9 +82,11 @@ public class ItemController {
     public String updateItem(@CurrentAccount Account account, @PathVariable Long id, Model model,
                              @Valid ItemForm itemForm, Errors errors) {
 
+        model.addAttribute(account);
         itemService.update(id, itemForm);
         return "redirect:/";
     }
+
 
     /**
      * 상품 삭제
@@ -97,10 +99,10 @@ public class ItemController {
     }
 
     @GetMapping("/items")
-    public String items(Model model) {
+    public String items(@CurrentAccount Account account, Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
-
+        model.addAttribute(account);
         return "items/item-list";
     }
 
