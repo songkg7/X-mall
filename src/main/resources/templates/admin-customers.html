@@ -13,6 +13,7 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div th:replace="fragments-admin::dashboard"></div>
             <h3>회원수 현황</h3>
+            <h4>전체 회원 수 : <span th:text="|${totalAccount}명|"></span></h4>
 
             <!--            Graph -->
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
@@ -56,6 +57,6 @@
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
         crossorigin="anonymous"></script>
 <!--<script src="/dashboard/dashboard.js"></script>-->
-<div th:include="fragments-admin::graphs(${totalSales}, 1450000)"></div>
+<div th:include="fragments-admin::graphs(25000, 14000)"></div>
 </body>
 </html>

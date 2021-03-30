@@ -51,7 +51,9 @@ public class AdminController {
     @GetMapping("/admin/customers")
     public String adminCustomers(Model model) {
         List<Account> accountList = adminService.findAllAccount();
+
         model.addAttribute("accountList", accountList);
+        model.addAttribute("totalAccount", accountRepository.count());
         return "admin-customers";
     }
 

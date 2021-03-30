@@ -40,5 +40,4 @@ public class ItemRepositoryExtensionImpl extends QuerydslRepositorySupport imple
 
     }
 
-
 }
