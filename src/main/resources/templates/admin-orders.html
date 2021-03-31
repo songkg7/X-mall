@@ -12,6 +12,8 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div th:replace="fragments-admin::dashboard"></div>
+            <h3>Order per day</h3>
+            <h4>전체 주문 수 : <span th:text="|${totalOrders}개|">count</span></h4>
 
             <!--            Graph -->
             <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
