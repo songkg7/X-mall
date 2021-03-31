@@ -1,20 +1,18 @@
 package com.xmall.xmall.repository;
 
-import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.xmall.xmall.domain.Account;
-import com.xmall.xmall.domain.QAccount;
+import com.xmall.xmall.domain.*;
+import com.xmall.xmall.form.OrderForm;
+import com.xmall.xmall.service.OrderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -26,23 +24,30 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import static com.xmall.xmall.domain.QOrder.*;
+import static com.xmall.xmall.domain.QOrderItem.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-@Profile("dev")
-class AccountRepositoryExtensionImplTest {
+class OrderItemRepositoryExtensionImplTest {
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     AccountRepository accountRepository;
 
     @Autowired
-    EntityManager em;
+    ItemRepository itemRepository;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    OrderService orderService;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+
+    @Autowired
+    EntityManager em;
 
     JPAQueryFactory queryFactory;
 
@@ -60,76 +65,61 @@ class AccountRepositoryExtensionImplTest {
     }
 
     @Test
-    @DisplayName("회원 검색 테스트")
-    void basic() {
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+    @DisplayName("요일별 매출 가져오기")
+    void salesPerDay() {
 
-        Account findAccount = queryFactory
-                .select(QAccount.account)
-                .from(QAccount.account)
-                .where(QAccount.account.name.eq("관리자"))
-                .fetchOne();
+        // given
+        Account account = accountRepository.findByEmail("test1@example.com");
+        Item item = Item.builder()
+                .description("sadf")
+                .stockQuantity(10)
+                .subTitle("Asdf")
+                .name("test")
+                .genderType("men")
+                .price(10000)
+                .createdAt(LocalDateTime.now().minusDays(1))
+                .build();
+        itemRepository.save(item);
 
-        System.out.println("findAccount = " + findAccount.getName());
+        OrderForm orderForm = new OrderForm();
+        orderForm.setPrice(item.getPrice());
+        orderForm.setAmount(5);
+        orderForm.setOrderItemSize("100");
 
-        assertEquals(findAccount.getName(), "관리자");
+        orderService.order(item, account, orderForm);
 
-    }
 
-    @Test
-    @DisplayName("요일별 회원 가입 인원수 가져오기")
-    void findSignUpAccountPerDay() {
         queryFactory = new JPAQueryFactory(em);
-
         String date = sdf.format(new Date());
-        System.out.println(getWeekOfYear(date));
-
         int week = getWeekOfYear(date);
 
-        List<Tuple> results = queryFactory
-                .select(QAccount.account.JoinedAt, QAccount.account.JoinedAt.count())
-                .from(QAccount.account)
-//                .where(QAccount.account.JoinedAt.before(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)))
-//                .where(QAccount.account.JoinedAt
-//                        .between(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).minusDays(10),
-//                                LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).plusDays(2)))
-                .where(QAccount.account.JoinedAt
-                .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
-                        .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
-                        .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
-                        LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)))
-                .groupBy(QAccount.account.JoinedAt)
-                .orderBy(QAccount.account.JoinedAt.asc())
+        List<Integer> results = queryFactory
+                .select(orderItem.amount.multiply(orderItem.orderPrice).sum())
+                .from(order)
+                .where(order.status.eq(OrderStatus.ORDER).and(order.orderDate.between(
+                        LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
+                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
+                                .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
+                        LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))))
+                .leftJoin(orderItem).on(orderItem.order.id.eq(order.id)).fetchJoin()
+                .groupBy(order.orderDate)
+                .orderBy(order.orderDate.asc())
                 .fetch();
 
-        System.out.println("results.size() = " + results.size());
+        List<Order> result2 = queryFactory.selectFrom(order).fetch();
 
-
-
-        for (Tuple result : results) {
+        for (Integer result : results) {
             System.out.println("result = " + result);
         }
 
-    }
-
-    @Test
-    @DisplayName("전체 회원 조회")
-    void findAllAccount() {
-
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-
-        List<Account> result = queryFactory
-                .select(QAccount.account)
-                .from(QAccount.account)
-                .fetch();
-
-        for (Account account : result) {
-            System.out.println("account = " + account.getName());
+        for (Order order1 : result2) {
+            System.out.println("order1 = " + order1.getOrderDate());
         }
 
-        assertEquals(result.size(), accountRepository.count());
+
 
     }
+
 
 
     private void createAccount(String email, String testUser, int day) {
@@ -155,4 +145,5 @@ class AccountRepositoryExtensionImplTest {
         cal.set(year, month - 1, day);
         return cal.get(Calendar.WEEK_OF_YEAR);
     }
+
 }
