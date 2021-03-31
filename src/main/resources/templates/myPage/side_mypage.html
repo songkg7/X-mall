@@ -291,6 +291,9 @@
 <footer th:replace="fragments.html :: footer-body"></footer>
 </body>
 <script>
+
+<!--    FIXME: csrf token 넣어주기 -->
+
     function cancel(id) {
         var form = document.createElement("form");
         form.setAttribute("method", "post");

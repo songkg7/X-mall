@@ -1,7 +1,6 @@
 package com.xmall.xmall.repository;
 
-import com.xmall.xmall.domain.OrderItem;
-import com.xmall.xmall.domain.OrderStatus;
+import com.xmall.xmall.domain.*;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.text.SimpleDateFormat;
@@ -47,6 +46,16 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
                 .select((orderItem.amount.multiply(orderItem.orderPrice)).sum())
                 .fetch();
     }
+
+    @Override
+    public List<Order> findAllOrdersInfo() {
+        return from(order)
+                .leftJoin(orderItem).on(order.id.eq(orderItem.order.id)).fetchJoin()
+                .leftJoin(QAccount.account).on(order.account.id.eq(QAccount.account.id)).fetchJoin()
+                .leftJoin(QItem.item).on(orderItem.item.id.eq(QItem.item.id)).fetchJoin()
+                .fetch();
+    }
+
 
     // 현재 날짜를 바탕으로 몇주차인지 알아내기 위한 로직
     private int getWeekOfYear(String date) {

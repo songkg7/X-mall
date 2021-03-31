@@ -73,6 +73,9 @@ public class AdminController {
 
     @GetMapping("/admin/orders")
     public String adminOrders(Model model) {
+
+        List<Order> orderList = adminService.getAllOrdersInfo();
+        model.addAttribute("orderList", orderList);
         return "admin-orders";
     }
 

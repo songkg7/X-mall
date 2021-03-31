@@ -62,6 +62,9 @@ class OrderItemRepositoryExtensionImplTest {
         createAccount("test3@example.com", "testuser3", 26);
 
         createAccount("test4@example.com", "testuser4", 20);
+
+        createItemAndOrder("testItem1");
+        createItemAndOrder("testItem2");
     }
 
     @Test
@@ -69,8 +72,6 @@ class OrderItemRepositoryExtensionImplTest {
     void salesPerDay() {
 
         // given
-        createItemAndOrder("testItem1");
-        createItemAndOrder("testItem2");
 
 
         queryFactory = new JPAQueryFactory(em);
@@ -107,7 +108,23 @@ class OrderItemRepositoryExtensionImplTest {
             System.out.println("integer = " + integer);
         }
 
+    }
 
+    @Test
+    @DisplayName("종합 주문 정보")
+    void allOrderInfo() {
+
+        List<Order> fetch = queryFactory
+                .select(order)
+                .from(order)
+                .leftJoin(orderItem).on(order.id.eq(orderItem.order.id)).fetchJoin()
+                .leftJoin(QAccount.account).on(order.account.id.eq(QAccount.account.id)).fetchJoin()
+                .leftJoin(QItem.item).on(orderItem.item.id.eq(QItem.item.id)).fetchJoin()
+                .fetch();
+
+        for (Order fetch1 : fetch) {
+            System.out.println("fetch1 = " + fetch1.getOrderItems().get(0).getOrderPrice());
+        }
 
     }
 

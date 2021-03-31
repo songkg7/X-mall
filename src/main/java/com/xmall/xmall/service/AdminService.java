@@ -55,4 +55,8 @@ public class AdminService {
     public List<Integer> getSalesPerDay() {
         return orderItemRepository.findSalesPerDay();
     }
+
+    public List<Order> getAllOrdersInfo() {
+        return orderItemRepository.findAllOrdersInfo();
+    }
 }
