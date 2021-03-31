@@ -1,5 +1,6 @@
 package com.xmall.xmall.domain;
 
+import com.xmall.xmall.repository.LocalDateTimeConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
@@ -28,6 +30,8 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    @Column(columnDefinition= "TIMESTAMP WITH TIME ZONE")
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime orderDate;
 
     @ManyToOne(fetch = FetchType.LAZY)

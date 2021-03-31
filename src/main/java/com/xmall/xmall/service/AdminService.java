@@ -59,4 +59,8 @@ public class AdminService {
     public List<Order> getAllOrdersInfo() {
         return orderItemRepository.findAllOrdersInfo();
     }
+
+    public List<Long> getOrdersPerDay() {
+        return orderItemRepository.findOrdersPerDay();
+    }
 }

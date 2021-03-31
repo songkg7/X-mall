@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
@@ -41,8 +42,8 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                         LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))))
                 .leftJoin(orderItem).on(orderItem.order.id.eq(order.id)).fetchJoin()
-                .groupBy(order.orderDate)
-                .orderBy(order.orderDate.asc())
+                .groupBy(order.orderDate.stringValue().substring(0,10))
+//                .orderBy(order.orderDate.asc())
                 .select((orderItem.amount.multiply(orderItem.orderPrice)).sum())
                 .fetch();
     }
@@ -54,6 +55,27 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
                 .leftJoin(QAccount.account).on(order.account.id.eq(QAccount.account.id)).fetchJoin()
                 .leftJoin(QItem.item).on(orderItem.item.id.eq(QItem.item.id)).fetchJoin()
                 .fetch();
+    }
+
+    @Override
+    public List<Long> findOrdersPerDay() {
+        // 날짜 계산
+        String date = sdf.format(new Date());
+        int week = getWeekOfYear(date);
+
+        return from(order)
+                .where(order.status.eq(OrderStatus.ORDER)
+                        .and(order.orderDate
+                                .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
+                                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
+                                                .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
+                                        LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS))))
+                .groupBy(order.orderDate.dayOfWeek())
+//                .orderBy(order.orderDate.asc())
+                .select(order.orderDate.count())
+                .fetch();
+
+
     }
 
 

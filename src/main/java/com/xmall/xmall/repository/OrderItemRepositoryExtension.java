@@ -10,4 +10,6 @@ public interface OrderItemRepositoryExtension {
 
     List<Order> findAllOrdersInfo();
 
+    List<Long> findOrdersPerDay();
+
 }
