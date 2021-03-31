@@ -17,12 +17,10 @@ import javax.persistence.EntityManager;
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -46,59 +44,23 @@ class AccountRepositoryExtensionImplTest {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 
+    JPAQueryFactory queryFactory;
+
     @BeforeEach
     void init() {
-        Account account1 = Account.builder()
-                .email("test1@example.com")
-                .nickname("testuser1")
-                .password(passwordEncoder.encode("12345678"))
-                .name("testuser1")
-                .phone("01011111111")
-                .build();
+        queryFactory = new JPAQueryFactory(em);
 
-        account1.setJoinedAt(LocalDateTime.of(2021, 3, 28, 0, 0));
+        createAccount("test1@example.com", "testuser1", 28);
 
-        accountRepository.save(account1);
+        createAccount("test2@example.com", "testuser2", 29);
 
-        Account account2 = Account.builder()
-                .email("test2@example.com")
-                .nickname("testuser2")
-                .password(passwordEncoder.encode("12345678"))
-                .name("testuser2")
-                .phone("01011111111")
-                .build();
+        createAccount("test3@example.com", "testuser3", 26);
 
-        account2.setJoinedAt(LocalDateTime.of(2021, 3, 29, 0, 0));
-
-        accountRepository.save(account2);
-
-        Account account3 = Account.builder()
-                .email("test3@example.com")
-                .nickname("testuser3")
-                .password(passwordEncoder.encode("12345678"))
-                .name("testuser3")
-                .phone("01011111111")
-                .build();
-
-        account3.setJoinedAt(LocalDateTime.of(2021, 3, 26, 0, 0));
-
-        accountRepository.save(account3);
-
-        Account account4 = Account.builder()
-                .email("test4@example.com")
-                .nickname("testuser4")
-                .password(passwordEncoder.encode("12345678"))
-                .name("testuser4")
-                .phone("01011111111")
-                .build();
-
-        account4.setJoinedAt(LocalDateTime.of(2021, 3, 20, 0, 0));
-
-        accountRepository.save(account4);
+        createAccount("test4@example.com", "testuser4", 20);
     }
 
     @Test
-    @DisplayName("기본 테스트")
+    @DisplayName("회원 검색 테스트")
     void basic() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
@@ -112,16 +74,6 @@ class AccountRepositoryExtensionImplTest {
 
         assertEquals(findAccount.getName(), "관리자");
 
-    }
-
-    int getWeekOfYear(String date) {
-        Calendar cal = Calendar.getInstance();
-        String[] dates = date.split("-");
-        int year = Integer.parseInt(dates[0]);
-        int month = Integer.parseInt(dates[1]);
-        int day = Integer.parseInt(dates[2]);
-        cal.set(year, month - 1, day);
-        return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
     @Test
@@ -175,6 +127,32 @@ class AccountRepositoryExtensionImplTest {
             System.out.println("account = " + account.getName());
         }
 
+        assertEquals(result.size(), accountRepository.count());
+
     }
 
+
+    private void createAccount(String email, String testUser, int day) {
+        Account account = Account.builder()
+                .email(email)
+                .nickname(testUser)
+                .password(passwordEncoder.encode("12345678"))
+                .name(testUser)
+                .phone("01011111111")
+                .build();
+
+        account.setJoinedAt(LocalDateTime.of(2021, 3, day, 0, 0));
+
+        accountRepository.save(account);
+    }
+
+    int getWeekOfYear(String date) {
+        Calendar cal = Calendar.getInstance();
+        String[] dates = date.split("-");
+        int year = Integer.parseInt(dates[0]);
+        int month = Integer.parseInt(dates[1]);
+        int day = Integer.parseInt(dates[2]);
+        cal.set(year, month - 1, day);
+        return cal.get(Calendar.WEEK_OF_YEAR);
+    }
 }
