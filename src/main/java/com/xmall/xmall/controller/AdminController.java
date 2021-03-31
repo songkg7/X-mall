@@ -27,6 +27,11 @@ public class AdminController {
 
         // 요일별 매출
         // TODO: Order - OrderItem Join 해서 데이터를 가져와야한다.
+//        List<Integer> graphData = adminService.getSalesPerDay();
+//        for (int i = 0; i < graphData.size(); i++) {
+//            model.addAttribute("graphData" + i, graphData.get(i));
+//        }
+
 
 
         // 현재 주문의 수
@@ -51,7 +56,6 @@ public class AdminController {
     public String adminCustomers(Model model) {
         List<Account> accountList = adminService.findAllAccount();
         List<Long> graphData = adminService.getSignUpAccountPerDay();
-
         for (int i = 0; i < graphData.size(); i++) {
             model.addAttribute("graphData" + i, graphData.get(i));
         }

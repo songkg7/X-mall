@@ -51,4 +51,8 @@ public class AdminService {
     public List<Long> getSignUpAccountPerDay() {
         return accountRepository.findAccountPerDay();
     }
+
+    public List<Integer> getSalesPerDay() {
+        return orderItemRepository.findSalesPerDay();
+    }
 }

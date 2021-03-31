@@ -69,24 +69,8 @@ class OrderItemRepositoryExtensionImplTest {
     void salesPerDay() {
 
         // given
-        Account account = accountRepository.findByEmail("test1@example.com");
-        Item item = Item.builder()
-                .description("sadf")
-                .stockQuantity(10)
-                .subTitle("Asdf")
-                .name("test")
-                .genderType("men")
-                .price(10000)
-                .createdAt(LocalDateTime.now().minusDays(1))
-                .build();
-        itemRepository.save(item);
-
-        OrderForm orderForm = new OrderForm();
-        orderForm.setPrice(item.getPrice());
-        orderForm.setAmount(5);
-        orderForm.setOrderItemSize("100");
-
-        orderService.order(item, account, orderForm);
+        createItemAndOrder("testItem1");
+        createItemAndOrder("testItem2");
 
 
         queryFactory = new JPAQueryFactory(em);
@@ -100,26 +84,53 @@ class OrderItemRepositoryExtensionImplTest {
                         LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
                                 .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
-                        LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))))
+                        LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS))))
                 .leftJoin(orderItem).on(orderItem.order.id.eq(order.id)).fetchJoin()
-                .groupBy(order.orderDate)
-                .orderBy(order.orderDate.asc())
+                .groupBy(order.orderDate.dayOfWeek())
+                .orderBy(order.orderDate.dayOfWeek().asc())
                 .fetch();
 
-        List<Order> result2 = queryFactory.selectFrom(order).fetch();
+//        List<Integer> result2 = queryFactory
+//                .select(order.orderDate.yearWeek())
+//                .from(order).fetch();
 
+        List<Integer> result2 = queryFactory
+                .select(order.orderDate.yearWeek())
+                .from(order).fetch();
+
+        System.out.println("results.size() = " + results.size());
         for (Integer result : results) {
             System.out.println("result = " + result);
         }
 
-        for (Order order1 : result2) {
-            System.out.println("order1 = " + order1.getOrderDate());
+        for (Integer integer : result2) {
+            System.out.println("integer = " + integer);
         }
 
 
 
     }
 
+    private void createItemAndOrder(String itemName) {
+        Account account = accountRepository.findByEmail("test1@example.com");
+        Item item = Item.builder()
+                .description("sadf")
+                .stockQuantity(10)
+                .subTitle("Asdf")
+                .name(itemName)
+                .genderType("men")
+                .price(10000)
+                .createdAt(LocalDateTime.now().minusDays(1))
+                .build();
+        itemRepository.save(item);
+
+        OrderForm orderForm = new OrderForm();
+        orderForm.setPrice(item.getPrice());
+        orderForm.setAmount(5);
+        orderForm.setOrderItemSize("100");
+
+        orderService.order(item, account, orderForm);
+    }
 
 
     private void createAccount(String email, String testUser, int day) {
