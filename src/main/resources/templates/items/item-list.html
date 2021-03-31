@@ -404,9 +404,29 @@
         <!-- ---------------------- -->
         <div class="top_detail_subject">
             <!-- 왼쪽 -->
-            <div class="left_title">
+            <div class="left_title" th:if="${genderLeft == null}">
+                <p>All</p>
+                <p class="detail_title"><strong>상품 전체보기</strong></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'men'}">
+                <p>Men</p>
+                <p class="detail_title"><strong>Men's 상품</strong></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'women'}">
                 <p>Women</p>
-                <p class="detail_title"><strong>Women's 의류</strong></p>
+                <p class="detail_title"><strong>Women's 상품</strong></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'kids'}">
+                <p>Kids</p>
+                <p class="detail_title"><strong>Kids 상품</strong></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'unisex'}">
+                <p>Unisex</p>
+                <p class="detail_title"><strong>Unisex 상품</strong></p>
             </div>
             <!-- 오른쪽-->
             <div>

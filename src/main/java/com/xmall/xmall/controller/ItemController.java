@@ -135,6 +135,7 @@ public class ItemController {
     public String itemsGender(Model model, @PathVariable String gender) {
         List<Item> itemLists = itemRepository.findByGenderType(gender);
         model.addAttribute("itemLists", itemLists);
+        model.addAttribute("genderLeft", gender);
 
         return "items/item-list";
     }
