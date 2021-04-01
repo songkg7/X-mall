@@ -118,7 +118,12 @@ public class ItemController {
         }
 
         model.addAttribute("item", item);
-        model.addAttribute("orderForm", new OrderForm());
+
+        OrderForm orderForm = new OrderForm();
+        orderForm.setItemName(item.getName());
+        orderForm.setPrice(item.getPrice());
+
+        model.addAttribute("orderForm", orderForm);
 
         return "items/item-info";
     }

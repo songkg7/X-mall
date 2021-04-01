@@ -23,14 +23,11 @@
             var cate = $(".thisCate").val();
             if (cate === "top") {
                 $('#top_size_table').show();
-            }
-            else if (cate === "pants") {
+            } else if (cate === "pants") {
                 $('#pants_size_table').show();
-            }
-            else if (cate === "acce") {
+            } else if (cate === "acce") {
                 $('#acce_size_table').show();
-            }
-            else if (cate === "shoes") {
+            } else if (cate === "shoes") {
                 $('#shoes_size_table').show();
             }
 
@@ -62,19 +59,18 @@
             let amount = $("[name=amount]").val();
             if (upDown === 'up') {
                 $("[name=amount]").val(++amount);
-                if (amount > 1){
-                    $(".minus").css("color","black")
+                if (amount > 1) {
+                    $(".minus").css("color", "black")
                 }
-            }
-            else if (upDown === 'down') {
+            } else if (upDown === 'down') {
 
                 if (amount > 1) {
                     $("[name=amount]").val(--amount);
-                    $(".minus").css("color","black")
-                    if (amount<2){
-                        $(".minus").css("color","lightgray")
+                    $(".minus").css("color", "black")
+                    if (amount < 2) {
+                        $(".minus").css("color", "lightgray")
                     }
-                }else {
+                } else {
                     return 0;
                 }
             }
@@ -234,7 +230,7 @@
             margin-bottom: 20px;
         }
 
-        .product_img1,.product_img2,.product_img3,.product_img4 {
+        .product_img1, .product_img2, .product_img3, .product_img4 {
 
             width: 30vw;
             height: 30vw;
@@ -247,25 +243,28 @@
         }
 
 
-        .product_img1 img{
+        .product_img1 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             overflow: hidden;
         }
-        .product_img2 img{
+
+        .product_img2 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             overflow: hidden;
         }
-        .product_img3 img{
+
+        .product_img3 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             overflow: hidden;
         }
-        .product_img4 img{
+
+        .product_img4 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -282,12 +281,11 @@
         }
 
 
-
         body {
             margin: 0;
         }
 
-        main{
+        main {
             overflow: auto;
             /*margin-left: 50px;*/
             margin-right: 50px;
@@ -355,10 +353,12 @@
             float: left;
             margin-left: 2px;
         }
-        .minus:focus{
+
+        .minus:focus {
             outline: none;
         }
-        .plus:focus{
+
+        .plus:focus {
             outline: none;
         }
 
@@ -382,7 +382,7 @@
             background-color: white;
             float: left;
             font-size: 40px;
-            color : lightgray;
+            color: lightgray;
             font-weight: 100;
             border: none;
 
@@ -470,11 +470,12 @@
             color: white;
         }
 
-        .review_div{
+        .review_div {
             margin-top: 10px;
             width: 100%;
             background-color: white;
         }
+
         .detail_description_div {
             margin-top: 10px;
             font-weight: 300;
@@ -495,17 +496,20 @@
             color: rgb(77, 77, 77);
             font-weight: 300;
         }
-        .selected{
+
+        .selected {
             background-color: black;
             color: white;
         }
-        .update_delete{
+
+        .update_delete {
             margin-top: 10px;
             font-weight: 300;
             width: 100%;
             height: 100px;
         }
-        .update_btn{
+
+        .update_btn {
             width: 48%;
             height: 60px;
             background-color: white;
@@ -520,7 +524,8 @@
             cursor: pointer;
 
         }
-        .delete_btn{
+
+        .delete_btn {
             width: 48%;
             height: 60px;
             background-color: white;
@@ -534,17 +539,20 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         /* 화면크기가 1220보다 작아지면 사진크기 키우기 */
         @media all and (max-width: 1420px) {
-            main{
+            main {
                 margin-left: 0;
             }
-            .product_img1,.product_img2,.product_img3,.product_img4 {
+
+            .product_img1, .product_img2, .product_img3, .product_img4 {
                 margin-left: 0;
                 width: 100%;
                 height: 50%;
 
             }
+
             .product_img {
                 clear: both;
             }
@@ -559,180 +567,184 @@
 <!-- --------------------------------- -->
 <main>
 
-        <!--+++++++++++++++++++++++++++++-->
-        <!-- 화면 분할 1. 좌측(product_img) -->
-        <!--+++++++++++++++++++++++++++++-->
-        <div class="product_img">
-            <div class="product_img1">
-                <img
-                        class="left_1"
-                        src="/images/main_img/nike_detail1.png"
-                        th:src="${item.itemImage}"
-                        width="100%"
-                        height="100%"
+    <!--+++++++++++++++++++++++++++++-->
+    <!-- 화면 분할 1. 좌측(product_img) -->
+    <!--+++++++++++++++++++++++++++++-->
+    <div class="product_img">
+        <div class="product_img1">
+            <img
+                    class="left_1"
+                    src="/images/main_img/nike_detail1.png"
+                    th:src="${item.itemImage}"
+                    width="100%"
+                    height="100%"
 
-                />
-            </div>
-            <div class="product_img2">
-                <img
-                        class="left_2"
-                        src="/images/main_img/nike_detail2.png"
-                        width="100%"
-                        height="100%"
-                />
-            </div>
-            <div class="product_img3">
-                <img
-                        class="left_3"
-                        src="/images/main_img/nike_detail3.png"
-                        width="100%"
-                        height="100%"
-                />
-            </div>
-            <div class="product_img4">
-                <img
-                        class="left_4"
-                        src="/images/main_img/nike_detail4.png"
-                        width="100%"
-                        height="100%"
-                />
-            </div>
+            />
         </div>
-        <!--+++++++++++++++++++++++++++++-->
-        <!-- 화면 분할 2. 우측(content) -->
-        <!--+++++++++++++++++++++++++++++-->
-        <div class="content">
-            <div class="content_padding">
-                <!--======================-->
-                <!-- 2-1-1. 모델명 -->
-                <!--======================-->
-                <div class="product_name">
-                    <p class="p_1" th:text="${item.subTitle}">남성 하프집 후드 재킷 AS</p>
-                    <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
-                    <div class="thumnail">
-                        <div class="thumnail_1">
-                            <img class="thum_1" src="/images/main_img/vapor1.png"/>
-                        </div>
-                        <div class="thumnail_2">
-                            <img class="thum_2" src="/images/main_img/vapor5.png"/>
-                        </div>
-                        <div class="thumnail_3">
-                            <img class="thum_3" src="/images/main_img/vapor6.png"/>
-                        </div>
+        <div class="product_img2">
+            <img
+                    class="left_2"
+                    src="/images/main_img/nike_detail2.png"
+                    width="100%"
+                    height="100%"
+            />
+        </div>
+        <div class="product_img3">
+            <img
+                    class="left_3"
+                    src="/images/main_img/nike_detail3.png"
+                    width="100%"
+                    height="100%"
+            />
+        </div>
+        <div class="product_img4">
+            <img
+                    class="left_4"
+                    src="/images/main_img/nike_detail4.png"
+                    width="100%"
+                    height="100%"
+            />
+        </div>
+    </div>
+    <!--+++++++++++++++++++++++++++++-->
+    <!-- 화면 분할 2. 우측(content) -->
+    <!--+++++++++++++++++++++++++++++-->
+    <div class="content">
+        <div class="content_padding">
+            <!--======================-->
+            <!-- 2-1-1. 모델명 -->
+            <!--======================-->
+            <div class="product_name">
+                <p class="p_1" th:text="${item.subTitle}">남성 하프집 후드 재킷 AS</p>
+                <p class="p_2" th:text="${item.getName()}">나이키 스포츠웨어 헤리티지 윈드러너</p>
+                <div class="thumnail">
+                    <div class="thumnail_1">
+                        <img class="thum_1" src="/images/main_img/vapor1.png"/>
+                    </div>
+                    <div class="thumnail_2">
+                        <img class="thum_2" src="/images/main_img/vapor5.png"/>
+                    </div>
+                    <div class="thumnail_3">
+                        <img class="thum_3" src="/images/main_img/vapor6.png"/>
                     </div>
                 </div>
-                <!--======================-->
-                <!-- 2-1-2. 가격 -->
-                <!--======================-->
-<!--                <p class="price" th:text="${item.getPrice()} + 원">129,000원</p>-->
-                <p class="price" th:text="${#numbers.formatInteger(item.getPrice(), 0, 'COMMA')} + 원">129,000원</p>
-                <!--======================-->
-                <div style="clear: both"></div>
-                <!--======================-->
-                <!-- 2-2. 사이즈선택 -->
-                <!--======================-->
-                <div class="size_div">
-                    <div class="product_size">
-                        <h4>사이즈 선택</h4>
-                    </div>
-                    <div class="size_guide">
-                        <p>사이즈 가이드</p>
-                    </div>
+            </div>
+            <!--======================-->
+            <!-- 2-1-2. 가격 -->
+            <!--======================-->
+            <!--                <p class="price" th:text="${item.getPrice()} + 원">129,000원</p>-->
+            <p class="price" th:text="${#numbers.formatInteger(item.getPrice(), 0, 'COMMA')} + 원">
+                129,000원</p>
+            <!--======================-->
+            <div style="clear: both"></div>
+            <!--======================-->
+            <!-- 2-2. 사이즈선택 -->
+            <!--======================-->
+            <div class="size_div">
+                <div class="product_size">
+                    <h4>사이즈 선택</h4>
                 </div>
-
-<!--                카테고리별 사이즈를 바꾸기 위한 hidden value-->
-                <input type="hidden" class="thisCate" th:value="${item.getCategoryType()}">
-
-                <div class="table_div">
-                    <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
-                    <div  class="size_table" id="acce_size_table">
-                        <div class="size_cell" id="OS"><p>OS</p></div>
-                    </div>
-                    <div  class="size_table" id="top_size_table">
-                        <div class="size_cell" id="85XS"><p>85(XS)</p></div>
-                        <div class="size_cell" id="90S"><p>90(S)</p></div>
-                        <div class="size_cell" id="95M"><p>95(M)</p></div>
-                        <div class="size_cell" id="100L"><p>100(L)</p></div>
-                        <div class="size_cell" id="105XL"><p>105(XL)</p></div>
-                        <div class="size_cell" id="110XXL"><p>110(2XL)</p></div>
-                    </div>
-                    <div class="size_table" id="pants_size_table">
-                        <div class="size_cell" id="26"><p>26</p></div>
-                        <div class="size_cell" id="28"><p>28</p></div>
-                        <div class="size_cell" id="30"><p>30</p></div>
-                        <div class="size_cell" id="32"><p>32</p></div>
-                        <div class="size_cell" id="34"><p>34</p></div>
-                        <div class="size_cell" id="36"><p>36</p></div>
-                    </div>
-                    <div class="size_table" id="shoes_size_table">
-                        <div class="size_cell" id="225"><p>225</p></div>
-                        <div class="size_cell" id="230"><p>230</p></div>
-                        <div class="size_cell" id="235"><p>235</p></div>
-                        <div class="size_cell" id="240"><p>240</p></div>
-                        <div class="size_cell" id="245"><p>245</p></div>
-                        <div class="size_cell" id="250"><p>250</p></div>
-                        <div class="size_cell" id="255"><p>255</p></div>
-                        <div class="size_cell" id="260"><p>260</p></div>
-                        <div class="size_cell" id="265"><p>265</p></div>
-                        <div class="size_cell" id="270"><p>270</p></div>
-                        <div class="size_cell" id="275"><p>275</p></div>
-                        <div class="size_cell" id="280"><p>280</p></div>
-                        <div class="size_cell" id="285"><p>285</p></div>
-                        <div class="size_cell" id="290"><p>290</p></div>
-                    </div>
+                <div class="size_guide">
+                    <p>사이즈 가이드</p>
                 </div>
+            </div>
+
+            <!--                카테고리별 사이즈를 바꾸기 위한 hidden value-->
+            <input type="hidden" class="thisCate" th:value="${item.getCategoryType()}">
+
+            <div class="table_div">
+                <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
+                <div class="size_table" id="acce_size_table">
+                    <div class="size_cell" id="OS"><p>OS</p></div>
+                </div>
+                <div class="size_table" id="top_size_table">
+                    <div class="size_cell" id="85XS"><p>85(XS)</p></div>
+                    <div class="size_cell" id="90S"><p>90(S)</p></div>
+                    <div class="size_cell" id="95M"><p>95(M)</p></div>
+                    <div class="size_cell" id="100L"><p>100(L)</p></div>
+                    <div class="size_cell" id="105XL"><p>105(XL)</p></div>
+                    <div class="size_cell" id="110XXL"><p>110(2XL)</p></div>
+                </div>
+                <div class="size_table" id="pants_size_table">
+                    <div class="size_cell" id="26"><p>26</p></div>
+                    <div class="size_cell" id="28"><p>28</p></div>
+                    <div class="size_cell" id="30"><p>30</p></div>
+                    <div class="size_cell" id="32"><p>32</p></div>
+                    <div class="size_cell" id="34"><p>34</p></div>
+                    <div class="size_cell" id="36"><p>36</p></div>
+                </div>
+                <div class="size_table" id="shoes_size_table">
+                    <div class="size_cell" id="225"><p>225</p></div>
+                    <div class="size_cell" id="230"><p>230</p></div>
+                    <div class="size_cell" id="235"><p>235</p></div>
+                    <div class="size_cell" id="240"><p>240</p></div>
+                    <div class="size_cell" id="245"><p>245</p></div>
+                    <div class="size_cell" id="250"><p>250</p></div>
+                    <div class="size_cell" id="255"><p>255</p></div>
+                    <div class="size_cell" id="260"><p>260</p></div>
+                    <div class="size_cell" id="265"><p>265</p></div>
+                    <div class="size_cell" id="270"><p>270</p></div>
+                    <div class="size_cell" id="275"><p>275</p></div>
+                    <div class="size_cell" id="280"><p>280</p></div>
+                    <div class="size_cell" id="285"><p>285</p></div>
+                    <div class="size_cell" id="290"><p>290</p></div>
+                </div>
+            </div>
+            <!--======================-->
+            <!-- 3. 수량 -->
+            <!--======================-->
+            <form th:action="@{/order/{id} (id=${item.id})}" th:object="${orderForm}" method="post">
+                <input type="hidden" id="orderItemSize" name="orderItemSize"
+                       th:field="*{orderItemSize}"/>
+                <input type="hidden" th:field="*{itemName}"/>
+                <input type="hidden" th:field="*{price}"/>
+
+                <div class="count_div">
+                    <div class="count_amount">수량</div>
+                    <input
+                            type="text"
+                            class="count_product"
+                            name="amount"
+                            th:field="*{amount}"
+                            value="1"
+                            readonly
+                    />
+                    <input
+                            type="button"
+                            class="minus"
+
+                            value="-"
+                            onClick="upDownAmount('down');"
+                    />
+                    <input
+                            type="button"
+                            class="plus"
+                            value="+"
+                            onClick="upDownAmount('up');"
+                    />
+                </div>
+                <hr/>
                 <!--======================-->
-                <!-- 3. 수량 -->
+                <!-- 4. 구매 -->
                 <!--======================-->
-                <form th:action="@{/order/{id} (id=${item.id})}" th:object="${orderForm}" method="post">
-                    <input type="hidden" id="orderItemSize" name="orderItemSize" th:field="*{orderItemSize}">
+<!--                                    <button type="submit">바로구매</button>-->
+                <input type="submit" class="buy_button" value="바로구매"/>
 
-                    <div class="count_div">
-                        <div class="count_amount">수량</div>
-                        <input
-                                type="text"
-                                class="count_product"
-                                name="amount"
-                                th:field="*{amount}"
-                                value="1"
-                                readonly
-                        />
-                        <input
-                                type="button"
-                                class="minus"
+                <div class="kart_wish_div">
+                    <a href="#"
+                    ><input type="submit" class="kart_button" value="장바구니"
+                    /></a>
+                    <a href="#"
+                    ><input
+                            type="submit"
+                            class="wishList_button"
+                            value="위시리스트"
+                    /></a>
+                </div>
+                <hr/>
+            </form>
 
-                                value="-"
-                                onClick="upDownAmount('down');"
-                        />
-                        <input
-                                type="button"
-                                class="plus"
-                                value="+"
-                                onClick="upDownAmount('up');"
-                        />
-                    </div>
-                    <hr/>
-                    <!--======================-->
-                    <!-- 4. 구매 -->
-                    <!--======================-->
-<!--                    <button type="submit">바로구매</button>-->
-                        <input type="submit" class="buy_button" value="바로구매"/>
-
-                        <div class="kart_wish_div">
-                            <a href="#"
-                            ><input type="submit" class="kart_button" value="장바구니"
-                            /></a>
-                            <a href="#"
-                            ><input
-                                    type="submit"
-                                    class="wishList_button"
-                                    value="위시리스트"
-                            /></a>
-                        </div>
-                    <hr/>
-                </form>
-
-                <span sec:authorize="hasRole('ROLE_ADMIN')">
+            <span sec:authorize="hasRole('ROLE_ADMIN')">
                     <h3>관리자 모드</h3>
                     <hr/>
                     <div class="update_delete">
@@ -748,38 +760,42 @@
                     <hr/>
                 </span>
 
-                <div class="detail_description_div">
-<!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
-                    <p th:text="${item.getDescription()}">
-                        무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너
-                        재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝
-                        윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이
-                        돋보입니다.
-                    </p>
+            <div class="detail_description_div">
+                <!--                    <h4>중량감 있는 헤리티지 트랙 스타일.</h4>-->
+                <p th:text="${item.getDescription()}">
+                    무게감이 느껴지는 크링클 우븐 소재가 나이키 스포츠웨어 윈드러너
+                    재킷에 견고하고 전통적인 느낌을 더합니다. 오리지널 러닝
+                    윈드브레이커의 클래식한 룩을 기리는 가슴 부위의 쉐브론 라인이
+                    돋보입니다.
+                </p>
 
-                    <p>현재 컬러 : 블랙/화이트</p>
-                    <p>스타일 : DA2493-010</p>
-                    <p><a href="#">더 보기</a></p>
-                </div>
-                <div class="review_div">
-                    <hr/>
-                    <p>리뷰</p>
-                    <div class="review_1" th:each="reviewList : ${reviewLists}">
-                        <h3 th:text="${reviewList.subject}">글제목</h3>
-                        <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;" th:text="${reviewList.starBlack}"></span><span style="color: #bcbcbc; font-size: 16px;margin-top:0;" th:text="${reviewList.starGray}"></span>
-                        <p></p>
-                        <span th:text="${reviewList.account?.getName()}">이름</span>
-                        <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd')}">등록일</span>
-                        <span th:text="|상품명 : ${reviewList.itemName}|">상품명</span>
-                        <span th:text="|size : ${reviewList.orderItemSize}|">사이즈</span>
-                        <span style="color: white;" id="starRate" th:text="${reviewList.starRate}"></span>
-                        <p th:text="${reviewList.mainText}">내용</p>
-                        <div class="bottom_line1"></div>
-                    </div>
+                <p>현재 컬러 : 블랙/화이트</p>
+                <p>스타일 : DA2493-010</p>
+                <p><a href="#">더 보기</a></p>
+            </div>
+            <div class="review_div">
+                <hr/>
+                <p>리뷰</p>
+                <div class="review_1" th:each="reviewList : ${reviewLists}">
+                    <h3 th:text="${reviewList.subject}">글제목</h3>
+                    <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;"
+                          th:text="${reviewList.starBlack}"></span><span
+                        style="color: #bcbcbc; font-size: 16px;margin-top:0;"
+                        th:text="${reviewList.starGray}"></span>
+                    <p></p>
+                    <span th:text="${reviewList.account?.getName()}">이름</span>
+                    <span th:text="${#temporals.format(reviewList.getCreateTime(), 'yyyy-MM-dd')}">등록일</span>
+                    <span th:text="|상품명 : ${reviewList.itemName}|">상품명</span>
+                    <span th:text="|size : ${reviewList.orderItemSize}|">사이즈</span>
+                    <span style="color: white;" id="starRate"
+                          th:text="${reviewList.starRate}"></span>
+                    <p th:text="${reviewList.mainText}">내용</p>
+                    <div class="bottom_line1"></div>
                 </div>
             </div>
-            <!--+++++++++++++++++++++++++++++++++++++-->
         </div>
+        <!--+++++++++++++++++++++++++++++++++++++-->
+    </div>
 
 </main>
 
