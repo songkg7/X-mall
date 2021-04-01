@@ -32,7 +32,7 @@ public class OrderService {
         // detach 상태인 회원을 다시 찾아오면서 영속성 관리 상태로 만든다.
         Account findAccount = accountRepository.findById(account.getId()).get();
         // 주문 아이템 생성
-        OrderItem orderItem = createOrderItem(item, item.getPrice(), orderForm);
+        OrderItem orderItem = createOrderItem(item, orderForm);
 
         Order order = createOrder(findAccount, orderItem);
 

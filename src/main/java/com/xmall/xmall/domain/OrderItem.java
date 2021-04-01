@@ -28,23 +28,31 @@ public class OrderItem {
     private Order order;
 
     private int orderPrice; // 주문 당시 가격
+
     private int amount; // 주문 당시 수량
     
     @Column(nullable = false)
     private String orderItemSize; // 주문 당시 사이즈
 
-    private String postCode;
+    private String postcode;
+
     private String address;
 
+    private String detailsAddress;
+
+    private String extraAddress;
+
     // 생성 메서드
-    public static OrderItem createOrderItem(Item item, int orderPrice, OrderForm orderForm) {
+    public static OrderItem createOrderItem(Item item, OrderForm orderForm) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
-        orderItem.setOrderPrice(orderPrice);
+        orderItem.setOrderPrice(orderForm.getPrice());
         orderItem.setAmount(orderForm.getAmount());
         orderItem.setOrderItemSize(orderForm.getOrderItemSize());
-        orderItem.setPostCode(orderForm.getPostCode());
+        orderItem.setPostcode(orderForm.getPostcode());
         orderItem.setAddress(orderForm.getAddress());
+        orderItem.setDetailsAddress(orderForm.getDetailAddress());
+        orderItem.setExtraAddress(orderForm.getExtraAddress());
 
         // 주문한 수량만큼 재고를 감소
         item.removeStock(orderForm.getAmount());
