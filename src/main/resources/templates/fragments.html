@@ -999,7 +999,7 @@
                 </span>
                 <span sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
-                        <button class="logout-btn" type="submit">로그아웃</button>
+                        <button class="logout-btn" type="submit"> 로그아웃</button>
                     </form>
                 </span>
 
@@ -1058,11 +1058,11 @@
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록</a>
+                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록 </a>
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
-                <a style="text-decoration: none; color: black" th:href="@{/admin}"> | 관리</a>
+                <a style="text-decoration: none; color: black" th:href="@{/admin}"> |  관리</a>
             </span>
         </div>
     </div>
@@ -1461,6 +1461,13 @@
             font-weight: lighter;
             margin-left: 5px;
             color: rgba(265, 265, 265, 0.5);
+        }
+        #logout2 button{
+            background-color: black;
+            border: none;
+            position: relative;
+            top:17px;
+
         }
     </style>
 </div>
