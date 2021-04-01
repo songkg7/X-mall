@@ -5,6 +5,7 @@ import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.domain.Order;
 import com.xmall.xmall.repository.AccountRepository;
+import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderRepository;
 import com.xmall.xmall.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class AdminController {
     private final AdminService adminService;
     private final AccountRepository accountRepository;
     private final OrderRepository orderRepository;
+    private final ItemRepository itemRepository;
 
     @GetMapping("/admin")
     public String adminPage(@CurrentAccount Account account, Model model) {
@@ -88,6 +90,9 @@ public class AdminController {
 
     @GetMapping("/admin/products")
     public String adminProducts(Model model) {
+        List<Item> productList = adminService.getAllProductsInfo();
+        model.addAttribute("productList", productList);
+        model.addAttribute("totalItemCount", itemRepository.count());
         return "admin-products";
     }
 
