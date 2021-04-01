@@ -30,3 +30,7 @@ function checkName(str) {
 function checkPhone(str) {
   return checkPattern(str, new RegExp(/^010[0-9]{8}$/));
 }
+
+function checkaddress(str) {
+  return checkPattern(str, new RegExp(/^[가-힣a-zA-Z0-9_@]$/));
+}
