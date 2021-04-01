@@ -42,7 +42,8 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                         LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))))
                 .leftJoin(orderItem).on(orderItem.order.id.eq(order.id)).fetchJoin()
-                .groupBy(order.orderDate.stringValue().substring(0,10))
+//                .groupBy(order.orderDate.stringValue().substring(0,10))
+                .groupBy(order.orderDate.dayOfWeek())
 //                .orderBy(order.orderDate.asc())
                 .select((orderItem.amount.multiply(orderItem.orderPrice)).sum())
                 .fetch();

@@ -1,6 +1,7 @@
 package com.xmall.xmall.repository;
 
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.xmall.xmall.domain.*;
 import com.xmall.xmall.form.OrderForm;
@@ -153,11 +154,13 @@ class OrderItemRepositoryExtensionImplTest {
             System.out.println("result = " + result);
         }
 
-        List<String> results2 = queryFactory
-                .select(order.orderDate.stringValue().substring(0,10))
+        List<Tuple> results2 = queryFactory
+                .select(order.orderDate.stringValue().substring(0, 4),
+                        order.orderDate.stringValue().substring(5, 7),
+                        order.orderDate.stringValue().substring(8, 10))
                 .from(order).fetch();
 
-        for (String s : results2) {
+        for (Tuple s : results2) {
             System.out.println("s = " + s);
         }
 

@@ -1,5 +1,6 @@
 package com.xmall.xmall.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xmall.xmall.repository.LocalDateTimeConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -30,7 +31,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    @Column(columnDefinition= "TIMESTAMP WITH TIME ZONE")
+//    @Column(columnDefinition= "TIMESTAMP WITH TIME ZONE")
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime orderDate;
 

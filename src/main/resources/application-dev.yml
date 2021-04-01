@@ -16,7 +16,9 @@ spring:
       hibernate:
         format_sql: true
 
-# PostgreSQL 접속 계정 정보
+    database-platform: com.xmall.xmall.repository.CustomPostgreSQLDialect
+
+  # PostgreSQL 접속 계정 정보
   datasource:
     url: jdbc:postgresql://localhost:5434/xmalldb
     username: admin
