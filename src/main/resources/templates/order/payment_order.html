@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- header nav css 수입경로-->
+    <div th:replace="fragments.html :: fragment-header-navbar"></div>
+    <!-- footer css 수입경로 -->
+    <div th:replace="fragments.html :: fragment-footer-css"></div>
+    <link rel="stylesheet" href="/css/kjh/payment_order.css">
+</head>
+
+<script>
+    //--------------------------------------
+    //-------플러스 마이너스 토글 버튼------
+    //--------------------------------------
+    $(document).ready(function () {
+        $(".plus_minus_btn").click(function () {
+            this.classList.toggle("active");
+            $(".cs-wrap").toggle();
+        });
+
+        $("#name").keyup(function () {
+            var need1 = $("#need1");
+            if ($("#name").val().split(" ").join("") == "") {
+                need1.show();
+            }
+        });
+        //--------------------------------------
+        //----------배송지 유효성 검사----------
+        //--------------------------------------
+        var need1 = $("#need1");
+        var need2 = $("#need2");
+        var need3 = $("#need3");
+        var need4 = $("#need4");
+        var need5 = $("#need5");
+        var need6 = $("#need6");
+        var check2 = $("#check2");
+
+        $("#name").keyup(function () {
+            if ($("#name").val().split(" ").join("") === "") {
+                $(".name").css("border-color", "red");
+                need1.show();
+            } else if (checkName($("#name").val()) === false) {
+                need1.hide();
+            } else {
+                $(".name").css("border", "2px solid #e5e5e5");
+                need1.hide();
+            }
+        });
+        $("#number").keyup(function () {
+            if ($("#number").val().split(" ").join("") === "") {
+                $(".number").css("border-color", "red");
+                check2.hide();
+                need2.show();
+            } else if (checkPhone($("#number").val()) === false) {
+                $(".number").css("border-color", "red");
+                need2.hide();
+                check2.show();
+            } else {
+                need2.hide();
+                check2.hide();
+                $(".number").css("border", "2px solid #e5e5e5");
+            }
+        });
+        $("#sample2_postcode").keyup(function () {
+            if ($("#sample2_postcode").val().split(" ").join("") === "") {
+                $(".sample2_postcode").css("border-color", "red");
+                need3.show();
+            } else if (checkaddress($("#sample2_postcode").val()) === false) {
+                need3.hide();
+            } else {
+                $(".sample2_postcode").css("border", "2px solid #e5e5e5");
+                need3.hide();
+            }
+        });
+        $("#sample2_address").keyup(function () {
+            if ($("#sample2_address").val().split(" ").join("") === "") {
+                $(".sample2_address").css("border-color", "red");
+                need4.show();
+            } else if (checkaddress($("#sample2_address").val()) === false) {
+                need4.hide();
+            } else {
+                $(".sample2_address").css("border", "2px solid #e5e5e5");
+                need4.hide();
+            }
+        });
+        $("#sample2_detailAddress").keyup(function () {
+            if ($("#sample2_detailAddress").val().split(" ").join("") === "") {
+                $(".sample2_detailAddress").css("border-color", "red");
+                need5.show();
+            } else if (checkaddress($("#sample2_detailAddress").val()) === false) {
+                need5.hide();
+            } else {
+                $(".sample2_detailAddress").css("border", "2px solid #e5e5e5");
+                need5.hide();
+            }
+        });
+        $("#sample2_extraAddress").keyup(function () {
+            if ($("#sample2_extraAddress").val().split(" ").join("") === "") {
+                $(".sample2_extraAddress").css("border-color", "red");
+                need6.show();
+            } else if (checkaddress($("#sample2_extraAddress").val()) === false) {
+                need6.hide();
+            } else {
+                $(".sample2_extraAddress").css("border", "2px solid #e5e5e5");
+                need6.hide();
+            }
+        });
+    });
+
+    function checkForm() {
+        var need1 = $("#need1");
+        var need2 = $("#need2");
+        var need3 = $("#need3");
+        var need4 = $("#need4");
+        var need5 = $("#need5");
+        var need6 = $("#need6");
+        var check2 = $("#check2");
+
+        var name = $(".name").val();
+        var number = $(".number").val();
+        var post = $(".sample2_postcode").val();
+        var adr = $(".sample2_address").val();
+        var dadr = $(".sample2_detailAddress").val();
+        var eadr = $(".sample2_extraAddress").val();
+        var sbox = $(".select_box").val();
+
+        if (
+            name.split(" ").join("") === "" &&
+            number.split(" ").join("") === "" &&
+            post.split(" ").join("") === "" &&
+            adr.split(" ").join("") === "" &&
+            dadr.split(" ").join("") === "" &&
+            eadr.split(" ").join("") === ""
+        ) {
+            need1.show();
+            need2.show();
+            need3.show();
+            need4.show();
+            need5.show();
+            need6.show();
+            $(".name").focus();
+            $(".name").css("border-color", "red");
+            $(".number").css("border-color", "red");
+            $(".sample2_postcode").css("border-color", "red");
+            $(".sample2_address").css("border-color", "red");
+            $(".sample2_detailAddress").css("border-color", "red");
+            $(".sample2_extraAddress").css("border-color", "red");
+            return;
+        }
+        if (name.split(" ").join("") === "") {
+            $(".name").css("border-color", "red");
+            need1.show();
+            $(".name").val("");
+            $(".name").focus();
+            return;
+        } else if (number.split(" ").join("") === "") {
+            $(".number").css("border-color", "red");
+            need2.show();
+            $(".number").val("");
+            $(".number").focus();
+            return;
+        } else if (sample2_postcode.split(" ").join("") === "") {
+            $(".sample2_postcode").css("border-color", "red");
+            need3.show();
+            $(".sample2_postcode").val("");
+            $(".sample2_postcode").focus();
+            return;
+        } else if (sample2_address.split(" ").join("") === "") {
+            $(".sample2_address").css("border-color", "red");
+            need4.show();
+            $(".sample2_address").val("");
+            $(".sample2_address").focus();
+            return;
+        } else if (sample2_detailAddress.split(" ").join("") === "") {
+            $(".sample2_detailAddress").css("border-color", "red");
+            need5.show();
+            $(".sample2_detailAddress").val("");
+            $(".sample2_detailAddress").focus();
+            return;
+        } else if (sample2_extraAddress.split(" ").join("") === "") {
+            $(".sample2_extraAddress").css("border-color", "red");
+            need6.show();
+            $(".sample2_extraAddress").val("");
+            $(".sample2_extraAddress").focus();
+            return;
+        }
+    }
+
+    //--------------------------------------
+    // 주문배송 메모 직접입력하면 나오는 구문
+    //--------------------------------------
+    $(function () {
+        $(".select_box").change(function () {
+            //직접입력을 누를 때 나타남
+            if ($(".select_box").val() == "직접입력") {
+                $(".selbox").show();
+            } else {
+                $(".selbox").hide();
+            }
+        });
+    });
+</script>
+<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+<div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch">
+    <img
+            src="//t1.daumcdn.net/postcode/resource/images/close.png"
+            id="btnCloseLayer"
+            style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+            onclick="closeDaumPostcode()"
+            alt="닫기 버튼"
+    />
+</div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    // 우편번호 찾기 화면을 넣을 element
+    var element_layer = document.getElementById("layer");
+
+    function closeDaumPostcode() {
+        // iframe을 넣은 element를 안보이게 한다.
+        element_layer.style.display = "none";
+    }
+
+    function sample2_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ""; // 주소 변수
+                var extraAddr = ""; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === "R") {
+                    // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else {
+                    // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if (data.userSelectedType === "R") {
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if (data.buildingName !== "" && data.apartment === "Y") {
+                        extraAddr += extraAddr !== "" ? ", " + data.buildingName : data.buildingName;
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if (extraAddr !== "") {
+                        extraAddr = " (" + extraAddr + ")";
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample2_extraAddress").value = extraAddr;
+                } else {
+                    document.getElementById("sample2_extraAddress").value = "";
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sample2_postcode").value = data.zonecode;
+                document.getElementById("sample2_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample2_detailAddress").focus();
+
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_layer.style.display = "none";
+            },
+            width: "100%",
+            height: "100%",
+            maxSuggestItems: 5,
+        }).embed(element_layer);
+
+        // iframe을 넣은 element를 보이게 한다.
+        element_layer.style.display = "block";
+
+        // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
+        initLayerPosition();
+    }
+
+    // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
+    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
+    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
+    function initLayerPosition() {
+        var width = 300; //우편번호서비스가 들어갈 element의 width
+        var height = 500; //우편번호서비스가 들어갈 element의 height
+        var borderWidth = 2; //샘플에서 사용하는 border의 두께
+
+        // 위에서 선언한 값들을 실제 element에 넣는다.
+        element_layer.style.width = width + "px";
+        element_layer.style.height = height + "px";
+        element_layer.style.border = borderWidth + "px solid";
+        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+        element_layer.style.left = ((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth + "px";
+        element_layer.style.top = ((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth + "px";
+    }
+</script>
+<body class="jb_font-1">
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<header th:replace="fragments.html :: nav-bar"></header>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- main 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+<main>
+    <form action="#" th:action="@{/order/payment}" th:method="post" th:object="${orderForm}">
+        <!-- title -->
+        <div class="content-title"><h2>주문결제</h2></div>
+
+        <!-- title뺀 전체화면 -->
+        <div class="content-area">
+            <!-- 왼쪽여백 -->
+            <div></div>
+            <!-- 메인 -->
+            <div>
+                <div class="cs-info">
+                    <div class="order-wrap">
+                        <span>주문고객</span>
+                        <span class="plus_minus_btn"></span>
+                    </div>
+                    <!-- 주문자 정보-->
+                    <div class="cs-wrap">
+                        <dl>
+                            <!-- 주문자 이름 들어오기-->
+                            <dd th:text="${account.name}">이름</dd>
+                        </dl>
+                        <dl>
+                            <!-- 주문자 연락처 들어오기-->
+                            <dd th:text="${account.phone}">연락처</dd>
+                        </dl>
+                        <dl>
+                            <!-- 주문자 메일 들어오기-->
+                            <dd th:text="${account.email}">메일</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="s-title">
+                    <span>배송지 정보 입력</span>
+                </div>
+                <!-- 배송지 정보 박스 -->
+                <div class="info-box">
+                    <div class="cs-field">
+                        <div class="tit">받으시는분</div>
+                        <input type="text" placeholder="이름" id="name" class="name"/>
+                        <div class="need" id="need1">필수 입력 항목입니다.</div>
+                    </div>
+                    <div class="cs-field" style="float: right">
+                        <div class="tit">연락처</div>
+                        <input type="text" placeholder="-없이 입력" id="number" class="number"/>
+                        <div class="need" id="need2">필수 입력 항목입니다.</div>
+                        <div class="check2" id="check2">01012341234 형식으로 숫자만 입력 가능합니다.</div>
+                    </div>
+                    <div class="tit">배송주소</div>
+                    <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="post-btn"/>
+                    <input type="text" id="sample2_postcode" th:field="*{postcode}" placeholder="우편번호" class="sample2_postcode"/>
+                    <div class="need" id="need3">필수 입력 항목입니다.</div>
+                    <input type="text" id="sample2_address" th:field="*{address}" placeholder="주소" class="sample2_address"/>
+                    <div class="need" id="need4">필수 입력 항목입니다.</div>
+                    <input type="text" id="sample2_detailAddress" th:field="*{detailAddress}" placeholder="상세주소" class="sample2_detailAddress"/>
+                    <div class="need" id="need5">필수 입력 항목입니다.</div>
+                    <input type="text" id="sample2_extraAddress" th:field="*{extraAddress}" placeholder="참고항목" class="sample2_extraAddress"/>
+                    <div class="need" id="need6">필수 입력 항목입니다.</div>
+                </div>
+                <div class="select_memo">
+                    <select class="select_box" id="select_box">
+                        <option value="배송 메모를 선택해주세요.">배송 메모를 선택해주세요.</option>
+                        <option value="배송 시 연락 부탁드립니다.">배송 시 연락 부탁드립니다.</option>
+                        <option value="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+                        <option value="직접입력">직접입력</option>
+                    </select>
+                    <div class="selbox">
+                        <!-- 직접입력 선택시 나오는 input -->
+                        <input type="text"/>
+                        <p>
+                            ※배송 수령 시간은 임의로 지정하실 수 없습니다.
+                            <br/>
+                            ※배송 메시지에 이모지, 특수문자 " \ 사용이 불가합니다.
+                        </p>
+                    </div>
+                    <div class="bottom-line"></div>
+                </div>
+                <div class="info-box">
+                    <div class="tit">
+                        <span>배송방식</span>
+                    </div>
+                    <ul>
+                        <li>일반배송 : 배송비 2500원</li>
+                        <li>배송지역 : 전국 (일부 도서산간 지역 제외)</li>
+                        <li>배송기간 : 결제 후 3일 이내 (토요일, 공휴일 제외)</li>
+                    </ul>
+                </div>
+                <div class="bottom-line"></div>
+                <div class="info-box">
+                    <div class="tit">
+                        <span>결제 수단 선택</span>
+                    </div>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div>
+                    <button type="submit" class="payment_submit">
+                        <strong><a href="#">신용카드</a></strong>
+                    </button>
+                </div>
+                <!--+++++++++++++++++++++++++++++++++++-->
+                <div>
+                    <button type="submit" class="payment_submit">
+                        <strong><a href="#">실시간계좌이체 </a></strong>
+                    </button>
+                </div>
+                <div class="btn_pay">
+                    <button type="submit" class="send" onclick="checkForm();">
+                        <a href="#">주문 완료</a>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 중앙여백 -->
+            <div></div>
+
+            <!-- 오른쪽박스 -->
+            <div>
+                <div class="history-header">
+                    <span>주문내역</span>
+                </div>
+
+                <div class="order-history">
+                    <div class="goods-wrap">
+                        <!-- 이미지 들어오기 -->
+                        <div class="goods-img" style="background-color: yellow">
+                            <img th:src="${item.itemImage}"/>
+                        </div>
+                        <!-- --------------- -->
+                        <div class="goods-info">
+                            <!-- 상품내용 들어오기 -->
+                            <div class="goods-name" th:text="${orderForm.itemName}">나이키에어맥스</div>
+                            <input type="hidden" th:field="${orderForm.itemName}">
+                            <div class="style-code">스타일</div>
+                            <div class="option" th:text="${orderForm.orderItemSize}">사이즈</div>
+                            <input type="hidden" th:field="${orderForm.orderItemSize}">
+                            <div class="qty" th:text="|${orderForm.amount}개|">수량</div>
+                            <input type="hidden" th:field="${orderForm.amount}">
+                            <div class="price" th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|">130,000 원</div>
+                            <input type="hidden" th:name="*{orderForm.price}" th:value="${item.price}">
+                        </div>
+                    </div>
+                    <!-- 상품 가격들어오기 -->
+                    <div class="price-info">
+                        <span class="label">상품금액</span>
+                        <span class="label-2"><strong th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|">0원</strong></span>
+                    </div>
+<!--                    <div class="item-price">-->
+<!--                        <span class="label">배송비</span>-->
+<!--                        <span class="label-2"><strong>0원</strong></span>-->
+<!--                    </div>-->
+<!--                    <div class="item-price">-->
+<!--                        <span class="label">상품할인금액</span>-->
+<!--                        <span class="label-2"><strong>0원</strong></span>-->
+<!--                    </div>-->
+<!--                    <div class="item-price">-->
+<!--                        <span class="label">주문할인금액</span>-->
+<!--                        <span class="label-2"><strong>0원</strong></span>-->
+<!--                    </div>-->
+                    <div class="total-price-2">
+                        <span class="label">총 결제 예정 금액</span>
+                        <span class="label-2" th:text="|${#numbers.formatInteger(orderForm.amount * item.price, 0, 'COMMA')}원|"><strong>0원</strong></span>
+                    </div>
+                    <div class="info">
+                        <ul>
+                            <li>장기간 장바구니에 보관하신 상품은 시간이 지남에 따라 가격과 혜택이 변동 될 수 있으며, 최대 30일동안 보관됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽여백 -->
+            <div></div>
+        </div>
+        <input type="hidden" th:name="itemId" th:value="${item.id}">
+    </form>
+</main>
+<!--+++++++++++++++++++++++++++++++++++-->
+<!-- footer 부분 -->
+<!--+++++++++++++++++++++++++++++++++++-->
+
+<footer th:replace="fragments.html :: footer-body"></footer>
+<script src="/js/login.js"></script>
+</body>
+</html>
