@@ -5,6 +5,7 @@ import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.domain.Order;
 import com.xmall.xmall.repository.AccountRepository;
+import com.xmall.xmall.repository.ItemRepository;
 import com.xmall.xmall.repository.OrderRepository;
 import com.xmall.xmall.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +22,18 @@ public class AdminController {
     private final AdminService adminService;
     private final AccountRepository accountRepository;
     private final OrderRepository orderRepository;
+    private final ItemRepository itemRepository;
 
     @GetMapping("/admin")
     public String adminPage(@CurrentAccount Account account, Model model) {
 
         // 요일별 매출
         // TODO: Order - OrderItem Join 해서 데이터를 가져와야한다.
+        List<Integer> graphData = adminService.getSalesPerDay();
+        for (int i = 0; i < graphData.size(); i++) {
+            model.addAttribute("graphData" + i, graphData.get(i));
+        }
+
 
 
         // 현재 주문의 수
@@ -51,7 +58,6 @@ public class AdminController {
     public String adminCustomers(Model model) {
         List<Account> accountList = adminService.findAllAccount();
         List<Long> graphData = adminService.getSignUpAccountPerDay();
-
         for (int i = 0; i < graphData.size(); i++) {
             model.addAttribute("graphData" + i, graphData.get(i));
         }
@@ -69,11 +75,24 @@ public class AdminController {
 
     @GetMapping("/admin/orders")
     public String adminOrders(Model model) {
+        List<Order> orderList = adminService.getAllOrdersInfo();
+        model.addAttribute("orderList", orderList);
+
+        List<Long> graphData = adminService.getOrdersPerDay();
+        for (int i = 0; i < graphData.size(); i++) {
+            model.addAttribute("graphData" + i, graphData.get(i));
+        }
+
+        // FIXME: 취소된 주문은 제외하기
+        model.addAttribute("totalOrders", orderRepository.count());
         return "admin-orders";
     }
 
     @GetMapping("/admin/products")
     public String adminProducts(Model model) {
+        List<Item> productList = adminService.getAllProductsInfo();
+        model.addAttribute("productList", productList);
+        model.addAttribute("totalItemCount", itemRepository.count());
         return "admin-products";
     }
 

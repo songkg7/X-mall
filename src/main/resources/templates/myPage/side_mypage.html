@@ -216,7 +216,7 @@
                                     <div class="item_quantity"
                                          th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
                                     <div class="item_address"
-                                         th:utext="|배송주소 : (${orderList.orderItems[0].getPostCode()}) ${orderList.orderItems[0].getAddress()}|"></div>
+                                         th:utext="|배송주소 : (${orderList.orderItems[0].postcode}) ${orderList.orderItems[0].getAddress()}|"></div>
                                     <div class="item_price"
                                          th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
                                     <div class="item_totAmount"
@@ -291,6 +291,9 @@
 <footer th:replace="fragments.html :: footer-body"></footer>
 </body>
 <script>
+
+<!--    FIXME: csrf token 넣어주기 -->
+
     function cancel(id) {
         var form = document.createElement("form");
         form.setAttribute("method", "post");
