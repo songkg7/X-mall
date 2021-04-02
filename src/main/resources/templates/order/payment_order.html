@@ -415,9 +415,7 @@
                     </button>
                 </div>
                 <div class="btn_pay">
-                    <button type="submit" class="send" onclick="checkForm();">
-                        <a href="#">주문 완료</a>
-                    </button>
+                    <button type="submit" class="send" onclick="checkForm();">주문 완료</button>
                 </div>
             </div>
 
@@ -441,7 +439,7 @@
                             <!-- 상품내용 들어오기 -->
                             <div class="goods-name" th:text="${orderForm.itemName}">나이키에어맥스</div>
                             <input type="hidden" th:field="${orderForm.itemName}">
-                            <div class="style-code">스타일</div>
+<!--                            <div class="style-code">스타일</div>-->
                             <div class="option" th:text="${orderForm.orderItemSize}">사이즈</div>
                             <input type="hidden" th:field="${orderForm.orderItemSize}">
                             <div class="qty" th:text="|${orderForm.amount}개|">수량</div>

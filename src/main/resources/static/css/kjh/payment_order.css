@@ -122,8 +122,8 @@ select {
 /* ------------------ */
 /* 준호씨가 만든 버튼 */
 .payment_submit:hover {
-  background-color: black;
-  opacity: 70%;
+  opacity: 80%;
+
 }
 .payment_submit a {
   text-decoration-line: none;
@@ -140,6 +140,8 @@ select {
   background-color: black;
   font-size: 13px;
   border-radius: 4px;
+  color: white;
+  cursor: pointer;
 }
 .shop_float {
   line-height: 70px;
@@ -172,14 +174,11 @@ select {
   border: 1px solid white;
   margin-bottom: 200px;
   border-radius: 4px;
+  cursor: pointer;
+  color: white;
 }
 .send:hover {
-  opacity: 70%;
-  color: black;
-}
-.send a {
-  text-decoration-line: none;
-  color: white;
+  opacity: 80%;
 }
 /* ------------------ */
 
@@ -201,8 +200,8 @@ select {
 
 .goods-img {
   float: left;
-  width: 150px;
-  height: 150px;
+  width: 165px;
+  height: 165px;
 }
 
 .goods-img img {
@@ -224,11 +223,12 @@ select {
 }
 .goods-name {
   padding-left: 14px;
-  margin-bottom: 10px;
+  margin: 10px;
   text-align: left;
   color: #111111;
   font-size: 16px;
   font-weight: bold;
+  width: 100%;
 }
 .style-code,
 .option,
@@ -236,17 +236,20 @@ select {
   padding-left: 14px;
   text-align: left;
   color: #606060;
+  margin: 10px;
   font-size: 16px;
+  width: 100%;
 }
 .qty {
   margin-bottom: 10px;
 }
 
 .price {
-  padding-left: 14px;
+  padding-left: 24px;
   text-align: left;
   color: #fa5402;
   font-size: 16px;
+  width: 100%;
 }
 
 .bottom-line2 {
