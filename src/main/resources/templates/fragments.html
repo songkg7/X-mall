@@ -1058,7 +1058,7 @@
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록 </a>
+                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록  </a>
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
@@ -1462,12 +1462,18 @@
             margin-left: 5px;
             color: rgba(265, 265, 265, 0.5);
         }
-        #logout2 button{
+        #logout2 button {
             background-color: black;
             border: none;
             position: relative;
             top:17px;
-
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #logout2 button:focus{
+            border: none;
+            outline:none;
+            cursor: pointer;
         }
     </style>
 </div>
@@ -1488,7 +1494,7 @@
             <span sec:authorize="isAuthenticated()">
                 <div class="footer_menu_1">
                     <form id="logout2" th:action="@{/logout}" th:method="post">
-                        <button type="submit">로그아웃</button>
+                        <button type="submit"> 로그아웃</button>
                     </form>
                 </div>
             </span>
