@@ -409,6 +409,25 @@
                 <p class="detail_title"><a href="#" th:href="@{/items}"><strong>상품 전체보기</strong></a></p>
             </div>
 
+            <div class="left_title" th:if="${genderLeft == 'men'}">
+                <p>Men</p>
+                <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}"><strong>Men's 상품</strong></a></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'women'}">
+                <p>Women</p>
+                <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = women)}"><strong>Women's 상품</strong></a></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'kids'}">
+                <p>Kids</p>
+                <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = kids)}"><strong>Kids 상품</strong></a></p>
+            </div>
+
+            <div class="left_title" th:if="${genderLeft == 'unisex'}">
+                <p>Unisex</p>
+                <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = unisex)}"><strong>unisex 상품</strong></a></p>
+            </div>
             <!-- 오른쪽-->
             <div>
                 <div class="filter_text">

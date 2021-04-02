@@ -403,12 +403,7 @@
         <!-- ------top 상단 메인----- -->
         <!-- ---------------------- -->
         <div class="top_detail_subject">
-            <!-- 왼쪽 -->
-            <div class="left_title" th:if="${genderLeft == null}">
-                <p>All</p>
-                <p class="detail_title"><a href="#" th:href="@{/items}"><strong>상품 전체보기</strong></a></p>
-            </div>
-
+            <div th:replace="fragments-gender::sidebarMenu (currentMenu = 'women')"></div>
             <!-- 오른쪽-->
             <div>
                 <div class="filter_text">
