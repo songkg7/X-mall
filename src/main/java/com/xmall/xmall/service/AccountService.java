@@ -124,8 +124,12 @@ public class AccountService implements UserDetailsService {
 
     //    비밀번호 변경
     public void changePwd(Account account, CheckPwdForm checkPwdForm) {
+//        Account findAccount = accountRepository.findByEmail(account.getEmail());
         String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
         account.setPassword(encodePwd);
+
+        // 영속성 상태가 아닌 계정의 정보를 바꿔주기 위해 save 실행
+        accountRepository.save(account);
     }
 
     @Override
