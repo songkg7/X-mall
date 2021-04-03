@@ -43,130 +43,6 @@
     }
   </style>
 </head>
-  <script>
-    $(document).ready(function () {
-      var pwd_need1 = $("#pwd_need1");
-      var pwd_need2 = $("#pwd_need2");
-      var pwd_need3 = $("#pwd_need3");
-      var pwd_check2 = $("#pwd_check2");
-      var pwd_check3 = $("#pwd_check3");
-
-      $(".gray").hide();
-
-      $("#current_pwd").keyup(function () {
-        if ($("#current_pwd").val().split(" ").join("") == "") {
-          pwd_need1.show();
-        }
-        else {
-          $(".current_pwd").css("border", "1px solid black");
-          pwd_need1.hide();
-        }
-      });
-
-      $("#new_pwd").keyup(function () {
-        if ($("#new_pwd").val().split(" ").join("") == "") {
-          pwd_check2.hide();
-          pwd_need2.show();
-        }
-        else if (checkPwd($("#new_pwd").val()) == false) {
-          $(".new_pwd").css("border-color", "red");
-          pwd_need2.hide();
-          pwd_check2.show();
-        } else {
-          $(".new_pwd").css("border", "1px solid black");
-          pwd_check2.hide();
-          pwd_need2.hide();
-        }
-      });
-      $("#new_pwd_check").keyup(function () {
-        if ($("#new_pwd_check").val().split(" ").join("") == "") {
-          pwd_check3.hide();
-          pwd_need3.show();
-        }
-        else if ($("#new_pwd").val() != $("#new_pwd_check").val()) {
-          $(".new_pwd_check").css("border-color", "red");
-          pwd_need3.hide();
-          pwd_check3.show();
-        } else {
-          $(".new_pwd_check").css("border", "1px solid black");
-          pwd_check3.hide();
-          pwd_need3.hide();
-        }
-      });
-
-      if ($(".msg").val().length > 1) {
-        $(".gray").show();
-      }
-
-      $("#e_young_btn1").click(function () {
-        $(".gray").hide();
-      });
-    });
-
-    function checkForm() {
-      var pwd_need1 = $("#pwd_need1");
-      var pwd_need2 = $("#pwd_need2");
-      var pwd_need3 = $("#pwd_need3");
-      var pwd_check2 = $("#pwd_check2");
-      var pwd_check3 = $("#pwd_check3");
-
-      var cpwd = $(".current_pwd").val();
-      var pwd = $(".new_pwd").val();
-      var pwd2 = $(".new_pwd_check").val();
-
-      if (
-        cpwd.split(" ").join("") === "" &&
-        pwd.split(" ").join("") === "" &&
-        pwd2.split(" ").join("") === ""
-      ) {
-        pwd_need1.show();
-        pwd_need2.show();
-        pwd_need3.show();
-        $(".current_pwd").focus();
-        $(".current_pwd").css("border-color", "red");
-        $(".new_pwd").css("border-color", "red");
-        $(".new_pwd_check").css("border-color", "red");
-        return;
-      }
-
-      if (pwd.split(" ").join("") === "") {
-        $(".new_pwd").css("border-color", "red");
-        pwd_need2.show();
-        $(".new_pwd").val("");
-        $(".new_pwd").focus();
-        return;
-      } else if (pwd.split(" ").join("") !== "") {
-        if (checkPwd($(".new_pwd").val()) === false) {
-          $(".new_pwd").css("border-color", "red");
-          pwd_check2.show();
-          $(".new_pwd").focus();
-          return;
-        } else {
-          pwd_check2.hide();
-          $(".new_pwd").css("border", "1px solid black");
-        }
-      }
-
-      if (pwd2.split(" ").join("") === "") {
-        $(".new_pwd_check").css("border-color", "red");
-        pwd_need3.show();
-        $(".new_pwd_check").val("");
-        $(".new_pwd_check").focus();
-        return;
-      } else if (pwd2.split(" ").join("") !== "") {
-        if ($(".new_pwd").val() !== $(".new_pwd_check").val()) {
-          $(".new_pwd_check").css("border-color", "red");
-          pwd_check3.show();
-          $(".new_pwd_check").focus();
-          return;
-        } else {
-          pwd_check3.hide();
-          $(".new_pwd_check").css("border", "1px solid black");
-          document.pwd_change_form.submit();
-        }
-      }
-    }
-  </script>
   <body class="jb_font-1">
     <!--+++++++++++++++++++++++++++++++++++-->
     <!-- main 부분 -->
@@ -180,53 +56,7 @@
         <!--왼쪽여백-->
         <div></div>
         <!-- 왼쪽 카테고리 바-->
-        <div class="side_mypage">
-          <h2><a th:href="@{/myPage/side_mypage}">My PAGE</a></h2>
-
-          <div class="bottom_line"></div>
-          <div th:replace="fragments :: userId"></div>
-          <ul>
-            <li class="listyle">
-              <h4>쇼핑정보</h4>
-              <ul>
-                <li><a href="/myPage/coupon">쿠폰</a></li>
-                <li><a href="/myPage/order_delivery">주문배송</a></li>
-                <li><a href="/myPage/return_cancle">취소/반품</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>나의정보</h4>
-              <ul>
-                <li><a href="/myPage/pwd_change">비밀번호 변경</a></li>
-                <li><a href="/myPage/withdrawal">회원탈퇴</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>A/S 신청.조회</h4>
-              <ul>
-                <li><a href="/myPage/as_infoguide">접수 안내</a></li>
-                <li><a href="/cs/asview">as 신청</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <li class="listyle">
-              <h4>고객센터</h4>
-              <ul>
-                <li>
-                  <a href="">1:1 채팅 문의</a>
-                </li>
-                <li><a href="">1:1 E-mail 문의</a></li>
-              </ul>
-            </li>
-            <div class="bottom_line"></div>
-            <h4>나이키닷컴고객센터</h4>
-            <h3>080-022-0182</h3>
-            <p>월~일:오전 9시 ~ 오후 8시</p>
-            <div class="bottom_line"></div>
-          </ul>
-        </div>
+        <div th:replace="fragments::myPage-sidebar"></div>
         <!-- 카테고리 메인 -->
         <div class="warp">
           <div class="title">
@@ -344,5 +174,130 @@
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function () {
+        var pwd_need1 = $("#pwd_need1");
+        var pwd_need2 = $("#pwd_need2");
+        var pwd_need3 = $("#pwd_need3");
+        var pwd_check2 = $("#pwd_check2");
+        var pwd_check3 = $("#pwd_check3");
+
+        $(".gray").hide();
+
+        $("#current_pwd").keyup(function () {
+          if ($("#current_pwd").val().split(" ").join("") == "") {
+            pwd_need1.show();
+          }
+          else {
+            $(".current_pwd").css("border", "1px solid black");
+            pwd_need1.hide();
+          }
+        });
+
+        $("#new_pwd").keyup(function () {
+          if ($("#new_pwd").val().split(" ").join("") == "") {
+            pwd_check2.hide();
+            pwd_need2.show();
+          }
+          else if (checkPwd($("#new_pwd").val()) == false) {
+            $(".new_pwd").css("border-color", "red");
+            pwd_need2.hide();
+            pwd_check2.show();
+          } else {
+            $(".new_pwd").css("border", "1px solid black");
+            pwd_check2.hide();
+            pwd_need2.hide();
+          }
+        });
+        $("#new_pwd_check").keyup(function () {
+          if ($("#new_pwd_check").val().split(" ").join("") == "") {
+            pwd_check3.hide();
+            pwd_need3.show();
+          }
+          else if ($("#new_pwd").val() != $("#new_pwd_check").val()) {
+            $(".new_pwd_check").css("border-color", "red");
+            pwd_need3.hide();
+            pwd_check3.show();
+          } else {
+            $(".new_pwd_check").css("border", "1px solid black");
+            pwd_check3.hide();
+            pwd_need3.hide();
+          }
+        });
+
+        if ($(".msg").val().length > 1) {
+          $(".gray").show();
+        }
+
+        $("#e_young_btn1").click(function () {
+          $(".gray").hide();
+        });
+      });
+
+      function checkForm() {
+        var pwd_need1 = $("#pwd_need1");
+        var pwd_need2 = $("#pwd_need2");
+        var pwd_need3 = $("#pwd_need3");
+        var pwd_check2 = $("#pwd_check2");
+        var pwd_check3 = $("#pwd_check3");
+
+        var cpwd = $(".current_pwd").val();
+        var pwd = $(".new_pwd").val();
+        var pwd2 = $(".new_pwd_check").val();
+
+        if (
+                cpwd.split(" ").join("") === "" &&
+                pwd.split(" ").join("") === "" &&
+                pwd2.split(" ").join("") === ""
+        ) {
+          pwd_need1.show();
+          pwd_need2.show();
+          pwd_need3.show();
+          $(".current_pwd").focus();
+          $(".current_pwd").css("border-color", "red");
+          $(".new_pwd").css("border-color", "red");
+          $(".new_pwd_check").css("border-color", "red");
+          return;
+        }
+
+        if (pwd.split(" ").join("") === "") {
+          $(".new_pwd").css("border-color", "red");
+          pwd_need2.show();
+          $(".new_pwd").val("");
+          $(".new_pwd").focus();
+          return;
+        } else if (pwd.split(" ").join("") !== "") {
+          if (checkPwd($(".new_pwd").val()) === false) {
+            $(".new_pwd").css("border-color", "red");
+            pwd_check2.show();
+            $(".new_pwd").focus();
+            return;
+          } else {
+            pwd_check2.hide();
+            $(".new_pwd").css("border", "1px solid black");
+          }
+        }
+
+        if (pwd2.split(" ").join("") === "") {
+          $(".new_pwd_check").css("border-color", "red");
+          pwd_need3.show();
+          $(".new_pwd_check").val("");
+          $(".new_pwd_check").focus();
+          return;
+        } else if (pwd2.split(" ").join("") !== "") {
+          if ($(".new_pwd").val() !== $(".new_pwd_check").val()) {
+            $(".new_pwd_check").css("border-color", "red");
+            pwd_check3.show();
+            $(".new_pwd_check").focus();
+            return;
+          } else {
+            pwd_check3.hide();
+            $(".new_pwd_check").css("border", "1px solid black");
+            document.pwd_change_form.submit();
+          }
+        }
+      }
+    </script>
+
   </body>
 </html>
