@@ -44,6 +44,7 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
     }
 
     // 현재 날짜를 바탕으로 몇주차인지 알아내기 위한 로직
+    // FIXME: refactor
     private int getWeekOfYear(String date) {
         Calendar cal = Calendar.getInstance();
         String[] dates = date.split("-");
