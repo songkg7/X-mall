@@ -53,6 +53,7 @@ public class AccountService implements UserDetailsService {
                     .password(passwordEncoder.encode("12345678"))
                     .name("관리자")
                     .phone("01011111111")
+                    .emailVerified(true)
                     .build();
 
             accountRepository.save(account);

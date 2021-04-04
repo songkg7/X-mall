@@ -42,6 +42,9 @@ public class Order {
     @OneToMany(mappedBy="order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Address address;
+
     // 연관관계 메소드
     public void setAccount(Account account) {
         this.account = account;
@@ -54,9 +57,10 @@ public class Order {
     }
 
     // 생성 메서드
-    public static Order createOrder(Account account, OrderItem... orderItems) {
+    public static Order createOrder(Account account, Address address, OrderItem... orderItems) {
         Order order = new Order();
         order.setAccount(account);
+        order.setAddress(address);
 //        order.setDelivery(delivery);
         for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);

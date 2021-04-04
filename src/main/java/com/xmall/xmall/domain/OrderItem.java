@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,14 +35,6 @@ public class OrderItem {
     @Column(nullable = false)
     private String orderItemSize; // 주문 당시 사이즈
 
-    private String postcode;
-
-    private String address;
-
-    private String detailsAddress;
-
-    private String extraAddress;
-
     // 생성 메서드
     public static OrderItem createOrderItem(Item item, OrderForm orderForm) {
         OrderItem orderItem = new OrderItem();
@@ -49,10 +42,6 @@ public class OrderItem {
         orderItem.setOrderPrice(orderForm.getPrice());
         orderItem.setAmount(orderForm.getAmount());
         orderItem.setOrderItemSize(orderForm.getOrderItemSize());
-        orderItem.setPostcode(orderForm.getPostcode());
-        orderItem.setAddress(orderForm.getAddress());
-        orderItem.setDetailsAddress(orderForm.getDetailAddress());
-        orderItem.setExtraAddress(orderForm.getExtraAddress());
 
         // 주문한 수량만큼 재고를 감소
         item.removeStock(orderForm.getAmount());
