@@ -38,16 +38,16 @@ public class MyPageController {
 
     // 최근 주문 내역     *url 로 접속해야 함
     @GetMapping("/myPage/side_mypage")
-    //현재 계정 정보를 모델에 담고
     public String side_mypage(@CurrentAccount Account account, Model model) {
+        // 계정을 모델에 담고
+        model.addAttribute(account);
+
         // 주문리스트 리포지토리에서 내계정에 관련된 주문 리스트를 배열로 가져온다.
         List<Order> orderLists = orderRepository.findByAccount(account);
         model.addAttribute("orderLists", orderLists);
 
         List<MyReview> reviewLists = myReviewRepository.findByAccount(account);
         model.addAttribute("reviewLists",reviewLists);
-        // 계정을 모델에 담고
-        model.addAttribute(account);
         return "myPage/side_mypage";
     }
 
@@ -72,9 +72,9 @@ public class MyPageController {
     public String reviewCreateForm(@Valid ReviewCreateForm reviewCreateForm, @CurrentAccount Account account, @PathVariable("orderItemId") Long orderItemId, Errors errors, Model model) {
 ////        Item item = itemRepository.findById(itemId).get();
         OrderItem orderItem = orderItemRepository.findById(orderItemId).get();
-
-
         model.addAttribute(orderItem);
+
+        // FIXME: form 만 파라미터로 전달한 후 서비스에서 분해하자
         myReviewService.create(
                  account,
                  reviewCreateForm.getSubject(),

@@ -41,7 +41,6 @@ public class OrderController {
 //        // 바로구매로 진입하면 선택한 아이템 찾아오기
 //        Optional<Item> byId = itemRepository.findById(id);
 //        byId.ifPresent(item -> model.addAttribute("item", item));
-//        // TODO: 배송지 정보 받아오기
 //        return "order/payment-test";
 //    }
 
@@ -63,7 +62,6 @@ public class OrderController {
         // 바로구매로 진입하면 선택한 아이템 찾아오기
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute("item", item));
-        // TODO: 배송지 정보 받아오기
         return "order/payment_order";
     }
 

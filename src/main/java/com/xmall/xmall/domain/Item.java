@@ -63,7 +63,6 @@ public class Item {
     private String itemImage;
 
     // 상품 등록일
-    // FIXME: createdAt
     private LocalDateTime createdAt;
 
     /*

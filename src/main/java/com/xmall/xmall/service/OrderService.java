@@ -24,7 +24,7 @@ public class OrderService {
     private final AccountRepository accountRepository;
 
     public void order(Item item, Account account, OrderForm orderForm) {
-        log.info(account.getNickname());
+        log.info("주문한 회원 = " + account.getNickname());
         // detach 상태인 회원을 다시 찾아오면서 영속성 관리 상태로 만든다.
         Account findAccount = accountRepository.findById(account.getId()).get();
 
