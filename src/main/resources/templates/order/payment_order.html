@@ -348,24 +348,24 @@
                 <div class="info-box">
                     <div class="cs-field">
                         <div class="tit">받으시는분</div>
-                        <input type="text" placeholder="이름" id="name" class="name"/>
+                        <input type="text" placeholder=" 이름" id="name" class="name"/>
                         <div class="need" id="need1">필수 입력 항목입니다.</div>
                     </div>
                     <div class="cs-field" style="float: right">
                         <div class="tit">연락처</div>
-                        <input type="text" placeholder="-없이 입력" id="number" class="number"/>
+                        <input type="text" placeholder=" - 없이 입력" id="number" class="number"/>
                         <div class="need" id="need2">필수 입력 항목입니다.</div>
                         <div class="check2" id="check2">01012341234 형식으로 숫자만 입력 가능합니다.</div>
                     </div>
                     <div class="tit">배송주소</div>
                     <input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기" class="post-btn"/>
-                    <input type="text" id="sample2_postcode" th:field="*{postcode}" placeholder="우편번호" class="sample2_postcode" readonly/>
+                    <input type="text" id="sample2_postcode" th:field="*{postcode}" placeholder=" 우편번호" class="sample2_postcode" readonly/>
                     <div class="need" id="need3">필수 입력 항목입니다.</div>
-                    <input type="text" id="sample2_address" th:field="*{address}" placeholder="주소" class="sample2_address" readonly/>
+                    <input type="text" id="sample2_address" th:field="*{address}" placeholder=" 주소" class="sample2_address" readonly/>
                     <div class="need" id="need4">필수 입력 항목입니다.</div>
-                    <input type="text" id="sample2_detailAddress" th:field="*{detailAddress}" placeholder="상세주소" class="sample2_detailAddress"/>
+                    <input type="text" id="sample2_detailAddress" th:field="*{detailAddress}" placeholder=" 상세주소" class="sample2_detailAddress"/>
                     <div class="need" id="need5">필수 입력 항목입니다.</div>
-                    <input type="text" id="sample2_extraAddress" th:field="*{extraAddress}" placeholder="참고항목" class="sample2_extraAddress"/>
+                    <input type="text" id="sample2_extraAddress" th:field="*{extraAddress}" placeholder=" 참고항목" class="sample2_extraAddress"/>
                     <div class="need" id="need6">필수 입력 항목입니다.</div>
                 </div>
                 <div class="select_memo">
@@ -442,9 +442,9 @@
                             <div class="goods-name" th:text="${orderForm.itemName}">나이키에어맥스</div>
                             <input type="hidden" th:field="${orderForm.itemName}">
 <!--                            <div class="style-code">스타일</div>-->
-                            <div class="option" th:text="${orderForm.orderItemSize}">사이즈</div>
+                            <div class="option" th:text="|사이즈 : ${orderForm.orderItemSize}|">사이즈</div>
                             <input type="hidden" th:field="${orderForm.orderItemSize}">
-                            <div class="qty" th:text="|${orderForm.amount}개|">수량</div>
+                            <div class="qty" th:text="|수량 : ${orderForm.amount} 개|">수량</div>
                             <input type="hidden" th:field="${orderForm.amount}">
                             <div class="price" th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|">130,000 원</div>
                             <input type="hidden" th:field="${orderForm.price}">
