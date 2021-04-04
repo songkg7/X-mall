@@ -9,6 +9,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import java.util.Objects;
+
 import static com.xmall.xmall.domain.QItem.*;
 import static com.xmall.xmall.domain.QOrderItem.*;
 
@@ -24,7 +26,7 @@ public class ItemRepositoryExtensionImpl extends QuerydslRepositorySupport imple
                 .where(item.name.containsIgnoreCase(keyword)
                         .or(item.subTitle.containsIgnoreCase(keyword)));
 
-        JPQLQuery<Item> pageableQuery = getQuerydsl().applyPagination(pageable, query);
+        JPQLQuery<Item> pageableQuery = Objects.requireNonNull(getQuerydsl()).applyPagination(pageable, query);
         QueryResults<Item> queryResults = pageableQuery.fetchResults();
         return new PageImpl<>(queryResults.getResults(), pageable, queryResults.getTotal());
     }

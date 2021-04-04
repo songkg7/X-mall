@@ -55,7 +55,12 @@ public class MainController {
         model.addAttribute("keyword", keyword);
         model.addAttribute("sortProperty", pageable.getSort().toString().contains("createdAt") ? "createdAt" : "price");
 
-        return "items/item-list";
+        return "items/search";
     }
+
+//    @GetMapping("/items")
+//    public String sortAllItems(Model model) {
+//
+//    }
 
 }

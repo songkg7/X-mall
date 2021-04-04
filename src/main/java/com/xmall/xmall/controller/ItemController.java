@@ -78,7 +78,6 @@ public class ItemController {
         return "items/update-item";
     }
 
-    // TODO: PostMapping
     @PostMapping("/items/{id}/edit")
     public String updateItem(@CurrentAccount Account account, @PathVariable Long id, Model model,
                              @Valid ItemForm itemForm, Errors errors) {
