@@ -41,7 +41,7 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
         return from(order)
                 .where(order.status.eq(OrderStatus.ORDER).and(order.orderDate.between(
                         LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
-                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
+//                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                         LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))))
                 .leftJoin(orderItem).on(orderItem.order.id.eq(order.id)).fetchJoin()
@@ -71,7 +71,7 @@ public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport 
                 .where(order.status.eq(OrderStatus.ORDER)
                         .and(order.orderDate
                                 .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
-                                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
+//                                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
                                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                                         LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS))))
                 .groupBy(order.orderDate.dayOfWeek())

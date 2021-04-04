@@ -142,10 +142,10 @@ class OrderItemRepositoryExtensionImplTest {
                 .from(order)
                 .where(order.status.eq(OrderStatus.ORDER)
                         .and(order.orderDate
-                        .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
-                                        .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
-                                        .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
-                                LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS))))
+                                .between(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
+//                                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 2)
+                                                .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
+                                        LocalDateTime.now().plusDays(1).truncatedTo(ChronoUnit.SECONDS))))
                 .groupBy(order.orderDate.dayOfWeek())
                 .orderBy(order.orderDate.dayOfWeek().asc())
                 .fetch();
@@ -165,6 +165,30 @@ class OrderItemRepositoryExtensionImplTest {
         }
 
     }
+
+
+    @Test
+    @DisplayName("일별 주문 수 가져오기 2")
+    void orderPerDay2() {
+//        queryFactory
+//                .select(order.orderDate.dayOfWeek(), order.orderDate.count())
+//                .from(order)
+//                .where(order.status.eq(OrderStatus.ORDER)
+//                .and(order.orderDate.between())
+//                )
+        List<Integer> results = queryFactory.select(order.orderDate.yearWeek())
+                .from(order).fetch();
+
+        System.out.println("test : " + LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
+                .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)));
+
+        for (Integer result : results) {
+            System.out.println("result = " + String.valueOf(result).substring(4));
+        }
+
+
+    }
+
 
     private void createItemAndOrder(String itemName) {
         Account account = accountRepository.findByEmail("test1@example.com");
