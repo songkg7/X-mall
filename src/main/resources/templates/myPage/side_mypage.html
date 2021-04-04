@@ -215,9 +215,14 @@
                 </div>
 
                 <h2>내가 작성한 리뷰</h2>
-                <div class="bottom_line1"></div>
+<!--                <div class="bottom_line1"></div>-->
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
-                <div class="review_1" th:each="reviewList : ${reviewLists}">
+                <div th:if="${reviewLists.isEmpty}">
+                    <div class="no_item">
+                        작성한 리뷰가 없습니다.
+                    </div>
+                </div>
+                <div class="review_1" th:if="${!reviewLists.isEmpty}" th:each="reviewList : ${reviewLists}">
                     <h3 th:text="${reviewList.subject}">글제목</h3>
                     <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;" th:text="${reviewList.starBlack}"></span><span style="color: #bcbcbc; font-size: 16px;margin-top:0;" th:text="${reviewList.starGray}"></span>
                     <p></p>

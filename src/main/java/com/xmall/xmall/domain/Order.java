@@ -1,6 +1,6 @@
 package com.xmall.xmall.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.LocalDateTimeConverter;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,10 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -43,6 +40,12 @@ public class Order {
     @ManyToOne(cascade = CascadeType.ALL)
     private Address address;
 
+    @Column(nullable = false)
+    private String recipientName;
+
+    @Column(nullable = false)
+    private String recipientPhone;
+
     // 연관관계 메소드
     public void setAccount(Account account) {
         this.account = account;
@@ -55,10 +58,12 @@ public class Order {
     }
 
     // 생성 메서드
-    public static Order createOrder(Account account, Address address, OrderItem... orderItems) {
+    public static Order createOrder(Account account, Address address, OrderForm orderForm, OrderItem... orderItems) {
         Order order = new Order();
         order.setAccount(account);
         order.setAddress(address);
+        order.setRecipientName(orderForm.getRecipientName());
+        order.setRecipientPhone(orderForm.getRecipientPhone());
 //        order.setDelivery(delivery);
         for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);

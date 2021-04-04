@@ -38,7 +38,7 @@ public class OrderService {
         OrderItem orderItem = createOrderItem(item, orderForm);
 
         // 주문 생성
-        Order order = createOrder(findAccount, address, orderItem);
+        Order order = createOrder(findAccount, address, orderForm, orderItem);
 
         // DB에 주문 저장
         orderRepository.save(order);
