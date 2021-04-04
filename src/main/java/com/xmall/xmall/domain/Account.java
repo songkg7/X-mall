@@ -49,7 +49,7 @@ public class Account {
 
     private String emailCheckToken;
 
-    private boolean emailVerified;
+    private boolean emailVerified = false;
 
     private LocalDateTime emailCheckTokenGeneratedAt;
 

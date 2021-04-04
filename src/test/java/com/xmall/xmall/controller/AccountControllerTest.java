@@ -103,6 +103,7 @@ class AccountControllerTest {
                 .email("test@email.com")
                 .password("12345678")
                 .nickname("keesun")
+                .emailVerified(false)
                 .build();
         Account newAccount = accountRepository.save(account);
         newAccount.generateEmailCheckToken();

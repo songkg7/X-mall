@@ -72,6 +72,7 @@ public class AccountService implements UserDetailsService {
                 .password(passwordEncoder.encode(signUpForm.getPassword()))
                 .name(signUpForm.getName())
                 .phone(signUpForm.getPhone())
+                .emailVerified(false)
                 .build();
 
         account.generateEmailCheckToken();

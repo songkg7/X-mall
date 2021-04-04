@@ -183,6 +183,9 @@ class OrderItemRepositoryExtensionImplTest {
         orderForm.setPrice(item.getPrice());
         orderForm.setAmount(5);
         orderForm.setOrderItemSize("100");
+        orderForm.setAddress("서울");
+        orderForm.setDetailAddress("강북구");
+        orderForm.setPostcode("12345");
 
         orderService.order(item, account, orderForm);
     }
@@ -195,6 +198,7 @@ class OrderItemRepositoryExtensionImplTest {
                 .password(passwordEncoder.encode("12345678"))
                 .name(testUser)
                 .phone("01011111111")
+                .emailVerified(true)
                 .build();
 
         account.setJoinedAt(LocalDateTime.of(2021, 3, day, 0, 0));

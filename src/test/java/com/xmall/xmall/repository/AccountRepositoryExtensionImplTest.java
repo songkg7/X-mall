@@ -139,6 +139,7 @@ class AccountRepositoryExtensionImplTest {
                 .password(passwordEncoder.encode("12345678"))
                 .name(testUser)
                 .phone("01011111111")
+                .emailVerified(true)
                 .build();
 
         account.setJoinedAt(LocalDateTime.of(2021, 3, day, 0, 0));
