@@ -26,8 +26,6 @@ public class Order {
     @GeneratedValue
     private Long id;
 
-    private String Location;
-
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
