@@ -52,16 +52,20 @@
             <div style="background-color: white;text-align:left; " >
                 <h2>1:1 문의</h2>
                 <div class="board_div">
+                    <div class="readDiv">
                     <div class="subRead">제목 : </div>
                     <div class="boardSub_read" th:text="${cs_board.getSubject()}">
                     </div>
+                    </div>
+                    <div class="conDiv">
                     <div class="conRead">문의 내용 : </div>
                     <div class="boardContent_read" th:text="${cs_board.getMainText()}">
+                    </div>
                     </div>
 <!--                    <div class="comment" th:text="${cs_board.comment.getCommentText()}"></div>-->
                 </div>
                 <div class="write_btn">
-                    <a href="#" th:href="@{/cs/{id}/comment (id=${cs_board.id})}">문의 댓글</a>
+<!--                    <a href="#" th:href="@{/cs/{id}/comment (id=${cs_board.id})}">문의 댓글</a>-->
                     <a href="/cs/cs_board">게시판 목록</a>
                     <a href="#" th:href="@{/cs/{id}/edit (id=${cs_board.id})}"
                        class="btn btn-primary" role="button">수정</a>
