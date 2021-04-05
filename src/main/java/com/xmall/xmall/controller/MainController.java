@@ -28,7 +28,7 @@ public class MainController {
     @GetMapping("/")
     public String home(@CurrentAccount Account account, Model model) {
         // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
-        List<Item> itemLists = itemRepository.findAll();
+        List<Item> itemLists = itemRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
         model.addAttribute("itemLists", itemLists);
         model.addAttribute("account", account);
 
