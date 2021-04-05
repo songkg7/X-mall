@@ -4,11 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="sidebarMenu (currentMenu)">
-    <div class="left_title" th:if="${currentMenu == 'men'}">
-        <p>Men</p>
-        <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
-            <strong>Men's 상품</strong></a></p>
-    </div>
+
 
     <div class="left_title" th:if="${currentMenu == 'women'}">
         <p>Men</p>

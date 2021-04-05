@@ -429,10 +429,46 @@
         <!-- ---------------------- -->
         <div class="top_detail_subject">
             <!-- 왼쪽 -->
-            <div class="left_title" th:if="${genderLeft == null}">
+            <div class="left_title" th:if="${gender == null}">
                 <p>All</p>
                 <p class="detail_title">
                     <a href="#" th:href="@{/items}"><strong>상품 전체보기</strong></a>
+                </p>
+            </div>
+
+            <div class="left_title" th:if="${gender == 'men'}">
+                <p>Men</p>
+                <p class="detail_title">
+                    <a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
+                        <strong>Men's 상품</strong>
+                    </a>
+                </p>
+            </div>
+
+            <div class="left_title" th:if="${gender == 'women'}">
+                <p>Women</p>
+                <p class="detail_title">
+                <a href="#" th:href="@{/items/category/gender/{gender} (gender = women)}">
+                    <strong>Women's 상품</strong>
+                </a>
+                </p>
+            </div>
+
+            <div class="left_title" th:if="${gender == 'unisex'}">
+                <p>Unisex</p>
+                <p class="detail_title">
+                    <a href="#" th:href="@{/items/category/gender/{gender} (gender = unisex)}">
+                        <strong>Unisex 상품</strong>
+                    </a>
+                </p>
+            </div>
+
+            <div class="left_title" th:if="${gender == 'kids'}">
+                <p>Kids</p>
+                <p class="detail_title">
+                    <a href="#" th:href="@{/items/category/gender/{gender} (gender = kids)}">
+                        <strong>Kids 상품</strong>
+                    </a>
                 </p>
             </div>
 
@@ -488,7 +524,7 @@
         <!-- ---------------------- -->
 
 <!--        FIXME: HTML 의 구조에 문제가 있음. a 태그가 제대로 적용이 안되므로 수정할 것 -->
-        <div class="left_list_title" th:if="${genderLeft == null}">
+        <div class="left_list_title">
             <div class="left_list_div">
                 <h6 style="padding-bottom: 15px">
                     <strong>
@@ -534,35 +570,35 @@
             </div>
         </div>
 
-        <div class="left_list_title" th:if="${genderLeft == 'men'}">
-            <div class="left_list_div">
-                <h6 style="padding-bottom: 15px"><strong>신발</strong></h6>
-                <p><a href="#" th:href="@{/}">런닝화</a></p>
-                <p>축구화</p>
-                <hr/>
-            </div>
+<!--        <div class="left_list_title" th:if="${genderLeft == 'men'}">-->
+<!--            <div class="left_list_div">-->
+<!--                <h6 style="padding-bottom: 15px"><strong>신발</strong></h6>-->
+<!--                <p><a href="#" th:href="@{/}">런닝화</a></p>-->
+<!--                <p>축구화</p>-->
+<!--                <hr/>-->
+<!--            </div>-->
 
-            <div class="left_list_div">
-                <h6 style="padding-bottom: 15px"><strong>상의</strong></h6>
-                <p>반팔티</p>
-                <p>긴팔티</p>
-                <hr/>
-            </div>
+<!--            <div class="left_list_div">-->
+<!--                <h6 style="padding-bottom: 15px"><strong>상의</strong></h6>-->
+<!--                <p>반팔티</p>-->
+<!--                <p>긴팔티</p>-->
+<!--                <hr/>-->
+<!--            </div>-->
 
-            <div class="left_list_div">
-                <h6 style="padding-bottom: 15px"><strong>하의</strong></h6>
-                <p>반바지</p>
-                <p>긴바지</p>
-                <hr/>
-            </div>
+<!--            <div class="left_list_div">-->
+<!--                <h6 style="padding-bottom: 15px"><strong>하의</strong></h6>-->
+<!--                <p>반바지</p>-->
+<!--                <p>긴바지</p>-->
+<!--                <hr/>-->
+<!--            </div>-->
 
-            <div class="left_list_div">
-                <h6 style="padding-bottom: 15px"><strong>잡화</strong></h6>
-                <p>모자</p>
-                <p>가방</p>
-                <hr/>
-            </div>
-        </div>
+<!--            <div class="left_list_div">-->
+<!--                <h6 style="padding-bottom: 15px"><strong>잡화</strong></h6>-->
+<!--                <p>모자</p>-->
+<!--                <p>가방</p>-->
+<!--                <hr/>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <!-- ---------------------- -->

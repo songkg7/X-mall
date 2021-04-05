@@ -102,8 +102,8 @@ public class ItemController {
     public String items(@CurrentAccount Account account, Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
-        model.addAttribute(account);
-        model.addAttribute("genderLeft", null);
+        model.addAttribute("account", account);
+//        model.addAttribute("genderLeft", null);
         return "items/item-list";
     }
 
@@ -142,7 +142,6 @@ public class ItemController {
         List<Item> itemLists = itemRepository.findByGenderType(gender);
         model.addAttribute("itemLists", itemLists);
         model.addAttribute("genderLeft", gender);
-
         return "items/item-list";
     }
 
@@ -172,23 +171,15 @@ public class ItemController {
         return "items/item-list";
     }
 
-    @GetMapping("/items/category/gender/men")
-    public String itemsMenAll(@CurrentAccount Account account, Model model){
-        List<Item> itemLists = itemRepository.findByGenderType("men");
-
-        model.addAttribute(account);
-        model.addAttribute("itemLists", itemLists);
-        return "items/item-list-men";
-    }
-
-    @GetMapping("/items/category/gender/women")
-    public String itemsWomenAll(@CurrentAccount Account account, Model model){
-        List<Item> itemLists = itemRepository.findByGenderType("women");
-
-        model.addAttribute(account);
-        model.addAttribute("itemLists", itemLists);
-        return "items/item-list-women";
-    }
+//    @GetMapping("/items/category/gender/women")
+//    public String itemsWomenAll(@CurrentAccount Account account, Model model) {
+//        List<Item> itemLists = itemRepository.findByGenderType("women");
+//        if (account != null) {
+//            model.addAttribute(account);
+//        }
+//        model.addAttribute("itemLists", itemLists);
+//        return "items/item-list-women";
+//    }
 
 }
 
