@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="sidebarMenu (currentMenu)">
+
+
+    <div class="left_title" th:if="${currentMenu == 'women'}">
+        <p>Men</p>
+        <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
+            <strong>women's 상품</strong></a></p>
+    </div>
+
+    <div class="left_title" th:if="${currentMenu == 'kids'}">
+        <p>Men</p>
+        <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
+            <strong>3's 상품</strong></a></p>
+    </div>
+
+    <div class="left_title" th:if="${currentMenu == 'unisex'}">
+        <p>Men</p>
+        <p class="detail_title"><a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
+            <strong>4's 상품</strong></a></p>
+    </div>
+</div>

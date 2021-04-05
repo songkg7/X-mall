@@ -129,49 +129,7 @@
         <!--왼쪽여백-->
         <div></div>
         <!-- 왼쪽 카테고리 바-->
-        <div class="side_mypage">
-            <h2><a th:href="@{/myPage/side_mypage}">My PAGE</a></h2>
-            <div class="bottom_line"></div>
-            <div th:replace="fragments :: userId"></div>
-            <ul>
-                <li class="listyle">
-                    <h4>쇼핑정보</h4>
-                    <ul>
-                        <li><a href="/myPage/order_delivery">주문배송</a></li>
-                        <li><a href="/myPage/return_cancel">취소/반품</a></li>
-                    </ul>
-                </li>
-                <div class="bottom_line"></div>
-                <li class="listyle">
-                    <h4>나의정보</h4>
-                    <ul>
-                        <li><a href="/myPage/pwd_change">비밀번호 변경</a></li>
-                        <li><a href="/myPage/withdrawal">회원탈퇴</a></li>
-                    </ul>
-                </li>
-                <div class="bottom_line"></div>
-                <li class="listyle">
-                    <h4>A/S 신청.조회</h4>
-                    <ul>
-                        <li><a href="/myPage/as_infoguide">접수 안내</a></li>
-                    </ul>
-                </li>
-                <div class="bottom_line"></div>
-                <li class="listyle">
-                    <h4>고객센터</h4>
-                    <ul>
-                        <li>
-                            <a href="">1:1 채팅 문의</a>
-                        </li>
-                    </ul>
-                </li>
-                <div class="bottom_line"></div>
-                <h4>엑스몰닷컴고객센터</h4>
-                <h3>080-022-0182</h3>
-                <p>월~일:오전 9시 ~ 오후 8시</p>
-                <div class="bottom_line"></div>
-            </ul>
-        </div>
+        <div th:replace="fragments::myPage-sidebar"></div>
         <!-- 카테고리 메인 -->
         <div class="tagform" style="margin-bottom: 300px">
             <div class="recent_order_history">
@@ -213,7 +171,7 @@
                                     <div class="item_quantity"
                                          th:text="|수량 : ${orderList.orderItems[0].amount}개|"></div>
                                     <div class="item_address"
-                                         th:utext="|배송주소 : (${orderList.orderItems[0].postcode}) ${orderList.orderItems[0].getAddress()}|"></div>
+                                         th:utext="|배송주소 : (${orderList.address.address}) ${orderList.address.detailsAddress}|"></div>
                                     <div class="item_price"
                                          th:text="|상품 금액 : ${#numbers.formatInteger(orderList.orderItems[0].orderPrice, 0, 'COMMA')}원|"></div>
                                     <div class="item_totAmount"
@@ -257,9 +215,14 @@
                 </div>
 
                 <h2>내가 작성한 리뷰</h2>
-                <div class="bottom_line1"></div>
+<!--                <div class="bottom_line1"></div>-->
                 <!--리뷰글목록 each 로 반복적으로 돌려서 보여줌 -->
-                <div class="review_1" th:each="reviewList : ${reviewLists}">
+                <div th:if="${reviewLists.isEmpty}">
+                    <div class="no_item">
+                        작성한 리뷰가 없습니다.
+                    </div>
+                </div>
+                <div class="review_1" th:if="${!reviewLists.isEmpty}" th:each="reviewList : ${reviewLists}">
                     <h3 th:text="${reviewList.subject}">글제목</h3>
                     <span style="color: black; font-size: 16px; margin-right: 0; margin-top:0;" th:text="${reviewList.starBlack}"></span><span style="color: #bcbcbc; font-size: 16px;margin-top:0;" th:text="${reviewList.starGray}"></span>
                     <p></p>

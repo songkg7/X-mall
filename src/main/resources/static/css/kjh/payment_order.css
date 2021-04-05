@@ -202,6 +202,7 @@ select {
   float: left;
   width: 165px;
   height: 165px;
+  margin-bottom: 25px;
 }
 
 .goods-img img {

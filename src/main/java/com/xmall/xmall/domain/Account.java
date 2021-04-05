@@ -20,7 +20,6 @@ public class Account {
 
     // Login
     // ----
-
     @Column(unique = true)
     private String email;
 
@@ -38,19 +37,19 @@ public class Account {
     private List<Order> orders = new ArrayList<>();
 
     // 주소
+    @OneToMany
+    private List<Address> addressList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "account")
-    private Set<Address> address = new HashSet<>();
     @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
-
 
     // Email
     // - token
 
     private String emailCheckToken;
-    private boolean emailVerified;
+
+    private boolean emailVerified = false;
 
     private LocalDateTime emailCheckTokenGeneratedAt;
 
@@ -73,22 +72,22 @@ public class Account {
     }
 
     // token 값 검증
-
     public boolean isValidToken(String token) {
         return this.emailCheckToken.equals(token);
     }
-    // email 전송 시간 비교
 
+    // email 전송 시간 비교
     public boolean canSendConfirmEmail() {
         return this.emailCheckTokenGeneratedAt.isBefore(LocalDateTime.now().minusHours(1));
     }
 
     @Builder
-    public Account(String email, String nickname, String name, String phone, String password) {
+    public Account(String email, String nickname, String name, String phone, String password, Boolean emailVerified) {
         this.email = email;
         this.nickname = nickname;
         this.name = name;
         this.phone = phone;
         this.password = password;
+        this.emailVerified = emailVerified;
     }
 }

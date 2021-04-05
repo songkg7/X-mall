@@ -9,20 +9,28 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Address {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    @NotBlank
-    private String main;
+    @Column(nullable = false)
+    private String address;
 
-    private String details;
+    @Column(nullable = false)
+    private String detailsAddress;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;
+    private String extraAddress;
 
+    @Column(nullable = false)
+    private String postcode;
+
+    public Address(String address, String detailsAddress, String extraAddress, String postcode) {
+        this.address = address;
+        this.detailsAddress = detailsAddress;
+        this.extraAddress = extraAddress;
+        this.postcode = postcode;
+    }
 }

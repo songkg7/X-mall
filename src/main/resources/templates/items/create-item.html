@@ -526,7 +526,7 @@
                     <div id="current-item-image" class="mt-3">
                         <img th:if="${!#strings.isEmpty(itemForm.itemImage)}" class="rounded"
                              th:src="${itemForm.itemImage}"
-                             width="300" height="300" alt="name" th:alt="${account.nickname}"/>
+                             width="300px" height="300px" alt="name" th:alt="${account.nickname}"/>
                     </div>
                     <div id="new-item-image" class="mt-3"></div>
                     <div class="card-body">
@@ -643,20 +643,20 @@
                         </p>
                         <div id="alt_2">제품명을 입력해주세요</div>
 
-                        <!--======================-->
-                        <!-- 3. 색상 관련 이미지 썸네일 설정-->
-                        <!--======================-->
-                        <div class="thumnail">
-                            <div class="thumnail_1">
-                                <img class="thum_1" src="/images/main_img/vapor1.png"/>
-                            </div>
-                            <div class="thumnail_2">
-                                <img class="thum_2" src="/images/main_img/vapor5.png"/>
-                            </div>
-                            <div class="thumnail_3">
-                                <img class="thum_3" src="/images/main_img/vapor6.png"/>
-                            </div>
-                        </div>
+<!--                        &lt;!&ndash;======================&ndash;&gt;-->
+<!--                        &lt;!&ndash; 3. 색상 관련 이미지 썸네일 설정&ndash;&gt;-->
+<!--                        &lt;!&ndash;======================&ndash;&gt;-->
+<!--                        <div class="thumnail">-->
+<!--                            <div class="thumnail_1">-->
+<!--                                <img class="thum_1" src="/images/main_img/vapor1.png"/>-->
+<!--                            </div>-->
+<!--                            <div class="thumnail_2">-->
+<!--                                <img class="thum_2" src="/images/main_img/vapor5.png"/>-->
+<!--                            </div>-->
+<!--                            <div class="thumnail_3">-->
+<!--                                <img class="thum_3" src="/images/main_img/vapor6.png"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
 
                     <!-- 4. 가격 설정 -->
@@ -696,7 +696,6 @@
                         <p>품목 선택</p>
                     </div>
                     <div class="table_div">
-                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                         <div class="category_table" id="category_table">
                             <div class="size_cell" id="top"><p>상의</p></div>
                             <div class="size_cell" id="pants"><p>하의</p></div>
@@ -716,7 +715,6 @@
                         <p>디테일 선택</p>
                     </div>
                     <div class="table_div">
-                        <!--  TODO: thymeleaf each 를 사용해서 sizeTable 에서 정보가져오기-->
                         <div class="size_table" id="acce_detail_table">
                             <div class="size_cell" id="cap"><p>모자</p></div>
                             <div class="size_cell" id="bag"><p>가방</p></div>
@@ -871,7 +869,7 @@
             let newImage = document.createElement("img");
             newImage.id = "cropped-new-item-image";
             newImage.src = dataUrl;
-            newImage.width = 300;
+            newImage.width = 500;
             $resultImage.html(newImage);
             $resultImage.show();
             $confirmBtn.show();

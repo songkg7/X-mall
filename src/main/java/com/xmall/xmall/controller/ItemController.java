@@ -10,6 +10,7 @@ import com.xmall.xmall.repository.MyReviewRepository;
 import com.xmall.xmall.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -77,7 +78,6 @@ public class ItemController {
         return "items/update-item";
     }
 
-    // TODO: PostMapping
     @PostMapping("/items/{id}/edit")
     public String updateItem(@CurrentAccount Account account, @PathVariable Long id, Model model,
                              @Valid ItemForm itemForm, Errors errors) {
@@ -102,7 +102,8 @@ public class ItemController {
     public String items(@CurrentAccount Account account, Model model) {
         List<Item> itemLists = itemRepository.findAll();
         model.addAttribute("itemLists", itemLists);
-        model.addAttribute(account);
+        model.addAttribute("account", account);
+//        model.addAttribute("genderLeft", null);
         return "items/item-list";
     }
 
@@ -141,7 +142,6 @@ public class ItemController {
         List<Item> itemLists = itemRepository.findByGenderType(gender);
         model.addAttribute("itemLists", itemLists);
         model.addAttribute("genderLeft", gender);
-
         return "items/item-list";
     }
 
@@ -149,6 +149,7 @@ public class ItemController {
     public String itemsGenderCategory(Model model, @PathVariable String gender, @PathVariable String categoryType) {
         List<Item> itemLists = itemRepository.findByGenderTypeAndCategoryType(gender, categoryType);
         model.addAttribute("itemLists", itemLists);
+        model.addAttribute("genderLeft", gender);
 
         return "items/item-list";
     }
@@ -157,6 +158,7 @@ public class ItemController {
     public String itemsGenderDetail(Model model, @PathVariable String gender, @PathVariable String detail) {
         List<Item> itemLists = itemRepository.findByGenderTypeAndCategoryDetail(gender, detail);
         model.addAttribute("itemLists", itemLists);
+        model.addAttribute("genderLeft", gender);
 
         return "items/item-list";
     }
@@ -168,6 +170,16 @@ public class ItemController {
         model.addAttribute("itemLists", itemLists);
         return "items/item-list";
     }
+
+//    @GetMapping("/items/category/gender/women")
+//    public String itemsWomenAll(@CurrentAccount Account account, Model model) {
+//        List<Item> itemLists = itemRepository.findByGenderType("women");
+//        if (account != null) {
+//            model.addAttribute(account);
+//        }
+//        model.addAttribute("itemLists", itemLists);
+//        return "items/item-list-women";
+//    }
 
 }
 

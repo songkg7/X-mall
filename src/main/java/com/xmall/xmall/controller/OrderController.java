@@ -12,9 +12,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -41,7 +43,6 @@ public class OrderController {
 //        // 바로구매로 진입하면 선택한 아이템 찾아오기
 //        Optional<Item> byId = itemRepository.findById(id);
 //        byId.ifPresent(item -> model.addAttribute("item", item));
-//        // TODO: 배송지 정보 받아오기
 //        return "order/payment-test";
 //    }
 
@@ -63,7 +64,6 @@ public class OrderController {
         // 바로구매로 진입하면 선택한 아이템 찾아오기
         Optional<Item> byId = itemRepository.findById(id);
         byId.ifPresent(item -> model.addAttribute("item", item));
-        // TODO: 배송지 정보 받아오기
         return "order/payment_order";
     }
 
@@ -82,11 +82,17 @@ public class OrderController {
     @PostMapping("/order/payment")
     public String orderPaymentProcess(@CurrentAccount Account account,
                                       @RequestParam Long itemId,
-                                      OrderForm orderForm) {
+                                      @Valid OrderForm orderForm, Errors errors) {
 
-        Optional<Item> byId = itemRepository.findById(itemId);
+        if (errors.hasErrors()) {
+            // TODO: print error message
+            return "order/payment_order";
+        }
 
-        byId.ifPresent(item -> orderService.order(item, account, orderForm));
+
+        Item item = itemRepository.findById(itemId).orElseThrow();
+
+        orderService.order(item, account, orderForm);
         return "redirect:/myPage/side_mypage";
     }
 

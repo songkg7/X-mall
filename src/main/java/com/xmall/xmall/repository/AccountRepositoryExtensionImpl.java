@@ -34,7 +34,7 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
         return from(account)
                 .where(account.JoinedAt.between(
                         LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
-                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week - 1)
+//                                .with(IsoFields.WEEK_OF_WEEK_BASED_YEAR, week)
                                 .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)),
                         LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS)))
                 .groupBy(account.JoinedAt)
@@ -44,6 +44,7 @@ public class AccountRepositoryExtensionImpl extends QuerydslRepositorySupport im
     }
 
     // 현재 날짜를 바탕으로 몇주차인지 알아내기 위한 로직
+    // FIXME: refactor
     private int getWeekOfYear(String date) {
         Calendar cal = Calendar.getInstance();
         String[] dates = date.split("-");

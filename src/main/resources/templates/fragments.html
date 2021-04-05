@@ -962,11 +962,11 @@
             <div class="div1">New Releases</div>
             <div class="div2">〉</div>
         </a>
-        <a href="#" th:href="@{/items/category/gender/{gender} (gender = men)}">
+        <a href="#" th:href="@{/items/category/gender/(gender = men)}">
             <div class="div1">Men</div>
             <div class="div2">〉</div>
         </a>
-        <a href="#" th:href="@{/items/category/gender/{gender} (gender = women)}">
+        <a href="#" th:href="@{/items/category/gender/(gender = women)}">
             <div class="div1">Women</div>
             <div class="div2">〉</div>
         </a>
@@ -1058,7 +1058,7 @@
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록 </a>
+                <a class="gray_atag" href="#" th:href="@{/items/create-item}" style="cursor: hand">&nbsp;|&nbsp;&nbsp;상품 등록  </a>
             </span>
 
             <span sec:authorize="hasRole('ROLE_ADMIN')">
@@ -1462,12 +1462,18 @@
             margin-left: 5px;
             color: rgba(265, 265, 265, 0.5);
         }
-        #logout2 button{
+        #logout2 button {
             background-color: black;
             border: none;
             position: relative;
             top:17px;
-
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #logout2 button:focus{
+            border: none;
+            outline:none;
+            cursor: pointer;
         }
     </style>
 </div>
@@ -1488,7 +1494,7 @@
             <span sec:authorize="isAuthenticated()">
                 <div class="footer_menu_1">
                     <form id="logout2" th:action="@{/logout}" th:method="post">
-                        <button type="submit">로그아웃</button>
+                        <button type="submit"> 로그아웃</button>
                     </form>
                 </div>
             </span>
@@ -1519,9 +1525,56 @@
     </div>
 </footer>
 
-<div class="bottom_line" th:fragment="userId">
-    <img class="user_img" src="/images/icon/user.png"/>
-    <h4 th:text="|${account?.getNickname()} 님|">사용자</h4>
+
+
+<div th:fragment="myPage-sidebar" class="side_mypage">
+    <h2><a th:href="@{/myPage/side_mypage}">My PAGE</a></h2>
+    <div class="bottom_line"></div>
+    <div class="bottom_line">
+        <img class="user_img" src="/images/icon/user.png"/>
+        <h4 th:text="|${account?.getNickname()} 님|">사용자</h4>
+    </div>
+    <ul>
+        <li class="listyle">
+            <h4>쇼핑정보</h4>
+            <ul>
+                <li><a th:href="@{/myPage/coupon}">쿠폰</a></li>
+                <li><a th:href="@{/myPage/order_delivery}">주문배송</a></li>
+                <li><a th:href="@{/myPage/return_cancel}">취소/반품</a></li>
+            </ul>
+        </li>
+        <div class="bottom_line"></div>
+        <li class="listyle">
+            <h4>나의정보</h4>
+            <ul>
+                <li><a th:href="@{/myPage/pwd_change}">비밀번호 변경</a></li>
+                <li><a th:href="@{/myPage/withdrawal}">회원탈퇴</a></li>
+            </ul>
+        </li>
+        <div class="bottom_line"></div>
+        <li class="listyle">
+            <h4>A/S 신청.조회</h4>
+            <ul>
+                <li><a th:href="@{/myPage/as_infoguide}">접수 안내</a></li>
+                <li><a th:href="@{/cs/asview}">as 신청</a></li>
+            </ul>
+        </li>
+        <div class="bottom_line"></div>
+        <li class="listyle">
+            <h4>고객센터</h4>
+            <ul>
+                <li>
+                    <a href="">1:1 채팅 문의</a>
+                </li>
+                <li><a href="">1:1 E-mail 문의</a></li>
+            </ul>
+        </li>
+        <div class="bottom_line"></div>
+        <h4>엑스몰닷컴고객센터</h4>
+        <h3>080-022-0182</h3>
+        <p>월~일:오전 9시 ~ 오후 8시</p>
+        <div class="bottom_line"></div>
+    </ul>
 </div>
 
 

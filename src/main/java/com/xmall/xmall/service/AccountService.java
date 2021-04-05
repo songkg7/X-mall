@@ -53,6 +53,7 @@ public class AccountService implements UserDetailsService {
                     .password(passwordEncoder.encode("12345678"))
                     .name("관리자")
                     .phone("01011111111")
+                    .emailVerified(true)
                     .build();
 
             accountRepository.save(account);
@@ -71,6 +72,7 @@ public class AccountService implements UserDetailsService {
                 .password(passwordEncoder.encode(signUpForm.getPassword()))
                 .name(signUpForm.getName())
                 .phone(signUpForm.getPhone())
+                .emailVerified(false)
                 .build();
 
         account.generateEmailCheckToken();
@@ -124,8 +126,12 @@ public class AccountService implements UserDetailsService {
 
     //    비밀번호 변경
     public void changePwd(Account account, CheckPwdForm checkPwdForm) {
+//        Account findAccount = accountRepository.findByEmail(account.getEmail());
         String encodePwd = passwordEncoder.encode(checkPwdForm.getNew_pwd_check());
         account.setPassword(encodePwd);
+
+        // 영속성 상태가 아닌 계정의 정보를 바꿔주기 위해 save 실행
+        accountRepository.save(account);
     }
 
     @Override
