@@ -89,13 +89,6 @@ public class MyPageController {
         return "redirect:/myPage/side_mypage";
     }
 
-
-
-
-
-
-
-
     // A/S 접수 안내
     @GetMapping("/myPage/as_infoguide")
     public String as_infoguide(@CurrentAccount Account account, Model model) {
@@ -131,14 +124,5 @@ public class MyPageController {
         model.addAttribute(new CheckPwdForm());
         return "myPage/pwd_change";
     }
-    
-    // 회원 탈퇴
-    @GetMapping("/myPage/withdrawal")
-    public String withdrawal(@CurrentAccount Account account, Model model) {
-        model.addAttribute(account);
-        model.addAttribute(new CheckPwdForm());
-        return "myPage/withdrawal";
-    }
-
 
 }

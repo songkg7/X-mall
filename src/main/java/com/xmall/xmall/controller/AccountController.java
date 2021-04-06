@@ -149,14 +149,30 @@ public class AccountController {
         return "redirect:/myPage/pwd_change";
     }
 
+    // 회원 탈퇴
+    @GetMapping("/myPage/withdrawal")
+    public String withdrawal(@CurrentAccount Account account, Model model) {
+        model.addAttribute(account);
+        model.addAttribute(new CheckPwdForm());
+        return "myPage/withdrawal";
+    }
+
 //    회원 탈퇴
+    // TODO: 주문한 상품이 있다면 주문을 취소한 후 탈퇴가 되어야한다.
     @PostMapping("/withdrawal")
-    public String withdrawalDelete(@CurrentAccount Account account, Model model, CheckPwdForm checkPwdForm) {
+    public String withdrawalDelete(@CurrentAccount Account account, Model model,
+                                   CheckPwdForm checkPwdForm) {
+
         model.addAttribute(account);
         boolean resultPwdCheck = passwordEncoder.matches(checkPwdForm.getCurrent_pwd(), account.getPassword());
 
         if (!resultPwdCheck) {
             model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
+            return "myPage/withdrawal";
+        }
+
+        if (!accountService.orderIsEmpty(account)) {
+            model.addAttribute("error", "주문을 먼저 취소한 뒤 회원탈퇴를 시도해주세요.");
             return "myPage/withdrawal";
         }
 

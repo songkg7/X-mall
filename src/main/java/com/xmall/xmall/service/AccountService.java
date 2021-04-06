@@ -181,4 +181,9 @@ public class AccountService implements UserDetailsService {
         return findAccount.isEmailVerified();
 
     }
+
+    public boolean orderIsEmpty(Account account) {
+        Account findAccount = accountRepository.findByEmail(account.getEmail());
+        return findAccount.getOrders().isEmpty();
+    }
 }

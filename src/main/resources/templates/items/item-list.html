@@ -48,6 +48,10 @@
             font-family: 'IBMPlexSansKR-Regular';
         }
 
+        a {
+            all: unset;
+        }
+
         /* ---------------------------- */
         /*  footer CSS 영역                   */
         /* ---------------------------- */
@@ -503,14 +507,14 @@
                         <li>
                             <div class="option high_price">
                                 <p>
-                                    <a th:href="@{/search/items?sort=price,desc}">높은 가격순</a></p>
+                                    <a th:href="@{/search/items?sort='price',desc}">높은 가격순</a></p>
                             </div>
                         </li>
                         <!-- option.3 낮은 가격순 -->
                         <li>
                             <div class="option low_price">
                                 <p>
-                                    <a th:href="@{/search/items/(sort='price')}">낮은 가격순</a>
+                                    <a th:href="@{/search/items(sort='price')}">낮은 가격순</a>
                                 </p>
                             </div>
                         </li>
