@@ -82,13 +82,16 @@ public class OrderController {
     @PostMapping("/order/payment")
     public String orderPaymentProcess(@CurrentAccount Account account,
                                       @RequestParam Long itemId,
-                                      @Valid OrderForm orderForm, Errors errors) {
+                                      @Valid OrderForm orderForm, Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            // TODO: print error message
+            Item item = itemRepository.findById(itemId).orElseThrow();
+            model.addAttribute("item", item);
+            model.addAttribute(account);
+            model.addAttribute("error", "유효성 체크를 통과하지 못했습니다.");
+            model.addAttribute("orderForm", orderForm);
             return "order/payment_order";
         }
-
 
         Item item = itemRepository.findById(itemId).orElseThrow();
 

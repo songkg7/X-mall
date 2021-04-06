@@ -28,7 +28,7 @@ public class MainController {
     @GetMapping("/")
     public String home(@CurrentAccount Account account, Model model) {
         // DB 에 저장된 상품들 가져와서 화면에 뿌려주기
-        List<Item> itemLists = itemRepository.findAll();
+        List<Item> itemLists = itemRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
         model.addAttribute("itemLists", itemLists);
         model.addAttribute("account", account);
 
@@ -48,10 +48,14 @@ public class MainController {
     @GetMapping("/search/items")
     public String searchItem(String keyword, Model model,
                              @PageableDefault(size = 6, sort = "createdAt", direction = Sort.Direction.ASC) Pageable pageable) {
+        // TODO: keyword null check
+//        if (keyword == null) {
+//
+//        }
+
         Page<Item> itemLists = itemRepository.findByKeyword(keyword, pageable);
         model.addAttribute("itemLists", itemLists);
 
-        // TODO: search page 를 따로 만드는것이 좋을 것 같다.
         model.addAttribute("keyword", keyword);
         model.addAttribute("sortProperty", pageable.getSort().toString().contains("createdAt") ? "createdAt" : "price");
 
