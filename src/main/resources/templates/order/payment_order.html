@@ -146,44 +146,46 @@
             $(".sample2_address").css("border-color", "red");
             $(".sample2_detailAddress").css("border-color", "red");
             $(".sample2_extraAddress").css("border-color", "red");
-            return;
+            return false;
         }
         if (name.split(" ").join("") === "") {
             $(".name").css("border-color", "red");
             need1.show();
             $(".name").val("");
             $(".name").focus();
-            return;
+            return false;
         } else if (number.split(" ").join("") === "") {
             $(".number").css("border-color", "red");
             need2.show();
             $(".number").val("");
             $(".number").focus();
-            return;
+            return false;
         } else if (sample2_postcode.split(" ").join("") === "") {
             $(".sample2_postcode").css("border-color", "red");
             need3.show();
             $(".sample2_postcode").val("");
             $(".sample2_postcode").focus();
-            return;
+            return false;
         } else if (sample2_address.split(" ").join("") === "") {
             $(".sample2_address").css("border-color", "red");
             need4.show();
             $(".sample2_address").val("");
             $(".sample2_address").focus();
-            return;
+            return false;
         } else if (sample2_detailAddress.split(" ").join("") === "") {
             $(".sample2_detailAddress").css("border-color", "red");
             need5.show();
             $(".sample2_detailAddress").val("");
             $(".sample2_detailAddress").focus();
-            return;
+            return false;
         } else if (sample2_extraAddress.split(" ").join("") === "") {
             $(".sample2_extraAddress").css("border-color", "red");
             need6.show();
             $(".sample2_extraAddress").val("");
             $(".sample2_extraAddress").focus();
-            return;
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -311,7 +313,7 @@
 <!-- main 부분 -->
 <!--+++++++++++++++++++++++++++++++++++-->
 <main>
-    <form action="#" th:action="@{/order/payment}" th:method="post" th:object="${orderForm}">
+    <form action="#" th:action="@{/order/payment}" th:method="post" th:object="${orderForm}" onsubmit="return checkForm()">
         <!-- title -->
         <div class="content-title"><h2>주문결제</h2></div>
 
@@ -441,7 +443,7 @@
                 <div class="order-history">
                     <div class="goods-wrap">
                         <!-- 이미지 들어오기 -->
-                        <div class="goods-img" style="background-color: yellow">
+                        <div class="goods-img">
                             <img th:src="${item.itemImage}"/>
                         </div>
                         <!-- --------------- -->
