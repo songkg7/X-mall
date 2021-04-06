@@ -4,6 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <div th:replace="fragments.html :: fragment-header-navbar"></div>
     <div th:replace="fragments.html :: fragment-footer-css"></div>
 </head>
@@ -45,7 +46,7 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-success btn-block" type="submit"
+                <button class="btn btn-primary btn-block" type="submit"
                         aria-describedby="submitHelp">로그인 링크 보내기
                 </button>
                 <small id="submitHelp" class="form-text text-muted">
@@ -54,9 +55,8 @@
             </div>
         </form>
     </div>
-
-    <footer th:replace="fragments.html :: footer-body">
-    </footer>
 </div>
+<footer th:replace="fragments.html :: footer-body"></footer>
+<!--<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
 </body>
 </html>
