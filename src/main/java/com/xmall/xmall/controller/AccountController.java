@@ -158,7 +158,6 @@ public class AccountController {
     }
 
 //    회원 탈퇴
-    // TODO: 주문한 상품이 있다면 주문을 취소한 후 탈퇴가 되어야한다.
     @PostMapping("/withdrawal")
     public String withdrawalDelete(@CurrentAccount Account account, Model model,
                                    CheckPwdForm checkPwdForm) {
@@ -171,6 +170,7 @@ public class AccountController {
             return "myPage/withdrawal";
         }
 
+        // FIXME: 실제 주문 취소 로직 추가할 것
         if (!accountService.orderIsEmpty(account)) {
             model.addAttribute("error", "주문을 먼저 취소한 뒤 회원탈퇴를 시도해주세요.");
             return "myPage/withdrawal";
