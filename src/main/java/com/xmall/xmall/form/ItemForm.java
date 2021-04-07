@@ -3,7 +3,6 @@ package com.xmall.xmall.form;
 import lombok.Data;
 
 import javax.persistence.Column;
-import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 

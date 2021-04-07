@@ -1,10 +1,8 @@
 package com.xmall.xmall.service;
 
 import com.xmall.xmall.domain.Account;
-import com.xmall.xmall.form.OrderForm;
-import com.xmall.xmall.repository.MyReviewRepository;
-
 import com.xmall.xmall.domain.MyReview;
+import com.xmall.xmall.repository.MyReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
