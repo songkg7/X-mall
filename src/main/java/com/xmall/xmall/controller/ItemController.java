@@ -171,28 +171,4 @@ public class ItemController {
         return "items/item-list";
     }
 
-//    @GetMapping("/items/category/gender/women")
-//    public String itemsWomenAll(@CurrentAccount Account account, Model model) {
-//        List<Item> itemLists = itemRepository.findByGenderType("women");
-//        if (account != null) {
-//            model.addAttribute(account);
-//        }
-//        model.addAttribute("itemLists", itemLists);
-//        return "items/item-list-women";
-//    }
-
 }
-
-//    @GetMapping("/items/category/{gender}/{categoryType1}/{categoryType2}")
-//    public String itemsGenderCategory(Model model, @PathVariable String gender, @PathVariable String categoryType1, @PathVariable String categoryType2) {
-//
-//        List<Item> itemLists1 = itemRepository.findByGenderTypeAndCategoryType(gender, categoryType1);
-//        List<Item> itemLists2 = itemRepository.findByGenderTypeAndCategoryType(gender, categoryType2);
-//        List<Item> itemListsResult = new ArrayList<>();
-//
-//        itemListsResult.addAll(itemLists1);
-//        itemListsResult.addAll(itemLists2);
-//        model.addAttribute("itemLists", itemListsResult);
-//
-//        return "items/item-list";
-//    }
