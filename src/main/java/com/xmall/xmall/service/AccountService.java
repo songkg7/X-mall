@@ -2,16 +2,14 @@ package com.xmall.xmall.service;
 
 import com.xmall.xmall.account.UserAccount;
 import com.xmall.xmall.config.AppProperties;
+import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.form.SignUpForm;
-import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.mail.EmailMessage;
 import com.xmall.xmall.mail.EmailService;
 import com.xmall.xmall.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,9 +23,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

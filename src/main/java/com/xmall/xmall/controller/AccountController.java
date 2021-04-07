@@ -1,13 +1,14 @@
 package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
+import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.form.CheckPwdForm;
 import com.xmall.xmall.form.SignUpForm;
-import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
 import com.xmall.xmall.service.AccountService;
 import com.xmall.xmall.validator.SignUpFormValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;

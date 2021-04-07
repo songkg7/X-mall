@@ -1,9 +1,9 @@
 package com.xmall.xmall.file;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.util.UUID;
-
-import org.springframework.web.multipart.MultipartFile;
 
 public class FileUpload {
     private MultipartFile multipartFile;
