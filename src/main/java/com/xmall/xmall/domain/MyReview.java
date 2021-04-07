@@ -1,10 +1,10 @@
 package com.xmall.xmall.domain;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import com.sun.istack.NotNull;
 import java.time.LocalDateTime;
 
 // table create

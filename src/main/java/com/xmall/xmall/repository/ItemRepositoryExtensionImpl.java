@@ -11,8 +11,8 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 
 import java.util.Objects;
 
-import static com.xmall.xmall.domain.QItem.*;
-import static com.xmall.xmall.domain.QOrderItem.*;
+import static com.xmall.xmall.domain.QItem.item;
+import static com.xmall.xmall.domain.QOrderItem.orderItem;
 
 public class ItemRepositoryExtensionImpl extends QuerydslRepositorySupport implements ItemRepositoryExtension {
     

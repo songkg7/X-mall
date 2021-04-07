@@ -1,6 +1,5 @@
 package com.xmall.xmall.board;
 
-import com.xmall.xmall.domain.Account;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter

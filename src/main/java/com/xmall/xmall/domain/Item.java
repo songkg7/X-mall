@@ -2,7 +2,6 @@ package com.xmall.xmall.domain;
 
 import com.xmall.xmall.exception.NotEnoughStockException;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

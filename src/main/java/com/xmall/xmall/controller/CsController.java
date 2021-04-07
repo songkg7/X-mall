@@ -1,8 +1,10 @@
 package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
-import com.xmall.xmall.board.*;
+import com.xmall.xmall.board.BoardCreateForm;
+import com.xmall.xmall.board.CommentForm;
 import com.xmall.xmall.board.CsBoardService;
+import com.xmall.xmall.board.Cs_Board;
 import com.xmall.xmall.domain.Account;
 import com.xmall.xmall.repository.AccountRepository;
 import com.xmall.xmall.repository.CommentRepository;
@@ -17,9 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller

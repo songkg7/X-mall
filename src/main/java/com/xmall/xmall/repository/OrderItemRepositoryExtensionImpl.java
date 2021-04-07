@@ -5,18 +5,16 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.IsoFields;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static com.xmall.xmall.domain.QOrder.*;
-import static com.xmall.xmall.domain.QOrderItem.*;
+import static com.xmall.xmall.domain.QOrder.order;
+import static com.xmall.xmall.domain.QOrderItem.orderItem;
 
 public class OrderItemRepositoryExtensionImpl extends QuerydslRepositorySupport implements OrderItemRepositoryExtension {
 
