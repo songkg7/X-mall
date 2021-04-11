@@ -56,16 +56,16 @@
         // 수량이 1 아래로 내려가지 못하도록 해주는 함수 선언
         //-----------------------------------------
         function upDownAmount(upDown) {
-            let amount = $("[name=amount]").val();
+            let amount = $(".count_product").val();
             if (upDown === 'up') {
-                $("[name=amount]").val(++amount);
+                $(".count_product").val(++amount);
                 if (amount > 1) {
                     $(".minus").css("color", "black")
                 }
             } else if (upDown === 'down') {
 
                 if (amount > 1) {
-                    $("[name=amount]").val(--amount);
+                    $(".count_product").val(--amount);
                     $(".minus").css("color", "black")
                     if (amount < 2) {
                         $(".minus").css("color", "lightgray")
@@ -703,7 +703,6 @@
                     <input
                             type="text"
                             class="count_product"
-                            name="amount"
                             th:field="*{amount}"
                             value="1"
                             readonly
@@ -711,7 +710,6 @@
                     <input
                             type="button"
                             class="minus"
-
                             value="-"
                             onClick="upDownAmount('down');"
                     />

@@ -17,10 +17,10 @@ public class OrderForm {
     private String orderItemSize;
 
     @NotBlank
-    private String postcode; // 우편번호
+    private String postcode;
 
     @NotBlank
-    private String address;     // 주소
+    private String address;
 
     @NotBlank
     private String detailAddress;

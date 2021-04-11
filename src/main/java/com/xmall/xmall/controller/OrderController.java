@@ -1,7 +1,8 @@
 package com.xmall.xmall.controller;
 
 import com.xmall.xmall.account.CurrentAccount;
-import com.xmall.xmall.domain.*;
+import com.xmall.xmall.domain.Account;
+import com.xmall.xmall.domain.Item;
 import com.xmall.xmall.form.OrderForm;
 import com.xmall.xmall.repository.CartRepository;
 import com.xmall.xmall.repository.ItemRepository;
@@ -13,20 +14,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
-@Slf4j
 public class OrderController {
 
-    private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
-    private final CartRepository cartRepository;
     private final OrderService orderService;
     private final AccountService accountService;
 
