@@ -17,5 +17,4 @@ public class BoardCreateForm {
     @Column(columnDefinition="TEXT")
     private String mainText;
 
-
 }

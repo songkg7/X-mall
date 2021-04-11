@@ -28,13 +28,10 @@ public class AdminController {
     public String adminPage(@CurrentAccount Account account, Model model) {
 
         // 요일별 매출
-        // TODO: Order - OrderItem Join 해서 데이터를 가져와야한다.
         List<Integer> graphData = adminService.getSalesPerDay();
         for (int i = 0; i < graphData.size(); i++) {
             model.addAttribute("graphData" + i, graphData.get(i));
         }
-
-
 
         // 현재 주문의 수
         List<Order> orderList = adminService.findAllOrder();
@@ -48,8 +45,6 @@ public class AdminController {
         Item bestItem = adminService.getBestItem();
         model.addAttribute("bestItem", bestItem);
 
-        // 재고
-
         model.addAttribute(account);
         return "admin";
     }
@@ -61,7 +56,6 @@ public class AdminController {
         for (int i = 0; i < graphData.size(); i++) {
             model.addAttribute("graphData" + i, graphData.get(i));
         }
-
 
         model.addAttribute("accountList", accountList);
         model.addAttribute("totalAccount", accountRepository.count());
@@ -83,7 +77,6 @@ public class AdminController {
             model.addAttribute("graphData" + i, graphData.get(i));
         }
 
-        // FIXME: 취소된 주문은 제외하기
         model.addAttribute("totalOrders", orderRepository.count());
         return "admin-orders";
     }

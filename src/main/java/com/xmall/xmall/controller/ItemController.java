@@ -87,7 +87,6 @@ public class ItemController {
         return "redirect:/";
     }
 
-
     /**
      * 상품 삭제
      */
@@ -163,7 +162,6 @@ public class ItemController {
         return "items/item-list";
     }
 
-    // TODO: 정렬
     @GetMapping("/items/category/asc")
     public String itemsPriceAsc(Model model) {
         List<Item> itemLists = itemRepository.findByOrderByPriceAsc();

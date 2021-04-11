@@ -33,22 +33,6 @@ public class OrderController {
     private final AccountService accountService;
 
     // 바로 구매로 상품 하나 구매
-//    @PostMapping("/order/{id}")
-//    public String orderPayment(@CurrentAccount Account account,
-//                               @PathVariable Long id, Model model,
-//                               @RequestParam int amount) {
-//
-//        model.addAttribute(account);
-//
-//        // 선택한 상품 갯수 전달
-//        model.addAttribute("amount", amount);
-//        // 바로구매로 진입하면 선택한 아이템 찾아오기
-//        Optional<Item> byId = itemRepository.findById(id);
-//        byId.ifPresent(item -> model.addAttribute("item", item));
-//        return "order/payment-test";
-//    }
-
-    // 바로 구매로 상품 하나 구매
     @PostMapping("/order/{id}")
     public String orderPayment(@CurrentAccount Account account,
                                @PathVariable Long id, Model model,
@@ -68,17 +52,6 @@ public class OrderController {
         byId.ifPresent(item -> model.addAttribute("item", item));
         return "order/payment_order";
     }
-
-    // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
-//    @PostMapping("/order/payment")
-//    public String orderPaymentProcess(@CurrentAccount Account account,
-//                                      @RequestParam Long itemId,
-//                                      @RequestParam int amount) {
-//
-//        Optional<Item> byId = itemRepository.findById(itemId);
-//        byId.ifPresent(item -> orderService.order(item, account, amount));
-//        return "redirect:/my_page";
-//    }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
     @PostMapping("/order/payment")

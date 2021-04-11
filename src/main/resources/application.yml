@@ -26,4 +26,4 @@ logging:
 app.host: http://localhost:8080
 
 # 8083 포트 사용 시 활성화
-server.port: 8083
+#server.port: 8083

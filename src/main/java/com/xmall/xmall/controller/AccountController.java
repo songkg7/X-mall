@@ -43,25 +43,19 @@ public class AccountController {
         return "account/sign-up";
     }
 
-    // TODO: addFlashAttribute
     @PostMapping("/sign-up")
-    // 여러 값을 받아올 때는 @ModelAttribute 가 필요하지만 생략이 가능하다.
     public String signUpProcess(@Valid SignUpForm signUpForm, Errors errors, Model model) {
         if (errors.hasErrors()) {
-            // 로그인 실패시 화면에 에러 정보를 같이 담아서 보내주기
             model.addAttribute(signUpForm);
             return "account/sign-up";
         }
-        // 회원가입한 유저 정보 가져오기
         Account account = accountService.signUp(signUpForm);
-        // 회원가입 후 바로 로그인 처리
         accountService.login(account);
         return "redirect:/";
     }
 
     @GetMapping("/check-email-token")
     public String checkEmailToken(String email, String token, Model model){
-//        /check-email-token?token=7647e3be-acd9-4786-a908-6bfd04beb87f&email=songkg7@gmail.com
         Account account = accountRepository.findByEmail(email);
         if (account == null) {
             model.addAttribute("error", "wrong.email");
@@ -73,15 +67,12 @@ public class AccountController {
             return "account/checked-email";
         }
 
-        // 위를 모두 통과하면 정식 회원가입 절차 완료
         accountService.emailVerifiedConfirm(account);
-        // 인증 뷰로 데이터 보여주기
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
         return "account/checked-email";
     }
 
-    // TODO: email 재전송 버튼이 있는 간단한 페이지
     @GetMapping("/check-email")
     public String checkEmail(@CurrentAccount Account account, Model model) {
         model.addAttribute("email", account.getEmail());
@@ -115,7 +106,6 @@ public class AccountController {
             return "account/email-login";
         }
 
-        // email 반복 전송 방지
         if (!findAccount.canSendConfirmEmail()) {
             model.addAttribute("error", "이메일은 1시간에 한 번만 보낼 수 있습니다.");
             return "account/email-login";
@@ -157,7 +147,7 @@ public class AccountController {
         return "myPage/withdrawal";
     }
 
-//    회원 탈퇴
+    // 회원 탈퇴
     @PostMapping("/withdrawal")
     public String withdrawalDelete(@CurrentAccount Account account, Model model,
                                    CheckPwdForm checkPwdForm) {
@@ -170,7 +160,6 @@ public class AccountController {
             return "myPage/withdrawal";
         }
 
-        // FIXME: 실제 주문 취소 로직 추가할 것
         if (!accountService.orderIsEmpty(account)) {
             model.addAttribute("error", "주문을 먼저 취소한 뒤 회원탈퇴를 시도해주세요.");
             return "myPage/withdrawal";
