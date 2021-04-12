@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/", "/login", "/sign-up", "/check-email-token").permitAll()
-                .mvcMatchers("/items/create-item", "/admin").hasRole("ADMIN")
+                .mvcMatchers("/items/create-item", "/admin", "/items/**/delete").hasRole("ADMIN")
                 .mvcMatchers("/myPage/**", "/order/**").authenticated()
                 .anyRequest().permitAll();
 
@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
                 .loginPage("/login").permitAll();
 
+        // FIXME: csrf
         http.csrf().disable();
         // logout
         http.logout()
