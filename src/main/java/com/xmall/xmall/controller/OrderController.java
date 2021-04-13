@@ -70,17 +70,6 @@ public class OrderController {
     }
 
     // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
-//    @PostMapping("/order/payment")
-//    public String orderPaymentProcess(@CurrentAccount Account account,
-//                                      @RequestParam Long itemId,
-//                                      @RequestParam int amount) {
-//
-//        Optional<Item> byId = itemRepository.findById(itemId);
-//        byId.ifPresent(item -> orderService.order(item, account, amount));
-//        return "redirect:/my_page";
-//    }
-
-    // 주문페이지에서는 본인이 선택한 물건들이 맞는지 확인만 하게 된다.
     @PostMapping("/order/payment")
     public String orderPaymentProcess(@CurrentAccount Account account,
                                       @RequestParam Long itemId,
