@@ -14,10 +14,10 @@ public class ItemForm {
 
     private String subTitle;
 
-    @NotBlank
+    @NotNull
     private int price;
 
-    @NotBlank
+    @NotNull
     private int stockQuantity;
 
     private String description;
