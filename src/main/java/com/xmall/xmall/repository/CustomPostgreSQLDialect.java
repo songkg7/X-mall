@@ -19,7 +19,7 @@ public class CustomPostgreSQLDialect extends PostgreSQL10Dialect {
         // 예를 들어 스트링형태의 리턴타입 함수는 StandardBasicTypes.STRING로 선언해준다.
         this.registerFunction("사용할 함수명", new SQLFunctionTemplate(StandardBasicTypes.STRING, "사용할 함수명(?1)"));
 
-        registerFunction( "dayofweek", new SQLFunctionTemplate(StandardBasicTypes.INTEGER, "extract(dow from ?1)") );
+        this.registerFunction( "dayofweek", new SQLFunctionTemplate(StandardBasicTypes.INTEGER, "extract(dow from ?1)") );
     }
 
 }

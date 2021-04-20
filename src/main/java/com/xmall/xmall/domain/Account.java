@@ -68,6 +68,7 @@ public class Account {
         // 생성시간 정보를 저장해서 연속적으로 메일을 보내지 못하게한다
         this.emailCheckTokenGeneratedAt = LocalDateTime.now();
     }
+
     public void completeSignUp() {
         this.emailVerified = true;
         this.JoinedAt = LocalDateTime.now();
