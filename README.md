@@ -3,6 +3,8 @@
 ## Info
 쇼핑몰을 실제 운영할 수 있을 수준으로 구현해보는 프로젝트입니다.
 
+[![wakatime](https://wakatime.com/badge/github/songkg7/X-mall.svg)](https://wakatime.com/badge/github/songkg7/X-mall)
+
 
 ## Project dependencies
 - Java 11
@@ -16,3 +18,5 @@
 - PostgreSQL
 - H2
 - NPM
+
+
