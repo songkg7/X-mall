@@ -74,8 +74,6 @@ class OrderItemRepositoryExtensionImplTest {
     void salesPerDay() {
 
         // given
-
-
         queryFactory = new JPAQueryFactory(em);
         String date = sdf.format(new Date());
         int week = getWeekOfYear(date);
@@ -92,10 +90,6 @@ class OrderItemRepositoryExtensionImplTest {
                 .groupBy(order.orderDate.dayOfWeek())
                 .orderBy(order.orderDate.dayOfWeek().asc())
                 .fetch();
-
-//        List<Integer> result2 = queryFactory
-//                .select(order.orderDate.yearWeek())
-//                .from(order).fetch();
 
         List<Integer> result2 = queryFactory
                 .select(order.orderDate.yearWeek())
